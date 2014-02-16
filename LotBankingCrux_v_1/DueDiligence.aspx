@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Due Diligence" Language="C#" MasterPageFile="/Site.Master" AutoEventWireup="true" CodeBehind="DueDiligence.aspx.cs" Inherits="LotBankingCrux_v_1.DueDiligence" %>
+﻿<%@ Page Title="Due Diligence" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DueDiligence.aspx.cs" Inherits="LotBankingCrux_v_1.DueDiligence" %>
 
 <asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
     <div class="menubar">

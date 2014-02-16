@@ -42,8 +42,8 @@ namespace LotBankingCrux_v_1.Account
                         DataBucket.userName = "Emily Leppert";
                         break;
                     case 2:
-                        route = "Builder";
-                        DataBucket.userName = "Fulton Homes";
+                        route = "BuilderDashboard";
+                        DataBucket.userName = dbObject.getBuilderName(DataBucket.userID);
                         break;
                     case 3:
                         route = "Investor";

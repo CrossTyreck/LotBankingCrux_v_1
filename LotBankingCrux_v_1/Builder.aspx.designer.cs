@@ -31,15 +31,6 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.DropDownList CurrentProjects;
         
         /// <summary>
-        /// ProjectDashboard control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton ProjectDashboard;
-        
-        /// <summary>
         /// imgBuilderLogo control.
         /// </summary>
         /// <remarks>

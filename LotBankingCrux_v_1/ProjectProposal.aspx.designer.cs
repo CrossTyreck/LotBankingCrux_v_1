@@ -10,114 +10,96 @@
 namespace LotBankingCrux_v_1 {
     
     
-    public partial class projectproposal {
+    public partial class ProjectProposal {
         
         /// <summary>
-        /// form1 control.
+        /// txtProjectName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.TextBox txtProjectName;
         
         /// <summary>
-        /// WelcomePage control.
+        /// txtFirstStreet control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton WelcomePage;
+        protected global::System.Web.UI.WebControls.TextBox txtFirstStreet;
         
         /// <summary>
-        /// tbProjectName control.
+        /// txtSecondStreet control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbProjectName;
+        protected global::System.Web.UI.WebControls.TextBox txtSecondStreet;
         
         /// <summary>
-        /// FirstStreet control.
+        /// txtCardinal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox FirstStreet;
+        protected global::System.Web.UI.WebControls.TextBox txtCardinal;
         
         /// <summary>
-        /// SecondStreet control.
+        /// txtNumberOfLots control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox SecondStreet;
+        protected global::System.Web.UI.WebControls.TextBox txtNumberOfLots;
         
         /// <summary>
-        /// Cardinal control.
+        /// txtAcquisitionPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Cardinal;
+        protected global::System.Web.UI.WebControls.TextBox txtAcquisitionPrice;
         
         /// <summary>
-        /// DropDownList1 control.
+        /// txtImprovementCosts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.TextBox txtImprovementCosts;
         
         /// <summary>
-        /// TextBox4 control.
+        /// lblDataInserted control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.Label lblDataInserted;
         
         /// <summary>
-        /// TextBox5 control.
+        /// btnSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
         
         /// <summary>
-        /// DataInserted control.
+        /// btnDashboard control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label DataInserted;
-        
-        /// <summary>
-        /// Button1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-        
-        /// <summary>
-        /// Button2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button btnDashboard;
     }
 }

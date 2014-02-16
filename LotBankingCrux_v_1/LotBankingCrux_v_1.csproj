@@ -63,7 +63,6 @@
     <Content Include="AcceptProposals.aspx" />
     <Content Include="Builder.aspx" />
     <Content Include="BuilderDocumentSubmission.aspx" />
-    <Content Include="BuilderProposal.aspx" />
     <Content Include="CBHDashboard.aspx" />
     <Content Include="CBHHome.aspx" />
     <Content Include="Content\bargraph.css" />
@@ -91,6 +90,13 @@
     <Compile Include="AcceptProposals.aspx.designer.cs">
       <DependentUpon>AcceptProposals.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ProjectProposal.aspx.cs">
+      <DependentUpon>ProjectProposal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProjectProposal.aspx.designer.cs">
+      <DependentUpon>ProjectProposal.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Builder.aspx.cs">
       <DependentUpon>Builder.aspx</DependentUpon>
@@ -105,13 +111,6 @@
     </Compile>
     <Compile Include="BuilderDocumentSubmission.aspx.designer.cs">
       <DependentUpon>BuilderDocumentSubmission.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="BuilderProposal.aspx.cs">
-      <DependentUpon>BuilderProposal.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BuilderProposal.aspx.designer.cs">
-      <DependentUpon>BuilderProposal.aspx</DependentUpon>
     </Compile>
     <Compile Include="CBHDashboard.aspx.cs">
       <DependentUpon>CBHDashboard.aspx</DependentUpon>
@@ -163,13 +162,6 @@
     </Compile>
     <Compile Include="ProjectDashboard.aspx.designer.cs">
       <DependentUpon>ProjectDashboard.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="projectproposal.aspx.cs">
-      <DependentUpon>ProjectProposal.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ProjectProposal.aspx.designer.cs">
-      <DependentUpon>ProjectProposal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

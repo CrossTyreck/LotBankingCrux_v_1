@@ -11,7 +11,7 @@ namespace LotBankingCrux_v_1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ProjectDashboard.Visible = false;
+            //ProjectDashboard.Visible = false;
             /*Dynamically set builder image:
              * Get builder name by id, query server for builder image URL
              * add that URL to the ImageURL below. 
@@ -25,13 +25,13 @@ namespace LotBankingCrux_v_1
 
         }
 
-        //What project are we accessing
-        protected void BuilderProposal_SelectedIndex(object sender, EventArgs e)
-        {
-            //create the link to the right project
-            ProjectDashboard.Visible = true;
-            ProjectDashboard.Text = BuilderProposal.Text;
-        }
+        ////What project are we accessing
+        //protected void BuilderProposal_SelectedIndex(object sender, EventArgs e)
+        //{
+        //    //create the link to the right project
+        //    ProjectDashboard.Visible = true;
+        //    ProjectDashboard.Text = BuilderProposal.Text;
+        //}
 
         //redirect to the right project
         protected void ProjectDashboard_OnClick(object sender, EventArgs e)
