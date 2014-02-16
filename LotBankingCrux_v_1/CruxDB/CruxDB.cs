@@ -47,6 +47,7 @@ namespace LotBankingCrux_v_1.Crux
             }
             catch (Exception e)
             {
+                Debug.Print(e.Message);
                 return -1;
             }
             reader.Close();
@@ -74,6 +75,7 @@ namespace LotBankingCrux_v_1.Crux
             }
             catch (Exception e)
             {
+                Debug.Print(e.Message);
                 return -1;
             }
             reader.Close();
@@ -109,6 +111,7 @@ namespace LotBankingCrux_v_1.Crux
             }
             catch (Exception e)
             {
+                Debug.Print(e.Message);
                 return -1;
             }
             reader.Close();
@@ -120,33 +123,27 @@ namespace LotBankingCrux_v_1.Crux
             return -2;
         }
 
-        //CHRIS
         public int getUserId(string name)
         {
 
             MySqlCommand getLoginData = new MySqlCommand("SELECT id " +
-                                                       "FROM Login " +
-                                                      "WHERE login=@login",
+                                                           "FROM Login " +
+                                                          "WHERE login = @login",
                                                       databaseConnection);
             getLoginData.Parameters.Add("@login", MySqlDbType.VarChar).Value = name;
+
+            int returnValue = -2;
 
             try
             {
                 MySqlDataReader reader;
                 databaseConnection.Open();
-                reader = getLoginData.ExecuteReader(CommandBehavior.SingleResult);
+                reader = getLoginData.ExecuteReader(CommandBehavior.SequentialAccess);
 
                 while (reader.Read())
                 {
-
-                    if (reader.GetInt32(0) >= 0)
-                    {
-                        return reader.GetInt32(0);
-                    }
+                    returnValue = reader.GetInt32(0);
                 }
-
-                return -2;
-
             }
 
             catch (Exception e)
@@ -160,20 +157,20 @@ namespace LotBankingCrux_v_1.Crux
 
                 if (databaseConnection.State.Equals(System.Data.ConnectionState.Open))
                 {
-
                     databaseConnection.Close();
                 }
             }
-
+            return returnValue;
 
         }
+
         public int getUserClassId(int loginId)
         {
 
             MySqlDataReader reader = null;
             MySqlCommand getLoginData = new MySqlCommand("SELECT user_class_id " +
-                                                       "FROM Login " +
-                                                      "WHERE id = @id",
+                                                           "FROM Login " +
+                                                          "WHERE id = @id",
                                                       databaseConnection);
             getLoginData.Parameters.Add("@id", MySqlDbType.Int32).Value = loginId;
 
@@ -233,8 +230,9 @@ namespace LotBankingCrux_v_1.Crux
             {
                 reader = insertNewBuilder.ExecuteReader(CommandBehavior.SequentialAccess);
             }
-            catch
+            catch (Exception e)
             {
+                Debug.Print(e.Message);
                 return -1;
             }
             reader.Close();
@@ -244,10 +242,10 @@ namespace LotBankingCrux_v_1.Crux
 
         public int updateBuilderName(int builder_id, String name)
         {
-            MySqlCommand updateBuilderName = new MySqlCommand("Update Builder_Data " +
-                                                             "SET  name         = @name, " +
-                                                                " last_modified = NOW() " +
-                                                          "WHERE  bid           = @builderId)",
+            MySqlCommand updateBuilderName = new MySqlCommand("UPDATE Builder_Data " +
+                                                                 "SET name = @name, " +
+                                                                     "last_modified = NOW() " +
+                                                               "WHERE bid = @builderId)",
                                                              databaseConnection);
             updateBuilderName.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builder_id;
             updateBuilderName.Parameters.Add("@name", MySqlDbType.VarChar, 30).Value = name;
@@ -260,6 +258,7 @@ namespace LotBankingCrux_v_1.Crux
             }
             catch (Exception e)
             {
+                Debug.Print(e.Message);
                 return -1;
             }
             reader.Close();
@@ -271,10 +270,12 @@ namespace LotBankingCrux_v_1.Crux
         {
 
             MySqlCommand getBuilderId = new MySqlCommand("SELECT builder_id " +
-                                                       "FROM Builder_Data " +
-                                                      "WHERE name=@name",
+                                                           "FROM Builder_Data " +
+                                                          "WHERE name = @name",
                                                       databaseConnection);
             getBuilderId.Parameters.Add("@name", MySqlDbType.VarChar).Value = name;
+
+            int returnValue = -2;
 
             try
             {
@@ -284,15 +285,8 @@ namespace LotBankingCrux_v_1.Crux
 
                 while (reader.Read())
                 {
-
-                    if (reader.GetInt32(0) >= 0)
-                    {
-                        return reader.GetInt32(0);
-                    }
+                    returnValue =  reader.GetInt32(0);
                 }
-
-                return -2;
-
             }
 
             catch (Exception e)
@@ -311,13 +305,13 @@ namespace LotBankingCrux_v_1.Crux
                 }
             }
 
-
+            return returnValue;
         }
         public String getBuilderName(int id)
         {
             MySqlCommand getBuildersName = new MySqlCommand("SELECT name" +
-                                                          "FROM Builder_Data" +
-                                                         "WHERE bid = @id",
+                                                              "FROM Builder_Data" +
+                                                             "WHERE bid = @id",
                                                          databaseConnection);
             getBuildersName.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
             MySqlDataReader reader;
@@ -332,6 +326,7 @@ namespace LotBankingCrux_v_1.Crux
             }
             catch (Exception e)
             {
+                Debug.Print(e.Message);
                 return null;
             }
             reader.Close();
@@ -341,63 +336,74 @@ namespace LotBankingCrux_v_1.Crux
 
         public DataTable getBuilderNames()
         {
-            MySqlCommand getBuildersNames = new MySqlCommand("SELECT name " +
-                                                          "FROM Builder_Data",
+            MySqlCommand getBuildersNames = new MySqlCommand("SELECT name, " +
+                                                                    "bid " + 
+                                                               "FROM Builder_Data",
                                                          databaseConnection);
-            //getBuildersName.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
-            // MySqlDataReader reader;
             MySqlDataAdapter daNames = new MySqlDataAdapter(getBuildersNames);
             DataTable dtNames = new DataTable();
             try
             {
-                //reader = getBuildersNames.ExecuteReader(CommandBehavior.SequentialAccess);
                 daNames.Fill(dtNames);
-                //while (reader.Read())
-                //{
-                //    name = reader.GetString(0);
-                //}
             }
             catch (MySqlException e)
             {
+                Debug.Print(e.Message);
                 return null;
             }
-            //reader.Close();
             databaseConnection.Close();
             return dtNames;
         }
 
-        //CHRIS
-        public DataTable getProjects(int id, int acPrice)
+        public DataTable getBuilderProjects(int builderId)
         {
-            MySqlCommand getProjects = new MySqlCommand("SELECT project_name " +
-                                                          "FROM Projects " +
-                                                          "WHERE builder_id = @id",
+            MySqlCommand getBuilderProjects = new MySqlCommand("SELECT project_name, " +
+                                                                      "id " +
+                                                                "FROM Projects " +
+                                                               "WHERE builder_id = @builderId",
                                                          databaseConnection);
-            getProjects.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+            getBuilderProjects.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builderId;
 
-            // MySqlDataReader reader;
-            MySqlDataAdapter daNames = new MySqlDataAdapter(getProjects);
+            MySqlDataAdapter daNames = new MySqlDataAdapter(getBuilderProjects);
             DataTable dtNames = new DataTable();
             try
             {
-                //reader = getBuildersNames.ExecuteReader(CommandBehavior.SequentialAccess);
                 daNames.Fill(dtNames);
-                //while (reader.Read())
-                //{
-                //    name = reader.GetString(0);
-                //}
             }
             catch (MySqlException e)
             {
+                Debug.Print(e.Message);
                 return null;
             }
-            //reader.Close();
             databaseConnection.Close();
             return dtNames;
         }
 
-        public int insertProjectDocument(int builderId, String docName, byte[] doc)
+        public int insertProjectDocument(int projectId, String docName, byte[] doc)
         {
+            MySqlCommand insertNewProjectDocument = new MySqlCommand("INSERT INTO Builder_Documents" +
+                                                                           "( project_id, document_name, document)" +
+                                                                     "VALUES( @projectId, @documentName, @document)",
+                                                                     databaseConnection);
+
+            insertNewProjectDocument.Parameters.Add("@projectId", MySqlDbType.Int32).Value = projectId;
+            insertNewProjectDocument.Parameters.Add("@documentName", MySqlDbType.VarChar, 30);
+            insertNewProjectDocument.Parameters.Add("@document", MySqlDbType.Binary, doc.Length);
+
+            databaseConnection.Open();
+
+            MySqlDataReader reader;
+            try
+            {
+                reader = insertNewProjectDocument.ExecuteReader(CommandBehavior.SequentialAccess);
+            }
+            catch (Exception e)
+            {
+                Debug.Print(e.Message);
+                return -1;
+            }
+            reader.Close();
+            databaseConnection.Close();
             return 1;
         }
 
@@ -421,6 +427,32 @@ namespace LotBankingCrux_v_1.Crux
             }
             catch (Exception e)
             {
+                Debug.Print(e.Message);
+                return -1;
+            }
+            reader.Close();
+            databaseConnection.Close();
+            return 1;
+        }
+        public int requestProjectDocument(int document_id)
+        {
+            MySqlCommand requestProjectDocument = new MySqlCommand("UPDATE Project_Documents " +
+                                                                      "SET last_requested = NOW() " +
+                                                                    "WHERE id = @documentId",
+                                                                     databaseConnection);
+
+            requestProjectDocument.Parameters.Add("@documentId", MySqlDbType.Int32).Value = document_id;
+
+            databaseConnection.Open();
+
+            MySqlDataReader reader;
+            try
+            {
+                reader = requestProjectDocument.ExecuteReader(CommandBehavior.SequentialAccess);
+            }
+            catch (Exception e)
+            {
+                Debug.Print(e.Message);
                 return -1;
             }
             reader.Close();
@@ -431,8 +463,8 @@ namespace LotBankingCrux_v_1.Crux
         public int requestBuilderDocument(int document_id)
         {
             MySqlCommand requestBuilderDocument = new MySqlCommand("UPDATE Builder_Documents " +
-                                                                    "SET last_requested = NOW() " +
-                                                                  "WHERE id = @documentId",
+                                                                      "SET last_requested = NOW() " +
+                                                                    "WHERE id = @documentId",
                                                                      databaseConnection);
 
             requestBuilderDocument.Parameters.Add("@documentId", MySqlDbType.Int32).Value = document_id;
@@ -446,6 +478,37 @@ namespace LotBankingCrux_v_1.Crux
             }
             catch (Exception e)
             {
+                Debug.Print(e.Message);
+                return -1;
+            }
+            reader.Close();
+            databaseConnection.Close();
+            return 1;
+        }
+
+        public int updateProjectDocumentFile(int document_id, byte doc, String file_name)
+        {
+            MySqlCommand updateProjectDocument = new MySqlCommand("UPDATE Project_Documents " +
+                                                                     "SET document      = @doc, " +
+                                                                        " file_name = @fileName, " +
+                                                                        " last_updated = NOW()" +
+                                                                   "WHERE id = @documentId",
+                                                                     databaseConnection);
+
+            updateProjectDocument.Parameters.Add("@doc", MySqlDbType.Binary).Value = doc;
+            updateProjectDocument.Parameters.Add("@fileName", MySqlDbType.VarChar, 30).Value = file_name;
+            updateProjectDocument.Parameters.Add("@documentId", MySqlDbType.Int32).Value = document_id;
+
+            databaseConnection.Open();
+
+            MySqlDataReader reader;
+            try
+            {
+                reader = updateProjectDocument.ExecuteReader(CommandBehavior.SequentialAccess);
+            }
+            catch (Exception e)
+            {
+                Debug.Print(e.Message);
                 return -1;
             }
             reader.Close();
@@ -475,6 +538,7 @@ namespace LotBankingCrux_v_1.Crux
             }
             catch (Exception e)
             {
+                Debug.Print(e.Message);
                 return -1;
             }
             reader.Close();
@@ -482,27 +546,23 @@ namespace LotBankingCrux_v_1.Crux
             return 1;
         }
 
-        //CHRIS
         public DataTable getBuilderDocuments(int builder_id)
         {
-            MySqlCommand getBuildersDocuments = new MySqlCommand("SELECT file_name " +
-                                                        "FROM Builder_Documents " +
-                                                        "WHERE builder_id = @builderId",
+            MySqlCommand getBuildersDocuments = new MySqlCommand("SELECT file_name, " +
+                                                                        "id " +
+                                                                   "FROM Builder_Documents " +
+                                                                 "WHERE builder_id = @builderId",
                                                        databaseConnection);
             getBuildersDocuments.Parameters.Add("@builderid", MySqlDbType.Int32).Value = builder_id;
             MySqlDataAdapter daNames = new MySqlDataAdapter(getBuildersDocuments);
             DataTable dtDocuments = new DataTable();
             try
             {
-                //reader = getBuildersNames.ExecuteReader(CommandBehavior.SequentialAccess);
                 daNames.Fill(dtDocuments);
-                //while (reader.Read())
-                //{
-                //    name = reader.GetString(0);
-                //}
             }
             catch (MySqlException e)
             {
+                Debug.Print(e.Message);
                 return null;
             }
             //reader.Close();
@@ -513,8 +573,8 @@ namespace LotBankingCrux_v_1.Crux
         public BuilderDocumentData[] getBuilderDocumentData(int builder_id)
         {
             MySqlCommand selectBuilderDocumentData = new MySqlCommand("SELECT id, builder_id, document_name, file_name, last_modified, last_requested " +
-                                                                 "FROM Builder_Documents " +
-                                                                "WHERE buider_id = @builderId",
+                                                                       "FROM Builder_Documents " +
+                                                                      "WHERE buider_id = @builderId",
                                                                 databaseConnection);
             selectBuilderDocumentData.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builder_id;
 
@@ -549,6 +609,7 @@ namespace LotBankingCrux_v_1.Crux
             }
             catch (Exception e)
             {
+                Debug.Print(e.Message);
                 return null;
             }
             reader.Close();
@@ -557,14 +618,14 @@ namespace LotBankingCrux_v_1.Crux
             return docs;
         }
 
-        public byte[] getDocument(int id)
+        public byte[] getBuilderDocument(int id)
         {
             byte[] doc = new byte[0];
 
             MySqlCommand selectBuilderDocument = new MySqlCommand("SELECT document " +
-                                                     "FROM Builder_Documents " +
-                                                    "WHERE id = @id",
-                                                    databaseConnection);
+                                                                    "FROM Builder_Documents " +
+                                                                   "WHERE id = @id",
+                                                                  databaseConnection);
             selectBuilderDocument.Parameters.Add("@id", MySqlDbType.Int32);
 
             databaseConnection.Open();
@@ -584,6 +645,43 @@ namespace LotBankingCrux_v_1.Crux
             }
             catch (Exception e)
             {
+                Debug.Print(e.Message);
+                return null;
+            }
+            reader.Close();
+            databaseConnection.Close();
+
+            return doc;
+        }
+
+        public byte[] getProjectDocument(int id)
+        {
+            byte[] doc = new byte[0];
+
+            MySqlCommand selectProjectDocument = new MySqlCommand("SELECT document " +
+                                                                    "FROM Project_Documents " +
+                                                                   "WHERE id = @id",
+                                                                  databaseConnection);
+            selectProjectDocument.Parameters.Add("@id", MySqlDbType.Int32);
+
+            databaseConnection.Open();
+
+            MySqlDataReader reader;
+            try
+            {
+                reader = selectProjectDocument.ExecuteReader(CommandBehavior.SequentialAccess);
+                while (reader.Read())
+                {
+                    Stream stream = reader.GetStream(0);
+                    BinaryReader streamReader = new BinaryReader(stream);
+                    doc = streamReader.ReadBytes((int)stream.Length);
+                    streamReader.Close();
+                    stream.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.Print(e.Message);
                 return null;
             }
             reader.Close();
@@ -617,6 +715,7 @@ namespace LotBankingCrux_v_1.Crux
             }
             catch (Exception e)
             {
+                Debug.Print(e.Message);
                 return -1;
             }
             reader.Close();
@@ -628,8 +727,8 @@ namespace LotBankingCrux_v_1.Crux
         {
 
             MySqlCommand selectBuilderProjects = new MySqlCommand("SELECT id, project_name, first_cross_street, second_cross_street, cardinal, location_notes, aquisition_price, improvement_cost, last_modified" + // total_lot_count,
-                                                                 "FROM Projects " +
-                                                                "WHERE buider_id = @builderId",
+                                                                    "FROM Projects " +
+                                                                   "WHERE buider_id = @builderId",
                                                                 databaseConnection);
             selectBuilderProjects.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builder_id;
 
@@ -668,6 +767,7 @@ namespace LotBankingCrux_v_1.Crux
             }
             catch (Exception e)
             {
+                Debug.Print(e.Message);
                 return null;
             }
             reader.Close();
@@ -698,6 +798,7 @@ namespace LotBankingCrux_v_1.Crux
             }
             catch (Exception e)
             {
+                Debug.Print(e.Message);
                 return -1;
             }
             reader.Close();
@@ -747,6 +848,7 @@ namespace LotBankingCrux_v_1.Crux
             }
             catch (Exception e)
             {
+                Debug.Print(e.Message);
                 return null;
             }
             reader.Close();
@@ -776,6 +878,7 @@ namespace LotBankingCrux_v_1.Crux
             }
             catch (Exception e)
             {
+                Debug.Print(e.Message);
                 return -1;
             }
             reader.Close();
@@ -805,6 +908,7 @@ namespace LotBankingCrux_v_1.Crux
             }
             catch (Exception e)
             {
+                Debug.Print(e.Message);
                 return -1;
             }
             reader.Close();
@@ -860,6 +964,7 @@ namespace LotBankingCrux_v_1.Crux
             }
             catch (Exception e)
             {
+                Debug.Print(e.Message);
                 return null;
             }
             reader.Close();
@@ -887,6 +992,7 @@ namespace LotBankingCrux_v_1.Crux
             }
             catch (Exception e)
             {
+                Debug.Print(e.Message);
                 return -1;
             }
             reader.Close();
@@ -931,6 +1037,7 @@ namespace LotBankingCrux_v_1.Crux
             }
             catch (Exception e)
             {
+                Debug.Print(e.Message);
                 return null;
             }
             reader.Close();
@@ -957,6 +1064,7 @@ namespace LotBankingCrux_v_1.Crux
             }
             catch (Exception e)
             {
+                Debug.Print(e.Message);
                 return -1;
             }
             reader.Close();
@@ -1001,6 +1109,7 @@ namespace LotBankingCrux_v_1.Crux
             }
             catch (Exception e)
             {
+                Debug.Print(e.Message);
                 return null;
             }
             reader.Close();
