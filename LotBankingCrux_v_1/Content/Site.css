@@ -1,0 +1,255 @@
+﻿@font-face {
+    font-family: Eyeglass;
+    src: local("Eyeglass"), url('/Content/Fonts/eyeglass-normal.ttf') format('truetype');
+}
+
+html {
+    font-family: Eyeglass;
+    background-color: whitesmoke;
+}
+
+a:hover {
+    background-color: #c7d1d6;
+}
+
+header {
+    height: 36px;
+    padding: 0 0 0 2%;
+    background-color: black;
+    vertical-align: middle;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+
+float-left {
+    float: left;
+    font-size: 20px;
+}
+/* Header styles */
+h1, h2, h3,
+h4, h5, h6 {
+    color: #000;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.75em;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+h4 {
+    font-size: 1.1em;
+}
+
+h5, h6 {
+    font-size: 1em;
+}
+
+    h5 a:link, h5 a:visited, h5 a:active {
+        padding: 0;
+        text-decoration: none;
+    }
+
+/* site title
+----------------------------------------------------------*/
+.site-title {
+    font-size: 34px;
+    display: inline;
+    color: white;
+    font-family: Eyeglass;
+    vertical-align: middle;
+}
+
+    .site-title a, .site-title a:hover, .site-title a:active {
+        color: white;
+        outline: none;
+        text-decoration: none;
+    }
+
+/* main layout
+----------------------------------------------------------*/
+
+
+/*seems like I should manipulate this in the body not seperately*/
+.menubar {
+    background-color: #B8B8B8;
+}
+
+/* menu
+----------------------------------------------------------*/
+ul#menu {
+    font-size: 2.3em;
+    font-weight: 600;
+    margin: 0 35px 20px 0;
+    padding: 0;
+    text-align: left;
+}
+
+    ul#menu li {
+        list-style: none;
+        padding-left: 15px;
+        display: inline;
+    }
+
+        ul#menu li a {
+            background: none;
+            color: white;
+            text-decoration: none;
+        }
+
+            ul#menu li a:hover {
+                color: #999;
+                text-decoration: none;
+            }
+
+.table {
+    display: table;
+    margin: -0px auto -10px auto;
+}
+
+ul#horizontal-list {
+    min-width: 70%;
+    list-style: none;
+}
+
+
+    ul#horizontal-list li {
+        display: inline;
+        font-weight: bold;
+        font-size: 20px;
+        padding-left: 30px;
+    }
+
+li:hover {
+    color: white;
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+}
+
+
+.panel-parent {
+   display: block;
+    border: thin outset #C0C0C0;
+    background-color: #D8D8D8;
+    margin: 0 auto;
+    width: 82%;
+}
+
+.panel-background {
+    background-image: url('/Images/texture.png');
+    background-repeat: repeat;
+    height: 100%;
+    width: 100%;
+}
+
+.panel-style {
+    background-color: #F0F0F0;
+    display: block;
+    margin: 0 auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 75%;
+    width: 80%;
+}
+
+
+.graphcontainer {
+    background-color: white;
+    height: 42%;
+    width: 100%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.tasklist th {
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+}
+
+.tasklist td {
+    margin: 0px 0px -1px 0px;
+    background: white;
+}
+
+.bottomhalf {
+    height: 40%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.tscontainer {
+    background-color: white;
+    position: relative;
+    width: 66%;
+    height: 100%;
+    margin-right: 2%;
+    display: inline-block;
+    float: left;
+    top: 0px;
+    left: 0px;
+}
+
+.mapcontainer {
+    background-color: white;
+    position: relative;
+    width: 30%;
+    height: 100%;
+    margin-left: 2%;
+    display: inline-block;
+    float: right;
+}
+
+footer {
+    background-color: #e2e2e2;
+}
+
+
+
+
+
+/* login
+----------------------------------------------------------*/
+#login {
+    font-size: 2.3em;
+    font-weight: 600;
+    padding: 0;
+    text-align: left;
+}
+
+    #login a {
+        background: none;
+        color: #999;
+        text-decoration: none;
+    }
+
+        #login a:hover {
+            color: #333;
+            text-decoration: none;
+        }
+
+        #login a.username {
+            background: none;
+            margin: 0;
+            padding: 0;
+            text-decoration: underline;
+        }
+
+
+    #login li {
+        display: inline;
+        list-style: none;
+    }

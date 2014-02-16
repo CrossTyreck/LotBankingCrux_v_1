@@ -1,0 +1,69 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="LotBankingCrux_v_1.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <asp:PlaceHolder runat="server">
+        
+        
+    </asp:PlaceHolder>
+   
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+
+    <asp:ContentPlaceHolder runat="server" ID="Stylesheets">
+        <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+        <link href="Content/bargraph.css" rel="stylesheet" />
+        <link href="Content/diligencestyle.css" rel="stylesheet" />
+        <link href="Content/projprop.css" rel="stylesheet" />
+        <link href="Content/Site.css" rel="stylesheet" /></asp:ContentPlaceHolder>
+
+</head>
+<body>
+    <form runat="server">
+        
+        <asp:ScriptManager runat="server">
+
+            
+        </asp:ScriptManager>
+
+        <header>
+            <div class="site-title">
+                <img src="Images/Logo.jpg" height="32px" width="32px"/>
+                
+                <asp:LinkButton ID="WelcomePage" runat="server" Style="text-decoration: none" OnClick="Welcome_OnClick" ForeColor="White">Crescent Bay Holdings</asp:LinkButton>
+              
+                 <asp:LinkButton ID="LogoutButton" runat="server" Style="text-decoration: none" OnClick="Logout_OnClick" ForeColor="White" >Logout</asp:LinkButton>
+            </div>
+        </header>
+        <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
+        <div id="body">
+            <asp:Panel ID="Panel1" runat="server" CssClass="panel-background">
+                <asp:Panel ID="Panel2" runat="server" CssClass="panel-parent">
+
+
+                    <asp:ContentPlaceHolder runat="server" ID="MainContent">
+
+                    </asp:ContentPlaceHolder>
+
+
+                </asp:Panel>
+            </asp:Panel>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>Crescent Bay Holdings, LLC / T 480.406.6000 / CRUX@notValidEmail.com / © All Rights Reservedserved</p>
+                </div>
+            </div>
+        </footer>
+    </form>
+
+
+</body>
+</html>

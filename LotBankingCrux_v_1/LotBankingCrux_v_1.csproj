@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{05CA4E9E-190A-426A-92C5-93FE46A850C5}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LotBankingCrux_v_1</RootNamespace>
+    <AssemblyName>LotBankingCrux_v_1</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="mysql.data">
+      <HintPath>C:\Users\cohamilt\Downloads\mysql-connector-net-6.8.3-noinstall\v4.5\mysql.data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AcceptProposals.aspx" />
+    <Content Include="Builder.aspx" />
+    <Content Include="BuilderDocumentSubmission.aspx" />
+    <Content Include="BuilderProposal.aspx" />
+    <Content Include="CBHDashboard.aspx" />
+    <Content Include="CBHHome.aspx" />
+    <Content Include="Content\bargraph.css" />
+    <Content Include="Content\diligencestyle.css" />
+    <Content Include="Content\projprop.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="CreateUserLogin.aspx" />
+    <Content Include="DueDiligence.aspx" />
+    <Content Include="favicon.ico" />
+    <Content Include="Images\delete_salesTraffic.png" />
+    <Content Include="Images\logo.jpg" />
+    <Content Include="Images\pw_pattern.png" />
+    <Content Include="Images\texture.png" />
+    <Content Include="Investor.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="ProjectDashboard.aspx" />
+    <Content Include="ProjectProposal.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AcceptProposals.aspx.cs">
+      <DependentUpon>AcceptProposals.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AcceptProposals.aspx.designer.cs">
+      <DependentUpon>AcceptProposals.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Builder.aspx.cs">
+      <DependentUpon>Builder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Builder.aspx.designer.cs">
+      <DependentUpon>Builder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BuilderDocumentSubmission.aspx.cs">
+      <DependentUpon>BuilderDocumentSubmission.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BuilderDocumentSubmission.aspx.designer.cs">
+      <DependentUpon>BuilderDocumentSubmission.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BuilderProposal.aspx.cs">
+      <DependentUpon>BuilderProposal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BuilderProposal.aspx.designer.cs">
+      <DependentUpon>BuilderProposal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CBHDashboard.aspx.cs">
+      <DependentUpon>CBHDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CBHDashboard.aspx.designer.cs">
+      <DependentUpon>CBHDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CBHHome.aspx.cs">
+      <DependentUpon>CBHHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CBHHome.aspx.designer.cs">
+      <DependentUpon>CBHHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CreateUserLogin.aspx.cs">
+      <DependentUpon>CreateUserLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateUserLogin.aspx.designer.cs">
+      <DependentUpon>CreateUserLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CruxDB\CruxDB.cs" />
+    <Compile Include="CruxDB\DataBucket.cs" />
+    <Compile Include="DueDiligence.aspx.cs">
+      <DependentUpon>DueDiligence.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DueDiligence.aspx.designer.cs">
+      <DependentUpon>DueDiligence.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Investor.aspx.cs">
+      <DependentUpon>Investor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Investor.aspx.designer.cs">
+      <DependentUpon>Investor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectDashboard.aspx.cs">
+      <DependentUpon>ProjectDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProjectDashboard.aspx.designer.cs">
+      <DependentUpon>ProjectDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="projectproposal.aspx.cs">
+      <DependentUpon>ProjectProposal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProjectProposal.aspx.designer.cs">
+      <DependentUpon>ProjectProposal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Fonts\eyeglass-normal.ttf" />
+    <None Include="Properties\PublishProfiles\ChrisCrux.pubxml" />
+    <Content Include="Site.Master" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:57360/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
