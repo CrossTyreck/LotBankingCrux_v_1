@@ -337,7 +337,7 @@ namespace LotBankingCrux_v_1.Crux
         public DataTable getBuilderNames()
         {
             MySqlCommand getBuildersNames = new MySqlCommand("SELECT name, " +
-                                                                    "bid " + 
+                                                                    "builder_id " + 
                                                                "FROM Builder_Data",
                                                          databaseConnection);
             MySqlDataAdapter daNames = new MySqlDataAdapter(getBuildersNames);
@@ -721,6 +721,30 @@ namespace LotBankingCrux_v_1.Crux
             reader.Close();
             databaseConnection.Close();
             return 1;
+        }
+
+        public DataTable getProjects(int builder_id, int? value)
+        {
+
+            MySqlCommand getProjects = new MySqlCommand("SELECT project_name " +
+                                                        "FROM Projects " +
+                                                        "WHERE builder_id = @builderId",
+                                                      databaseConnection);
+            getProjects.Parameters.Add("@builderid", MySqlDbType.Int32).Value = builder_id;
+            MySqlDataAdapter daNames = new MySqlDataAdapter(getProjects);
+            DataTable dtProjects = new DataTable();
+            try
+            {
+                daNames.Fill(dtProjects);
+            }
+            catch (MySqlException e)
+            {
+                Debug.Print(e.Message);
+                return null;
+            }
+            //reader.Close();
+            databaseConnection.Close();
+            return dtProjects;
         }
 
         public Project[] getProjects(int builder_id)
