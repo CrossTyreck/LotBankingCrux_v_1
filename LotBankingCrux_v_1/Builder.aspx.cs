@@ -16,10 +16,7 @@ namespace LotBankingCrux_v_1
             /*Dynamically set builder image:
              * Get builder name by id, query server for builder image URL
              * add that URL to the ImageURL below. 
-            imgBuilderLogo.ImageUrl = "~/Images/heroAccent.png"; */
-
-            lblBucketIDType.Text = Session.SessionID.ToString() + " Session UserID: " + ((DataBucket)Session["UserData"])._userID.ToString();
-           
+            imgBuilderLogo.ImageUrl = "~/Images/heroAccent.png"; */    
         }
 
         protected void BuilderProposal_OnClick(object sender, EventArgs e)

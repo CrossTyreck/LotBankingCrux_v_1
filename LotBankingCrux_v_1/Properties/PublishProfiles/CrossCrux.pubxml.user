@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/LotBankingCrux_v_1.dll">
+      <publishTime>02/22/2014 21:44:32</publishTime>
+    </File>
+    <File Include="bin/mysql.data.dll">
+      <publishTime>02/22/2014 13:37:39</publishTime>
+    </File>
+    <File Include="bin/mysql.web.dll">
+      <publishTime>02/22/2014 13:37:39</publishTime>
+    </File>
+    <File Include="Builder.aspx">
+      <publishTime>02/22/2014 17:52:19</publishTime>
+    </File>
+    <File Include="BuilderDocumentSubmission.aspx">
+      <publishTime>02/22/2014 17:51:16</publishTime>
+    </File>
+    <File Include="CBHDashboard.aspx">
+      <publishTime>02/22/2014 19:51:20</publishTime>
+    </File>
+    <File Include="Content/bargraph.css">
+      <publishTime>02/22/2014 13:37:38</publishTime>
+    </File>
+    <File Include="Content/diligencestyle.css">
+      <publishTime>02/22/2014 13:37:38</publishTime>
+    </File>
+    <File Include="Content/Fonts/eyeglass-normal.ttf">
+      <publishTime>02/22/2014 13:37:38</publishTime>
+    </File>
+    <File Include="Content/projprop.css">
+      <publishTime>02/22/2014 13:37:38</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>02/22/2014 18:06:38</publishTime>
+    </File>
+    <File Include="CreateUserLogin.aspx">
+      <publishTime>02/22/2014 17:51:16</publishTime>
+    </File>
+    <File Include="DueDiligence.aspx">
+      <publishTime>02/22/2014 17:51:16</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>02/22/2014 13:37:39</publishTime>
+    </File>
+    <File Include="Images/delete_salesTraffic.png">
+      <publishTime>02/22/2014 13:37:38</publishTime>
+    </File>
+    <File Include="Images/logo.jpg">
+      <publishTime>02/22/2014 13:37:38</publishTime>
+    </File>
+    <File Include="Images/pw_pattern.png">
+      <publishTime>02/22/2014 13:37:38</publishTime>
+    </File>
+    <File Include="Images/texture.png">
+      <publishTime>02/22/2014 13:37:38</publishTime>
+    </File>
+    <File Include="Investor.aspx">
+      <publishTime>02/22/2014 13:37:38</publishTime>
+    </File>
+    <File Include="Login.aspx">
+      <publishTime>02/22/2014 17:52:19</publishTime>
+    </File>
+    <File Include="ProjectDashboard.aspx">
+      <publishTime>02/22/2014 17:51:16</publishTime>
+    </File>
+    <File Include="ProjectProposal.aspx">
+      <publishTime>02/22/2014 17:51:16</publishTime>
+    </File>
+    <File Include="Restricted.Master">
+      <publishTime>02/22/2014 18:56:28</publishTime>
+    </File>
+    <File Include="Site.Master">
+      <publishTime>02/22/2014 18:44:11</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>02/22/2014 21:41:33</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

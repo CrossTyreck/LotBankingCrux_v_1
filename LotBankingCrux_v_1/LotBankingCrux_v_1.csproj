@@ -171,6 +171,7 @@
     <Content Include="Restricted.Master" />
     <None Include="Properties\PublishProfiles\ChrisCrux.pubxml" />
     <Content Include="Site.Master" />
+    <None Include="Properties\PublishProfiles\CrossCrux.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
