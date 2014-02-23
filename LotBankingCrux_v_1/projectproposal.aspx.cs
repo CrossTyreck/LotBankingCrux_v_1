@@ -14,7 +14,7 @@ namespace LotBankingCrux_v_1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            InitControls(((DataBucket)Session["UserData"])._userType);
         }
 
         protected void resetControls()
@@ -54,7 +54,7 @@ namespace LotBankingCrux_v_1
 
             try
             {
-                if (DataBucket.userID > 0)
+                if (((DataBucket)Session["UserData"])._userID > 0)
                     //We need to add validation here, currently a user can enter an empty project
                     DBObject.insertPoject(LotBankingCrux_v_1.Crux.CruxDB.dbID, txtProjectName.Text, txtFirstStreet.Text, txtSecondStreet.Text, txtCardinal.Text, locationNotes, acquisitionPrice, improvementCost, numberLots);
                 else
@@ -74,6 +74,47 @@ namespace LotBankingCrux_v_1
             //    DataInserted.Text = "Error!";
             //    DataInserted.Visible = true;
             //}
+        }
+
+
+        void InitControls(int userType)
+        {
+            switch (userType)
+            {
+                case 1:
+                    SetAssociatePage();
+                    break;
+                case 2:
+                    SetBuilderPage();
+                    break;
+                default:
+                    SetDefaultPage();
+                    break;
+            }
+
+        }
+
+        /// <summary>
+        /// Initialize controls for the builder so they can submit proposals
+        /// </summary>
+        void SetBuilderPage()
+        {
+        }
+
+        /// <summary>
+        /// Initialize controls for the associate to be able to view proposal and 
+        /// approve, request additional requirement, reject proposal
+        /// </summary>
+        void SetAssociatePage()
+        {
+        }
+
+        /// <summary>
+        /// User has no id so route them to Login
+        /// </summary>
+        void SetDefaultPage()
+        {
+            Response.Redirect("Login.aspx");
         }
     }
 }

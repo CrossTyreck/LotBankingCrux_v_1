@@ -63,11 +63,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AcceptProposals.aspx" />
     <Content Include="Builder.aspx" />
     <Content Include="BuilderDocumentSubmission.aspx" />
     <Content Include="CBHDashboard.aspx" />
-    <Content Include="CBHHome.aspx" />
     <Content Include="Content\bargraph.css" />
     <Content Include="Content\diligencestyle.css" />
     <Content Include="Content\projprop.css" />
@@ -86,12 +84,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AcceptProposals.aspx.cs">
-      <DependentUpon>AcceptProposals.aspx</DependentUpon>
+    <Compile Include="CustomControls\ProjectRowPanel.cs" />
+    <Compile Include="Restricted.Master.cs">
+      <DependentUpon>Restricted.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AcceptProposals.aspx.designer.cs">
-      <DependentUpon>AcceptProposals.aspx</DependentUpon>
+    <Compile Include="Restricted.Master.designer.cs">
+      <DependentUpon>Restricted.Master</DependentUpon>
     </Compile>
     <Compile Include="ProjectProposal.aspx.cs">
       <DependentUpon>ProjectProposal.aspx</DependentUpon>
@@ -121,13 +120,6 @@
     </Compile>
     <Compile Include="CBHDashboard.aspx.designer.cs">
       <DependentUpon>CBHDashboard.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CBHHome.aspx.cs">
-      <DependentUpon>CBHHome.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CBHHome.aspx.designer.cs">
-      <DependentUpon>CBHHome.aspx</DependentUpon>
     </Compile>
     <Compile Include="CreateUserLogin.aspx.cs">
       <DependentUpon>CreateUserLogin.aspx</DependentUpon>
@@ -176,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Fonts\eyeglass-normal.ttf" />
+    <Content Include="Restricted.Master" />
     <None Include="Properties\PublishProfiles\ChrisCrux.pubxml" />
     <Content Include="Site.Master" />
     <None Include="Web.Debug.config">

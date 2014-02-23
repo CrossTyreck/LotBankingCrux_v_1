@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Project Dashboard" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CBHDashboard.aspx.cs" Inherits="LotBankingCrux_v_1.CBHDashboard" %>
+﻿<%@ Page Title="Project Dashboard" Language="C#" MasterPageFile="~/Restricted.Master" AutoEventWireup="true" CodeBehind="CBHDashboard.aspx.cs" Inherits="LotBankingCrux_v_1.CBHDashboard" %>
 
 <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 
@@ -14,9 +14,7 @@
                 <ChartAreas>
                     <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
                 </ChartAreas>
-            </asp:Chart>--%>
-                <%--  <li>Select Builder </li>--%>
-                <%--  <asp:DropDownList ID="ddlBuilders" runat="server">
+            </asp:Chart>--%>                <%--  <li>Select Builder </li>--%>                <%--  <asp:DropDownList ID="ddlBuilders" runat="server">
                 </asp:DropDownList>--%>
                 <li>
                     <asp:LinkButton ID="AddUsers" runat="server" Style="text-decoration: none" OnClick="AddUser_OnClick" ForeColor="Black">Add User</asp:LinkButton>
@@ -140,6 +138,7 @@
      <asp:MultiView ID="DashboardView" runat="server" ActiveViewIndex="0" OnActiveViewChanged="DashboardView_ActiveViewChanged">
             <asp:View ID= "ProjectProposalsView" runat= "server"> 
                 <h3>Project Proposals</h3>
+
                 <asp:Panel ID="ProjectProposalsPanel" runat="server" CssClass="panel-style" Height="1415px" Width="1065px"></asp:Panel>
             </asp:View>
             <asp:View ID= "ExistingProjectsView" runat= "server"> 

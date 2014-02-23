@@ -409,7 +409,7 @@ namespace LotBankingCrux_v_1
                 Byte[] bytes = br.ReadBytes((Int32)fs.Length);
 
                 // Might need to append file extension later (not sure)
-                DBObject.insertProjectDocument(DataBucket.userID, filename, bytes);
+                DBObject.insertProjectDocument(((DataBucket)Session["UserData"])._userID, filename, bytes);
 
             }
         }

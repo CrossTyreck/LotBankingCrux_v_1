@@ -7,22 +7,32 @@ namespace LotBankingCrux_v_1.Crux
 {
     public class DataBucket
     {
-        public static int userID;
-        public static int projectID;
-        public static int userType;
-        public static string userName; //hacking this in CHRIS
+       public int _userID { get; set; }
+       public int _projectID { get; set; }
+       public int _userType { get; set; }
+       public string _userName { get; set; }
 
-
-        public static void Clear()
+        public DataBucket(int userID = 0, int projectID = 0, int userType = 0, string userName = "")
         {
-
-            userID = 0;
-            projectID = 0;
-            userType = 0;
-            userName = "";
-
+            _userID = userID;
+            _projectID = projectID;
+            _userType = userType;
+            _userName = userName;
 
         }
+
+
+
+        //public void Clear()
+        //{
+
+        //    userID = -1;
+        //    projectID = -1;
+        //    userType = -1;
+        //    userName = "";
+
+
+        //}
     }
 
 }

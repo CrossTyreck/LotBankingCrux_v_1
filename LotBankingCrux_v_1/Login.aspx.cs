@@ -13,7 +13,8 @@ namespace LotBankingCrux_v_1.Account
     public partial class Login : Page
     {
         CruxDB dbObject = new CruxDB();
-       
+        DataBucket userData = new DataBucket();
+
         protected void Page_Load(object sender, EventArgs e)
         {
           
@@ -32,22 +33,24 @@ namespace LotBankingCrux_v_1.Account
 
             if (loginID > 0)
             {
-                DataBucket.userID = loginID;
-                DataBucket.userType = dbObject.getUserClassId(DataBucket.userID);
-                
-                switch (DataBucket.userType)
+               userData._userID = loginID;
+               userData._userType = dbObject.getUserClassId(userData._userID);
+               Session["UserData"] = userData;
+
+                switch (((DataBucket)Session["UserData"])._userType)
                 {
                     case 1:
                         route = "CBHDashboard";
-                        DataBucket.userName = "Emily Leppert";
+                       Session["UserName"] = "Emily Leppert";
                         break;
                     case 2:
-                        route = "BuilderDashboard";
-                        DataBucket.userName = dbObject.getBuilderName(DataBucket.userID);
+                        route = "Builder";
+                        ((DataBucket)Session["UserData"])._userName = dbObject.getBuilderName(loginID);
+                     
                         break;
                     case 3:
                         route = "Investor";
-                        DataBucket.userName = "Scrooge McDuck";
+                        Session["UserName"] = "Scrooge McDuck";
                         break;
                     default:
                         break;

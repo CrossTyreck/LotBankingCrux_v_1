@@ -266,6 +266,43 @@ namespace LotBankingCrux_v_1.Crux
             return 1;
         }
 
+        public List<int> getBuilderId()
+        {
+            MySqlCommand getBuilderId = new MySqlCommand("SELECT builder_id " +
+                                                           "FROM Builder_Data ",
+                                                      databaseConnection);
+
+            List<int> returnValue = null;
+            try
+            {
+                MySqlDataReader reader;
+                databaseConnection.Open();
+                reader = getBuilderId.ExecuteReader(CommandBehavior.SingleResult);
+
+                returnValue = new List<int>();
+
+                while (reader.Read())
+                {
+                    returnValue.Add(reader.GetInt32(0));
+                }
+            }
+
+            catch (Exception e)
+            {
+                Debug.Print(e.Message);
+            }
+
+            finally
+            {
+                if (databaseConnection.State.Equals(System.Data.ConnectionState.Open))
+                {
+                    databaseConnection.Close();
+                }
+            }
+
+            return returnValue;
+        }
+
         public int getBuilderId(string name)
         {
 
@@ -750,9 +787,9 @@ namespace LotBankingCrux_v_1.Crux
         public Project[] getProjects(int builder_id)
         {
 
-            MySqlCommand selectBuilderProjects = new MySqlCommand("SELECT id, project_name, first_cross_street, second_cross_street, cardinal, location_notes, aquisition_price, improvement_cost, last_modified" + // total_lot_count,
+            MySqlCommand selectBuilderProjects = new MySqlCommand("SELECT id, project_name, first_crossroad, second_crossroad, cardinal, location_notes, aquisition_price, improvement_cost, date_created" +  Environment.NewLine +// total_lot_count,
                                                                     "FROM Projects " +
-                                                                   "WHERE buider_id = @builderId",
+                                                                   "WHERE builder_id = @builderId;",
                                                                 databaseConnection);
             selectBuilderProjects.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builder_id;
 
@@ -776,18 +813,26 @@ namespace LotBankingCrux_v_1.Crux
                     Decimal aq = reader.GetDecimal(6);
                     Decimal ic = reader.GetDecimal(7);
                     // int tlc = reader.GetInt32(8); not in the db
-                    DateTime lm = reader.GetDateTime(9);
+                    DateTime lm = reader.GetDateTime(8);
                     projectCount++;
                     Project newProject = new Project(i, builder_id, pn, fcs, scs, c, ln, aq, ic, lm); // tlc,
                     projectList.Add(newProject);
                 }
                 projects = new Project[projectCount];
                 List<Project>.Enumerator projectEnum = projectList.GetEnumerator();
-                for (int i = 0; i < projectCount; i++)
+
+                int j = 0;
+                while (projectEnum.MoveNext())
                 {
-                    projects[i] = projectEnum.Current;
-                    projectEnum.MoveNext();
+                    projects[j] = projectEnum.Current;
+                    j++;
+
                 }
+                //for (int i = 0; i < projectCount; i++)
+                //{
+                //    projects[i] = projectEnum.Current;
+                //    projectEnum.MoveNext();
+                //}
             }
             catch (Exception e)
             {
@@ -798,6 +843,7 @@ namespace LotBankingCrux_v_1.Crux
             databaseConnection.Close();
 
             return projects;
+           // return projectList.ToArray();
         }
 
         public int insertLotType(int project_id, int lot_width, int lot_length, int count, Double purchase_price, Decimal release_price, Decimal sale_price)

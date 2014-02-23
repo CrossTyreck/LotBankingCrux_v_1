@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateUserLogin.aspx.cs" Inherits="LotBankingCrux_v_1.CreateUserLogin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Restricted.Master" AutoEventWireup="true" CodeBehind="CreateUserLogin.aspx.cs" Inherits="LotBankingCrux_v_1.CreateUserLogin" %>
 
 <asp:Content ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent" runat="server">
     Remember to fill in all the fields to add a user

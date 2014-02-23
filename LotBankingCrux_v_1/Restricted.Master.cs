@@ -10,7 +10,7 @@ using LotBankingCrux_v_1.Crux;
 namespace LotBankingCrux_v_1
 {
 
-    public partial class SiteMaster : MasterPage
+    public partial class Restricted : MasterPage
     {
         private const string AntiXsrfTokenKey = "__AntiXsrfToken";
         private const string AntiXsrfUserNameKey = "__AntiXsrfUserName";
@@ -67,8 +67,15 @@ namespace LotBankingCrux_v_1
             }
         }
 
+        //This is the only function that was changed from SiteMaster to Restricted
         protected virtual void Page_Load(object sender, EventArgs e)
         {
+
+            if (Session["UserData"] == null)
+            {
+                Response.Redirect("Login.aspx");
+
+            }
             
         }
 

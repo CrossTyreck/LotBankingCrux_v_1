@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using LotBankingCrux_v_1.Crux;
 
 namespace LotBankingCrux_v_1
 {
@@ -16,6 +17,8 @@ namespace LotBankingCrux_v_1
              * Get builder name by id, query server for builder image URL
              * add that URL to the ImageURL below. 
             imgBuilderLogo.ImageUrl = "~/Images/heroAccent.png"; */
+
+            lblBucketIDType.Text = Session.SessionID.ToString() + " Session UserID: " + ((DataBucket)Session["UserData"])._userID.ToString();
            
         }
 

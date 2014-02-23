@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using LotBankingCrux_v_1.Crux;
+using LotBankingCrux_v_1.CustomControls;
 using System.Data;
 
 
@@ -45,8 +46,6 @@ namespace LotBankingCrux_v_1
                 }
                 ddlBuilders.DataBind();
             }
-            
-            
         }
 
         public void AddUser_OnClick(object sender, EventArgs e)
@@ -90,12 +89,22 @@ namespace LotBankingCrux_v_1
         public void DDLNewProjects_SelectedIndexChanged(object sender, EventArgs e)
         {
             Response.Redirect("ProjectDashboard.aspx");
-
+            
         }
 
         protected void ProjectProposals_Click(object sender, EventArgs e)
         {
             DashboardView.ActiveViewIndex = 0;
+
+            List<int> lintBuilderIDs = dbObject.getBuilderId();
+            
+            foreach(int bID in lintBuilderIDs)
+            {
+                Project[] aBIDProjects = dbObject.getProjects(bID);
+                foreach(Project project in aBIDProjects){
+                    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.getProjectName(), "ProjectProposal.aspx", project.getLastModified()));
+              }
+            }
         }
 
         protected void ExistingProjects_Click(object sender, EventArgs e)
