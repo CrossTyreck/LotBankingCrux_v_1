@@ -24,11 +24,14 @@ namespace LotBankingCrux_v_1
             //ddlNewProjects.Items.Clear();
             ddlBuilders.Items.Add("Select a Builder");
             ddlNewProjects.Items.Add("Select a Project");
+
             DataTable dtNames = new DataTable();
-            dtNames.Clear(); 
-            
+            dtNames.Clear();
+            ddlBuilders.Items.Clear();
+
             dtNames = dbObject.getBuilderNames();
-         
+
+
             if (dtNames.Columns.Count > 0)
             {
 
@@ -42,6 +45,7 @@ namespace LotBankingCrux_v_1
                 }
                 ddlBuilders.DataBind();
             }
+            
             
         }
 
@@ -62,6 +66,9 @@ namespace LotBankingCrux_v_1
         {
            
             DataTable dtProjects = dbObject.getProjects(dbObject.getBuilderId(ddlBuilders.SelectedValue.ToString()), 0);
+
+            
+
             if (dtProjects.Columns.Count > 0)
             {
                 ddlNewProjects.Visible = true;
@@ -76,12 +83,34 @@ namespace LotBankingCrux_v_1
                 ddlNewProjects.DataBind();
             }
 
+
+
         }
 
         public void DDLNewProjects_SelectedIndexChanged(object sender, EventArgs e)
         {
             Response.Redirect("ProjectDashboard.aspx");
 
+        }
+
+        protected void ProjectProposals_Click(object sender, EventArgs e)
+        {
+            DashboardView.ActiveViewIndex = 0;
+        }
+
+        protected void ExistingProjects_Click(object sender, EventArgs e)
+        {
+            DashboardView.ActiveViewIndex = 1;
+        }
+
+        protected void BuilderDocuments_Click(object sender, EventArgs e)
+        {
+            DashboardView.ActiveViewIndex = 2;
+        }
+
+        protected void DashboardView_ActiveViewChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }

@@ -40,7 +40,10 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="mysql.data">
-      <HintPath>C:\Users\cohamilt\Downloads\mysql-connector-net-6.8.3-noinstall\v4.5\mysql.data.dll</HintPath>
+      <HintPath>MySQL\mysql.data.dll</HintPath>
+    </Reference>
+    <Reference Include="mysql.web">
+      <HintPath>MySQL\mysql.web.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />

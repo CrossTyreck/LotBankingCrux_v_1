@@ -21,12 +21,23 @@
                 <li>
                     <asp:LinkButton ID="AddUsers" runat="server" Style="text-decoration: none" OnClick="AddUser_OnClick" ForeColor="Black">Add User</asp:LinkButton>
                 </li>
+
+                <li>
+                    <asp:LinkButton ID="ProjectProposals" runat="server" OnClick="ProjectProposals_Click">Project Proposals</asp:LinkButton>
+                </li>
+
+                <li>
+                    <asp:LinkButton ID="ExistingProjects" runat="server" OnClick="ExistingProjects_Click">Existing Projects</asp:LinkButton>
+                </li>
+
+                <li>
+                    <asp:LinkButton ID="BuilderDocuments" runat="server" OnClick="BuilderDocuments_Click">Builder Documents</asp:LinkButton>
+                </li>
                 
-                <asp:DropDownList ID="ddlBuilders" OnSelectedIndexChanged="DDLBuilders_SelectedIndexChanged" AutoPostBack="true" runat="server">
-                </asp:DropDownList>
-             
-                <asp:DropDownList ID="ddlNewProjects" OnSelectedIndexChanged="DDLNewProjects_SelectedIndexChanged" runat="server" AutoPostBack="True">
-                </asp:DropDownList>
+                <!--These need to be moved to the Projects Window!-->
+                
+                <!------------------------------------------------->
+
             </ul>
         </div>
     </div>
@@ -115,15 +126,37 @@
             </div>
         </div>
     </asp:Panel>
-    <asp:Panel ID="Panel4" runat="server" CssClass="panel-style" Height="300px">
+    <asp:Panel ID="Panel4" runat="server" CssClass="panel-style" Height="436px" Width="1048px">
         <div class="tscontainer">
-           
+           <h3>More graphs and charts will go here</h3>
         </div>
         <div class="mapcontainer">
             <!-- Map display -->
             <div id="map-canvas"></div>
         </div>
+        
     </asp:Panel>
+
+     <asp:MultiView ID="DashboardView" runat="server" ActiveViewIndex="0" OnActiveViewChanged="DashboardView_ActiveViewChanged">
+            <asp:View ID= "ProjectProposalsView" runat= "server"> 
+                <h3>Project Proposals</h3>
+                <asp:Panel ID="ProjectProposalsPanel" runat="server" CssClass="panel-style" Height="1415px" Width="1065px"></asp:Panel>
+            </asp:View>
+            <asp:View ID= "ExistingProjectsView" runat= "server"> 
+                <h3>Existing Projects</h3>
+                <asp:Panel ID="ExistingProjectsPanel" runat="server" CssClass="panel-style" Height="1415px" Width="1065px">
+                    
+                <asp:DropDownList ID="ddlBuilders" OnSelectedIndexChanged="DDLBuilders_SelectedIndexChanged" AutoPostBack="true" runat="server"></asp:DropDownList>
+             
+                <asp:DropDownList ID="ddlNewProjects" OnSelectedIndexChanged="DDLNewProjects_SelectedIndexChanged" runat="server" AutoPostBack="True"></asp:DropDownList>
+                </asp:Panel>
+            </asp:View>
+            <asp:View ID= "BuilderDocumentsView" runat= "server"> 
+                <h3>Builder Documents</h3>
+                <asp:Panel ID="BuilderDocumentsPanel" runat="server" CssClass="panel-style" Height="1415px" Width="1065px"></asp:Panel>
+            </asp:View>
+       </asp:MultiView>
+
 
 
 

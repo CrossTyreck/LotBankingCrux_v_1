@@ -158,12 +158,8 @@ a {
 .panel-style {
     background-color: #F0F0F0;
     display: block;
-    margin: 0 auto;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    height: 75%;
-    width: 80%;
-}
+    margin: 5px auto;
+    }
 
 
 .graphcontainer {
@@ -195,22 +191,24 @@ a {
     background-color: white;
     position: relative;
     width: 66%;
-    height: 100%;
+    height: 48%;
     margin-right: 2%;
     display: inline-block;
     float: left;
-    top: 0px;
-    left: 0px;
+    top: 39px;
+    left: 21px;
 }
 
 .mapcontainer {
     background-color: white;
     position: relative;
     width: 30%;
-    height: 100%;
+    height: 21%;
     margin-left: 2%;
     display: inline-block;
     float: right;
+    top: 44px;
+    left: -7px;
 }
 
 footer {
