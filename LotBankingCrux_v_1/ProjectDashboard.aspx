@@ -7,12 +7,17 @@
            
             <asp:DropDownList ID="ddlDocuments" OnSelectedIndexChanged="DDLDocuments_SelectedIndexChanged" AutoPostBack="true" runat="server">
                 </asp:DropDownList>
+
+            <asp:LinkButton ID="DueDiligence" runat="server" Style="text-decoration: none" OnClick="DueDiligence_OnClick" ForeColor="Black">Due Diligence</asp:LinkButton>
         </li>
 
     </ul>
 </asp:Content>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    This is where builder content goes
+    <asp:Panel ID="pnlProjectDocumentsTest" runat="server" Height="189px">
+        <asp:Label ID="lblDocumentsinProject" runat="server" Text="Documents within this project"></asp:Label>
+    </asp:Panel>
+&nbsp;
 </asp:Content>
 

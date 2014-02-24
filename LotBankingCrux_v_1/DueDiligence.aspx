@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="Due Diligence" Language="C#" MasterPageFile="~/Restricted.Master" AutoEventWireup="true" CodeBehind="DueDiligence.aspx.cs" Inherits="LotBankingCrux_v_1.DueDiligence" %>
 
+<asp:Content ID="Content1" runat="server" ContentPlaceHolderID="HeadContent">
+</asp:Content>
+
 <asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
     <div class="menubar">
         <div class="table">
@@ -14,8 +17,12 @@
 </asp:Content>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
+   
+    
     <div>
-        <h2><a name="transaction">Transaction Documentation</a></h2>
+        <h2>
+            <asp:Button ID="testRemove" runat="server" Text="Test" OnClick="testRemove_Click" />
+            <a name="transaction">Transaction Documentation</a></h2>
         <div>
             <ul>
                 <li>
@@ -387,9 +394,9 @@
             </ul>
         </div>
     </div>
+
+    <asp:Button ID="Button1" runat="server" Text="Test" OnClick="testRemove_Click" />
 </asp:Content>
 
-<asp:Content ID="Content1" runat="server" ContentPlaceHolderID="HeadContent">
-</asp:Content>
 
 

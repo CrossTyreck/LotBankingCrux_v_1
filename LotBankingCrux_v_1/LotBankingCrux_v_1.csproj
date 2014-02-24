@@ -84,6 +84,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomControls\CruxFileStream.cs" />
     <Compile Include="CustomControls\ProjectRowPanel.cs" />
     <Compile Include="Restricted.Master.cs">
       <DependentUpon>Restricted.Master</DependentUpon>

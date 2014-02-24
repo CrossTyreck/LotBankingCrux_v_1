@@ -5,19 +5,30 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using LotBankingCrux_v_1.Crux;
+using LotBankingCrux_v_1.CustomControls;
 
 namespace LotBankingCrux_v_1
 {
     public partial class Builder : System.Web.UI.Page
     {
+
+        CruxDB dbObject = new CruxDB();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //ProjectDashboard.Visible = false;
             /*Dynamically set builder image:
              * Get builder name by id, query server for builder image URL
              * add that URL to the ImageURL below. 
-            imgBuilderLogo.ImageUrl = "~/Images/heroAccent.png"; */    
+            imgBuilderLogo.ImageUrl = "~/Images/heroAccent.png"; */
+
+            Project[] aBIDProjects = dbObject.getProjects(((DataBucket)Session["UserData"])._userID);
+            foreach (Project project in aBIDProjects)
+            {
+                pnlProjects.Controls.Add(new ProjectRowPanel(project.getProjectName(), "ProjectDashboard.aspx", project.getLastModified()));
+            }
         }
+
 
         protected void BuilderProposal_OnClick(object sender, EventArgs e)
         {

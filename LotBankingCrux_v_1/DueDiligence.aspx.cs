@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
 using LotBankingCrux_v_1.Crux;
+using LotBankingCrux_v_1.CustomControls;
+using System.Text;
 
 namespace LotBankingCrux_v_1
 {
@@ -13,11 +15,13 @@ namespace LotBankingCrux_v_1
     {
         CruxDB DBObject = new CruxDB();
         DataBucket DBucket = new DataBucket();
+        CruxFileStream cfsFileStream = new CruxFileStream();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //Button1.Attributes.Add("onclick", "window.open('DueDiligence.aspx'),'', 'height=300,width=300);return false");
         }
+
 
         protected void RadioButton3_CheckedChanged(object sender, EventArgs e)
         {
@@ -32,7 +36,8 @@ namespace LotBankingCrux_v_1
         protected void uploadButton1_Click(object sender, EventArgs e)
         {
             string filePath = FileUpload1.PostedFile.FileName;
-            documentSubmit(filePath); 
+            cfsFileStream.UploadFile(filePath, FileUpload1, DBObject, Session["UserData"] as DataBucket, Request, Context);
+            //documentSubmit(filePath);
         }
 
         protected void uploadButton2_Click(object sender, EventArgs e)
@@ -411,7 +416,22 @@ namespace LotBankingCrux_v_1
                 // Might need to append file extension later (not sure)
                 DBObject.insertProjectDocument(((DataBucket)Session["UserData"])._userID, filename, bytes);
 
+
             }
         }
+
+
+        /// <summary>
+        /// Currently a test button for submitting documents
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void testRemove_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+
     }
 }

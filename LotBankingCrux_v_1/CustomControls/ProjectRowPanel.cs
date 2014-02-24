@@ -22,5 +22,12 @@ namespace LotBankingCrux_v_1.CustomControls
             Controls.Add(Name);
             Controls.Add(ModifiedDate);
         }
+
+        public ProjectRowPanel(string name, string requestedTime )
+        {
+            
+            
+
+        }
     }
 }

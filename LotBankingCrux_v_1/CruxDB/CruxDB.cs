@@ -418,14 +418,14 @@ namespace LotBankingCrux_v_1.Crux
 
         public int insertProjectDocument(int projectId, String docName, byte[] doc)
         {
-            MySqlCommand insertNewProjectDocument = new MySqlCommand("INSERT INTO Builder_Documents" +
-                                                                           "( project_id, document_name, document)" +
-                                                                     "VALUES( @projectId, @documentName, @document)",
+            MySqlCommand insertNewProjectDocument = new MySqlCommand("INSERT INTO Project_Documents" +
+                                                                           "(project_id, file_name, document)" +
+                                                                     "VALUES( @projectId, @fileName, @document)",
                                                                      databaseConnection);
 
             insertNewProjectDocument.Parameters.Add("@projectId", MySqlDbType.Int32).Value = projectId;
-            insertNewProjectDocument.Parameters.Add("@documentName", MySqlDbType.VarChar, 30);
-            insertNewProjectDocument.Parameters.Add("@document", MySqlDbType.Binary, doc.Length);
+            insertNewProjectDocument.Parameters.Add("@fileName", MySqlDbType.VarChar, 30).Value = docName;
+            insertNewProjectDocument.Parameters.Add("@document", MySqlDbType.Binary, doc.Length).Value = doc;
 
             databaseConnection.Open();
 
@@ -691,6 +691,59 @@ namespace LotBankingCrux_v_1.Crux
             return doc;
         }
 
+        public List<String> getProjectDocuments(int project_id)
+        {
+            MySqlCommand selectProjectDocuments = new MySqlCommand("SELECT file_name " +
+                                                                       "FROM Project_Documents " +
+                                                                      "WHERE project_id = @projectId",
+                                                                databaseConnection);
+            selectProjectDocuments.Parameters.Add("@projectId", MySqlDbType.Int32).Value = project_id;
+
+         
+
+           // BuilderDocumentData[] docs = new BuilderDocumentData[0];
+            int docCount = 0;
+            databaseConnection.Open();
+
+            MySqlDataReader reader;
+            List<String> listDocNames = new List<String>();
+
+            try
+            {
+                reader = selectProjectDocuments.ExecuteReader(CommandBehavior.SequentialAccess);
+                
+                
+                while (reader.Read())
+                {
+                    string i = reader.GetString(0);
+                    //int bid = reader.GetInt32(1);
+                    //String dn = reader.GetString(2);
+                    //String fn = reader.GetString(3);
+                    //DateTime lm = reader.GetDateTime(4);
+                    //DateTime lr = reader.GetDateTime(5);
+                    docCount++;
+                    
+                    listDocNames.Add(i);
+                }
+                //docs = new BuilderDocumentData[docCount];
+                //List<BuilderDocumentData>.Enumerator docEnum = doclist.GetEnumerator();
+                //for (int i = 0; i < docCount; i++)
+                //{
+                //    docs[i] = docEnum.Current;
+                //    docEnum.MoveNext();
+                //}
+            }
+            catch (Exception e)
+            {
+                Debug.Print(e.Message);
+                return null;
+            }
+            reader.Close();
+            databaseConnection.Close();
+
+            return listDocNames;
+        }
+        
         public byte[] getProjectDocument(int id)
         {
             byte[] doc = new byte[0];
