@@ -20,7 +20,6 @@
     Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
         <link href="Content/bargraph.css" rel="stylesheet" />
         <link href="Content/diligencestyle.css" rel="stylesheet" />
-        <link href="Content/projprop.css" rel="stylesheet" />
         <link href="Content/Site.css" rel="stylesheet" /></asp:ContentPlaceHolder>
 
 </head>
