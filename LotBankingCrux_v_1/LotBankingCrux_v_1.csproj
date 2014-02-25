@@ -68,7 +68,6 @@
     <Content Include="CBHDashboard.aspx" />
     <Content Include="Content\bargraph.css" />
     <Content Include="Content\diligencestyle.css" />
-    <Content Include="Content\projprop.css" />
     <Content Include="Content\Site.css" />
     <Content Include="CreateUserLogin.aspx" />
     <Content Include="DueDiligence.aspx" />
