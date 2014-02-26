@@ -18,8 +18,6 @@
     <asp:ContentPlaceHolder runat="server" ID="Stylesheets">
         <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
-        <link href="Content/bargraph.css" rel="stylesheet" />
-        <link href="Content/diligencestyle.css" rel="stylesheet" />
         <link href="Content/Site.css" rel="stylesheet" /></asp:ContentPlaceHolder>
 
 </head>

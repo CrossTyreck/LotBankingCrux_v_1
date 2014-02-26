@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web.UI.WebControls;
 
@@ -15,6 +16,9 @@ namespace LotBankingCrux_v_1.CustomControls
             Name = new LinkButton();
             Name.Text = name;
             Name.PostBackUrl = url;
+           // Name.CssClass = ".Linkclass";
+           // Name.BorderColor = Color.Aqua;
+           // Name.BorderStyle = BorderStyle.Solid;
 
             ModifiedDate = new Label();
             ModifiedDate.Text = date.ToShortDateString();

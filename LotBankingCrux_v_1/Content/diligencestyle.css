@@ -19,11 +19,12 @@ body {
     font-family: Eyeglass, Arial;
 }
 
+/*
 input {
     display: inline-block;
     float: right;
 }
-
+*/
 ul {
     padding-top: 25px;
     padding-left: 35px;
