@@ -18,14 +18,29 @@ namespace LotBankingCrux_v_1.Account
         protected void Page_Load(object sender, EventArgs e)
         {
             LoginForm.LoginButtonStyle.CssClass = "loginbutton";
+            TextBox txtUser = LoginForm.FindControl("UserName") as TextBox;
+            if (!IsPostBack)
+            {
+                if (Request.Cookies["myCookie"] != null)
+                {
+                    HttpCookie cookie = Request.Cookies.Get("myCookie");
+                    LoginForm.UserName = cookie.Values["username"].ToString();
+                    this.LoginForm.RememberMeSet = !(String.IsNullOrEmpty(LoginForm.UserName));
+                    this.SetFocus(LoginForm.FindControl("Password"));
+                }
+                else
+                {
+                    this.SetFocus(txtUser);
+                }
+            }
         }
 
         protected void Login_Click(object sender, EventArgs e)
         {
 
-            string userName = ((TextBox)LoginForm.FindControl("UserName")).Text;
+            string userName = this.LoginForm.UserName.ToString();
 
-            string passWord = ((TextBox)LoginForm.FindControl("Password")).Text;
+            string passWord = this.LoginForm.Password.ToString();
 
             string route = "";
 
@@ -37,6 +52,8 @@ namespace LotBankingCrux_v_1.Account
                 userData._userType = dbObject.getUserClassId(userData._userID);
                 Session["UserData"] = userData;
 
+                //Setup Remember me functionality
+                ctlLogin_LoggedIN(sender, e);
                 switch (((DataBucket)Session["UserData"])._userType)
                 {
                     case 1:
@@ -61,5 +78,27 @@ namespace LotBankingCrux_v_1.Account
             }
         }
 
+        protected void ctlLogin_LoggedIN(object sender, EventArgs e)
+        {
+            CheckBox rm = (CheckBox)LoginForm.FindControl("RememberMe");
+            if (rm.Checked)
+            {
+                HttpCookie myCookie = new HttpCookie("myCookie");
+                Response.Cookies.Remove("myCookie");
+                Response.Cookies.Add(myCookie);
+                myCookie.Values.Add("username", this.LoginForm.UserName.ToString());
+                DateTime dtExpiry = DateTime.Now.AddDays(15); //you can add years and months too here
+                Response.Cookies["myCookie"].Expires = dtExpiry;
+            }
+            else
+            {
+                HttpCookie myCookie = new HttpCookie("myCookie");
+                Response.Cookies.Remove("myCookie");
+                Response.Cookies.Add(myCookie);
+                myCookie.Values.Add("username", this.LoginForm.UserName.ToString());
+                DateTime dtExpiry = DateTime.Now.AddSeconds(1); //you can add years and months too here
+                Response.Cookies["myCookie"].Expires = dtExpiry;
+            }
+        }
     }
 }
