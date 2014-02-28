@@ -49,24 +49,6 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.LinkButton BuilderDocuments;
         
         /// <summary>
-        /// Panel3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel3;
-        
-        /// <summary>
-        /// Panel4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel4;
-        
-        /// <summary>
         /// DashboardView control.
         /// </summary>
         /// <remarks>
@@ -85,6 +67,15 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.View ProjectProposalsView;
         
         /// <summary>
+        /// lblProjectProposals control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblProjectProposals;
+        
+        /// <summary>
         /// ProjectProposalsPanel control.
         /// </summary>
         /// <remarks>
@@ -101,6 +92,15 @@ namespace LotBankingCrux_v_1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View ExistingProjectsView;
+        
+        /// <summary>
+        /// lblCurrentProjects control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCurrentProjects;
         
         /// <summary>
         /// ExistingProjectsPanel control.
@@ -137,6 +137,15 @@ namespace LotBankingCrux_v_1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View BuilderDocumentsView;
+        
+        /// <summary>
+        /// lblBuiderDocuments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBuiderDocuments;
         
         /// <summary>
         /// BuilderDocumentsPanel control.

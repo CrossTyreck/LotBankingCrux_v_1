@@ -14,7 +14,7 @@
                 <ChartAreas>
                     <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
                 </ChartAreas>
-            </asp:Chart>--%>                <%--  <li>Select Builder </li>--%>                <%--  <asp:DropDownList ID="ddlBuilders" runat="server">
+            </asp:Chart>--%><%--  <li>Select Builder </li>--%><%--  <asp:DropDownList ID="ddlBuilders" runat="server">
                 </asp:DropDownList>--%>
                 <li>
                     <asp:LinkButton ID="AddUsers" runat="server" Style="text-decoration: none" OnClick="AddUser_OnClick" ForeColor="Black">Add User</asp:LinkButton>
@@ -45,7 +45,10 @@
     <style type="text/css">
       
         #map-canvas {
-            height: 100%;
+            /*height: 100%;*/
+        }
+        .text {
+            text-align: left;
         }
     </style>
     <!-- Javascript for Maps API -->
@@ -73,68 +76,17 @@
 
 
 
-    <asp:Panel ID="Panel3" runat="server" CssClass="panel-style" Height="300px">
-        <div class="position">
-            <div class="graphcontainer">
-                <div class="bar1" id="bar1">
-                    <div class="percent">
-                        <span style="width: 100%;"></span>
-                    </div>
-                    <div class="circle">
-                        <span>$0</span>
-                    </div>
-                    <div class="text">
-                        <input type="text" class="input1" value="0" />
-                        <small>Construction Cost over Expected Cost</small>
-                    </div>
-                </div>
-                <div class="bar2" id="bar2">
-                    <div class="percent">
-                        <span style="width: 100%;"></span>
-                    </div>
-                    <div class="circle">
-                        <span>$0</span>
-                    </div>
-                    <div class="text">
-                        <input type="text" class="input2" value="0" />
-                        <small>Lots purchased over lots available</small>
-                    </div>
-                </div>
-                <div class="bar3" id="bar3">
-                    <div class="percent">
-                        <span style="width: 100%;"></span>
-                    </div>
-                    <div class="circle">
-                        <span>$0</span>
-                    </div>
-                    <div class="text">
-                        <input type="text" class="input3" value="0" />
-                        <small>Lots sold over lots available</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </asp:Panel>
-    <asp:Panel ID="Panel4" runat="server" CssClass="panel-style" Height="436px" Width="1048px">
-        <div class="tscontainer">
-           <h3>More graphs and charts will go here</h3>
-        </div>
-        <div class="mapcontainer">
-            <!-- Map display -->
-            <div id="map-canvas"></div>
-        </div>
-        
-    </asp:Panel>
-
      <asp:MultiView ID="DashboardView" runat="server" ActiveViewIndex="0" OnActiveViewChanged="DashboardView_ActiveViewChanged">
             <asp:View ID= "ProjectProposalsView" runat= "server"> 
-                <h3>Project Proposals</h3>
+                <p><asp:Label ID="lblProjectProposals" runat="server" Font-Bold="True" Font-Italic="False" Font-Size="X-Large" Font-Underline="True" style="text-align: center" Text="Project Proposals"></asp:Label></p>
 
-                <asp:Panel ID="ProjectProposalsPanel" runat="server" CssClass="panel-style" Height="1415px" Width="1065px"></asp:Panel>
+                <asp:Panel ID="ProjectProposalsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px"></asp:Panel>
             </asp:View>
             <asp:View ID= "ExistingProjectsView" runat= "server"> 
-                <h3>Existing Projects</h3>
-                <asp:Panel ID="ExistingProjectsPanel" runat="server" CssClass="panel-style" Height="1415px" Width="1065px">
+                <p>
+                    <asp:Label ID="lblCurrentProjects" runat="server" Font-Bold="True" Font-Italic="False" Font-Size="X-Large" Font-Underline="True" style="text-align: center" Text="Current Projects"></asp:Label>
+                </p>
+                <asp:Panel ID="ExistingProjectsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px">
                     
                 <asp:DropDownList ID="ddlBuilders" OnSelectedIndexChanged="DDLBuilders_SelectedIndexChanged" AutoPostBack="true" runat="server"></asp:DropDownList>
              
@@ -142,8 +94,10 @@
                 </asp:Panel>
             </asp:View>
             <asp:View ID= "BuilderDocumentsView" runat= "server"> 
-                <h3>Builder Documents</h3>
-                <asp:Panel ID="BuilderDocumentsPanel" runat="server" CssClass="panel-style" Height="1415px" Width="1065px"></asp:Panel>
+                <p>
+                    <asp:Label ID="lblBuiderDocuments" runat="server" Font-Bold="True" Font-Italic="False" Font-Size="X-Large" Font-Underline="True" style="text-align: center" Text="Builder Documents"></asp:Label>
+                </p>
+                <asp:Panel ID="BuilderDocumentsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px"></asp:Panel>
             </asp:View>
        </asp:MultiView>
 
