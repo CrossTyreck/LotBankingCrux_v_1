@@ -11,7 +11,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/LotBankingCrux_v_1.dll">
-      <publishTime>02/27/2014 20:40:53</publishTime>
+      <publishTime>02/27/2014 20:47:47</publishTime>
     </File>
     <File Include="bin/mysql.data.dll">
       <publishTime>02/23/2014 08:24:26</publishTime>

@@ -43,16 +43,7 @@
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <!-- style setup for Maps API -->
     <style type="text/css">
-        html {
-            height: 100%;
-        }
-
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
+      
         #map-canvas {
             height: 100%;
         }
