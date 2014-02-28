@@ -67,44 +67,42 @@ namespace LotBankingCrux_v_1
             }
         }
 
-        protected virtual void Page_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         public void Welcome_OnClick(object sender, EventArgs e)
         {
 
             String route = "";
 
-            if (((DataBucket)Session["UserData"])._userID > 0)
+            if ((Session["UserData"]) != null)
             {
-                switch (((DataBucket)Session["UserData"])._userType)
+                if (((DataBucket)Session["UserData"])._userID > 0)
                 {
-                    case 1:
-                        route = "CBHDashboard";
-                        ((DataBucket)Session["UserData"])._userName = "Emily Leppert";
-                        break;
-                    case 2:
-                        route = "Builder";
-                        ((DataBucket)Session["UserData"])._userName = "Fulton Homes";
-                        break;
-                    case 3:
-                        route = "Investor";
-                        ((DataBucket)Session["UserData"])._userName = "Scrooge McDuck";
-                        break;
-                    default:
-                        break;
+                    switch (((DataBucket)Session["UserData"])._userType)
+                    {
+                        case 1:
+                            route = "CBHDashboard";
+                            ((DataBucket)Session["UserData"])._userName = "Emily Leppert";
+                            break;
+                        case 2:
+                            route = "Builder";
+                            ((DataBucket)Session["UserData"])._userName = "Fulton Homes";
+                            break;
+                        case 3:
+                            route = "Investor";
+                            ((DataBucket)Session["UserData"])._userName = "Scrooge McDuck";
+                            break;
+                        default:
+                            break;
 
+                    }
+                    //Assemble URL string here for proper redirect
+                    Response.Redirect(route + ".aspx");
                 }
-                //Assemble URL string here for proper redirect
-                Response.Redirect(route + ".aspx");
+                else
+                {
+                    Response.Redirect("Login.aspx");
+                }
             }
-            else
-            {
-                Response.Redirect("Login.aspx");
-            }
-           
+
 
 
 
