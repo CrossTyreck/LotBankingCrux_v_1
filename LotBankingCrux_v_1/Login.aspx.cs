@@ -17,12 +17,12 @@ namespace LotBankingCrux_v_1.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
-          
+            LoginForm.LoginButtonStyle.CssClass = "loginbutton";
         }
 
         protected void Login_Click(object sender, EventArgs e)
         {
-        
+
             string userName = ((TextBox)LoginForm.FindControl("UserName")).Text;
 
             string passWord = ((TextBox)LoginForm.FindControl("Password")).Text;
@@ -33,20 +33,20 @@ namespace LotBankingCrux_v_1.Account
 
             if (loginID > 0)
             {
-               userData._userID = loginID;
-               userData._userType = dbObject.getUserClassId(userData._userID);
-               Session["UserData"] = userData;
+                userData._userID = loginID;
+                userData._userType = dbObject.getUserClassId(userData._userID);
+                Session["UserData"] = userData;
 
                 switch (((DataBucket)Session["UserData"])._userType)
                 {
                     case 1:
                         route = "CBHDashboard";
-                       Session["UserName"] = "Emily Leppert";
+                        Session["UserName"] = "Emily Leppert";
                         break;
                     case 2:
                         route = "Builder";
                         ((DataBucket)Session["UserData"])._userName = dbObject.getBuilderName(loginID);
-                     
+
                         break;
                     case 3:
                         route = "Investor";
@@ -59,12 +59,7 @@ namespace LotBankingCrux_v_1.Account
                 //Assemble URL string here for proper redirect
                 Response.Redirect(route + ".aspx");
             }
-            else
-            {
-                LoginForm.FindControl("LoginErrorLabel").Visible = true;
-            }
-
-
         }
+
     }
 }
