@@ -13,6 +13,7 @@ namespace LotBankingCrux_v_1.CustomControls
 
         public ProjectRowPanel(string name, string url, DateTime date)
         {
+            this.CssClass = "projectrowpanel";
             Name = new LinkButton();
             Name.Text = name;
             Name.PostBackUrl = url;

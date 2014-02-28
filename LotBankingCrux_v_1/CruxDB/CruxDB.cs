@@ -609,9 +609,9 @@ namespace LotBankingCrux_v_1.Crux
 
         public BuilderDocumentData[] getBuilderDocumentData(int builder_id)
         {
-            MySqlCommand selectBuilderDocumentData = new MySqlCommand("SELECT id, builder_id, document_name, file_name, last_modified, last_requested " +
+            MySqlCommand selectBuilderDocumentData = new MySqlCommand("SELECT id, builder_id, file_name, last_modified, last_requested " +
                                                                        "FROM Builder_Documents " +
-                                                                      "WHERE buider_id = @builderId",
+                                                                      "WHERE builder_id = @builderId",
                                                                 databaseConnection);
             selectBuilderDocumentData.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builder_id;
 

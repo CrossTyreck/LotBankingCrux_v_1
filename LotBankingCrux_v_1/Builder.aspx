@@ -22,7 +22,7 @@
     <p>
         <asp:Label ID="lblProjects" runat="server" Text="Current Projects"></asp:Label>
     </p>
-    <asp:Panel ID="pnlProjects" runat="server" Height="235px">
+    <asp:Panel ID="pnlProjects" CssClass="panel-style" runat="server" Height="235px">
     </asp:Panel>
     <hr />
 
