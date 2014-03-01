@@ -5,9 +5,6 @@
         <li>
             <asp:LinkButton ID="LotTakeDown" runat="server" Style="text-decoration: none" OnClick="LotTakeDown_OnClick" ForeColor="Black">Lot Take Down Schedule</asp:LinkButton>
            
-            <asp:DropDownList ID="ddlDocuments" OnSelectedIndexChanged="DDLDocuments_SelectedIndexChanged" AutoPostBack="true" runat="server">
-                </asp:DropDownList>
-
             <asp:LinkButton ID="DueDiligence" runat="server" Style="text-decoration: none" OnClick="DueDiligence_OnClick" ForeColor="Black">Due Diligence</asp:LinkButton>
         </li>
 

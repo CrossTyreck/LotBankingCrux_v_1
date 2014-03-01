@@ -18,14 +18,6 @@
     <h1 id="buildername">
         <asp:Image runat="server" alt="Builder Logo" class="auto-style2" src="" ID="imgBuilderLogo" />
         FULTON HOMES </h1>
-    <p>
-        &nbsp;
-    </p>
-    <p>
-        <asp:Label ID="lblProjects" runat="server" Text="Current Projects"></asp:Label>
-    </p>
-    <asp:Panel ID="pnlProjects" CssClass="panel-style" runat="server" Height="235px">
-    </asp:Panel>
     <hr />
 
 

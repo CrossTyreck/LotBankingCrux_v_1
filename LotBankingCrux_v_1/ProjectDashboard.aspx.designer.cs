@@ -22,15 +22,6 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.LinkButton LotTakeDown;
         
         /// <summary>
-        /// ddlDocuments control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDocuments;
-        
-        /// <summary>
         /// DueDiligence control.
         /// </summary>
         /// <remarks>
