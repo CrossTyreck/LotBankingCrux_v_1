@@ -5,11 +5,8 @@
         <li>
             <asp:LinkButton ID="BuilderProposal" runat="server" Style="text-decoration: none" OnClick="BuilderProposal_OnClick" ForeColor="Black">New Proposal</asp:LinkButton>
         </li>
-        <asp:DropDownList ID="CurrentProjects" runat="server">
-        </asp:DropDownList>
             <%--<asp:LinkButton ID="ProjectDashboard" runat="server" Style="text-decoration: none" OnClick="ProjectDashboard_OnClick" ForeColor="Black"></asp:LinkButton>--%>
-        <asp:Label ID="lblBucketIDType" runat="server"></asp:Label>
-    </ul>
+        </ul>
 </asp:Content>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">

@@ -18,6 +18,13 @@ namespace LotBankingCrux_v_1
 
         protected void Page_Init(object sender, EventArgs e)
         {
+
+            if (Session["UserData"] == null)
+            {
+                Response.Redirect("Login.aspx");
+
+            }
+
             // The code below helps to protect against XSRF attacks
             var requestCookie = Request.Cookies[AntiXsrfTokenKey];
             Guid requestCookieGuidValue;
@@ -68,17 +75,11 @@ namespace LotBankingCrux_v_1
         }
 
         //This is the only function that was changed from SiteMaster to Restricted
-        protected virtual void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
 
             this.lbWelcomePage.Style.Add("text-decoration", "underline");
             this.lbLogoutButton.Style.Add("text-decoration", "underline");
-
-            if (Session["UserData"] == null)
-            {
-                Response.Redirect("Login.aspx");
-
-            }
             
         }
 
@@ -114,9 +115,6 @@ namespace LotBankingCrux_v_1
             {
                 Response.Redirect("Login.aspx");
             }
-           
-
-
 
         }
 
