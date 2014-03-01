@@ -13,6 +13,24 @@ namespace LotBankingCrux_v_1 {
     public partial class ProjectProposal {
         
         /// <summary>
+        /// pnlProjectInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlProjectInfo;
+        
+        /// <summary>
+        /// lblProjectName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblProjectName;
+        
+        /// <summary>
         /// txtProjectName control.
         /// </summary>
         /// <remarks>
@@ -20,6 +38,15 @@ namespace LotBankingCrux_v_1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProjectName;
+        
+        /// <summary>
+        /// lblFirstStreet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFirstStreet;
         
         /// <summary>
         /// txtFirstStreet control.
@@ -31,6 +58,15 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.TextBox txtFirstStreet;
         
         /// <summary>
+        /// lblSecondStreet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSecondStreet;
+        
+        /// <summary>
         /// txtSecondStreet control.
         /// </summary>
         /// <remarks>
@@ -38,6 +74,51 @@ namespace LotBankingCrux_v_1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSecondStreet;
+        
+        /// <summary>
+        /// lblCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCity;
+        
+        /// <summary>
+        /// txtCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCity;
+        
+        /// <summary>
+        /// lblState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblState;
+        
+        /// <summary>
+        /// txtState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtState;
+        
+        /// <summary>
+        /// lblCardinal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCardinal;
         
         /// <summary>
         /// txtCardinal control.
@@ -49,6 +130,15 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.TextBox txtCardinal;
         
         /// <summary>
+        /// lblNumberOfLots control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNumberOfLots;
+        
+        /// <summary>
         /// txtNumberOfLots control.
         /// </summary>
         /// <remarks>
@@ -58,6 +148,15 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.TextBox txtNumberOfLots;
         
         /// <summary>
+        /// lblAcquisitionPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAcquisitionPrice;
+        
+        /// <summary>
         /// txtAcquisitionPrice control.
         /// </summary>
         /// <remarks>
@@ -65,6 +164,15 @@ namespace LotBankingCrux_v_1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAcquisitionPrice;
+        
+        /// <summary>
+        /// lblImprovementCost control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblImprovementCost;
         
         /// <summary>
         /// txtImprovementCosts control.
@@ -85,21 +193,30 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.Label lblDataInserted;
         
         /// <summary>
-        /// btnSubmit control.
+        /// btnSubmit0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmit;
+        protected global::System.Web.UI.WebControls.Button btnSubmit0;
         
         /// <summary>
-        /// btnDashboard control.
+        /// pnlMap control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDashboard;
+        protected global::System.Web.UI.WebControls.Panel pnlMap;
+        
+        /// <summary>
+        /// btnCheckLocation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCheckLocation;
     }
 }
