@@ -138,14 +138,19 @@ h5, h6 {
     vertical-align: middle;
 }
 
-    .site-title a, .site-title a:hover, .site-title a:active {
+    .site-title > a, .site-title a:hover, .site-title a:active {
         color: black;
         outline: none;
         text-decoration: none;
         text-align: right;
     }
 
+.mainmenu {
+    text-decoration: none;
+}
+
 .logout-button {
+    float: right;
 }
 
 /* main layout

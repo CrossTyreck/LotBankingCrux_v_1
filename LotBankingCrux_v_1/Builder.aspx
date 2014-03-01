@@ -5,7 +5,7 @@
         <div class="table">
             <ul id="horizontal-list">
                 <li>
-                    <asp:LinkButton ID="BuilderProposal" runat="server" Style="text-decoration: none" OnClick="BuilderProposal_OnClick" ForeColor="Black">New Proposal</asp:LinkButton>
+                    <asp:LinkButton ID="BuilderProposal" runat="server" OnClick="BuilderProposal_OnClick" ForeColor="Black">New Proposal</asp:LinkButton>
                 </li>
                 <%--<asp:LinkButton ID="ProjectDashboard" runat="server" Style="text-decoration: none" OnClick="ProjectDashboard_OnClick" ForeColor="Black"></asp:LinkButton>--%>
             </ul>

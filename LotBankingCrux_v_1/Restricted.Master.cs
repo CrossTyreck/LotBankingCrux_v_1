@@ -75,13 +75,6 @@ namespace LotBankingCrux_v_1
         }
 
         //This is the only function that was changed from SiteMaster to Restricted
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-            this.lbWelcomePage.Style.Add("text-decoration", "underline");
-            this.lbLogoutButton.Style.Add("text-decoration", "underline");
-            
-        }
 
         public void Welcome_OnClick(object sender, EventArgs e)
         {

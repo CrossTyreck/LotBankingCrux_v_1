@@ -33,9 +33,9 @@
             <div class="site-title">
                 <img src="Images/Logo.jpg" height="32px" width="32px"/>
                 
-                <asp:LinkButton ID="lbWelcomePage" runat="server" Style="text-decoration: none" OnClick="Welcome_OnClick">Crescent Bay Holdings</asp:LinkButton>
+                <asp:LinkButton CssClass="mainmenu" ID="lbWelcomePage" runat="server" OnClick="Welcome_OnClick">Crescent Bay Holdings</asp:LinkButton>
               
-                 <asp:LinkButton ID="lbLogoutButton" runat="server" Style="text-decoration: none" OnClick="Logout_OnClick" >Logout</asp:LinkButton>
+                <asp:LinkButton CssClass="logout-button mainmenu" ID="lbLogoutButton" runat="server" OnClick="Logout_OnClick" >Logout</asp:LinkButton>
             </div>
         </header>
         <asp:ContentPlaceHolder runat="server" ID="FeaturedContent">
