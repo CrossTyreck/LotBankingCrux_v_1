@@ -5,7 +5,7 @@
 
 <asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
     <div class="menubar">
-        <div class="table">
+        <div>
             <ul id="horizontal-list">
                 <%--     <asp:Chart ID="Chart1" runat="server" Width="339px">
                 <Series>

@@ -73,7 +73,7 @@
     <Content Include="DueDiligence.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Images\delete_salesTraffic.png" />
-    <Content Include="Images\logo.jpg" />
+    <Content Include="Images\logo.png" />
     <Content Include="Images\pw_pattern.png" />
     <Content Include="Images\texture.png" />
     <Content Include="Investor.aspx" />
