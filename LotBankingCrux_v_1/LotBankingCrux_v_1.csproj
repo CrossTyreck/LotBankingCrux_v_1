@@ -80,10 +80,13 @@
     <Content Include="Login.aspx" />
     <Content Include="ProjectDashboard.aspx" />
     <Content Include="ProjectProposal.aspx" />
+    <Content Include="Scripts\gaugeSVG.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomControls\Meter.cs" />
     <Compile Include="CustomControls\CruxFileStream.cs" />
+    <Compile Include="CustomControls\FileUploadButton.cs" />
     <Compile Include="CustomControls\ProjectRowPanel.cs" />
     <Compile Include="Restricted.Master.cs">
       <DependentUpon>Restricted.Master</DependentUpon>

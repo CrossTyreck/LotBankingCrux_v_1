@@ -49,6 +49,24 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.LinkButton BuilderDocuments;
         
         /// <summary>
+        /// pnlMeters control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlMeters;
+        
+        /// <summary>
+        /// pnlGraphs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlGraphs;
+        
+        /// <summary>
         /// lblOrderBy control.
         /// </summary>
         /// <remarks>

@@ -7,18 +7,29 @@ using System.Web.UI.WebControls;
 using LotBankingCrux_v_1.Crux;
 using LotBankingCrux_v_1.CustomControls;
 using System.Data;
+using System.Drawing;
 
 
 namespace LotBankingCrux_v_1
 {
-    
+
     public partial class CBHDashboard : System.Web.UI.Page
     {
         CruxDB dbObject = new CruxDB();
+        public Meter meter1 = new Meter();
+        public Meter meter2 = new Meter();
+        public Meter meter3 = new Meter();
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            meter1.Min = 0;
+            meter1.Max = 10000;
+            meter1.Value = 7500;
+            meter1.OptimumRangeColor = Color.Green;
+            meter1.WarningRangeColor = Color.Green;
+            meter1.ActionRangeColor = Color.Green;
             ddlOrderBy.Items.Clear();
+           
         }
 
         /// <summary>
@@ -80,13 +91,14 @@ namespace LotBankingCrux_v_1
             ddlOrderBy.Items.Add("Last Requested Date");
 
             Dictionary<int, String> lintBuilderIDs = dbObject.getBuilderIds();
-            
+
             foreach(KeyValuePair<int, String> bID in lintBuilderIDs)
+
             {
                 Dictionary<int, String[]> aBIDProjects = dbObject.getProposalsByBID(bID.Key, ddlOrderBy.SelectedValue.ToString(), true);
-              //  foreach(Project project in aBIDProjects){
-              //      ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.getProjectName(), "ProjectProposal.aspx", project.getLastModified()));
-              //}
+                //  foreach(Project project in aBIDProjects){
+                //      ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.getProjectName(), "ProjectProposal.aspx", project.getLastModified()));
+                //}
             }
         }
 
@@ -112,7 +124,9 @@ namespace LotBankingCrux_v_1
             Dictionary<int, String> lintBuilderIDs = dbObject.getBuilderIds();
             foreach (KeyValuePair<int, String> bID in lintBuilderIDs)
             {
+
                Dictionary<int, String[]> aBIDDocuments = dbObject.getBuilderDocumentsByBID(bID.Key, ddlOrderBy.SelectedValue.ToString());
+
                 //foreach (Dictionary<int, string[]> doc in aBIDDocuments)
                 //{
                 //    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(doc.getDocumentName(), "ProjectProposal.aspx", doc.getLastRequestedTime()));
@@ -120,10 +134,17 @@ namespace LotBankingCrux_v_1
             }
         }
 
-      
+
         protected void DashboardView_ActiveViewChanged(object sender, EventArgs e)
         {
-           
+
         }
+
+        public int GetMeterValue()
+        {
+            return 50;
+
+        }
+        
     }
 }

@@ -9,15 +9,20 @@ namespace LotBankingCrux_v_1.CustomControls
     public class ProjectRowPanel : Panel
     {
         public LinkButton Name { get; set; }
+        public Label Builder { get; set; }
         public Label ModifiedDate { get; set; }
+        public Label CreatedDate { get; set; }
+      
+
 
         public ProjectRowPanel(string name, string url, String date)
+
         {
-            this.CssClass = "projectrowpanel";
+            this.CssClass = cssClass;
             Name = new LinkButton();
             Name.Text = name;
             Name.PostBackUrl = url;
-           // Name.CssClass = ".Linkclass";
+           
            // Name.BorderColor = Color.Aqua;
            // Name.BorderStyle = BorderStyle.Solid;
 
@@ -28,11 +33,12 @@ namespace LotBankingCrux_v_1.CustomControls
             Controls.Add(ModifiedDate);
         }
 
-        public void ProposalRowPanel(string name, string requestedTime)
+        public void ProposalRowPanel(string name, string builder, DateTime requestedTime, DateTime submittedTime, string cssClass)
         {
-            
+            this.CssClass = cssClass;
             
 
         }
+
     }
 }

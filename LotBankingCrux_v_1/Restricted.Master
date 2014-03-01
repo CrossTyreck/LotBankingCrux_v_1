@@ -12,8 +12,8 @@
    
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
-
-    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+    
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent"/>
 
     <asp:ContentPlaceHolder runat="server" ID="Stylesheets">
         <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
@@ -24,7 +24,7 @@
 <body>
     <form runat="server">
         
-        <asp:ScriptManager runat="server">
+        <asp:ScriptManager runat="server" ID="Scripts">
 
             
         </asp:ScriptManager>
