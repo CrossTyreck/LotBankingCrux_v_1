@@ -266,24 +266,25 @@ namespace LotBankingCrux_v_1.Crux
             return 1;
         }
 
-        public List<int> getBuilderId()
+        public Dictionary<int, String> getBuilderIds()
         {
-            MySqlCommand getBuilderId = new MySqlCommand("SELECT builder_id " +
-                                                           "FROM Builder_Data ",
+            MySqlCommand getBuilderIds = new MySqlCommand("SELECT builder_id, " +
+                                                                 "builder_name " +
+                                                            "FROM Builder_Data ",
                                                       databaseConnection);
 
-            List<int> returnValue = null;
+            Dictionary<int, String> returnValue = null;
             try
             {
                 MySqlDataReader reader;
                 databaseConnection.Open();
-                reader = getBuilderId.ExecuteReader(CommandBehavior.SingleResult);
+                reader = getBuilderIds.ExecuteReader(CommandBehavior.SequentialAccess);
 
-                returnValue = new List<int>();
+                returnValue = new Dictionary<int, String>();
 
                 while (reader.Read())
                 {
-                    returnValue.Add(reader.GetInt32(0));
+                    returnValue.Add(reader.GetInt32(0), reader.GetString(1));
                 }
             }
 
@@ -303,7 +304,7 @@ namespace LotBankingCrux_v_1.Crux
             return returnValue;
         }
 
-        public int getBuilderId(string name)
+        public int getBuilderId(String name)
         {
 
             MySqlCommand getBuilderId = new MySqlCommand("SELECT builder_id " +
@@ -318,7 +319,7 @@ namespace LotBankingCrux_v_1.Crux
             {
                 MySqlDataReader reader;
                 databaseConnection.Open();
-                reader = getBuilderId.ExecuteReader(CommandBehavior.SingleResult);
+                reader = getBuilderId.ExecuteReader(CommandBehavior.SequentialAccess);
 
                 while (reader.Read())
                 {
@@ -346,16 +347,16 @@ namespace LotBankingCrux_v_1.Crux
         }
         public String getBuilderName(int id)
         {
-            MySqlCommand getBuildersName = new MySqlCommand("SELECT name" +
+            MySqlCommand getBuildersNameQuery = new MySqlCommand("SELECT name" +
                                                               "FROM Builder_Data" +
                                                              "WHERE bid = @id",
                                                          databaseConnection);
-            getBuildersName.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+            getBuildersNameQuery.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
             MySqlDataReader reader;
             String name = "";
             try
             {
-                reader = getBuildersName.ExecuteReader(CommandBehavior.SequentialAccess);
+                reader = getBuildersNameQuery.ExecuteReader(CommandBehavior.SequentialAccess);
                 while (reader.Read())
                 {
                     name = reader.GetString(0);
@@ -371,17 +372,22 @@ namespace LotBankingCrux_v_1.Crux
             return name;
         }
 
-        public DataTable getBuilderNames()
+        public Dictionary<int, String> getBuilderNames()
         {
-            MySqlCommand getBuildersNames = new MySqlCommand("SELECT name, " +
-                                                                    "builder_id " + 
-                                                               "FROM Builder_Data",
+            MySqlCommand getBuildersNamesQuery = new MySqlCommand("SELECT builder_id, " +
+                                                                    "name " + 
+                                                               "FROM Builder_Data " +
+                                                               "SORT BY name ASC",
                                                          databaseConnection);
-            MySqlDataAdapter daNames = new MySqlDataAdapter(getBuildersNames);
-            DataTable dtNames = new DataTable();
+            Dictionary<int, String> returnValues = new Dictionary<int,string>();
+            MySqlDataReader reader;
             try
             {
-                daNames.Fill(dtNames);
+                reader = getBuildersNamesQuery.ExecuteReader(CommandBehavior.SequentialAccess);
+                while (reader.Read())
+                {
+                    returnValues.Add(reader.GetInt32(0), reader.GetString(1));
+                }
             }
             catch (MySqlException e)
             {
@@ -389,23 +395,27 @@ namespace LotBankingCrux_v_1.Crux
                 return null;
             }
             databaseConnection.Close();
-            return dtNames;
+            return returnValues;
         }
 
-        public DataTable getBuilderProjects(int builderId)
+        public Dictionary<int, String> getBuilderProjects(int builderId)
         {
-            MySqlCommand getBuilderProjects = new MySqlCommand("SELECT project_name, " +
-                                                                      "id " +
-                                                                "FROM Projects " +
-                                                               "WHERE builder_id = @builderId",
+            MySqlCommand getBuilderProjects = new MySqlCommand("SELECT id, " +
+                                                                      "project_name " +
+                                                                 "FROM Projects " +
+                                                                "WHERE builder_id = @builderId",
                                                          databaseConnection);
             getBuilderProjects.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builderId;
 
-            MySqlDataAdapter daNames = new MySqlDataAdapter(getBuilderProjects);
-            DataTable dtNames = new DataTable();
+            Dictionary<int, String> returnValues = new Dictionary<int,string>();
+            MySqlDataReader reader;
             try
             {
-                daNames.Fill(dtNames);
+                reader = getBuilderProjects.ExecuteReader(CommandBehavior.SequentialAccess);
+                while (reader.Read())
+                {
+                    returnValues.Add(reader.GetInt32(0), reader.GetString(1));
+                }
             }
             catch (MySqlException e)
             {
@@ -413,7 +423,7 @@ namespace LotBankingCrux_v_1.Crux
                 return null;
             }
             databaseConnection.Close();
-            return dtNames;
+            return returnValues;
         }
 
         public int insertProjectDocument(int projectId, String docName, byte[] doc)
@@ -583,9 +593,56 @@ namespace LotBankingCrux_v_1.Crux
             return 1;
         }
 
-        public Dictionary<int, string[]> getBuilderDocumentsByBID(int builder_id, string orderBy)
+        public Dictionary<int, String[]> getBuilderDocumentsByBID(int builder_id, String orderBy)
         {
-            return new Dictionary<int, string[]>();
+            String order = "";
+            if (orderBy.Equals("Project Name"))
+            {
+                order = "ORDER BY project_name ASC ";
+            }
+            else if (orderBy.Equals("Submission Date"))
+            {
+                order = "ORDER BY date_created DESC ";
+            }
+            else if (orderBy.Equals("Approval Date"))
+            {
+                order = "ORDER BY approval_timestamp DESC ";
+            }
+            else if (orderBy.Equals("Last Requested Date"))
+            {
+                order = "ORDER BY last_requested DESC ";
+            }
+
+
+
+            MySqlCommand getBuilderProjects = new MySqlCommand("SELECT id, " +
+                                                                      "project_name " +
+                                                                      "date_created" +
+                                                                      "approval_timestamp" +
+                                                                      "last_requested" +
+                                                                 "FROM Builder_Documents " +
+                                                                "WHERE builder_id = @builderId " +
+                                                                order,
+                                              databaseConnection);
+            getBuilderProjects.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builder_id;
+
+            Dictionary<int, String[]> returnValues = new Dictionary<int, String[]>();
+            MySqlDataReader reader;
+            try
+            {
+                reader = getBuilderProjects.ExecuteReader(CommandBehavior.SequentialAccess);
+                while (reader.Read())
+                {
+                    returnValues.Add(reader.GetInt32(0), new String[] { reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4) });
+                }
+            }
+            catch (MySqlException e)
+            {
+                Debug.Print(e.Message);
+                return null;
+            }
+            databaseConnection.Close();
+            return returnValues;
         }
 
         public DataTable getBuilderDocuments(int builder_id)
@@ -696,47 +753,31 @@ namespace LotBankingCrux_v_1.Crux
             return doc;
         }
 
-        public List<String> getProjectDocuments(int project_id)
+        public Dictionary<int, String> getProjectDocumentNames(int project_id)
         {
-            MySqlCommand selectProjectDocuments = new MySqlCommand("SELECT file_name " +
-                                                                       "FROM Project_Documents " +
-                                                                      "WHERE project_id = @projectId",
+            MySqlCommand selectProjectDocuments = new MySqlCommand("SELECT id, " +
+                                                                          "file_name " +
+                                                                     "FROM Project_Documents " +
+                                                                    "WHERE project_id = @projectId",
                                                                 databaseConnection);
             selectProjectDocuments.Parameters.Add("@projectId", MySqlDbType.Int32).Value = project_id;
 
          
 
-           // BuilderDocumentData[] docs = new BuilderDocumentData[0];
             int docCount = 0;
             databaseConnection.Open();
 
             MySqlDataReader reader;
-            List<String> listDocNames = new List<String>();
+            Dictionary<int, String> listDocNames = new Dictionary<int, String>();
 
             try
             {
                 reader = selectProjectDocuments.ExecuteReader(CommandBehavior.SequentialAccess);
                 
-                
                 while (reader.Read())
-                {
-                    string i = reader.GetString(0);
-                    //int bid = reader.GetInt32(1);
-                    //String dn = reader.GetString(2);
-                    //String fn = reader.GetString(3);
-                    //DateTime lm = reader.GetDateTime(4);
-                    //DateTime lr = reader.GetDateTime(5);
-                    docCount++;
-                    
-                    listDocNames.Add(i);
+                {   
+                    listDocNames.Add(reader.GetInt32(0), reader.GetString(1));
                 }
-                //docs = new BuilderDocumentData[docCount];
-                //List<BuilderDocumentData>.Enumerator docEnum = doclist.GetEnumerator();
-                //for (int i = 0; i < docCount; i++)
-                //{
-                //    docs[i] = docEnum.Current;
-                //    docEnum.MoveNext();
-                //}
             }
             catch (Exception e)
             {
@@ -779,9 +820,10 @@ namespace LotBankingCrux_v_1.Crux
                 Debug.Print(e.Message);
                 return null;
             }
-            reader.Close();
-            databaseConnection.Close();
-
+            finally
+            {
+                databaseConnection.Close();
+            }
             return doc;
         }
 
@@ -813,38 +855,102 @@ namespace LotBankingCrux_v_1.Crux
                 Debug.Print(e.Message);
                 return -1;
             }
-            reader.Close();
-            databaseConnection.Close();
+            finally
+            {
+                databaseConnection.Close();
+            }
             return 1;
         }
 
-        public DataTable getProjects(int builder_id, int? value)
+        public Dictionary<int, String> getProjectsNames(int builder_id, int value)
         {
 
-            MySqlCommand getProjects = new MySqlCommand("SELECT project_name " +
-                                                        "FROM Projects " +
-                                                        "WHERE builder_id = @builderId",
-                                                      databaseConnection);
-            getProjects.Parameters.Add("@builderid", MySqlDbType.Int32).Value = builder_id;
-            MySqlDataAdapter daNames = new MySqlDataAdapter(getProjects);
-            DataTable dtProjects = new DataTable();
+            MySqlCommand getProjectNamesQuery = new MySqlCommand("SELECT id, " +
+                                                                        "project_name " +
+                                                                   "FROM Projects " +
+                                                                  "WHERE builder_id = @builderId",
+                                                                  databaseConnection);
+            getProjectNamesQuery.Parameters.Add("@builderid", MySqlDbType.Int32).Value = builder_id;
+            Dictionary<int, String> returnValues = new Dictionary<int, String>();
+            MySqlDataReader reader;
             try
             {
-                daNames.Fill(dtProjects);
+                reader = getProjectNamesQuery.ExecuteReader(CommandBehavior.SequentialAccess);
+                while (reader.Read())
+                {
+
+                }
             }
             catch (MySqlException e)
             {
                 Debug.Print(e.Message);
                 return null;
             }
-            //reader.Close();
-            databaseConnection.Close();
-            return dtProjects;
+            finally
+            {
+                databaseConnection.Close();
+            }
+            return returnValues;
         }
 
-        public Dictionary<int, string[]> getProjectsByBID(int builder_id, string orderBy)
+        public Dictionary<int, String[]> getProjectsByBID(int builder_id, String orderBy, Boolean excludeDeclined)
         {
-            return new Dictionary<int, string[]>();
+            String exclusion = "";
+            if (excludeDeclined)
+            {
+                exclusion = "AND decline_id != -1 ";
+            }
+
+            String order = "";
+            if (orderBy.Equals("Project Name"))
+            {
+                order = "ORDER BY project_name ASC ";
+            }
+            else if (orderBy.Equals("Submission Date"))
+            {
+                order = "ORDER BY date_created DESC ";
+            }
+            else if (orderBy.Equals("Approval Date"))
+            {
+                order = "ORDER BY approval_timestamp DESC ";
+            }
+            else if (orderBy.Equals("Last Requested Date"))
+            {
+                order = "ORDER BY last_requested DESC ";
+            }
+
+
+
+            MySqlCommand getBuilderProjects = new MySqlCommand("SELECT id, " +
+                                                                      "project_name " +
+                                                                      "date_created" +
+                                                                      "approval_timestamp" +
+                                                                      "last_requested" +
+                                                                 "FROM Projects " +
+                                                                "WHERE builder_id = @builderId " +
+                                                                  "AND approval_id >= 0 " +
+                                                                exclusion +
+                                                                order,
+                                              databaseConnection);
+            getBuilderProjects.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builder_id;
+
+            Dictionary<int, String[]> returnValues = new Dictionary<int, String[]>();
+            MySqlDataReader reader;
+            try
+            {
+                reader = getBuilderProjects.ExecuteReader(CommandBehavior.SequentialAccess);
+                while (reader.Read())
+                {
+                    returnValues.Add(reader.GetInt32(0), new String[]{reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4)});
+                }
+            }
+            catch (MySqlException e)
+            {
+                Debug.Print(e.Message);
+                return null;
+            }
+            databaseConnection.Close();
+            return returnValues;
         }
 
         public Project[] getProjects(int builder_id)
@@ -891,11 +997,6 @@ namespace LotBankingCrux_v_1.Crux
                     j++;
 
                 }
-                //for (int i = 0; i < projectCount; i++)
-                //{
-                //    projects[i] = projectEnum.Current;
-                //    projectEnum.MoveNext();
-                //}
             }
             catch (Exception e)
             {
@@ -906,12 +1007,66 @@ namespace LotBankingCrux_v_1.Crux
             databaseConnection.Close();
 
             return projects;
-           // return projectList.ToArray();
         }
 
-        public Dictionary<int, string[]> getProposalsByBID(int builder_id, string orderBy)
+        public Dictionary<int, String[]> getProposalsByBID(int builder_id, String orderBy, Boolean excludeDeclined)
         {
-            return new Dictionary<int, string[]>();
+            String exclusion = "";
+            if (excludeDeclined)
+            {
+                exclusion = "AND decline_id != -1 ";
+            }
+
+            String order = "";
+            if (orderBy.Equals("Project Name"))
+            {
+                order = "ORDER BY project_name ASC ";
+            }
+            else if (orderBy.Equals("Submission Date"))
+            {
+                order = "ORDER BY date_created DESC ";
+            }
+            else if (orderBy.Equals("Approval Date"))
+            {
+                order = "ORDER BY approval_timestamp DESC ";
+            }
+            else if (orderBy.Equals("Last Requested Date"))
+            {
+                order = "ORDER BY last_requested DESC ";
+            }
+
+
+
+            MySqlCommand getBuilderProjects = new MySqlCommand("SELECT id, " +
+                                                                      "project_name " +
+                                                                      "date_created" +
+                                                                      "approval_timestamp" +
+                                                                      "last_requested" +
+                                                                 "FROM Projects " +
+                                                                "WHERE builder_id = @builderId " +
+                                                                  "AND approval_id = -1 " +
+                                                                exclusion +
+                                                                order,
+                                              databaseConnection);
+            getBuilderProjects.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builder_id;
+
+            Dictionary<int, String[]> returnValues = new Dictionary<int, String[]>();
+            MySqlDataReader reader;
+            try
+            {
+                reader = getBuilderProjects.ExecuteReader(CommandBehavior.SequentialAccess);
+                while (reader.Read())
+                {
+                    returnValues.Add(reader.GetInt32(0), new String[]{reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4)});
+                }
+            }
+            catch (MySqlException e)
+            {
+                Debug.Print(e.Message);
+                return null;
+            }
+            databaseConnection.Close();
+            return returnValues;
         }
 
         public int insertLotType(int project_id, int lot_width, int lot_length, int count, Double purchase_price, Decimal release_price, Decimal sale_price)
@@ -995,7 +1150,7 @@ namespace LotBankingCrux_v_1.Crux
             return lotTypes;
         }
 
-        public int insertProjectSchedule(int project_id, int projected_lots_purchased, Decimal projected_value_purchased, DateTime schedule_date)
+        public int insertProjectScheduleEntry(int project_id, int projected_lots_purchased, Decimal projected_value_purchased, DateTime schedule_date)
         {
 
             MySqlCommand insertNewProjectSchedule = new MySqlCommand("INSERT INTO Project_Schedule" +
@@ -1024,10 +1179,9 @@ namespace LotBankingCrux_v_1.Crux
             return 1;
         }
 
-        public int updateProjectSchedule(int id, int projected_lots_purchased, Decimal projected_value_purchased, DateTime schedule_date)
+        public int updateProjectScheduleEntry(int id, int projected_lots_purchased, Decimal projected_value_purchased, DateTime schedule_date)
         {
-
-            MySqlCommand updateNewProjectSchedule = new MySqlCommand("UPDATE Project_Schedule" +
+            MySqlCommand updateNewProjectSchedule = new MySqlCommand("UPDATE Project_Schedule_Entry" +
                                                                       "( projected_lots_purchased, projected_value_purchased, schedule_date)" +
                                                                       "  @projectedLotsPurchased,  @projectedValuePurchased,  @scheduleDate " +
                                                                   "WHERE id = @id",
@@ -1054,7 +1208,7 @@ namespace LotBankingCrux_v_1.Crux
             return 1;
         }
 
-        public ProjectSchedule[] getProjectSchedule(int project_id)
+        public ProjectScheduleEntry[] getProjectSchedule(int project_id)
         {
             MySqlCommand selectBuilderProjects = new MySqlCommand("SELECT id, project_id, projected_lots_purchased, actual_lots_purchased, lots_sold," +
                                                                      "projected_value_purchased, actual_value_purchased, value_sold, projected_draw," +
@@ -1064,8 +1218,8 @@ namespace LotBankingCrux_v_1.Crux
                                                                 databaseConnection);
             selectBuilderProjects.Parameters.Add("@projectId", MySqlDbType.Int32).Value = project_id;
 
-            List<ProjectSchedule> projectScheduleList = new List<ProjectSchedule>();
-            ProjectSchedule[] projectSchedule = new ProjectSchedule[0];
+            List<ProjectScheduleEntry> projectScheduleList = new List<ProjectScheduleEntry>();
+            ProjectScheduleEntry[] projectSchedule = new ProjectScheduleEntry[0];
             int projectScheduleCount = 0;
             databaseConnection.Open();
 
@@ -1089,11 +1243,11 @@ namespace LotBankingCrux_v_1.Crux
                     DateTime dc = reader.GetDateTime(11);
                     DateTime lm = reader.GetDateTime(12);
                     projectScheduleCount++;
-                    ProjectSchedule newProjectSchedule = new ProjectSchedule(i, project_id, plp, alp, ls, pvp, avp, pvs, avs, pd, ad, sd, dc, lm);
+                    ProjectScheduleEntry newProjectSchedule = new ProjectScheduleEntry(i, project_id, plp, alp, ls, pvp, avp, pvs, avs, pd, ad, sd, dc, lm);
                     projectScheduleList.Add(newProjectSchedule);
                 }
-                projectSchedule = new ProjectSchedule[projectScheduleCount];
-                List<ProjectSchedule>.Enumerator projectScheduleEnum = projectScheduleList.GetEnumerator();
+                projectSchedule = new ProjectScheduleEntry[projectScheduleCount];
+                List<ProjectScheduleEntry>.Enumerator projectScheduleEnum = projectScheduleList.GetEnumerator();
                 for (int i = 0; i < projectScheduleCount; i++)
                 {
                     projectSchedule[i] = projectScheduleEnum.Current;
@@ -1369,6 +1523,50 @@ namespace LotBankingCrux_v_1.Crux
         }
     }
 
+
+    public class ProjectDocumentData
+    {
+        private int id;
+        private int projectId;
+        private String docName;
+        private String fileName;
+        private DateTime last_modified;
+        private DateTime last_requested;
+        public ProjectDocumentData(int i, int pid, String dn, String fn, DateTime lm, DateTime lr)
+        {
+            id = i;
+            projectId = pid;
+            docName = dn;
+            fileName = fn;
+            last_modified = lm;
+            last_requested = lr;
+        }
+        public int getProjectId()
+        {
+            return projectId;
+        }
+        public String getDocumentName()
+        {
+            return docName;
+        }
+        public String getFileName()
+        {
+            return fileName;
+        }
+        public DateTime getLastModifiedTime()
+        {
+            return last_modified;
+        }
+        public DateTime getLastRequestedTime()
+        {
+            return last_requested;
+        }
+        public Boolean isUpToDate()
+        {
+            return DateTime.Compare(last_modified, last_requested) >= 0;
+        }
+    }
+
     public class Coordinates
     {
         public String firstCrossStreet;
@@ -1384,7 +1582,7 @@ namespace LotBankingCrux_v_1.Crux
         }
     }
 
-    public class ProjectSchedule
+    public class ProjectScheduleEntry
     {
         private int id;
         private int projectId;
@@ -1401,7 +1599,7 @@ namespace LotBankingCrux_v_1.Crux
         private DateTime dateCreated;
         private DateTime lastModified;
 
-        public ProjectSchedule(int i, int pid, int plp, int alp, int ls, Decimal pvp, Decimal avp,
+        public ProjectScheduleEntry(int i, int pid, int plp, int alp, int ls, Decimal pvp, Decimal avp,
             Decimal pvs, Decimal avs, Decimal pd, Decimal ad, DateTime sd, DateTime dc, DateTime lm)
         {
             id = i;
@@ -1463,6 +1661,13 @@ namespace LotBankingCrux_v_1.Crux
         private DateTime getScheduelDate()
         {
             return scheduelDate;
+        }
+    }
+
+    public class DateObject
+    {
+        public DateObject()
+        {
         }
     }
 
