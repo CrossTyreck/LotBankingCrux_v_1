@@ -22,24 +22,6 @@ namespace LotBankingCrux_v_1
             {
                 pnlProjectDocumentsTest.Controls.Add(new ProjectRowPanel(doc, "ProjectDashboard.aspx", DateTime.Now));
             }
-
-
-            ddlDocuments.Items.Add("Select Document");
-            //load the list of documents that are available to the drop down list
-            DataTable dtProjects = dbObject.getBuilderDocuments(6);
-            if (dtProjects.Columns.Count > 0)
-            {
-                ddlDocuments.Visible = true;
-
-                foreach (DataRow dr in dtProjects.Rows)
-                {
-                    foreach (DataColumn dc in dtProjects.Columns)
-                    {
-                        ddlDocuments.Items.Add(dr[dc].ToString());
-                    }
-                }
-                ddlDocuments.DataBind();
-            }
         }
 
         protected void LotTakeDown_OnClick(object sender, EventArgs e)

@@ -22,11 +22,11 @@ namespace LotBankingCrux_v_1
              * add that URL to the ImageURL below. 
             imgBuilderLogo.ImageUrl = "~/Images/heroAccent.png"; */
 
-            Project[] aBIDProjects = dbObject.getProjects(((DataBucket)Session["UserData"])._userID);
-            foreach (Project project in aBIDProjects)
-            {
-                pnlProjects.Controls.Add(new ProjectRowPanel(project.getProjectName(), "ProjectDashboard.aspx", project.getLastModified()));
-            }
+            //Project[] aBIDProjects = dbObject.getProjects(((DataBucket)Session["UserData"])._userID);
+            //foreach (Project project in aBIDProjects)
+            //{
+            //    pnlProjects.Controls.Add(new ProjectRowPanel(project.getProjectName(), "ProjectDashboard.aspx", project.getLastModified()));
+            //}
         }
 
 
@@ -49,6 +49,56 @@ namespace LotBankingCrux_v_1
         {
             Response.Redirect(BuilderProposal.Text + ".aspx");
         }
-    }
 
+        protected void DashboardView_ActiveViewChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void lnkbtnProposals_Click(object sender, EventArgs e)
+        {
+            DashboardView.ActiveViewIndex = 0;
+
+            List<int> lintBuilderIDs = dbObject.getBuilderId();
+
+            foreach (int bID in lintBuilderIDs)
+            {
+                Project[] aBIDProjects = dbObject.getProjects(bID);
+                foreach (Project project in aBIDProjects)
+                {
+                    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.getProjectName(), "ProjectProposal.aspx", project.getLastModified()));
+                }
+            }
+        }
+
+        protected void lnkbtnProjects_Click(object sender, EventArgs e)
+        {
+            DashboardView.ActiveViewIndex = 1;
+
+            List<int> lintBuilderIDs = dbObject.getBuilderId();
+            foreach (int bID in lintBuilderIDs)
+            {
+                Project[] aBIDProjects = dbObject.getProjects(bID);
+                foreach (Project project in aBIDProjects)
+                {
+                    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.getProjectName(), "ProjectDashboard.aspx", project.getLastModified()));
+                }
+            }
+        }
+
+        protected void lnkbtnBuilderDocuments_Click(object sender, EventArgs e)
+        {
+            DashboardView.ActiveViewIndex = 2;
+
+            List<int> lintBuilderIDs = dbObject.getBuilderId();
+            foreach (int bID in lintBuilderIDs)
+            {
+                BuilderDocumentData[] aBIDDocuments = dbObject.getBuilderDocumentData(bID);
+                foreach (BuilderDocumentData doc in aBIDDocuments)
+                {
+                    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(doc.getDocumentName(), "ProjectProposal.aspx", doc.getLastRequestedTime()));
+                }
+            }
+        }
+    }
 }
