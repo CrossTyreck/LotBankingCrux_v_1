@@ -61,6 +61,7 @@ namespace LotBankingCrux_v_1
                     Response.Redirect("Login.aspx");
 
                 lblDataInserted.Visible = true;
+            
                 resetControls();
             }
             catch (MySqlException ex)
@@ -115,6 +116,20 @@ namespace LotBankingCrux_v_1
         void SetDefaultPage()
         {
             Response.Redirect("Login.aspx");
+        }
+
+        protected void btnCheckLocation_Click(object sender, EventArgs e)
+        {
+            string firstStreet = txtFirstStreet.Text;
+
+            string secondStreet = txtSecondStreet.Text;
+
+            string cityLocation = txtCity.Text;
+
+            string stateLocation = txtState.Text;
+
+            mapImage.Attributes["src"] = ResolveUrl("http://maps.googleapis.com/maps/api/staticmap?center=" + firstStreet + "+" + secondStreet + "," + cityLocation + ","+stateLocation+"&zoom=16&size=600x600&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&sensor=false");
+            
         }
     }
 }

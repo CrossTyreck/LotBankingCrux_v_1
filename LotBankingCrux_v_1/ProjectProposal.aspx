@@ -43,8 +43,14 @@
         <asp:Label ID="lblDataInserted" runat="server" ForeColor="Green" Text="Data Inserted" Visible="False" ClientIDMode="Static"></asp:Label>
         <asp:Button ID="btnSubmit0" runat="server" OnClick="btnSubmit_Click" Text="Submit" CssClass="button" />
     </asp:Panel>
+   
+    <asp:Panel ID="mapPanel" runat="server" Height="605px" Width="605px" style="margin-left: 347px">
+        <asp:Image ID="mapImage" ImageUrl="http://maps.googleapis.com/maps/api/staticmap?center=Phoenix,AZ&zoom=13&size=600x600&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&sensor=false"
+            runat="server" Height="600px" Width="600px" style="margin-top: 4px" />
+    </asp:Panel>
+   
     <asp:Panel ID="pnlMap" runat="server">
-        <asp:Button ID="btnCheckLocation" CssClass="button" runat="server" Text="Check Location" />
+        <asp:Button ID="btnCheckLocation" CssClass="button" runat="server" Text="Check Location" OnClick="btnCheckLocation_Click" />
     </asp:Panel>
     <br />
     

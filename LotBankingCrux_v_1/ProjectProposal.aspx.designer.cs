@@ -202,6 +202,24 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.Button btnSubmit0;
         
         /// <summary>
+        /// mapPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel mapPanel;
+        
+        /// <summary>
+        /// mapImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image mapImage;
+        
+        /// <summary>
         /// pnlMap control.
         /// </summary>
         /// <remarks>
