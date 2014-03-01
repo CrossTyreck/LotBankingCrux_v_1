@@ -27,6 +27,7 @@ namespace LotBankingCrux_v_1.Account
                     LoginForm.UserName = cookie.Values["username"].ToString();
                     this.LoginForm.RememberMeSet = !(String.IsNullOrEmpty(LoginForm.UserName));
                     this.SetFocus(LoginForm.FindControl("Password"));
+             
                 }
                 else
                 {

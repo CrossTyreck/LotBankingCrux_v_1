@@ -21,11 +21,11 @@
                 </li>
 
                 <li>
-                    <asp:LinkButton ID="ProjectProposals" runat="server" OnClick="ProjectProposals_Click">Project Proposals</asp:LinkButton>
+                    <asp:LinkButton ID="ProjectProposals" runat="server" OnClick="ProjectProposals_Click">Proposals</asp:LinkButton>
                 </li>
 
                 <li>
-                    <asp:LinkButton ID="ExistingProjects" runat="server" OnClick="ExistingProjects_Click">Existing Projects</asp:LinkButton>
+                    <asp:LinkButton ID="ExistingProjects" runat="server" OnClick="ExistingProjects_Click">Projects</asp:LinkButton>
                 </li>
 
                 <li>
@@ -78,19 +78,16 @@
 
      <asp:MultiView ID="DashboardView" runat="server" ActiveViewIndex="0" OnActiveViewChanged="DashboardView_ActiveViewChanged">
             <asp:View ID= "ProjectProposalsView" runat= "server"> 
-                <p><asp:Label ID="lblProjectProposals" runat="server" Font-Bold="True" Font-Italic="False" Font-Size="X-Large" Font-Underline="True" style="text-align: center" Text="Project Proposals"></asp:Label></p>
+                <p><asp:Label ID="lblProjectProposals" runat="server" Font-Bold="True" Font-Italic="False" Font-Size="X-Large" Font-Underline="True" style="text-align: center" Text="Proposals"></asp:Label></p>
 
                 <asp:Panel ID="ProjectProposalsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px"></asp:Panel>
             </asp:View>
             <asp:View ID= "ExistingProjectsView" runat= "server"> 
                 <p>
-                    <asp:Label ID="lblCurrentProjects" runat="server" Font-Bold="True" Font-Italic="False" Font-Size="X-Large" Font-Underline="True" style="text-align: center" Text="Current Projects"></asp:Label>
+                    <asp:Label ID="lblCurrentProjects" runat="server" Font-Bold="True" Font-Italic="False" Font-Size="X-Large" Font-Underline="True" style="text-align: center" Text="Projects"></asp:Label>
                 </p>
                 <asp:Panel ID="ExistingProjectsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px">
                     
-                <asp:DropDownList ID="ddlBuilders" OnSelectedIndexChanged="DDLBuilders_SelectedIndexChanged" AutoPostBack="true" runat="server"></asp:DropDownList>
-             
-                <asp:DropDownList ID="ddlNewProjects" OnSelectedIndexChanged="DDLNewProjects_SelectedIndexChanged" runat="server" AutoPostBack="True"></asp:DropDownList>
                 </asp:Panel>
             </asp:View>
             <asp:View ID= "BuilderDocumentsView" runat= "server"> 

@@ -18,31 +18,7 @@ namespace LotBankingCrux_v_1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //ddlBuilders.Visible = false;
-            //ddlNewProjects.Visible = false;
-            //ddlBuilders.Items.Add("Select a Builder");
-            //ddlNewProjects.Items.Add("Select a Project");
-
-            //DataTable dtNames = new DataTable();
-            //dtNames.Clear();
-            //ddlBuilders.Items.Clear();
-
-            //dtNames = dbObject.getBuilderNames();
-
-
-            //if (dtNames.Columns.Count > 0)
-            //{
-
-            //    ddlBuilders.Visible = true;
-            //    foreach (DataRow dr in dtNames.Rows)
-            //    {
-            //        foreach (DataColumn dc in dtNames.Columns)
-            //        {
-            //            ddlBuilders.Items.Add(dr[dc].ToString());
-            //        }
-            //    }
-            //    ddlBuilders.DataBind();
-            //}
+           
         }
 
         /// <summary>
@@ -55,55 +31,6 @@ namespace LotBankingCrux_v_1
 
             Response.Redirect("CreateUserLogin.aspx");
 
-        }
-
-        public void SelectBuilder_OnClick(object sender, EventArgs e)
-        {
-
-            Response.Redirect("ViewBuilderInfo.aspx");
-        }
-
-
-        /// <summary>
-        /// Populates the Builders dropdown with a list of all builders
-        /// So that the CBH Associate can select the correct builder
-        /// Then a builder project and go to that specific project dashboard. 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        [Obsolete("We no longer populate a dropdown list but display the projects by builder in a ProjectRowPanel, a custom control")]
-        public void DDLBuilders_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-            DataTable dtProjects = dbObject.getProjects(dbObject.getBuilderId(ddlBuilders.SelectedValue.ToString()), 0);
-
-            if (dtProjects.Columns.Count > 0)
-            {
-                ddlNewProjects.Visible = true;
-                
-                foreach (DataRow dr in dtProjects.Rows)
-                {
-                    foreach (DataColumn dc in dtProjects.Columns)
-                    {
-                        ddlNewProjects.Items.Add(dr[dc].ToString());
-                    }
-                }
-                ddlNewProjects.DataBind();
-            }
-        }
-
-        /// <summary>
-        /// Once the Associate selects a specific builder they then can select a 
-        /// specific project from the dropdown and this will take them to that specific
-        /// project dashbored.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        [Obsolete("We no longer populate a dropdown list but display the projects by builder in a ProjectRowPanel, a custom control")]
-        public void DDLNewProjects_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Response.Redirect("ProjectDashboard.aspx");
-            
         }
 
         /// <summary>
