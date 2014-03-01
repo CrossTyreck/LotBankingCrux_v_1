@@ -51,10 +51,10 @@ namespace LotBankingCrux_v_1
             ddlOrderBy.Items.Add("Approval Date");
             ddlOrderBy.Items.Add("Last Requested Date");
 
-            List<int> lintBuilderIDs = dbObject.getBuilderId();
-            foreach (int bID in lintBuilderIDs)
+            Dictionary<int, String> lintBuilderIDs = dbObject.getBuilderIds();
+            foreach (KeyValuePair<int, String> bID in lintBuilderIDs)
             {
-                Dictionary<int, string[]> aBIDProjects = dbObject.getProjectsByBID(bID, ddlOrderBy.SelectedValue.ToString());
+                Dictionary<int, string[]> aBIDProjects = dbObject.getProjectsByBID(bID.Key, ddlOrderBy.SelectedValue.ToString(), true);
                 //foreach (Project project in aBIDProjects)
                 //{
                 //    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.getProjectName(), "ProjectDashboard.aspx", project.getLastModified()));
@@ -79,11 +79,11 @@ namespace LotBankingCrux_v_1
             ddlOrderBy.Items.Add("Submission Date");
             ddlOrderBy.Items.Add("Last Requested Date");
 
-            List<int> lintBuilderIDs = dbObject.getBuilderId();
+            Dictionary<int, String> lintBuilderIDs = dbObject.getBuilderIds();
             
-            foreach(int bID in lintBuilderIDs)
+            foreach(KeyValuePair<int, String> bID in lintBuilderIDs)
             {
-                Dictionary<int, string[]> aBIDProjects = dbObject.getProposalsByBID(bID, ddlOrderBy.SelectedValue.ToString());
+                Dictionary<int, String[]> aBIDProjects = dbObject.getProposalsByBID(bID.Key, ddlOrderBy.SelectedValue.ToString(), true);
               //  foreach(Project project in aBIDProjects){
               //      ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.getProjectName(), "ProjectProposal.aspx", project.getLastModified()));
               //}
@@ -109,10 +109,10 @@ namespace LotBankingCrux_v_1
             ddlOrderBy.Items.Add("Approval Date");
             ddlOrderBy.Items.Add("Last Requested Date");
 
-            List<int> lintBuilderIDs = dbObject.getBuilderId();
-            foreach (int bID in lintBuilderIDs)
+            Dictionary<int, String> lintBuilderIDs = dbObject.getBuilderIds();
+            foreach (KeyValuePair<int, String> bID in lintBuilderIDs)
             {
-               Dictionary<int, string[]> aBIDDocuments = dbObject.getBuilderDocumentsByBID(bID, ddlOrderBy.SelectedValue.ToString());
+               Dictionary<int, String[]> aBIDDocuments = dbObject.getBuilderDocumentsByBID(bID.Key, ddlOrderBy.SelectedValue.ToString());
                 //foreach (Dictionary<int, string[]> doc in aBIDDocuments)
                 //{
                 //    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(doc.getDocumentName(), "ProjectProposal.aspx", doc.getLastRequestedTime()));

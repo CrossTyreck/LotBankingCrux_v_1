@@ -69,30 +69,22 @@ namespace LotBankingCrux_v_1
         {
             DashboardView.ActiveViewIndex = 0;
 
-            List<int> lintBuilderIDs = dbObject.getBuilderId();
 
-            foreach (int bID in lintBuilderIDs)
+            Dictionary<int, String[]> aBIDProjects = dbObject.getProposalsByBID(((DataBucket)Session["UserData"])._builderID, "", true);
+            foreach (KeyValuePair<int, String[]> project in aBIDProjects)
             {
-                Project[] aBIDProjects = dbObject.getProjects(bID);
-                foreach (Project project in aBIDProjects)
-                {
-                    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.getProjectName(), "ProjectProposal.aspx", project.getLastModified()));
-                }
+                ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Value[0], "ProjectProposal.aspx", project.Value[1]));
             }
-        }
+         }
 
         protected void lnkbtnProjects_Click(object sender, EventArgs e)
         {
             DashboardView.ActiveViewIndex = 1;
 
-            List<int> lintBuilderIDs = dbObject.getBuilderId();
-            foreach (int bID in lintBuilderIDs)
+            Dictionary<int, String[]> aBIDProjects = dbObject.getProjectsByBID(((DataBucket)Session["UserData"])._builderID, "", true);
+            foreach (KeyValuePair<int, String[]> project in aBIDProjects)
             {
-                Project[] aBIDProjects = dbObject.getProjects(bID);
-                foreach (Project project in aBIDProjects)
-                {
-                    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.getProjectName(), "ProjectDashboard.aspx", project.getLastModified()));
-                }
+                ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Value[0], "ProjectDashboard.aspx", project.Value[1]));
             }
         }
 
@@ -100,14 +92,11 @@ namespace LotBankingCrux_v_1
         {
             DashboardView.ActiveViewIndex = 2;
 
-            List<int> lintBuilderIDs = dbObject.getBuilderId();
-            foreach (int bID in lintBuilderIDs)
+
+            Dictionary<int, String[]> aBIDDocuments = dbObject.getBuilderDocumentsByBID(((DataBucket)Session["UserData"])._builderID, "");
+            foreach (KeyValuePair<int, String[]> doc in aBIDDocuments)
             {
-                BuilderDocumentData[] aBIDDocuments = dbObject.getBuilderDocumentData(bID);
-                foreach (BuilderDocumentData doc in aBIDDocuments)
-                {
-                    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(doc.getDocumentName(), "ProjectProposal.aspx", doc.getLastRequestedTime()));
-                }
+                ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(doc.Value[0], "ProjectProposal.aspx", doc.Value[1]));
             }
         }
 

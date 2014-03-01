@@ -11,7 +11,7 @@ namespace LotBankingCrux_v_1.CustomControls
         public LinkButton Name { get; set; }
         public Label ModifiedDate { get; set; }
 
-        public ProjectRowPanel(string name, string url, DateTime date)
+        public ProjectRowPanel(string name, string url, String date)
         {
             this.CssClass = "projectrowpanel";
             Name = new LinkButton();
@@ -22,7 +22,7 @@ namespace LotBankingCrux_v_1.CustomControls
            // Name.BorderStyle = BorderStyle.Solid;
 
             ModifiedDate = new Label();
-            ModifiedDate.Text = date.ToShortDateString();
+            ModifiedDate.Text = date;
 
             Controls.Add(Name);
             Controls.Add(ModifiedDate);

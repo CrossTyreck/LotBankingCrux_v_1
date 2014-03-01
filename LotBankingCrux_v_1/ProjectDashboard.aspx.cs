@@ -17,10 +17,10 @@ namespace LotBankingCrux_v_1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<String> aBIDDocuments = dbObject.getProjectDocuments(((DataBucket)Session["UserData"])._userID);
-            foreach (String doc in aBIDDocuments)
+            Dictionary<int, String[]> aBIDDocuments = dbObject.getProjectDocumentNames(((DataBucket)Session["UserData"])._projectID);
+            foreach (KeyValuePair<int, String[]> doc in aBIDDocuments)
             {
-                pnlProjectDocumentsTest.Controls.Add(new ProjectRowPanel(doc, "ProjectDashboard.aspx", DateTime.Now));
+                pnlProjectDocumentsTest.Controls.Add(new ProjectRowPanel(doc.Value[0], "ProjectDashboard.aspx", doc.Value[1]));
             }
         }
 

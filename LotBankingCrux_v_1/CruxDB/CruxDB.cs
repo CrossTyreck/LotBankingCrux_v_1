@@ -753,10 +753,11 @@ namespace LotBankingCrux_v_1.Crux
             return doc;
         }
 
-        public Dictionary<int, String> getProjectDocumentNames(int project_id)
+        public Dictionary<int, String[]> getProjectDocumentNames(int project_id)
         {
             MySqlCommand selectProjectDocuments = new MySqlCommand("SELECT id, " +
-                                                                          "file_name " +
+                                                                          "file_name, " +
+                                                                          "last_modified " +
                                                                      "FROM Project_Documents " +
                                                                     "WHERE project_id = @projectId",
                                                                 databaseConnection);
@@ -764,11 +765,10 @@ namespace LotBankingCrux_v_1.Crux
 
          
 
-            int docCount = 0;
             databaseConnection.Open();
 
             MySqlDataReader reader;
-            Dictionary<int, String> listDocNames = new Dictionary<int, String>();
+            Dictionary<int, String[]> listDocNames = new Dictionary<int, String[]>();
 
             try
             {
@@ -776,7 +776,7 @@ namespace LotBankingCrux_v_1.Crux
                 
                 while (reader.Read())
                 {   
-                    listDocNames.Add(reader.GetInt32(0), reader.GetString(1));
+                    listDocNames.Add(reader.GetInt32(0), new String[]{reader.GetString(1), reader.GetString(2)});
                 }
             }
             catch (Exception e)
@@ -1664,9 +1664,9 @@ namespace LotBankingCrux_v_1.Crux
         }
     }
 
-    public class DateObject
+    public class dateAggregateObject
     {
-        public DateObject()
+        public dateAggregateObject()
         {
         }
     }
