@@ -52,7 +52,7 @@
                 </asp:Panel>
             </asp:Panel>
         </div>
-        <footer>
+        <footer id="footer">
             <div class="content-wrapper">
                 <div class="float-left">
                     <p>Crescent Bay Holdings, LLC / T 480.406.6000 / CRUX@notValidEmail.com / © All Rights Reservedserved</p>
