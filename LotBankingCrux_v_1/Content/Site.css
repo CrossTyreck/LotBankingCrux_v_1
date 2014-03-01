@@ -212,10 +212,6 @@ a {
     color: inherit;
 }
 
-.featured-background {
-    background-color: dimgray;
-}
-
 .panel-parent {
     display: block;
     background-color: lightgrey;
