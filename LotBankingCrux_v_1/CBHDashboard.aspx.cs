@@ -18,7 +18,7 @@ namespace LotBankingCrux_v_1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            ddlOrderBy.Items.Clear();
         }
 
         /// <summary>
@@ -34,29 +34,6 @@ namespace LotBankingCrux_v_1
         }
 
         /// <summary>
-        /// Shows a list of existing builder project proposals in the MultiView Panel. 
-        /// The current design should have an object that displays the current builder
-        /// then list out the proposals tied to that builder in a custom control, the 
-        /// ProjectRowPanel. 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void ProjectProposals_Click(object sender, EventArgs e)
-        {
-            DashboardView.ActiveViewIndex = 0;
-
-            List<int> lintBuilderIDs = dbObject.getBuilderId();
-            
-            foreach(int bID in lintBuilderIDs)
-            {
-                Project[] aBIDProjects = dbObject.getProjects(bID);
-                foreach(Project project in aBIDProjects){
-                    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.getProjectName(), "ProjectProposal.aspx", project.getLastModified()));
-              }
-            }
-        }
-
-        /// <summary>
         /// Shows a list of existing builder projects in the MultiView Panel. 
         /// The current design should have an object that displays the current builder
         /// then list out the projects tied to that builder in a custom control, the 
@@ -64,18 +41,52 @@ namespace LotBankingCrux_v_1
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void ExistingProjects_Click(object sender, EventArgs e)
+        protected void Projects_Click(object sender, EventArgs e)
         {
             DashboardView.ActiveViewIndex = 1;
+
+            ddlOrderBy.Items.Add("Builder");
+            ddlOrderBy.Items.Add("Project Name");
+            ddlOrderBy.Items.Add("Submission Date");
+            ddlOrderBy.Items.Add("Approval Date");
+            ddlOrderBy.Items.Add("Last Requested Date");
 
             List<int> lintBuilderIDs = dbObject.getBuilderId();
             foreach (int bID in lintBuilderIDs)
             {
-                Project[] aBIDProjects = dbObject.getProjects(bID);
-                foreach (Project project in aBIDProjects)
-                {
-                    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.getProjectName(), "ProjectDashboard.aspx", project.getLastModified()));
-                }
+                Dictionary<int, string[]> aBIDProjects = dbObject.getProjectsByBID(bID, ddlOrderBy.SelectedValue.ToString());
+                //foreach (Project project in aBIDProjects)
+                //{
+                //    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.getProjectName(), "ProjectDashboard.aspx", project.getLastModified()));
+                //}
+            }
+        }
+
+        /// <summary>
+        /// Shows a list of existing builder project proposals in the MultiView Panel. 
+        /// The current design should have an object that displays the current builder
+        /// then list out the proposals tied to that builder in a custom control, the 
+        /// ProjectRowPanel. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Proposals_Click(object sender, EventArgs e)
+        {
+            DashboardView.ActiveViewIndex = 0;
+
+            ddlOrderBy.Items.Add("Builder");
+            ddlOrderBy.Items.Add("Proposal Name");
+            ddlOrderBy.Items.Add("Submission Date");
+            ddlOrderBy.Items.Add("Last Requested Date");
+
+            List<int> lintBuilderIDs = dbObject.getBuilderId();
+            
+            foreach(int bID in lintBuilderIDs)
+            {
+                Dictionary<int, string[]> aBIDProjects = dbObject.getProposalsByBID(bID, ddlOrderBy.SelectedValue.ToString());
+              //  foreach(Project project in aBIDProjects){
+              //      ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.getProjectName(), "ProjectProposal.aspx", project.getLastModified()));
+              //}
             }
         }
 
@@ -92,14 +103,20 @@ namespace LotBankingCrux_v_1
         {
             DashboardView.ActiveViewIndex = 2;
 
+            ddlOrderBy.Items.Add("Builder");
+            ddlOrderBy.Items.Add("Document Name");
+            ddlOrderBy.Items.Add("Submission Date");
+            ddlOrderBy.Items.Add("Approval Date");
+            ddlOrderBy.Items.Add("Last Requested Date");
+
             List<int> lintBuilderIDs = dbObject.getBuilderId();
             foreach (int bID in lintBuilderIDs)
             {
-               BuilderDocumentData[] aBIDDocuments = dbObject.getBuilderDocumentData(bID);
-                foreach (BuilderDocumentData doc in aBIDDocuments)
-                {
-                    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(doc.getDocumentName(), "ProjectProposal.aspx", doc.getLastRequestedTime()));
-                }
+               Dictionary<int, string[]> aBIDDocuments = dbObject.getBuilderDocumentsByBID(bID, ddlOrderBy.SelectedValue.ToString());
+                //foreach (Dictionary<int, string[]> doc in aBIDDocuments)
+                //{
+                //    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(doc.getDocumentName(), "ProjectProposal.aspx", doc.getLastRequestedTime()));
+                //}
             }
         }
 

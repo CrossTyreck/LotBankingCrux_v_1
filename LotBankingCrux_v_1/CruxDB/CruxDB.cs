@@ -583,6 +583,11 @@ namespace LotBankingCrux_v_1.Crux
             return 1;
         }
 
+        public Dictionary<int, string[]> getBuilderDocumentsByBID(int builder_id, string orderBy)
+        {
+            return new Dictionary<int, string[]>();
+        }
+
         public DataTable getBuilderDocuments(int builder_id)
         {
             MySqlCommand getBuildersDocuments = new MySqlCommand("SELECT file_name, " +
@@ -837,6 +842,11 @@ namespace LotBankingCrux_v_1.Crux
             return dtProjects;
         }
 
+        public Dictionary<int, string[]> getProjectsByBID(int builder_id, string orderBy)
+        {
+            return new Dictionary<int, string[]>();
+        }
+
         public Project[] getProjects(int builder_id)
         {
 
@@ -897,6 +907,11 @@ namespace LotBankingCrux_v_1.Crux
 
             return projects;
            // return projectList.ToArray();
+        }
+
+        public Dictionary<int, string[]> getProposalsByBID(int builder_id, string orderBy)
+        {
+            return new Dictionary<int, string[]>();
         }
 
         public int insertLotType(int project_id, int lot_width, int lot_length, int count, Double purchase_price, Decimal release_price, Decimal sale_price)

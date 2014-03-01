@@ -21,11 +21,11 @@
                 </li>
 
                 <li>
-                    <asp:LinkButton ID="ProjectProposals" runat="server" OnClick="ProjectProposals_Click">Proposals</asp:LinkButton>
+                    <asp:LinkButton ID="ProjectProposals" runat="server" OnClick="Proposals_Click">Proposals</asp:LinkButton>
                 </li>
 
                 <li>
-                    <asp:LinkButton ID="ExistingProjects" runat="server" OnClick="ExistingProjects_Click">Projects</asp:LinkButton>
+                    <asp:LinkButton ID="ExistingProjects" runat="server" OnClick="Projects_Click">Projects</asp:LinkButton>
                 </li>
 
                 <li>
@@ -76,6 +76,15 @@
 
 
 
+     <asp:Label ID="lblOrderBy" runat="server" Text="Order By: "></asp:Label>
+    <asp:DropDownList ID="ddlOrderBy" runat="server">
+    </asp:DropDownList>
+
+
+
+
+
+
      <asp:MultiView ID="DashboardView" runat="server" ActiveViewIndex="0" OnActiveViewChanged="DashboardView_ActiveViewChanged">
             <asp:View ID= "ProjectProposalsView" runat= "server"> 
                 <p><asp:Label ID="lblProjectProposals" runat="server" Font-Bold="True" Font-Italic="False" Font-Size="X-Large" Font-Underline="True" style="text-align: center" Text="Proposals"></asp:Label></p>
@@ -86,7 +95,7 @@
                 <p>
                     <asp:Label ID="lblCurrentProjects" runat="server" Font-Bold="True" Font-Italic="False" Font-Size="X-Large" Font-Underline="True" style="text-align: center" Text="Projects"></asp:Label>
                 </p>
-                <asp:Panel ID="ExistingProjectsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px">
+                <asp:Panel ID="ProjectsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px">
                     
                 </asp:Panel>
             </asp:View>

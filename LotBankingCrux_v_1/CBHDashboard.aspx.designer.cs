@@ -49,6 +49,24 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.LinkButton BuilderDocuments;
         
         /// <summary>
+        /// lblOrderBy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblOrderBy;
+        
+        /// <summary>
+        /// ddlOrderBy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlOrderBy;
+        
+        /// <summary>
         /// DashboardView control.
         /// </summary>
         /// <remarks>
@@ -103,13 +121,13 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.Label lblCurrentProjects;
         
         /// <summary>
-        /// ExistingProjectsPanel control.
+        /// ProjectsPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel ExistingProjectsPanel;
+        protected global::System.Web.UI.WebControls.Panel ProjectsPanel;
         
         /// <summary>
         /// BuilderDocumentsView control.
