@@ -14,9 +14,24 @@
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
 
-    <h1 id="buildername">
-        <asp:Image runat="server" alt="Builder Logo" class="auto-style2" src="" ID="imgBuilderLogo" />
+     <asp:Image runat="server" alt="Builder Logo" class="leftalignElement" src="" ID="imgBuilderLogo" />
+    <h1 id="buildername" class="centerElement">
+       
         FULTON HOMES </h1>
+    <p class="centerElement">
+        <asp:Label ID="lblContactName" runat="server" Text="Contact Name:"></asp:Label>
+        <asp:LinkButton ID="lnkbtnContactName" runat="server" OnClick="lnkbtnContactName_Click"></asp:LinkButton>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Label ID="lblContactNumber" runat="server" Text="Contact Number:"></asp:Label>
+        <asp:LinkButton ID="lnkbtnContactNumber" runat="server" OnClick="lnkbtnContactNumber_Click"></asp:LinkButton>
+    </p>
+     <p class="centerElement">
+         <asp:TextBox ID="txtAddContactName" runat="server" Visible="False"></asp:TextBox>
+         <asp:TextBox ID="txtAddContactNumber" runat="server" Visible="False"></asp:TextBox>
+    </p>
+     <p class="centerElement">
+         <asp:Button ID="btnSubmitContact" runat="server" CssClass="button" OnClick="btnSubmitContact_Click" Text="Submit Contact Info" ValidateRequestMode="Enabled" Visible="False" />
+    </p>
     <asp:Panel ID="pnlRequirements" runat="server">
     </asp:Panel>
     <h1>
@@ -24,20 +39,19 @@
         <asp:LinkButton ID="lnkbtnProjects" runat="server" OnClick="lnkbtnProjects_Click">Projects</asp:LinkButton>
         <asp:LinkButton ID="lnkbtnBuilderDocuments" runat="server" OnClick="lnkbtnBuilderDocuments_Click">Builder Documents</asp:LinkButton>
 
-     <asp:MultiView ID="DashboardView" runat="server" ActiveViewIndex="0" OnActiveViewChanged="DashboardView_ActiveViewChanged">
-            <asp:View ID= "viwProposals" runat= "server"> 
+        <asp:MultiView ID="DashboardView" runat="server" ActiveViewIndex="0" OnActiveViewChanged="DashboardView_ActiveViewChanged">
+            <asp:View ID="viwProposals" runat="server">
 
                 <asp:Panel ID="ProjectProposalsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px"></asp:Panel>
             </asp:View>
-            <asp:View ID= "viwProjects" runat= "server"> 
+            <asp:View ID="viwProjects" runat="server">
                 <asp:Panel ID="ExistingProjectsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px">
-                    
                 </asp:Panel>
             </asp:View>
-            <asp:View ID= "viwBuilderDocuments" runat= "server"> 
+            <asp:View ID="viwBuilderDocuments" runat="server">
                 <asp:Panel ID="BuilderDocumentsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px"></asp:Panel>
             </asp:View>
-       </asp:MultiView>
+        </asp:MultiView>
 
 
 

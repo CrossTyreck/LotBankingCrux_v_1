@@ -27,6 +27,16 @@ namespace LotBankingCrux_v_1
             //{
             //    pnlProjects.Controls.Add(new ProjectRowPanel(project.getProjectName(), "ProjectDashboard.aspx", project.getLastModified()));
             //}
+
+            if (lnkbtnContactName.Text.Equals(""))
+            {
+                lnkbtnContactName.Text = "Click Here to Update";
+            }
+
+            if (lnkbtnContactNumber.Text.Equals(""))
+            {
+                lnkbtnContactNumber.Text = "Click Here to Update";
+            }
         }
 
 
@@ -99,6 +109,26 @@ namespace LotBankingCrux_v_1
                     ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(doc.getDocumentName(), "ProjectProposal.aspx", doc.getLastRequestedTime()));
                 }
             }
+        }
+
+        protected void lnkbtnContactName_Click(object sender, EventArgs e)
+        {
+            txtAddContactName.Visible = true;
+            btnSubmitContact.Visible = true;
+        }
+
+        protected void lnkbtnContactNumber_Click(object sender, EventArgs e)
+        {
+            txtAddContactName.Visible = true;
+            btnSubmitContact.Visible = true;
+        }
+
+        protected void btnSubmitContact_Click(object sender, EventArgs e)
+        {
+            //Add in the database connection that stores contact information here.
+            txtAddContactName.Visible = false;
+            txtAddContactName.Visible = false;
+            btnSubmitContact.Visible = false;
         }
     }
 }
