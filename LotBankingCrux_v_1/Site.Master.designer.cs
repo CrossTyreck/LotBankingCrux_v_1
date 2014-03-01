@@ -31,22 +31,22 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder Stylesheets;
         
         /// <summary>
-        /// WelcomePage control.
+        /// lbWelcomePage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton WelcomePage;
+        protected global::System.Web.UI.WebControls.LinkButton lbWelcomePage;
         
         /// <summary>
-        /// LogoutButton control.
+        /// lbLogoutButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LogoutButton;
+        protected global::System.Web.UI.WebControls.LinkButton lbLogoutButton;
         
         /// <summary>
         /// FeaturedContent control.

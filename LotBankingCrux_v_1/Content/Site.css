@@ -19,7 +19,8 @@ a:hover {
 header {
     height: 30px;
     padding: 15px;
-    background-color: black;
+    background-color: #238cd0;
+    color: black;
     vertical-align: middle;
     margin-top: 0px;
     margin-right: 0px;
@@ -30,7 +31,6 @@ header {
 /* Header styles */
 h1, h2, h3,
 h4, h5, h6 {
-    color: #000;
     margin-bottom: 0;
     padding-bottom: 0;
 }
@@ -114,17 +114,22 @@ h5, h6 {
 ----------------------------------------------------------*/
 .site-title {
     font-size: 34px;
-    display: inline;
-    color: white;
+    
+    color: black;
     font-family: Eyeglass;
     vertical-align: middle;
+
 }
 
     .site-title a, .site-title a:hover, .site-title a:active {
-        color: white;
+        color: black;
         outline: none;
         text-decoration: none;
-    }
+    text-align: right;
+}
+
+.logout-button {
+}
 
 /* main layout
 ----------------------------------------------------------*/

@@ -71,6 +71,9 @@ namespace LotBankingCrux_v_1
         protected virtual void Page_Load(object sender, EventArgs e)
         {
 
+            this.lbWelcomePage.Style.Add("text-decoration", "underline");
+            this.lbLogoutButton.Style.Add("text-decoration", "underline");
+
             if (Session["UserData"] == null)
             {
                 Response.Redirect("Login.aspx");
