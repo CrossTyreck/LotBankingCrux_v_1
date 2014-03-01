@@ -8,8 +8,13 @@
     <br />
     Password<asp:TextBox ID="tbPassword" runat="server" Width="119px"></asp:TextBox>
     <br />
-    User Type<asp:TextBox ID="tbUserType" runat="server" Width="119px"></asp:TextBox>
-&nbsp;1 = Admin, 2 = Builder, 3 = Investor<br />
+    User Type<asp:DropDownList ID="DDLUserType" runat="server" OnSelectedIndexChanged="DLLUserType_SelectedIndexChanged">
+        <asp:ListItem Text="Select a User Type"></asp:ListItem>
+        <asp:ListItem Text="Admin" Value="1"></asp:ListItem>
+        <asp:ListItem Text="Builder" Value="2"></asp:ListItem>
+        <asp:ListItem Text="Investor" Value="3"></asp:ListItem>
+    </asp:DropDownList>
+    &nbsp;<br />
     Option<asp:TextBox ID="tbOptionMask" runat="server" Width="119px"></asp:TextBox>
 &nbsp;Use 0 for default<br />
     <asp:Button ID="butInsertLogin" runat="server" OnClick="butInsertLogin_Click" Text="SUBMIT" />
