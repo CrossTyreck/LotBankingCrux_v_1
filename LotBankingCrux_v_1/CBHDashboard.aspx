@@ -17,7 +17,7 @@
             </asp:Chart>--%><%--  <li>Select Builder </li>--%><%--  <asp:DropDownList ID="ddlBuilders" runat="server">
                 </asp:DropDownList>--%>
                 <li>
-                    <asp:LinkButton ID="AddUsers" runat="server" Style="text-decoration: none" OnClick="AddUser_OnClick" ForeColor="Black">Add User</asp:LinkButton>
+                    <asp:LinkButton ID="AddUsers" runat="server" OnClick="AddUser_OnClick" ForeColor="Black">Add User</asp:LinkButton>
                 </li>
 
                 <li>
