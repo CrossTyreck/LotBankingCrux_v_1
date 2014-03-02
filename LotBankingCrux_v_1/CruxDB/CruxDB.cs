@@ -323,7 +323,7 @@ namespace LotBankingCrux_v_1.Crux
 
                 while (reader.Read())
                 {
-                    returnValue =  reader.GetInt32(0);
+                    returnValue = reader.GetInt32(0);
                 }
             }
 
@@ -375,11 +375,11 @@ namespace LotBankingCrux_v_1.Crux
         public Dictionary<int, String> getBuilderNames()
         {
             MySqlCommand getBuildersNamesQuery = new MySqlCommand("SELECT builder_id, " +
-                                                                    "name " + 
+                                                                    "name " +
                                                                "FROM Builder_Data " +
                                                                "SORT BY name ASC",
                                                          databaseConnection);
-            Dictionary<int, String> returnValues = new Dictionary<int,string>();
+            Dictionary<int, String> returnValues = new Dictionary<int, string>();
             MySqlDataReader reader;
             try
             {
@@ -407,7 +407,7 @@ namespace LotBankingCrux_v_1.Crux
                                                          databaseConnection);
             getBuilderProjects.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builderId;
 
-            Dictionary<int, String> returnValues = new Dictionary<int,string>();
+            Dictionary<int, String> returnValues = new Dictionary<int, string>();
             MySqlDataReader reader;
             try
             {
@@ -763,7 +763,7 @@ namespace LotBankingCrux_v_1.Crux
                                                                 databaseConnection);
             selectProjectDocuments.Parameters.Add("@projectId", MySqlDbType.Int32).Value = project_id;
 
-         
+
 
             databaseConnection.Open();
 
@@ -773,10 +773,10 @@ namespace LotBankingCrux_v_1.Crux
             try
             {
                 reader = selectProjectDocuments.ExecuteReader(CommandBehavior.SequentialAccess);
-                
+
                 while (reader.Read())
-                {   
-                    listDocNames.Add(reader.GetInt32(0), new String[]{reader.GetString(1), reader.GetString(2)});
+                {
+                    listDocNames.Add(reader.GetInt32(0), new String[] { reader.GetString(1), reader.GetString(2) });
                 }
             }
             catch (Exception e)
@@ -789,7 +789,7 @@ namespace LotBankingCrux_v_1.Crux
 
             return listDocNames;
         }
-        
+
         public byte[] getProjectDocument(int id)
         {
             byte[] doc = new byte[0];
@@ -827,16 +827,18 @@ namespace LotBankingCrux_v_1.Crux
             return doc;
         }
 
-        public int insertPoject(int builder_id, String project_name, String first_crossroad, String second_crossroad, String cardinal, String location_notes, Decimal aquisition_price, Decimal improvement_cost, int total_lot_count)
+        public int insertPoject(int builder_id, String project_name, String first_crossroad, String second_crossroad, String city, String state, String cardinal, String location_notes, Decimal aquisition_price, Decimal improvement_cost, int total_lot_count)
         {
             MySqlCommand insertNewProject = new MySqlCommand("INSERT INTO Projects" +
-                                                                   "( builder_id, project_name, first_crossroad, second_crossroad, cardinal,  location_notes, aquisition_price, improvement_cost)" + //total_lot_count)"
-                                                             "VALUES( @builderId, @projectName, @firstCrossroad, @secondCrossroad, @cardinal, @locationNotes, @aquisitionPrice, @improvementCost)", //, @totalLotCount)",
+                                                                   "( builder_id, project_name, first_crossroad, second_crossroad, city, state, cardinal,  location_notes, aquisition_price, improvement_cost)" + //total_lot_count)"
+                                                             "VALUES( @builderId, @projectName, @firstCrossroad, @secondCrossroad, @city, @state, @cardinal, @locationNotes, @aquisitionPrice, @improvementCost)", //, @totalLotCount)",
                                                              databaseConnection);
             insertNewProject.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builder_id;
             insertNewProject.Parameters.Add("@projectName", MySqlDbType.VarChar).Value = project_name;
             insertNewProject.Parameters.Add("@firstCrossroad", MySqlDbType.VarChar, 30).Value = first_crossroad;
             insertNewProject.Parameters.Add("@secondCrossroad", MySqlDbType.VarChar, 30).Value = second_crossroad;
+            insertNewProject.Parameters.Add("@city", MySqlDbType.VarChar, 30).Value = city;
+            insertNewProject.Parameters.Add("@state", MySqlDbType.VarChar, 30).Value = state;
             insertNewProject.Parameters.Add("@cardinal", MySqlDbType.VarChar, 2).Value = cardinal;
             insertNewProject.Parameters.Add("@locationNotes", MySqlDbType.VarChar, 248).Value = location_notes;
             insertNewProject.Parameters.Add("@aquisitionPrice", MySqlDbType.Decimal).Value = aquisition_price;
@@ -941,7 +943,7 @@ namespace LotBankingCrux_v_1.Crux
                 reader = getBuilderProjects.ExecuteReader(CommandBehavior.SequentialAccess);
                 while (reader.Read())
                 {
-                    returnValues.Add(reader.GetInt32(0), new String[]{reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4)});
+                    returnValues.Add(reader.GetInt32(0), new String[] { reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4) });
                 }
             }
             catch (MySqlException e)
@@ -956,7 +958,7 @@ namespace LotBankingCrux_v_1.Crux
         public Project[] getProjects(int builder_id)
         {
 
-            MySqlCommand selectBuilderProjects = new MySqlCommand("SELECT id, project_name, first_crossroad, second_crossroad, cardinal, location_notes, aquisition_price, improvement_cost, date_created" +  Environment.NewLine +// total_lot_count,
+            MySqlCommand selectBuilderProjects = new MySqlCommand("SELECT id, project_name, first_crossroad, second_crossroad, cardinal, location_notes, aquisition_price, improvement_cost, date_created" + Environment.NewLine +// total_lot_count,
                                                                     "FROM Projects " +
                                                                    "WHERE builder_id = @builderId;",
                                                                 databaseConnection);
@@ -977,14 +979,16 @@ namespace LotBankingCrux_v_1.Crux
                     String pn = reader.GetString(1);
                     String fcs = reader.GetString(2);
                     String scs = reader.GetString(3);
-                    String c = reader.GetString(4);
-                    String ln = reader.GetString(5);
-                    Decimal aq = reader.GetDecimal(6);
-                    Decimal ic = reader.GetDecimal(7);
+                    String city = reader.GetString(4);
+                    String state = reader.GetString(5);
+                    String c = reader.GetString(6);
+                    String ln = reader.GetString(7);
+                    Decimal aq = reader.GetDecimal(8);
+                    Decimal ic = reader.GetDecimal(9);
                     // int tlc = reader.GetInt32(8); not in the db
-                    DateTime lm = reader.GetDateTime(8);
+                    DateTime lm = reader.GetDateTime(10);
                     projectCount++;
-                    Project newProject = new Project(i, builder_id, pn, fcs, scs, c, ln, aq, ic, lm); // tlc,
+                    Project newProject = new Project(i, builder_id, pn, fcs, scs, city, state, c, ln, aq, ic, lm); // tlc,
                     projectList.Add(newProject);
                 }
                 projects = new Project[projectCount];
@@ -1008,6 +1012,42 @@ namespace LotBankingCrux_v_1.Crux
 
             return projects;
         }
+
+        public Project getProposal(int proposal_id)
+        {
+            MySqlCommand getProposal = new MySqlCommand("SELECT * " +
+                                                        "FROM Projects " +
+                                                        "WHERE id = @ProposalId ", 
+                                              databaseConnection);
+
+            getProposal.Parameters.Add("@ProposalId", MySqlDbType.Int32).Value = proposal_id;
+
+          
+            MySqlDataReader reader;
+            databaseConnection.Open();
+            try
+            {
+                reader = getProposal.ExecuteReader(CommandBehavior.SequentialAccess);
+                if (reader.Read())
+                {
+                    return new Project(reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6), reader.GetString(7), reader.GetString(8), reader.GetDecimal(9), reader.GetDecimal(10), reader.GetDateTime(18));
+                }
+            }
+            catch (MySqlException e)
+            {
+                Debug.Print(e.Message);
+                return null;
+            }
+            finally
+            {
+                databaseConnection.Close();
+            }
+
+            return null;
+         
+        }
+
+
 
         public Dictionary<int, String[]> getProposalsByBID(int builder_id, String orderBy, Boolean excludeDeclined = false)
         {
@@ -1058,7 +1098,7 @@ namespace LotBankingCrux_v_1.Crux
                 reader = getBuilderProjects.ExecuteReader(CommandBehavior.SequentialAccess);
                 while (reader.Read())
                 {
-                    returnValues.Add(reader.GetInt32(0), new String[]{reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4)});
+                    returnValues.Add(reader.GetInt32(0), new String[] { reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4) });
                 }
             }
             catch (MySqlException e)
@@ -1461,6 +1501,8 @@ namespace LotBankingCrux_v_1.Crux
         private String projectName;
         private String firstCrossStreet;
         private String secondCrossStreet;
+        private String city;
+        private String state;
         private String cardinal;
         private String location_notes;
         private Decimal aquisitionPrice;
@@ -1468,13 +1510,15 @@ namespace LotBankingCrux_v_1.Crux
         //private int totalLotCount; not in db
         private DateTime lastModified;
 
-        public Project(int i, int bid, String pn, String fcs, String scs, String card, String ln, Decimal aq, Decimal ic, DateTime lm) //int tlc,
+        public Project(int i, int bid, String pn, String fcs, String scs, String cty, String stt, String card, String ln, Decimal aq, Decimal ic, DateTime lm) //int tlc,
         {
             id = i;
             builderId = bid;
             projectName = pn;
             firstCrossStreet = fcs;
             secondCrossStreet = scs;
+            city = cty;
+            state = stt;
             cardinal = card;
             location_notes = ln;
             improvementCost = ic;
@@ -1498,6 +1542,30 @@ namespace LotBankingCrux_v_1.Crux
             return projectName;
         }
 
+        public string getFirstCrossStreet()
+        {
+            return firstCrossStreet;
+        }
+
+        public string getSecondCrossStreet()
+        {
+            return secondCrossStreet;
+        }
+
+        public string getCity()
+        {
+            return city;
+        }
+
+        public string getState()
+        {
+            return state;
+        }
+
+        public string getCardinal()
+        {
+            return cardinal;
+        }
         public Coordinates getCoordinates()
         {
             return new Coordinates(firstCrossStreet, secondCrossStreet, cardinal, location_notes);

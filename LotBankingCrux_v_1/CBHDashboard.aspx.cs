@@ -112,7 +112,7 @@ namespace LotBankingCrux_v_1
                 Dictionary<int, String[]> aBIDProjects = dbObject.getProposalsByBID(bID.Key, ddlOrderBy.SelectedValue.ToString(), false);
                 foreach (KeyValuePair<int, String[]> project in aBIDProjects)
                 {
-                    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Value[0], "ProjectProposal.aspx", project.Value[1]));
+                    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectProposal.aspx", project.Value[1]));
                 }
             }
         }

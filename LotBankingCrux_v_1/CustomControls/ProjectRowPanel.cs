@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Web.UI.WebControls;
+using System.Web.SessionState;
+using LotBankingCrux_v_1.Crux;
 
 namespace LotBankingCrux_v_1.CustomControls
 {
@@ -12,17 +14,16 @@ namespace LotBankingCrux_v_1.CustomControls
         public Label Builder { get; set; }
         public Label ModifiedDate { get; set; }
         public Label CreatedDate { get; set; }
-      
-
-
-        public ProjectRowPanel(string name, string url, String date)
+        public int ProjectID { get; set; }
+    
+        public ProjectRowPanel(int id, string name, string url, String date)
 
         {
-          
+            ProjectID = id;
             Name = new LinkButton();
             Name.Text = name;
-            Name.PostBackUrl = url;
-           
+            Name.PostBackUrl = url + "?id=" + id.ToString();
+       
            // Name.BorderColor = Color.Aqua;
            // Name.BorderStyle = BorderStyle.Solid;
 
@@ -36,9 +37,6 @@ namespace LotBankingCrux_v_1.CustomControls
         public void ProposalRowPanel(string name, string builder, DateTime requestedTime, DateTime submittedTime, string cssClass)
         {
             this.CssClass = cssClass;
-            
-
         }
-
     }
 }

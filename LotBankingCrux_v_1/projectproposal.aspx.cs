@@ -12,6 +12,9 @@ namespace LotBankingCrux_v_1
 {
     public partial class ProjectProposal : System.Web.UI.Page
     {
+
+        CruxDB dbObject = new CruxDB();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             InitControls(((DataBucket)Session["UserData"])._userType);
@@ -48,7 +51,7 @@ namespace LotBankingCrux_v_1
             decimal acquisitionPrice;
 
             decimal improvementCost;
-            
+
             decimal.TryParse(txtAcquisitionPrice.Text, NumberStyles.Currency, NumberFormatInfo.InvariantInfo, out acquisitionPrice);
             decimal.TryParse(txtImprovementCosts.Text, NumberStyles.Currency, NumberFormatInfo.InvariantInfo, out improvementCost);
 
@@ -56,12 +59,12 @@ namespace LotBankingCrux_v_1
             {
                 if (((DataBucket)Session["UserData"])._userID > 0)
                     //We need to add validation here, currently a user can enter an empty project
-                    DBObject.insertPoject(LotBankingCrux_v_1.Crux.CruxDB.dbID, txtProjectName.Text, txtFirstStreet.Text, txtSecondStreet.Text, txtCardinal.Text, locationNotes, acquisitionPrice, improvementCost, numberLots);
+                    DBObject.insertPoject(LotBankingCrux_v_1.Crux.CruxDB.dbID, txtProjectName.Text, txtFirstStreet.Text, txtSecondStreet.Text, txtCity.Text, txtState.Text, txtCardinal.Text, locationNotes, acquisitionPrice, improvementCost, numberLots);
                 else
                     Response.Redirect("Login.aspx");
 
                 lblDataInserted.Visible = true;
-            
+
                 resetControls();
             }
             catch (MySqlException ex)
@@ -100,6 +103,20 @@ namespace LotBankingCrux_v_1
         /// </summary>
         void SetBuilderPage()
         {
+            Project proposal;
+
+            if ((Request.QueryString["id"] != null) && ((proposal = dbObject.getProposal(Int32.Parse(Request.QueryString["id"].ToString()))) != null))
+            {
+                txtProjectName.Text = proposal.getProjectName();
+                txtFirstStreet.Text = proposal.getFirstCrossStreet();
+                txtSecondStreet.Text = proposal.getSecondCrossStreet();
+                txtCity.Text = proposal.getCity();
+                txtState.Text = proposal.getState();
+                txtCardinal.Text = proposal.getCardinal();
+                //txtNumberOfLots.Text = proposal.get
+                txtImprovementCosts.Text = proposal.getImprovementCost().ToString();
+                txtAcquisitionPrice.Text = proposal.getAquisitionPrice().ToString();
+            }
         }
 
         /// <summary>
@@ -108,6 +125,20 @@ namespace LotBankingCrux_v_1
         /// </summary>
         void SetAssociatePage()
         {
+            Project proposal;
+
+            if ((Request.QueryString["id"] != null) && ((proposal = dbObject.getProposal(Int32.Parse(Request.QueryString["id"].ToString()))) != null))
+            {
+                txtProjectName.Text = proposal.getProjectName();
+                txtFirstStreet.Text = proposal.getFirstCrossStreet();
+                txtSecondStreet.Text = proposal.getSecondCrossStreet();
+                txtCity.Text = proposal.getCity();
+                txtState.Text = proposal.getState();
+                txtCardinal.Text = proposal.getCardinal();
+                //txtNumberOfLots.Text = proposal.get
+                txtImprovementCosts.Text = proposal.getImprovementCost().ToString();
+                txtAcquisitionPrice.Text = proposal.getAquisitionPrice().ToString();
+            }
         }
 
         /// <summary>
@@ -128,8 +159,8 @@ namespace LotBankingCrux_v_1
 
             string stateLocation = txtState.Text;
 
-            mapImage.Attributes["src"] = ResolveUrl("http://maps.googleapis.com/maps/api/staticmap?center=" + firstStreet + "+" + secondStreet + "," + cityLocation + ","+stateLocation+"&zoom=16&size=600x600&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&sensor=false");
-            
+            mapImage.Attributes["src"] = ResolveUrl("http://maps.googleapis.com/maps/api/staticmap?center=" + firstStreet + "+" + secondStreet + "," + cityLocation + "," + stateLocation + "&zoom=16&size=600x600&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&sensor=false");
+
         }
     }
 }

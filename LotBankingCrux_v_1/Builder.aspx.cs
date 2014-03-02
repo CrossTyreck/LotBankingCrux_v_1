@@ -73,7 +73,7 @@ namespace LotBankingCrux_v_1
             Dictionary<int, String[]> aBIDProjects = dbObject.getProposalsByBID(((DataBucket)Session["UserData"])._builderID, "", false);
             foreach (KeyValuePair<int, String[]> project in aBIDProjects)
             {
-                ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Value[0], "ProjectProposal.aspx", project.Value[1]));
+                ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectProposal.aspx", project.Value[1]));
             }
          }
 
@@ -84,7 +84,7 @@ namespace LotBankingCrux_v_1
             Dictionary<int, String[]> aBIDProjects = dbObject.getProjectsByBID(((DataBucket)Session["UserData"])._builderID, "", true);
             foreach (KeyValuePair<int, String[]> project in aBIDProjects)
             {
-                ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Value[0], "ProjectDashboard.aspx", project.Value[1]));
+                ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectDashboard.aspx", project.Value[1]));
             }
         }
 
@@ -96,7 +96,7 @@ namespace LotBankingCrux_v_1
             Dictionary<int, String[]> aBIDDocuments = dbObject.getBuilderDocumentsByBID(((DataBucket)Session["UserData"])._builderID, "");
             foreach (KeyValuePair<int, String[]> doc in aBIDDocuments)
             {
-                ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(doc.Value[0], "ProjectProposal.aspx", doc.Value[1]));
+                ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(doc.Key, doc.Value[0], "ProjectProposal.aspx", doc.Value[1]));
             }
         }
 

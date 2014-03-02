@@ -20,7 +20,7 @@ namespace LotBankingCrux_v_1
             Dictionary<int, String[]> aBIDDocuments = dbObject.getProjectDocumentNames(((DataBucket)Session["UserData"])._projectID);
             foreach (KeyValuePair<int, String[]> doc in aBIDDocuments)
             {
-                pnlProjectDocumentsTest.Controls.Add(new ProjectRowPanel(doc.Value[0], "ProjectDashboard.aspx", doc.Value[1]));
+                pnlProjectDocumentsTest.Controls.Add(new ProjectRowPanel(doc.Key, doc.Value[0], "ProjectDashboard.aspx", doc.Value[1]));
             }
         }
 
