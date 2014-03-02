@@ -47,16 +47,47 @@
     </div>
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <asp:Panel ID="pnlMeters" CssClass="multiviewpanel" runat="server" Height="200px">
+    <asp:Panel ID="pnlMeters" CssClass="multiviewpanel" runat="server" Height="405px" Width="205px">
+        <table>
 
-        <div id="meter1" style="width: 350px; height: 300px"></div>
-        <script>
-            window.onload = function () {
-              <% Response.Write(meter1.GenerateMeterScriptValues("meter1", "meter11")); %>
-            };
-        </script>
-     
+
+            <tr>
+                <td>
+                    <div id="meter1" style="width: 200px; height: 200px"></div>
+                     <asp:Label runat="server" ID="lblMeter1" Text="METER3"/>
+                    <script>
+                        new function () {
+               <% Response.Write(meter1.GenerateMeterScriptValues("meter1", "meter11")); %>
+                        };
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="meter2" style="width: 200px; height: 200px"></div>
+                    <asp:Label runat="server" ID="lblMeter2" Text="METER2"/>
+                    <script>
+                        new function () {
+              <% Response.Write(meter2.GenerateMeterScriptValues("meter2", "meter22")); %>
+                        };
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="meter3" style="width: 200px; height: 200px"></div>
+                    <asp:Label runat="server" ID="lblMeter3" Text="METER3"/>
+                    <script>
+                        new function () {
+              <% Response.Write(meter3.GenerateMeterScriptValues("meter3", "meter33")); %>
+
+                        };
+                    </script>
+                </td>
+            </tr>
+        </table>
     </asp:Panel>
+
     <asp:Panel ID="pnlGraphs" CssClass="multiviewpanel" runat="server" Height="200px">
     </asp:Panel>
 

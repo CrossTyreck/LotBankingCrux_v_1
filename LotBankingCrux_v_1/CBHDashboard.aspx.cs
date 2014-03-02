@@ -26,27 +26,24 @@ namespace LotBankingCrux_v_1
             meter1.Min = 0;
             meter1.Max = 10000;
             meter1.Value = 7500;
-            meter1.OptimumRangeColor = Color.Green;
-            meter1.WarningRangeColor = Color.Green;
-            meter1.ActionRangeColor = Color.Green;
+            meter1.OptimumRangeColor = Color.Red;
+            meter1.WarningRangeColor = Color.Red;
+            meter1.ActionRangeColor = Color.Red;
 
             meter2.Min = 0;
-            meter2.Max = 10000;
-            meter2.Value = 7500;
-            meter2.OptimumRangeColor = Color.Green;
-            meter2.WarningRangeColor = Color.Green;
-            meter2.ActionRangeColor = Color.Green;
+            meter2.Max = 3252;
+            meter2.Value = 820;
+            meter2.OptimumRangeColor = Color.Blue;
+            meter2.WarningRangeColor = Color.Blue;
+            meter2.ActionRangeColor = Color.Blue;
 
             meter3.Min = 0;
-            meter3.Max = 10000;
-            meter3.Value = 7500;
+            meter3.Max = 500;
+            meter3.Value = 450;
             meter3.OptimumRangeColor = Color.Green;
             meter3.WarningRangeColor = Color.Green;
             meter3.ActionRangeColor = Color.Green;
-            
-            
             ddlOrderBy.Items.Clear();
-           
         }
 
         /// <summary>
