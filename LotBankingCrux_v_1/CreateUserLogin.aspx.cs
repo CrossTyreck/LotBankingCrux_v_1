@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Net;
+using System.Net.Mail;
+using System.Net.Mime;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -40,6 +43,21 @@ namespace LotBankingCrux_v_1
                 tbBuilderName.Visible = false;
             }
             
+        }
+
+        protected void btnSendEmail_Click(object sender, EventArgs e)
+        {
+            MailMessage mailObj = new MailMessage(
+             txtEmailOrigin.Text, txtEmailDestination.Text, txtEmailSubject.Text, txtEmailContent.Text);
+            SmtpClient SMTPServer = new SmtpClient("www.lotbanking.com");
+            try
+            {
+                SMTPServer.Send(mailObj);
+            }
+            catch (Exception ex)
+            {
+                Label1.Text = ex.ToString();
+            }
         }
 
     }
