@@ -269,7 +269,7 @@ namespace LotBankingCrux_v_1.Crux
         public Dictionary<int, String> getBuilderIds()
         {
             MySqlCommand getBuilderIds = new MySqlCommand("SELECT builder_id, " +
-                                                                 "builder_name " +
+                                                                 "name " +
                                                             "FROM Builder_Data ",
                                                       databaseConnection);
 

@@ -109,10 +109,11 @@ namespace LotBankingCrux_v_1
             foreach(KeyValuePair<int, String> bID in lintBuilderIDs)
 
             {
-                Dictionary<int, String[]> aBIDProjects = dbObject.getProposalsByBID(bID.Key, ddlOrderBy.SelectedValue.ToString(), true);
-                //  foreach(Project project in aBIDProjects){
-                //      ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.getProjectName(), "ProjectProposal.aspx", project.getLastModified()));
-                //}
+                Dictionary<int, String[]> aBIDProjects = dbObject.getProposalsByBID(bID.Key, ddlOrderBy.SelectedValue.ToString(), false);
+                foreach (KeyValuePair<int, String[]> project in aBIDProjects)
+                {
+                    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Value[0], "ProjectProposal.aspx", project.Value[1]));
+                }
             }
         }
 
