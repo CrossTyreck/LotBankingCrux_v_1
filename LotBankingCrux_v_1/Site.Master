@@ -31,7 +31,7 @@
 
         <header>
             <div class="site-title">
-                <img src="Images/Logo.jpg" height="32px" width="32px"/>
+                <img src="Images/Logo.png" height="32px" width="32px"/>
                 
                 <asp:LinkButton CssClass="mainmenu" ID="lbWelcomePage" runat="server" OnClick="Welcome_OnClick">Crescent Bay Holdings</asp:LinkButton>
               
