@@ -22,12 +22,29 @@ namespace LotBankingCrux_v_1
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Hard coding meter values, should use DB info
             meter1.Min = 0;
             meter1.Max = 10000;
             meter1.Value = 7500;
             meter1.OptimumRangeColor = Color.Green;
             meter1.WarningRangeColor = Color.Green;
             meter1.ActionRangeColor = Color.Green;
+
+            meter2.Min = 0;
+            meter2.Max = 10000;
+            meter2.Value = 7500;
+            meter2.OptimumRangeColor = Color.Green;
+            meter2.WarningRangeColor = Color.Green;
+            meter2.ActionRangeColor = Color.Green;
+
+            meter3.Min = 0;
+            meter3.Max = 10000;
+            meter3.Value = 7500;
+            meter3.OptimumRangeColor = Color.Green;
+            meter3.WarningRangeColor = Color.Green;
+            meter3.ActionRangeColor = Color.Green;
+            
+            
             ddlOrderBy.Items.Clear();
            
         }
