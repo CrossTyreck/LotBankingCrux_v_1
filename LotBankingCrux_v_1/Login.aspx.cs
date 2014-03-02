@@ -64,7 +64,7 @@ namespace LotBankingCrux_v_1.Account
                     case 2:
                         route = "Builder";
                         ((DataBucket)Session["UserData"])._userName = dbObject.getBuilderName(loginID);
-
+                        ((DataBucket)Session["UserData"])._builderID = ((DataBucket)Session["UserData"])._userID;
                         break;
                     case 3:
                         route = "Investor";

@@ -13,19 +13,33 @@ namespace LotBankingCrux_v_1
         CruxDB dbOjbect = new CruxDB();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lblBuilderName.Visible = false;
+            tbBuilderName.Visible = false;
         }
 
         protected void butInsertLogin_Click(object sender, EventArgs e)
         {
-
-            dbOjbect.insertBuilder(dbOjbect.insertLogin(tbUserName.Text, tbPassword.Text, Convert.ToInt32(DDLUserType.SelectedItem.Value), Convert.ToInt32(tbOptionMask.Text)), tbBuilderName.Text);
+            int id = dbOjbect.insertLogin(tbUserName.Text, tbPassword.Text, Convert.ToInt32(DDLUserType.SelectedItem.Value), Convert.ToInt32(tbOptionMask.Text));
+            if(DDLUserType.SelectedItem.Value.Equals("2"))
+            {
+                dbOjbect.insertBuilder(id, tbBuilderName.Text);
+            }
 
         }
 
         protected void DLLUserType_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (DDLUserType.Text.Equals("2"))
+            {
+                lblBuilderName.Visible = true;
+                tbBuilderName.Visible = true;
+            }
+            else
+            {
+                lblBuilderName.Visible = false;
+                tbBuilderName.Visible = false;
+            }
+            
         }
 
     }
