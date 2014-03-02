@@ -1009,7 +1009,7 @@ namespace LotBankingCrux_v_1.Crux
             return projects;
         }
 
-        public Dictionary<int, String[]> getProposalsByBID(int builder_id, String orderBy, Boolean excludeDeclined)
+        public Dictionary<int, String[]> getProposalsByBID(int builder_id, String orderBy, Boolean excludeDeclined = false)
         {
             String exclusion = "";
             if (excludeDeclined)
@@ -1037,11 +1037,11 @@ namespace LotBankingCrux_v_1.Crux
 
 
 
-            MySqlCommand getBuilderProjects = new MySqlCommand("SELECT id, " +
-                                                                      "project_name " +
-                                                                      "date_created" +
-                                                                      "approval_timestamp" +
-                                                                      "last_requested" +
+            MySqlCommand getBuilderProjects = new MySqlCommand("SELECT id," +
+                                                                      "project_name, " +
+                                                                      "date_created," +
+                                                                      "approval_timestamp," +
+                                                                      "last_modified " +
                                                                  "FROM Projects " +
                                                                 "WHERE builder_id = @builderId " +
                                                                   "AND approval_id = -1 " +
@@ -1052,6 +1052,7 @@ namespace LotBankingCrux_v_1.Crux
 
             Dictionary<int, String[]> returnValues = new Dictionary<int, String[]>();
             MySqlDataReader reader;
+            databaseConnection.Open();
             try
             {
                 reader = getBuilderProjects.ExecuteReader(CommandBehavior.SequentialAccess);

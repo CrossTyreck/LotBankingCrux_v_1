@@ -28,6 +28,8 @@ namespace LotBankingCrux_v_1
                 dbOjbect.insertBuilder(id, tbBuilderName.Text);
             }
 
+            lblUserAdded.Visible = true;
+
         }
 
         protected void DLLUserType_SelectedIndexChanged(object sender, EventArgs e)

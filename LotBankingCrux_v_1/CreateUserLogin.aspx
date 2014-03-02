@@ -19,6 +19,7 @@
 &nbsp;Use 0 for default<br />
     <asp:Label ID="lblBuilderName" runat="server" Text="Builder Name"></asp:Label>
     &nbsp;<asp:TextBox ID="tbBuilderName" runat="server"></asp:TextBox>
+    <asp:Label ID="lblUserAdded" runat="server" ForeColor="Green" Text="User Added" Visible="False"></asp:Label>
     <br />
     <asp:Button ID="butInsertLogin" runat="server" OnClick="butInsertLogin_Click" Text="SUBMIT" />
     <br />

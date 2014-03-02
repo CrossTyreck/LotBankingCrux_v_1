@@ -11,79 +11,85 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/LotBankingCrux_v_1.dll">
-      <publishTime>02/28/2014 21:57:50</publishTime>
+      <publishTime>03/01/2014 18:50:04</publishTime>
     </File>
     <File Include="bin/mysql.data.dll">
-      <publishTime>02/23/2014 08:24:26</publishTime>
+      <publishTime>03/01/2014 08:38:42</publishTime>
     </File>
     <File Include="bin/mysql.web.dll">
-      <publishTime>02/23/2014 08:24:26</publishTime>
+      <publishTime>03/01/2014 08:38:42</publishTime>
     </File>
     <File Include="Builder.aspx">
-      <publishTime>02/26/2014 22:29:25</publishTime>
+      <publishTime>03/01/2014 10:55:54</publishTime>
     </File>
     <File Include="BuilderDocumentSubmission.aspx">
-      <publishTime>02/23/2014 08:24:25</publishTime>
+      <publishTime>03/01/2014 08:38:41</publishTime>
     </File>
     <File Include="CBHDashboard.aspx">
-      <publishTime>02/27/2014 22:18:21</publishTime>
+      <publishTime>03/01/2014 17:32:56</publishTime>
     </File>
     <File Include="Content/bargraph.css">
-      <publishTime>02/23/2014 08:24:25</publishTime>
+      <publishTime>03/01/2014 08:38:41</publishTime>
     </File>
     <File Include="Content/diligencestyle.css">
-      <publishTime>02/26/2014 22:09:27</publishTime>
+      <publishTime>03/01/2014 08:38:41</publishTime>
     </File>
     <File Include="Content/Fonts/eyeglass-normal.ttf">
-      <publishTime>02/23/2014 08:24:25</publishTime>
+      <publishTime>03/01/2014 08:38:41</publishTime>
     </File>
     <File Include="Content/projprop.css">
       <publishTime>02/23/2014 08:24:25</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>02/28/2014 21:25:25</publishTime>
+      <publishTime>03/01/2014 13:49:33</publishTime>
     </File>
     <File Include="CreateUserLogin.aspx">
-      <publishTime>02/23/2014 08:24:25</publishTime>
+      <publishTime>03/01/2014 18:49:46</publishTime>
     </File>
     <File Include="DueDiligence.aspx">
-      <publishTime>02/23/2014 21:41:29</publishTime>
+      <publishTime>03/01/2014 15:05:57</publishTime>
     </File>
     <File Include="favicon.ico">
-      <publishTime>02/23/2014 08:24:26</publishTime>
+      <publishTime>03/01/2014 08:38:42</publishTime>
     </File>
     <File Include="Images/delete_salesTraffic.png">
-      <publishTime>02/23/2014 08:24:25</publishTime>
+      <publishTime>03/01/2014 08:38:42</publishTime>
     </File>
     <File Include="Images/logo.jpg">
       <publishTime>02/23/2014 08:24:25</publishTime>
     </File>
+    <File Include="Images/logo.png">
+      <publishTime>03/01/2014 13:49:33</publishTime>
+    </File>
     <File Include="Images/pw_pattern.png">
-      <publishTime>02/23/2014 08:24:25</publishTime>
+      <publishTime>03/01/2014 08:38:42</publishTime>
     </File>
     <File Include="Images/texture.png">
-      <publishTime>02/23/2014 08:24:25</publishTime>
+      <publishTime>03/01/2014 08:38:42</publishTime>
     </File>
     <File Include="Investor.aspx">
-      <publishTime>02/26/2014 22:08:13</publishTime>
+      <publishTime>03/01/2014 08:38:42</publishTime>
     </File>
     <File Include="Login.aspx">
-      <publishTime>02/27/2014 20:17:56</publishTime>
+      <publishTime>03/01/2014 13:49:33</publishTime>
     </File>
     <File Include="ProjectDashboard.aspx">
-      <publishTime>02/23/2014 22:26:09</publishTime>
+      <publishTime>03/01/2014 10:02:00</publishTime>
     </File>
     <File Include="ProjectProposal.aspx">
-      <publishTime>02/23/2014 08:24:26</publishTime>
+      <publishTime>03/01/2014 16:56:36</publishTime>
     </File>
     <File Include="Restricted.Master">
-      <publishTime>02/28/2014 21:27:02</publishTime>
+      <publishTime>03/01/2014 15:00:56</publishTime>
+    </File>
+    <File Include="Scripts/gaugeSVG.js">
+      <publishTime>03/01/2014 14:54:29</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>02/28/2014 21:25:25</publishTime>
+      <publishTime>03/01/2014 10:15:50</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/28/2014 21:57:57</publishTime>
+      <publishTime>03/01/2014 18:50:10</publishTime>
     </File>
   </ItemGroup>
 </Project>

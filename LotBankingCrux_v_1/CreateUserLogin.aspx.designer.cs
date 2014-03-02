@@ -67,6 +67,15 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.TextBox tbBuilderName;
         
         /// <summary>
+        /// lblUserAdded control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUserAdded;
+        
+        /// <summary>
         /// butInsertLogin control.
         /// </summary>
         /// <remarks>
