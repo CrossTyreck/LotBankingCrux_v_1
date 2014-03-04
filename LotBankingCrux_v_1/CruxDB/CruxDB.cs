@@ -616,10 +616,10 @@ namespace LotBankingCrux_v_1.Crux
 
 
             MySqlCommand getBuilderProjects = new MySqlCommand("SELECT id, " +
-                                                                      "project_name " +
-                                                                      "date_created" +
-                                                                      "approval_timestamp" +
-                                                                      "last_requested" +
+                                                                      "project_name, " +
+                                                                      "date_created, " +
+                                                                      "approval_timestamp, " +
+                                                                      "last_requested " +
                                                                  "FROM Builder_Documents " +
                                                                 "WHERE builder_id = @builderId " +
                                                                 order,
@@ -627,6 +627,7 @@ namespace LotBankingCrux_v_1.Crux
             getBuilderProjects.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builder_id;
 
             Dictionary<int, String[]> returnValues = new Dictionary<int, String[]>();
+            databaseConnection.Open();
             MySqlDataReader reader;
             try
             {
@@ -641,7 +642,10 @@ namespace LotBankingCrux_v_1.Crux
                 Debug.Print(e.Message);
                 return null;
             }
-            databaseConnection.Close();
+            finally
+            {
+                databaseConnection.Close();
+            }
             return returnValues;
         }
 
@@ -874,6 +878,7 @@ namespace LotBankingCrux_v_1.Crux
                                                                   databaseConnection);
             getProjectNamesQuery.Parameters.Add("@builderid", MySqlDbType.Int32).Value = builder_id;
             Dictionary<int, String> returnValues = new Dictionary<int, String>();
+            databaseConnection.Open();
             MySqlDataReader reader;
             try
             {
@@ -924,10 +929,10 @@ namespace LotBankingCrux_v_1.Crux
 
 
             MySqlCommand getBuilderProjects = new MySqlCommand("SELECT id, " +
-                                                                      "project_name " +
-                                                                      "date_created" +
-                                                                      "approval_timestamp" +
-                                                                      "last_requested" +
+                                                                      "project_name, " +
+                                                                      "date_created, " +
+                                                                      "approval_timestamp, " +
+                                                                      "last_modified " +
                                                                  "FROM Projects " +
                                                                 "WHERE builder_id = @builderId " +
                                                                   "AND approval_id >= 0 " +
@@ -937,6 +942,8 @@ namespace LotBankingCrux_v_1.Crux
             getBuilderProjects.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builder_id;
 
             Dictionary<int, String[]> returnValues = new Dictionary<int, String[]>();
+
+            databaseConnection.Open(); 
             MySqlDataReader reader;
             try
             {
