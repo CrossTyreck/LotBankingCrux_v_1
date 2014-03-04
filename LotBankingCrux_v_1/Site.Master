@@ -30,16 +30,16 @@
         </asp:ScriptManager>
 
         <header>
-            <div class="site-title">
-                <img src="Images/Logo.png" height="32px" width="32px"/>
+            <div id="top">
+                <img class="toplogo" src="Images/logo.png" height="60px" width="60px" style="float:left;"/>
                 
-                <asp:LinkButton CssClass="mainmenu" ID="lbWelcomePage" runat="server" OnClick="Welcome_OnClick">Crescent Bay Holdings</asp:LinkButton>
+               <!-- <asp:LinkButton CssClass="toplogo" ID="lbWelcomePage" runat="server" OnClick="Welcome_OnClick">Crescent Bay Holdings</asp:LinkButton>-->
               
-                <asp:LinkButton CssClass="logout-button mainmenu" ID="lbLogoutButton" runat="server" OnClick="Logout_OnClick">Logout</asp:LinkButton>
+                <asp:LinkButton CssClass="logout-button toplogo" ID="lbLogoutButton" runat="server" OnClick="Logout_OnClick">Logout</asp:LinkButton>
             </div>
         </header>
         <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
-        <div id="body">
+        <div id="belowTopnav">
             <asp:Panel ID="Panel1" runat="server" CssClass="panel-background">
              <%--   <asp:Panel ID="Panel2" runat="server" CssClass="panel-parent">--%>
 
