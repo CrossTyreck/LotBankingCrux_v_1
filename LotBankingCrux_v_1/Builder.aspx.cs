@@ -13,6 +13,8 @@ namespace LotBankingCrux_v_1
     {
 
         CruxDB dbObject = new CruxDB();
+        string contactName = "";
+        string contactNumber = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,15 +30,27 @@ namespace LotBankingCrux_v_1
             //    pnlProjects.Controls.Add(new ProjectRowPanel(project.getProjectName(), "ProjectDashboard.aspx", project.getLastModified()));
             //}
 
-            if (lnkbtnContactName.Text.Equals(""))
+            //hard coding this seems wrong
+            
+            if ((contactName = dbObject.getBuilderContactName(((DataBucket)Session["UserData"])._builderID)).Equals(""))
             {
                 lnkbtnContactName.Text = "Click Here to Update";
             }
+            else
+            {
+                lnkbtnContactName.Text = contactName;
+            }
 
-            if (lnkbtnContactNumber.Text.Equals(""))
+            if ((contactNumber = dbObject.getBuilderContactNumber(((DataBucket)Session["UserData"])._builderID)).Equals(""))
             {
                 lnkbtnContactNumber.Text = "Click Here to Update";
             }
+            else
+            {
+                lnkbtnContactNumber.Text = contactNumber;
+            }
+            
+            
         }
 
 
@@ -102,22 +116,40 @@ namespace LotBankingCrux_v_1
 
         protected void lnkbtnContactName_Click(object sender, EventArgs e)
         {
+            lblNameToAdd.Visible = true;
+            lblNumberToAdd.Visible = true;
             txtAddContactName.Visible = true;
+            txtAddContactNumber.Visible = true;
             btnSubmitContact.Visible = true;
         }
 
         protected void lnkbtnContactNumber_Click(object sender, EventArgs e)
         {
+            lblNameToAdd.Visible = true;
+            lblNumberToAdd.Visible = true;
             txtAddContactName.Visible = true;
+            txtAddContactNumber.Visible = true;
             btnSubmitContact.Visible = true;
         }
 
         protected void btnSubmitContact_Click(object sender, EventArgs e)
         {
             //Add in the database connection that stores contact information here.
-            txtAddContactName.Visible = false;
-            txtAddContactName.Visible = false;
-            btnSubmitContact.Visible = false;
+            if (txtAddContactName.Text != "" && txtAddContactNumber.Text != "")
+            {
+                dbObject.insertBuilderContact(((DataBucket)Session["UserData"])._builderID, txtAddContactName.Text, txtAddContactNumber.Text);
+                lblNameToAdd.Visible = false;
+                lblNumberToAdd.Visible = false;
+                txtAddContactName.Visible = false;
+                txtAddContactNumber.Visible = false;
+                btnSubmitContact.Visible = false;
+                lblAddContactError.Visible = false;
+                Response.Redirect("Builder.aspx"); //refreshing the page, could be done nicer
+            }
+            else
+            {
+                lblAddContactError.Visible = true;
+            }
         }
     }
 }

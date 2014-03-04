@@ -14,49 +14,71 @@
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
 
-     <asp:Image runat="server" alt="Builder Logo" class="leftalignElement" src="" ID="imgBuilderLogo" />
-    <h1 id="buildername" class="centerElement">
-       
-        FULTON HOMES </h1>
+    <asp:Image runat="server" alt="Builder Logo" class="leftalignElement" src="" ID="imgBuilderLogo" />
+    <h1 id="buildername" class="centerElement">FULTON HOMES </h1>
     <p class="centerElement">
         <asp:Label ID="lblContactName" runat="server" Text="Contact Name:"></asp:Label>
         <asp:LinkButton ID="lnkbtnContactName" runat="server" OnClick="lnkbtnContactName_Click"></asp:LinkButton>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Label ID="lblContactNumber" runat="server" Text="Contact Number:"></asp:Label>
         <asp:LinkButton ID="lnkbtnContactNumber" runat="server" OnClick="lnkbtnContactNumber_Click"></asp:LinkButton>
     </p>
-     <p class="centerElement">
-         <asp:TextBox ID="txtAddContactName" runat="server" Visible="False"></asp:TextBox>
-         <asp:TextBox ID="txtAddContactNumber" runat="server" Visible="False"></asp:TextBox>
+    <p class="centerElement">
+        <asp:Label ID="lblNameToAdd" runat="server" Text="Name: " Visible="False"></asp:Label>
+        <asp:TextBox ID="txtAddContactName" runat="server" Visible="False"></asp:TextBox>
+        <asp:Label ID="lblNumberToAdd" runat="server" Text="Number: " Visible="False"></asp:Label>
+        <asp:TextBox ID="txtAddContactNumber" runat="server" Visible="False"></asp:TextBox>
     </p>
-     <p class="centerElement">
-         <asp:Button ID="btnSubmitContact" runat="server" CssClass="button" OnClick="btnSubmitContact_Click" Text="Submit Contact Info" ValidateRequestMode="Enabled" Visible="False" />
+<p class="centerElement">
+        <asp:Label ID="lblAddContactError" runat="server" ForeColor="Red" Text="Please fill out Name and Number. " Visible="False"></asp:Label>
+    </p>
+    <p class="centerElement">
+        <asp:Button ID="btnSubmitContact" runat="server" CssClass="button" OnClick="btnSubmitContact_Click" Text="Submit Contact Info" ValidateRequestMode="Enabled" Visible="False" />
     </p>
     <asp:Panel ID="pnlRequirements" runat="server">
     </asp:Panel>
-    <h1>
-        <asp:LinkButton ID="lnkbtnProposals" runat="server" OnClick="lnkbtnProposals_Click">Proposals</asp:LinkButton>
-        <asp:LinkButton ID="lnkbtnProjects" runat="server" OnClick="lnkbtnProjects_Click">Projects</asp:LinkButton>
-        <asp:LinkButton ID="lnkbtnBuilderDocuments" runat="server" OnClick="lnkbtnBuilderDocuments_Click">Builder Documents</asp:LinkButton>
 
-        <asp:MultiView ID="DashboardView" runat="server" ActiveViewIndex="0" OnActiveViewChanged="DashboardView_ActiveViewChanged">
-            <asp:View ID="viwProposals" runat="server">
+    <table>
 
-                <asp:Panel ID="ProjectProposalsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px"></asp:Panel>
-            </asp:View>
-            <asp:View ID="viwProjects" runat="server">
-                <asp:Panel ID="ExistingProjectsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px">
-                </asp:Panel>
-            </asp:View>
-            <asp:View ID="viwBuilderDocuments" runat="server">
-                <asp:Panel ID="BuilderDocumentsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px"></asp:Panel>
-            </asp:View>
-        </asp:MultiView>
+        <tr>
+
+            <td>
+                <asp:LinkButton ID="lnkbtnProposals" runat="server" OnClick="lnkbtnProposals_Click" Font-Bold="True" Font-Size="Large">Proposals</asp:LinkButton>
+
+                &nbsp;
+
+                <asp:LinkButton ID="lnkbtnProjects" runat="server" OnClick="lnkbtnProjects_Click" Font-Bold="True" Font-Size="Large">Projects</asp:LinkButton>
+
+                &nbsp;
+
+                <asp:LinkButton ID="lnkbtnBuilderDocuments" runat="server" OnClick="lnkbtnBuilderDocuments_Click" Font-Bold="True" Font-Size="Large">Builder Documents</asp:LinkButton>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>
+                <asp:MultiView ID="DashboardView" runat="server" ActiveViewIndex="0" OnActiveViewChanged="DashboardView_ActiveViewChanged">
+                    <asp:View ID="viwProposals" runat="server">
+
+                        <asp:Panel ID="ProjectProposalsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px"></asp:Panel>
+                    </asp:View>
+                    <asp:View ID="viwProjects" runat="server">
+                        <asp:Panel ID="ExistingProjectsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px">
+                        </asp:Panel>
+                    </asp:View>
+                    <asp:View ID="viwBuilderDocuments" runat="server">
+                        <asp:Panel ID="BuilderDocumentsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px"></asp:Panel>
+                    </asp:View>
+                </asp:MultiView>
+            </td>
+        </tr>
+    </table>
 
 
 
 
-    </h1>
+
 
 
 

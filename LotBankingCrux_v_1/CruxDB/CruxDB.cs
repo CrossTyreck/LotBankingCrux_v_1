@@ -240,6 +240,102 @@ namespace LotBankingCrux_v_1.Crux
             return 1;
         }
 
+        public string getBuilderContactName(int builder_id)
+        {
+            MySqlCommand getBuilderContact = new MySqlCommand("Select contact_name " +
+                                                             "FROM Builder_Data " +
+                                                             "WHERE builder_id = @builderId ",
+                                                             databaseConnection);
+            getBuilderContact.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builder_id;
+
+            string returnValue = "";
+            try
+            {
+                MySqlDataReader reader;
+                databaseConnection.Open();
+                reader = getBuilderContact.ExecuteReader(CommandBehavior.SequentialAccess);
+
+                while (reader.Read())
+                {
+                    returnValue = reader.GetString(0);
+                }
+
+                return returnValue;
+            }
+
+            catch (Exception e)
+            {
+                Debug.Print(e.Message);
+            }
+            finally
+            {
+                databaseConnection.Close();
+            }
+            return returnValue;
+
+        }
+
+        public string getBuilderContactNumber(int builder_id)
+        {
+            MySqlCommand getBuilderContact = new MySqlCommand("Select contact_number " +
+                                                             "FROM Builder_Data " +
+                                                             "WHERE builder_id = @builderId ",
+                                                             databaseConnection);
+            getBuilderContact.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builder_id;
+
+            string returnValue = "";
+            try
+            {
+                MySqlDataReader reader;
+                databaseConnection.Open();
+                reader = getBuilderContact.ExecuteReader(CommandBehavior.SequentialAccess);
+
+                while (reader.Read())
+                {
+                    returnValue = reader.GetString(0);
+                }
+
+                return returnValue;
+            }
+
+            catch (Exception e)
+            {
+                Debug.Print(e.Message);
+            }
+            finally
+            {
+                databaseConnection.Close();
+            }
+            return returnValue;
+
+        }
+
+        public int insertBuilderContact(int builder_id, String contactName, String contactNumber)
+        {
+            MySqlCommand insertNewBuilder = new MySqlCommand("Update Builder_Data " +
+                                                            "Set contact_name = @contactName, contact_number = @contactNumber " +
+                                                             "WHERE builder_id = @builderId ",
+                                                             databaseConnection);
+            insertNewBuilder.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builder_id;
+            insertNewBuilder.Parameters.Add("@contactName", MySqlDbType.VarChar, 30).Value = contactName;
+            insertNewBuilder.Parameters.Add("@contactNumber", MySqlDbType.VarChar, 20).Value = contactNumber;
+            databaseConnection.Open();
+
+            MySqlDataReader reader;
+            try
+            {
+                reader = insertNewBuilder.ExecuteReader(CommandBehavior.SequentialAccess);
+            }
+            catch (Exception e)
+            {
+                Debug.Print(e.Message);
+                return -1;
+            }
+            reader.Close();
+            databaseConnection.Close();
+            return 1;
+        }
+
         public int updateBuilderName(int builder_id, String name)
         {
             MySqlCommand updateBuilderName = new MySqlCommand("UPDATE Builder_Data " +
@@ -616,10 +712,10 @@ namespace LotBankingCrux_v_1.Crux
 
 
             MySqlCommand getBuilderProjects = new MySqlCommand("SELECT id, " +
-                                                                      "project_name, " +
+                                                                      "file_name, " +
                                                                       "date_created, " +
                                                                       "approval_timestamp, " +
-                                                                      "last_requested " +
+                                                                      "last_modified " +
                                                                  "FROM Builder_Documents " +
                                                                 "WHERE builder_id = @builderId " +
                                                                 order,

@@ -67,6 +67,15 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.LinkButton lnkbtnContactNumber;
         
         /// <summary>
+        /// lblNameToAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNameToAdd;
+        
+        /// <summary>
         /// txtAddContactName control.
         /// </summary>
         /// <remarks>
@@ -76,6 +85,15 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.TextBox txtAddContactName;
         
         /// <summary>
+        /// lblNumberToAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNumberToAdd;
+        
+        /// <summary>
         /// txtAddContactNumber control.
         /// </summary>
         /// <remarks>
@@ -83,6 +101,15 @@ namespace LotBankingCrux_v_1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAddContactNumber;
+        
+        /// <summary>
+        /// lblAddContactError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAddContactError;
         
         /// <summary>
         /// btnSubmitContact control.
