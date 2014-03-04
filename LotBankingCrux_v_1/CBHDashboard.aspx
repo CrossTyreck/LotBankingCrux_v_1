@@ -9,22 +9,58 @@
 
 <asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
     <script src="Scripts/gaugeSVG.js"></script>
+    <div class="menubar">
+        <div>
+            <ul id="Ul1">
+                <li>
+                    <asp:LinkButton ID="LinkButton1" runat="server" OnClick="AddUser_OnClick" ForeColor="Black">Add User</asp:LinkButton>
+                </li>
+            </ul>
+        </div>
+    </div>
 
+</asp:Content>
+<asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
+    <asp:Panel ID="pnlMeters" CssClass="multiviewpanel" runat="server" Height="225px" Width="625px">
+        <table>
+            <tr>
+                <td>
+                    <div id="meter1" style="width: 200px; height: 200px"></div>
+                    <asp:Label runat="server" ID="lblMeter1" Text="METER3" />
+                    <script>
+                        new function () {
+               <% Response.Write(meter1.GenerateMeterScriptValues("meter1", "meter11")); %>
+                        };
+                    </script>
+                </td>
+                <td>
+                    <div id="meter2" style="width: 200px; height: 200px"></div>
+                    <asp:Label runat="server" ID="lblMeter2" Text="METER2" />
+                    <script>
+                        new function () {
+              <% Response.Write(meter2.GenerateMeterScriptValues("meter2", "meter22")); %>
+                        };
+                    </script>
+                </td>
+                <td>
+                    <div id="meter3" style="width: 200px; height: 200px"></div>
+                    <asp:Label runat="server" ID="lblMeter3" Text="METER3" />
+                    <script>
+                        new function () {
+              <% Response.Write(meter3.GenerateMeterScriptValues("meter3", "meter33")); %>
+
+                        };
+                    </script>
+                </td>
+            </tr>
+        </table>
+    </asp:Panel>
+    <asp:Panel ID="pnlGraphs" CssClass="multiviewpanel" runat="server" Height="200px">
+        <%-- Insert Graphs in here. --%>
+    </asp:Panel>
     <div class="menubar">
         <div>
             <ul id="horizontal-list">
-                <%--     <asp:Chart ID="Chart1" runat="server" Width="339px">
-                <Series>
-                    <asp:Series Name="Series1"></asp:Series>
-                </Series>
-                <ChartAreas>
-                    <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
-                </ChartAreas>
-            </asp:Chart>--%><%--  <li>Select Builder </li>--%><%--  <asp:DropDownList ID="ddlBuilders" runat="server">
-                </asp:DropDownList>--%>
-                <li>
-                    <asp:LinkButton ID="AddUsers" runat="server" OnClick="AddUser_OnClick" ForeColor="Black">Add User</asp:LinkButton>
-                </li>
 
                 <li>
                     <asp:LinkButton ID="ProjectProposals" runat="server" OnClick="Proposals_Click">Proposals</asp:LinkButton>
@@ -37,81 +73,13 @@
                 <li>
                     <asp:LinkButton ID="BuilderDocuments" runat="server" OnClick="BuilderDocuments_Click">Builder Documents</asp:LinkButton>
                 </li>
-
-                <!--These need to be moved to the Projects Window!-->
-
-                <!------------------------------------------------->
-
             </ul>
         </div>
     </div>
-</asp:Content>
-<asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <asp:Panel ID="pnlMeters" CssClass="multiviewpanel" runat="server" Height="405px" Width="205px">
-        <table>
-
-
-            <tr>
-                <td>
-                    <div id="meter1" style="width: 200px; height: 200px"></div>
-                     <asp:Label runat="server" ID="lblMeter1" Text="METER3"/>
-                    <script>
-                        new function () {
-               <% Response.Write(meter1.GenerateMeterScriptValues("meter1", "meter11")); %>
-                        };
-                    </script>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div id="meter2" style="width: 200px; height: 200px"></div>
-                    <asp:Label runat="server" ID="lblMeter2" Text="METER2"/>
-                    <script>
-                        new function () {
-              <% Response.Write(meter2.GenerateMeterScriptValues("meter2", "meter22")); %>
-                        };
-                    </script>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div id="meter3" style="width: 200px; height: 200px"></div>
-                    <asp:Label runat="server" ID="lblMeter3" Text="METER3"/>
-                    <script>
-                        new function () {
-              <% Response.Write(meter3.GenerateMeterScriptValues("meter3", "meter33")); %>
-
-                        };
-                    </script>
-                </td>
-            </tr>
-        </table>
-    </asp:Panel>
-
-    <asp:Panel ID="pnlGraphs" CssClass="multiviewpanel" runat="server" Height="200px">
-    </asp:Panel>
-
-
-
-
-
-
     <br />
-
-
-
-
-
-
     <asp:Label ID="lblOrderBy" runat="server" Text="Order By: "></asp:Label>
     <asp:DropDownList ID="ddlOrderBy" runat="server">
     </asp:DropDownList>
-
-
-
-
-
-
     <asp:MultiView ID="DashboardView" runat="server" ActiveViewIndex="0" OnActiveViewChanged="DashboardView_ActiveViewChanged">
         <asp:View ID="ProjectProposalsView" runat="server">
             <p>
@@ -134,9 +102,6 @@
             <asp:Panel ID="BuilderDocumentsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px"></asp:Panel>
         </asp:View>
     </asp:MultiView>
-
-
-
 
     <!-- These guys need to be added to the sides of the page 
      <table class="tasklist">
