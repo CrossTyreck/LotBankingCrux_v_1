@@ -4,67 +4,58 @@
 <html lang="en">
 <head runat="server">
     <meta charset="utf-8" />
-    <title>&lt;%: Page.Title %&gt; -CBH Lot Banking</title>
-    <asp:PlaceHolder runat="server">
-        
-        
-    </asp:PlaceHolder>
-   
+    <title>CBH Lot Banking</title>
+    <asp:PlaceHolder runat="server"></asp:PlaceHolder>
+
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
-    
-    <asp:ContentPlaceHolder runat="server" ID="HeadContent"/>
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
 
-    <asp:ContentPlaceHolder runat="server" ID="Stylesheets">
+    <asp:ContentPlaceHolder runat="server" ID="StyleSheets">
         <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-    Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
-        <link href="Content/Site.css" rel="stylesheet" /></asp:ContentPlaceHolder>
+            Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+        <link href="Content/Site.css" rel="stylesheet" />
+    </asp:ContentPlaceHolder>
 
 </head>
 <body>
     <form runat="server">
-        
-        <asp:ScriptManager runat="server" ID="Scripts">
 
-            
+        <asp:ScriptManager runat="server" ID="Scripts">
         </asp:ScriptManager>
 
         <header>
-            <div class="site-title">
-                <img src="Images/logo.png" height="32px" width="32px"/>
-                
-                <asp:LinkButton CssClass="mainmenu" ID="lbWelcomePage" runat="server" OnClick="Welcome_OnClick">Crescent Bay Holdings</asp:LinkButton>
-              
-                <asp:LinkButton CssClass="logout-button mainmenu" ID="lbLogoutButton" runat="server" OnClick="Logout_OnClick" >Logout</asp:LinkButton>
+            <div id="top">
+                <img class="toplogo" src="Images/logo.png" height="60px" width="60px" style="float: left;" />
+
+
+
+                <%--<asp:LinkButton CssClass="mainmenu" ID="lbWelcomePage" runat="server" OnClick="Welcome_OnClick">Crescent Bay Holdings</asp:LinkButton>--%>
+
+                <asp:LinkButton CssClass="logout-button toplogo" ID="lblLogoutButton" runat="server" OnClick="Logout_OnClick">Logout</asp:LinkButton>
             </div>
         </header>
         <asp:ContentPlaceHolder runat="server" ID="FeaturedContent">
             <asp:Panel ID="pnlFeatured" runat="server" CssClass="featured-background">
-                 </asp:Panel>
-
-            </asp:ContentPlaceHolder>
-        <div id="body">
-            <asp:Panel ID="Panel1" runat="server" CssClass="panel-background">
-                <asp:Panel ID="pnlMainPanel" runat="server" CssClass="panel-parent">
-                    
-
-                    <asp:ContentPlaceHolder runat="server" ID="MainContent">
-
-                    </asp:ContentPlaceHolder>
-
-
-                </asp:Panel>
             </asp:Panel>
+
+        </asp:ContentPlaceHolder>
+        <div id="belowTopnav">
+            <asp:Panel ID="pnlMainPanel" runat="server" CssClass="page">
+
+
+                <asp:ContentPlaceHolder runat="server" ID="MainContent">
+                </asp:ContentPlaceHolder>
+
+
+            </asp:Panel>
+
         </div>
-        <footer id="footer">
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>Crescent Bay Holdings, LLC / T 480.406.6000 / CRUX@notValidEmail.com / © All Rights Reservedserved</p>
-                </div>
-            </div>
-        </footer>
+        
     </form>
 
 
 </body>
 </html>
+
+﻿

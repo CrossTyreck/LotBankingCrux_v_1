@@ -4,7 +4,7 @@
 
 <asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
     <script src="Scripts/gaugeSVG.js"></script>
-    <div class="menubar">
+    <div id="topnav">
         <div>
             <ul id="menu-list">
                 <li>
@@ -16,65 +16,79 @@
 
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <asp:Panel ID="pnlMeters" CssClass="multiviewpanel" runat="server" Height="225px" Width="625px">
-        <table>
-            <tr>
-                <td>
-                    <div id="meter1" style="width: 200px; height: 200px"></div>
-                    <asp:Label runat="server" ID="lblMeter1" Text="METER3" />
-                    <script>
-                        new function () {
-               <% Response.Write(meter1.GenerateMeterScriptValues("meter1", "meter11")); %>
-                        };
-                    </script>
-                </td>
-                <td>
-                    <div id="meter2" style="width: 200px; height: 200px"></div>
-                    <asp:Label runat="server" ID="lblMeter2" Text="METER2" />
-                    <script>
-                        new function () {
+
+    <div id="dashboard">
+        <asp:Panel ID="pnlMeters" CssClass="meters" runat="server">
+            <table id="centermeters">
+
+
+                <tr>
+                    <td>
+                        <div id="meter1" style="width: 200px; height: 200px"></div>
+                        <asp:Label runat="server" ID="lblMeter1" Text="METER3" />
+                        <script>
+                            new function () {
+                                <% Response.Write(meter1.GenerateMeterScriptValues("meter1", "meter11")); %>
+                            };
+
+                        </script>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="meter2" style="width: 200px; height: 200px"></div>
+                        <asp:Label runat="server" ID="lblMeter2" Text="METER2" />
+                        <script>
+                            new function () {
+
               <% Response.Write(meter2.GenerateMeterScriptValues("meter2", "meter22")); %>
-                        };
-                    </script>
-                </td>
-                <td>
-                    <div id="meter3" style="width: 200px; height: 200px"></div>
-                    <asp:Label runat="server" ID="lblMeter3" Text="METER3" />
-                    <script>
-                        new function () {
+                            };
+
+                        </script>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="meter3" style="width: 200px; height: 200px"></div>
+                        <asp:Label runat="server" ID="lblMeter3" Text="METER3" />
+                        <script>
+                            new function () {
+
               <% Response.Write(meter3.GenerateMeterScriptValues("meter3", "meter33")); %>
 
-                        };
-                    </script>
-                </td>
-            </tr>
-        </table>
-    </asp:Panel>
-    <asp:Panel ID="pnlGraphs" CssClass="multiviewpanel" runat="server" Height="200px">
-        <%-- Insert Graphs in here. --%>
-    </asp:Panel>
-    <div class="menubar">
-        <div>
-            <ul id="horizontal-list">
+                            };
+                        </script>
+                    </td>
+                </tr>
+            </table>
+        </asp:Panel>
 
-                <li>
-                    <asp:LinkButton ID="ProjectProposals" runat="server" OnClick="Proposals_Click">Proposals</asp:LinkButton>
-                </li>
+        <asp:Panel ID="pnlGraphs" CssClass="graphs" runat="server">
+            <div id="temppanel1">
 
-                <li>
-                    <asp:LinkButton ID="ExistingProjects" runat="server" OnClick="Projects_Click">Projects</asp:LinkButton>
-                </li>
+                <div class="menubar">
+                    <div>
+                        <ul id="horizontal-list">
+                    </div>
 
-                <li>
-                    <asp:LinkButton ID="BuilderDocuments" runat="server" OnClick="BuilderDocuments_Click">Builder Documents</asp:LinkButton>
-                </li>
-            </ul>
-        </div>
+
+
+                    <div id="temppanel2">
+                    </div>
+        </asp:Panel>
     </div>
+
     <br />
+
+
+
     <asp:Label ID="lblOrderBy" runat="server" Text="Order By: "></asp:Label>
     <asp:DropDownList ID="ddlOrderBy" runat="server">
     </asp:DropDownList>
+
+
+
+
     <asp:MultiView ID="DashboardView" runat="server" ActiveViewIndex="0" OnActiveViewChanged="DashboardView_ActiveViewChanged">
         <asp:View ID="ProjectProposalsView" runat="server">
             <asp:Label ID="lblProjectProposals" runat="server" Font-Bold="True" Font-Italic="False" Font-Size="X-Large" Font-Underline="True" Style="text-align: center" Text="Proposals"></asp:Label>
