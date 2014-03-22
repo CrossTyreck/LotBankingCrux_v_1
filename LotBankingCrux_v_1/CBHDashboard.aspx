@@ -19,9 +19,9 @@
     <div>
         <asp:Panel ID="pnlPage" CssClass="pnlPage" runat="server">
 
-            <asp:LinkButton ID="lnkbtnProposals" runat="server" OnClick="lnkbtnProposals_Click">Proposals</asp:LinkButton>
-            <asp:LinkButton ID="lnkbtnProjects" runat="server" OnClick="lnkbtnProjects_Click">Projects</asp:LinkButton>
-            <asp:LinkButton ID="lnkbtnBuilderDocuments" runat="server" OnClick="lnkbtnBuilderDocuments_Click">Builder Documents</asp:LinkButton>
+            <asp:LinkButton ID="lnkbtnProposals" runat="server" OnClick="Proposals_Click">Proposals</asp:LinkButton>
+            <asp:LinkButton ID="lnkbtnProjects" runat="server" OnClick="Projects_Click">Projects</asp:LinkButton>
+            <asp:LinkButton ID="lnkbtnBuilderDocuments" runat="server" OnClick="BuilderDocuments_Click">Builder Documents</asp:LinkButton>
             <br />
 
             <br />
