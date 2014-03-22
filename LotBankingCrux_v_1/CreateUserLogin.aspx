@@ -1,14 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Restricted.Master" AutoEventWireup="true" CodeBehind="CreateUserLogin.aspx.cs" Inherits="LotBankingCrux_v_1.CreateUserLogin" %>
 
 <asp:Content ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent" runat="server">
-    Remember to fill in all the fields to add a user
+    <span>Remember to fill in all the fields to add a user</span>
 </asp:Content>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="createNewUser">
-        <asp:TextBox ID="tbUserName" CssClass="logininput" placeholder="New Username" runat="server" Width="119px"></asp:TextBox>
+        <asp:TextBox ID="tbUserName" CssClass="logininput" placeholder="New Username" runat="server" Width="225px"></asp:TextBox>
         <br />
 
-        <asp:TextBox ID="tbPassword" CssClass="logininput" placeholder="Password" type="Password" runat="server" Width="119px"></asp:TextBox>
+        <asp:TextBox ID="tbPassword" CssClass="logininput" placeholder="Password" type="Password" runat="server" Width="225px"></asp:TextBox>
         <br />
 
         <asp:DropDownList ID="DDLUserType" runat="server" OnSelectedIndexChanged="DLLUserType_SelectedIndexChanged" AutoPostBack="true">
