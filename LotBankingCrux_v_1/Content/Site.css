@@ -89,6 +89,18 @@ a {
     float: left;
 }
 
+#background-logo {
+    z-index: 0;
+    opacity: 0.1;
+    display: block;
+    top: 50%;
+    left: 50%;
+    margin-top: -250px;
+    margin-left: -400px;
+    position: absolute;
+    pointer-events: none;
+}
+
 /* login
 ----------------------------------------------------------*/
 #login {
@@ -155,6 +167,19 @@ a {
     border-color: dodgerblue;
 }
 
+/* Navigation
+----------------------------------------------------------*/
+.buildernav ul {
+    background-color: gray;
+    text-align: center;
+}
+
+    .buildernav li{
+        list-style: none;
+        padding-left: 15px;
+        display: inline;
+    }
+
 /* site title
 ----------------------------------------------------------*/
 .site-title > a, .site-title a:hover, .site-title a:active {
@@ -163,8 +188,6 @@ a {
     text-decoration: none;
     text-align: right;
 }
-
-
 
 .logout-button {
     float: right;
@@ -251,7 +274,6 @@ a {
     -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
     box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
 }
-
 
 /* menu
 ----------------------------------------------------------*/

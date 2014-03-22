@@ -75,6 +75,7 @@
     <Content Include="Images\delete_salesTraffic.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\pw_pattern.png" />
+    <Content Include="Images\templogo.png" />
     <Content Include="Images\texture.png" />
     <Content Include="Investor.aspx" />
     <Content Include="Login.aspx" />
