@@ -18,6 +18,8 @@ namespace LotBankingCrux_v_1.Crux
         private string user = "UID=" + "CBHLotBanking" + ";";
         private string password = "PASSWORD=" + "Crux2014!" + ";";
 
+        public enum status{DECLINED = -1, NEEDSUPDATE = 0, NEEDSAPPROVAL = 1, APPROVED = 2};
+
         public static int dbID = 0;
 
         private MySqlConnection databaseConnection;
@@ -52,8 +54,7 @@ namespace LotBankingCrux_v_1.Crux
             }
             reader.Close();
             databaseConnection.Close();
-            //return 1;
-            return getUserId(login); //CHRIS
+            return getUserId(login);
         }
 
         public int setPassword(int id, String password)
