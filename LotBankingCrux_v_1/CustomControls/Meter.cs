@@ -34,6 +34,10 @@ namespace LotBankingCrux_v_1.CustomControls
         public Color WarningRangeColor {get; set;}
         public Color ActionRangeColor {get; set;}
 
+        public Meter()
+        {
+            CanvasBackColor = Color.FromArgb(0, 0, 0, 0);
+        }
         public String GenerateMeterScriptValues(string id, string name)
         {
             return
@@ -44,7 +48,8 @@ namespace LotBankingCrux_v_1.CustomControls
             ", optimumRangeColor: \"#" + OptimumRangeColor.R.ToString("X2") + OptimumRangeColor.G.ToString("X2") + OptimumRangeColor.B.ToString("X2") + 
             "\", warningRangeColor: \"#" + WarningRangeColor.R.ToString("X2") + WarningRangeColor.G.ToString("X2") + WarningRangeColor.B.ToString("X2") +
             "\", actionRangeColor: \"#" + ActionRangeColor.R.ToString("X2") + ActionRangeColor.G.ToString("X2") + ActionRangeColor.B.ToString("X2") +
-            "\", gaugeBorderColor: \"#" + GaugeBorderColor.R.ToString("X2") + GaugeBorderColor.G.ToString("X2") + GaugeBorderColor.B.ToString("X2") + 
+            "\", gaugeBorderColor: \"#" + GaugeBorderColor.R.ToString("X2") + GaugeBorderColor.G.ToString("X2") + GaugeBorderColor.B.ToString("X2") +
+             ", canvasBackColor: \"#" + CanvasBackColor.R.ToString("X2") + CanvasBackColor.G.ToString("X2") + CanvasBackColor.B.ToString("X2") + 
             "\"});";
 
         }

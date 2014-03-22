@@ -232,6 +232,12 @@ a {
 
 #centermeters {
     margin: 0 auto;
+    width: 200px;
+}
+
+.centermeters {
+width: 200px;
+height: 130px;
 }
 
 #temppanel1 {

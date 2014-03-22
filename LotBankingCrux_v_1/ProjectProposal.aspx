@@ -55,7 +55,11 @@
             </td>
         </tr>
         <tr>
-            <td></td>
+            <td>
+                <asp:Panel ID="Panel1" runat="server">
+                    <asp:Button ID="btnAccept" runat="server" OnClick="btnSubmit_Click" Text="Accept" CssClass="button" />
+                </asp:Panel>
+            </td>
             <td>
                 <asp:Panel ID="pnlMap" runat="server">
                     <asp:Button ID="btnCheckLocation" CssClass="button" runat="server" Text="Check Location" OnClick="btnCheckLocation_Click" />

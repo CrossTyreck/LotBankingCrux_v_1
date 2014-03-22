@@ -24,7 +24,7 @@
 
                 <tr>
                     <td>
-                        <div id="meter1" style="width: 200px; height: 200px"></div>
+                        <div id="meter1" class="centermeters"></div>
                         <asp:Label runat="server" ID="lblMeter1" Text="METER3" />
                         <script>
                             new function () {
@@ -36,7 +36,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <div id="meter2" style="width: 200px; height: 200px"></div>
+                        <div id="meter2" class="centermeters"></div>
                         <asp:Label runat="server" ID="lblMeter2" Text="METER2" />
                         <script>
                             new function () {
@@ -49,7 +49,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <div id="meter3" style="width: 200px; height: 200px"></div>
+                        <div id="meter3" class="centermeters"></div>
                         <asp:Label runat="server" ID="lblMeter3" Text="METER3" />
                         <script>
                             new function () {
