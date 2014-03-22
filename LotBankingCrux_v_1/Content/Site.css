@@ -89,16 +89,15 @@ a {
     float: left;
 }
 
-#background-logo {
+.background-logo {
     z-index: 0;
     opacity: 0.1;
     display: block;
-    top: 50%;
-    left: 50%;
-    margin-top: -250px;
-    margin-left: -400px;
-    position: absolute;
     pointer-events: none;
+    background-image:url('Images/templogo.png');
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position:center; 
 }
 
 /* login
@@ -203,7 +202,7 @@ a {
 
 /* CBH Dashboard
 ----------------------------------------------------------*/
-#dashboard {
+.dashboard-container {
     width: 1100px;
     margin: auto;
     padding-left: 20px;
@@ -254,6 +253,15 @@ a {
 ----------------------------------------------------------*/
 
 
+/* Project Proposal
+----------------------------------------------------------*/
+#PP-table {
+    margin: 0 auto;
+}
+
+.PP-textbox {
+    float: right;
+}
 /*seems like I should manipulate this in the body not seperately*/
 .menubar {
     background-color: #B8B8B8;
@@ -338,7 +346,6 @@ a {
 }
 
 .panel-style {
-    background-color: #F0F0F0;
     display: inline-block;
     margin: 5px auto;
     padding: 10px;
@@ -405,4 +412,21 @@ a {
     text-align: center;
     padding-left: 30px;
     padding-right: 150px;
+}
+
+.success .pending .declined {
+    padding: 10px;
+    font-size: 18px;
+}
+
+.success {
+    background-color: #5CB85C;
+}
+
+.pending {
+    background-color: #F0AD4E;
+}
+
+.declined {
+    background-color: #D9534F;
 }

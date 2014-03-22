@@ -13,7 +13,6 @@
 </asp:Content>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <img src="Images/templogo.png" id="background-logo"/>
     
     <h1 id="buildername" class="centerElement">FULTON HOMES</h1>
    
