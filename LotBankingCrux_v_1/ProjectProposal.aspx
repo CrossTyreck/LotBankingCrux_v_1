@@ -57,7 +57,8 @@
         <tr>
             <td>
                 <asp:Panel ID="Panel1" runat="server">
-                    <asp:Button ID="btnAccept" runat="server" OnClick="btnSubmit_Click" Text="Accept" CssClass="button" />
+                    <asp:Button ID="btnAccept" runat="server" OnClick="btnAccept_Click" Text="Accept" CssClass="button" />
+                    <asp:Button ID="btnDecline" runat="server" CssClass="button" OnClick="btnDecline_Click" Text="Decline" />
                 </asp:Panel>
             </td>
             <td>

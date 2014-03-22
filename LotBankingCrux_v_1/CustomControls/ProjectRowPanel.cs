@@ -15,17 +15,18 @@ namespace LotBankingCrux_v_1.CustomControls
         public Label ModifiedDate { get; set; }
         public Label CreatedDate { get; set; }
         public int ProjectID { get; set; }
-    
-        public ProjectRowPanel(int id, string name, string url, String date)
+        public Color LinkNameColor { get; set; }
 
+        public ProjectRowPanel(int id, string name, string url, String date)
         {
             ProjectID = id;
             Name = new LinkButton();
             Name.Text = name;
-            Name.PostBackUrl = url + "?id=" + id.ToString();
-       
-           // Name.BorderColor = Color.Aqua;
-           // Name.BorderStyle = BorderStyle.Solid;
+            Name.PostBackUrl = url + "?projectid=" + id.ToString();
+
+
+            // Name.BorderColor = Color.Aqua;
+            // Name.BorderStyle = BorderStyle.Solid;
 
             ModifiedDate = new Label();
             ModifiedDate.Text = date;
@@ -38,5 +39,7 @@ namespace LotBankingCrux_v_1.CustomControls
         {
             this.CssClass = cssClass;
         }
+
+
     }
 }

@@ -17,6 +17,8 @@ namespace LotBankingCrux_v_1
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            btnAccept.Visible = false;
+            btnDecline.Visible = false;
             InitControls(((DataBucket)Session["UserData"])._userType);
         }
 
@@ -105,7 +107,7 @@ namespace LotBankingCrux_v_1
         {
             Project proposal;
 
-            if ((Request.QueryString["id"] != null) && ((proposal = dbObject.getProposal(Int32.Parse(Request.QueryString["id"].ToString()))) != null))
+            if ((Request.QueryString["projectid"] != null) && ((proposal = dbObject.getProposal(Int32.Parse(Request.QueryString["projectid"].ToString()))) != null))
             {
                 txtProjectName.Text = proposal.getProjectName();
                 txtFirstStreet.Text = proposal.getFirstCrossStreet();
@@ -127,7 +129,7 @@ namespace LotBankingCrux_v_1
         {
             Project proposal;
 
-            if ((Request.QueryString["id"] != null) && ((proposal = dbObject.getProposal(Int32.Parse(Request.QueryString["id"].ToString()))) != null))
+            if ((Request.QueryString["projectid"] != null) && ((proposal = dbObject.getProposal(Int32.Parse(Request.QueryString["projectid"].ToString()))) != null))
             {
                 txtProjectName.Text = proposal.getProjectName();
                 txtFirstStreet.Text = proposal.getFirstCrossStreet();
@@ -138,6 +140,8 @@ namespace LotBankingCrux_v_1
                 //txtNumberOfLots.Text = proposal.get
                 txtImprovementCosts.Text = proposal.getImprovementCost().ToString();
                 txtAcquisitionPrice.Text = proposal.getAquisitionPrice().ToString();
+                btnAccept.Visible = true;
+                btnDecline.Visible = true;
             }
         }
 
@@ -161,6 +165,16 @@ namespace LotBankingCrux_v_1
 
             mapImage.Attributes["src"] = ResolveUrl("http://maps.googleapis.com/maps/api/staticmap?center=" + firstStreet + "+" + secondStreet + "," + cityLocation + "," + stateLocation + "&zoom=16&size=600x600&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&sensor=false");
 
+        }
+
+        protected void btnAccept_Click(object sender, EventArgs e)
+        {
+            dbObject.acceptProposal(Int32.Parse(Request.QueryString["projectid"].ToString()), ((DataBucket)Session["UserData"])._userID);
+        }
+
+        protected void btnDecline_Click(object sender, EventArgs e)
+        {
+            dbObject.declineProposal(Int32.Parse(Request.QueryString["projectid"].ToString()), ((DataBucket)Session["UserData"])._userID);
         }
     }
 }
