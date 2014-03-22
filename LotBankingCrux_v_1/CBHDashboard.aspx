@@ -16,7 +16,33 @@
 
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
+    <div>
+        <asp:Panel ID="pnlPage" CssClass="pnlPage" runat="server">
 
+            <br />
+
+            <asp:Label ID="lblOrderBy" runat="server" Text="Order By: "></asp:Label>
+            <asp:DropDownList ID="ddlOrderBy" runat="server">
+            </asp:DropDownList>
+
+
+            <asp:MultiView ID="DashboardView" runat="server" ActiveViewIndex="0" OnActiveViewChanged="DashboardView_ActiveViewChanged">
+                <asp:View ID="ProjectProposalsView" runat="server">
+                    <asp:Label ID="lblProjectProposals" runat="server" Font-Bold="True" Font-Italic="False" Font-Size="X-Large" Font-Underline="True" Style="text-align: center" Text="Proposals"></asp:Label>
+                    <asp:Panel ID="ProjectProposalsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px"></asp:Panel>
+                </asp:View>
+                <asp:View ID="ExistingProjectsView" runat="server">
+                    <asp:Label ID="lblCurrentProjects" runat="server" Font-Bold="True" Font-Italic="False" Font-Size="X-Large" Font-Underline="True" Style="text-align: center" Text="Projects"></asp:Label>
+                    <asp:Panel ID="ProjectsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px">
+                    </asp:Panel>
+                </asp:View>
+                <asp:View ID="BuilderDocumentsView" runat="server">
+                    <asp:Label ID="lblBuiderDocuments" runat="server" Font-Bold="True" Font-Italic="False" Font-Size="X-Large" Font-Underline="True" Style="text-align: center" Text="Builder Documents"></asp:Label>
+                    <asp:Panel ID="BuilderDocumentsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px"></asp:Panel>
+                </asp:View>
+            </asp:MultiView>
+        </asp:Panel>
+    </div>
     <div class="dashboard-container">
         <asp:Panel ID="pnlMeters" CssClass="meters" runat="server">
             <table id="centermeters">
@@ -77,51 +103,5 @@
                     </div>
         </asp:Panel>
     </div>
-
-    <br />
-
-
-
-    <asp:Label ID="lblOrderBy" runat="server" Text="Order By: "></asp:Label>
-    <asp:DropDownList ID="ddlOrderBy" runat="server">
-    </asp:DropDownList>
-
-
-
-    <div class="dashboard-container">
-        <asp:MultiView ID="DashboardView" runat="server" ActiveViewIndex="0" OnActiveViewChanged="DashboardView_ActiveViewChanged">
-            <asp:View ID="ProjectProposalsView" runat="server">
-                <asp:Label ID="lblProjectProposals" runat="server" Font-Bold="True" Font-Italic="False" Font-Size="X-Large" Font-Underline="True" Style="text-align: center" Text="Proposals"></asp:Label>
-                <asp:Panel ID="ProjectProposalsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px"></asp:Panel>
-            </asp:View>
-            <asp:View ID="ExistingProjectsView" runat="server">
-                <asp:Label ID="lblCurrentProjects" runat="server" Font-Bold="True" Font-Italic="False" Font-Size="X-Large" Font-Underline="True" Style="text-align: center" Text="Projects"></asp:Label>
-                <asp:Panel ID="ProjectsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px">
-                </asp:Panel>
-            </asp:View>
-            <asp:View ID="BuilderDocumentsView" runat="server">
-                <asp:Label ID="lblBuiderDocuments" runat="server" Font-Bold="True" Font-Italic="False" Font-Size="X-Large" Font-Underline="True" Style="text-align: center" Text="Builder Documents"></asp:Label>
-                <asp:Panel ID="BuilderDocumentsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px"></asp:Panel>
-            </asp:View>
-        </asp:MultiView>
-    </div>
-
-    <!-- These guys need to be added to the sides of the page 
-     <table class="tasklist">
-        <tr>
-            <th>TASK LIST</th>
-        </tr>
-        <tr>
-            <td>row 1, cell 1</td>
-        </tr>
-        <tr>
-            <td>row 1, cell 2</td>
-        </tr>
-    </table>
-
-    <div class="title">
-        Builders
-    </div>
-        -->
 </asp:Content>
 
