@@ -495,15 +495,25 @@ namespace LotBankingCrux_v_1.Crux
             return returnValues;
         }
 
-        public Dictionary<int, String> getBuilderProjects(int builderId)
+        public Dictionary<int, String> getBuilderProjects(List<int> builderIds)
         {
+            String idParams = "";
+            int i = builderIds.Count;
+            for(int j = 0; j < i; j++)
+            {
+                idParams += "@bid" + j +", ";
+            }
             MySqlCommand getBuilderProjects = new MySqlCommand("SELECT id, " +
                                                                       "project_name " +
                                                                  "FROM Projects " +
-                                                                "WHERE builder_id = @builderId",
+                                                                "WHERE builder_id IN( " + idParams +")",
                                                          databaseConnection);
-            getBuilderProjects.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builderId;
 
+            int[] bids = builderIds.ToArray();
+            for (int j = 0; j < i; j++)
+            {
+                getBuilderProjects.Parameters.Add("@bid" + j, MySqlDbType.Int32).Value = bids[j];
+            }
             Dictionary<int, String> returnValues = new Dictionary<int, string>();
             MySqlDataReader reader;
             try
