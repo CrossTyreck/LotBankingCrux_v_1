@@ -61,7 +61,7 @@ namespace LotBankingCrux_v_1
             {
                 if (((DataBucket)Session["UserData"])._userID > 0)
                     //We need to add validation here, currently a user can enter an empty project
-                    DBObject.insertPoject(LotBankingCrux_v_1.Crux.CruxDB.dbID, txtProjectName.Text, txtFirstStreet.Text, txtSecondStreet.Text, txtCity.Text, txtState.Text, txtCardinal.Text, locationNotes, acquisitionPrice, improvementCost, numberLots);
+                    DBObject.insertProject(LotBankingCrux_v_1.Crux.CruxDB.dbID, txtProjectName.Text, txtFirstStreet.Text, txtSecondStreet.Text, txtCity.Text, txtState.Text, txtCardinal.Text, locationNotes, acquisitionPrice, improvementCost, numberLots);
                 else
                     Response.Redirect("Login.aspx");
 

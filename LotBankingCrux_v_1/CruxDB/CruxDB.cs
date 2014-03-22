@@ -18,7 +18,7 @@ namespace LotBankingCrux_v_1.Crux
         private string user = "UID=" + "CBHLotBanking" + ";";
         private string password = "PASSWORD=" + "Crux2014!" + ";";
 
-        public enum status{DECLINED = -1, NEEDSUPDATE = 0, NEEDSAPPROVAL = 1, APPROVED = 2};
+        public enum itemStatus{DECLINED = -1, NEEDSUPDATE = 0, NEEDSAPPROVAL = 1, APPROVED = 2};
 
         public static int dbID = 0;
 
@@ -931,7 +931,7 @@ namespace LotBankingCrux_v_1.Crux
             return doc;
         }
 
-        public int insertPoject(int builder_id, String project_name, String first_crossroad, String second_crossroad, String city, String state, String cardinal, String location_notes, Decimal aquisition_price, Decimal improvement_cost, int total_lot_count)
+        public int insertProject(int builder_id, String project_name, String first_crossroad, String second_crossroad, String city, String state, String cardinal, String location_notes, Decimal aquisition_price, Decimal improvement_cost, int total_lot_count)
         {
             MySqlCommand insertNewProject = new MySqlCommand("INSERT INTO Projects" +
                                                                    "( builder_id, project_name, first_crossroad, second_crossroad, city, state, cardinal,  location_notes, aquisition_price, improvement_cost, total_lot_count)" +
@@ -1174,7 +1174,7 @@ namespace LotBankingCrux_v_1.Crux
 
         public Project getProposal(int proposal_id)
         {
-            MySqlCommand getProposal = new MySqlCommand("SELECT id, project_name, first_crossroad, second_crossroad, cardinal, location_notes, " +
+            MySqlCommand getProposal = new MySqlCommand("SELECT id, project_name, first_crossroad, second_crossroad, city, state, cardinal, location_notes, " +
                                                                          "aquisition_price, improvement_cost, date_created, last_modified, last_requested_timestamp, " +
                                                                          "approval_timestamp, decline_timestamp, total_lot_count, builder_id " +
                                                                     "FROM Projects " +
@@ -2058,6 +2058,7 @@ namespace LotBankingCrux_v_1.Crux
 
     public class DateOrganizer
     {
+        
         private DateTime dateCreated;
         private DateTime lastUpdated;
         private DateTime lastRequested;
@@ -2109,22 +2110,22 @@ namespace LotBankingCrux_v_1.Crux
             return false;
         }
 
-        public int getStatus()
+        public CruxDB.itemStatus getStatus()
         {
             //-1 = declined, 0 = needs update, 1 = needs approval, 2 = approoved
             if (isDeclined())
             {
-                return -1;
+                return CruxDB.itemStatus.APPROVED;
             }
             if (upToDate() && !isApproved())
             {
-                return 1;
+                return CruxDB.itemStatus.NEEDSAPPROVAL;
             }
             else if(isApproved())
             {
-                return 2;
+                return CruxDB.itemStatus.APPROVED;
             }
-            return 0;
+            return CruxDB.itemStatus.NEEDSUPDATE;
         }
     }
 }
