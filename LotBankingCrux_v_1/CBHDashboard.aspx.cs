@@ -160,6 +160,43 @@ namespace LotBankingCrux_v_1
             return 50;
 
         }
+
+        protected void lnkbtnProposals_Click(object sender, EventArgs e)
+        {
+            DashboardView.ActiveViewIndex = 0;
+
+
+            Dictionary<int, String[]> aBIDProjects = dbObject.getProposalsByBID(((DataBucket)Session["UserData"])._builderID, "", false);
+            foreach (KeyValuePair<int, String[]> project in aBIDProjects)
+            {
+                ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectProposal.aspx", project.Value[1]));
+            }
+        }
+
+        protected void lnkbtnProjects_Click(object sender, EventArgs e)
+        {
+            DashboardView.ActiveViewIndex = 1;
+
+            Dictionary<int, String[]> aBIDProjects = dbObject.getProjectsByBID(((DataBucket)Session["UserData"])._builderID, "", true);
+            foreach (KeyValuePair<int, String[]> project in aBIDProjects)
+            {
+                ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectDashboard.aspx", project.Value[1]));
+            }
+        }
+
+        protected void lnkbtnBuilderDocuments_Click(object sender, EventArgs e)
+        {
+            DashboardView.ActiveViewIndex = 2;
+
+
+            Dictionary<int, String[]> aBIDDocuments = dbObject.getBuilderDocumentsByBID(((DataBucket)Session["UserData"])._builderID, "");
+            foreach (KeyValuePair<int, String[]> doc in aBIDDocuments)
+            {
+                ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(doc.Key, doc.Value[0], "ProjectProposal.aspx", doc.Value[1]));
+            }
+        }
+
+        
         
     }
 }

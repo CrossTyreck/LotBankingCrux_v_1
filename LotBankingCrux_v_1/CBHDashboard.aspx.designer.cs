@@ -31,6 +31,33 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.Panel pnlPage;
         
         /// <summary>
+        /// lnkbtnProposals control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkbtnProposals;
+        
+        /// <summary>
+        /// lnkbtnProjects control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkbtnProjects;
+        
+        /// <summary>
+        /// lnkbtnBuilderDocuments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkbtnBuilderDocuments;
+        
+        /// <summary>
         /// lblOrderBy control.
         /// </summary>
         /// <remarks>
