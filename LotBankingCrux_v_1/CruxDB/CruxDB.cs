@@ -1229,18 +1229,18 @@ namespace LotBankingCrux_v_1.Crux
 
 
 
-        public Dictionary<int, String[]> getProposalsByBID(int builder_id, String orderBy, Boolean excludeDeclined = false, Boolean excludeAwaitingBuilder = false, Boolean excludeAwaitingApproval = false)
+        public Dictionary<int, String[]> getProposalsByBID(int builder_id, String orderBy, Boolean includeDeclined = false, Boolean includeAwaitingBuilder = false, Boolean includeAwaitingApproval = false)
         {
             String exclusion = "";
-            if (excludeDeclined)
+            if (!includeDeclined)
             {
                 exclusion = "AND decline_id != -1 ";
             }
-            if (excludeAwaitingBuilder)
+            if (!includeAwaitingBuilder)
             {
                 exclusion += "AND (last_modified_timestamp <= last_requested_timestamp) ";
             }
-            if (excludeAwaitingApproval)
+            if (!includeAwaitingApproval)
             {
                 exclusion += "AND (last_modified_timestamp > last_requested_timestamp || creation_timestamp > last_requested_timestamp) ";
             }
