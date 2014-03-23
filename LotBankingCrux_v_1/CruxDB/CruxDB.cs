@@ -541,11 +541,11 @@ namespace LotBankingCrux_v_1.Crux
             }
             if (!includeAwaitingBuilder)
             {
-                exclusion += "AND (last_modified_timestamp <= last_requested_timestamp) ";
+                exclusion += "AND (last_modified <= last_requested_timestamp) ";
             }
             if (!includeAwaitingApproval)
             {
-                exclusion += "AND (last_modified_timestamp > last_requested_timestamp || creation_timestamp > last_requested_timestamp) ";
+                exclusion += "AND (last_modified > last_requested_timestamp || creation_timestamp > last_requested_timestamp) ";
             }
 
             String idParams = "";
