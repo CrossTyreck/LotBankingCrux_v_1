@@ -472,9 +472,32 @@ namespace LotBankingCrux_v_1.Crux
         public DataTable getBuilderNameID()
         {
             DataTable builders = new DataTable();
-            builders.Columns.Add("BuilderName", typeof(String));
+            builders.Columns.Add("Builder Name", typeof(String));
             builders.Columns.Add("Builder ID", typeof(int));
-            //http://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.listcontrol.datatextfield(v=vs.110).aspx
+
+            MySqlCommand getBuildersNamesQuery = new MySqlCommand("SELECT name, id " +
+                                                              "FROM Builder_Data " +
+                                                              "ORDER BY name ASC ",
+                                                         databaseConnection);
+            MySqlDataReader reader;
+            try
+            {
+                reader = getBuildersNamesQuery.ExecuteReader(CommandBehavior.SequentialAccess);
+                while (reader.Read())
+                {
+                    DataRow row = builders.NewRow();
+                    row[0] = reader.GetString(0);
+                    row[1] = reader.GetInt32(1);
+                    builders.Rows.Add(row);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.Print(e.Message);
+                return null;
+            }
+            reader.Close();
+            databaseConnection.Close();
             return builders;
         }
 
@@ -1325,8 +1348,8 @@ namespace LotBankingCrux_v_1.Crux
                                                               "WHERE id = @id",
                                                              databaseConnection);
 
-            updateProject.Parameters.Add("@userId", userId);
-            updateProject.Parameters.Add("@id", projectId);
+            updateProject.Parameters.Add("@userId", MySqlDbType.Int32).Value =  userId;
+            updateProject.Parameters.Add("@id", MySqlDbType.Int32).Value = projectId;
 
             databaseConnection.Open();
 
@@ -1355,8 +1378,8 @@ namespace LotBankingCrux_v_1.Crux
                                                               "WHERE id = @id",
                                                              databaseConnection);
 
-            updateProject.Parameters.Add("@userId", userId);
-            updateProject.Parameters.Add("@id", projectId);
+            updateProject.Parameters.Add("@userId", MySqlDbType.Int32).Value = userId;
+            updateProject.Parameters.Add("@id", MySqlDbType.Int32).Value = projectId;
 
             databaseConnection.Open();
 
