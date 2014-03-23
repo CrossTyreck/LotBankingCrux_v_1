@@ -534,6 +534,30 @@ namespace LotBankingCrux_v_1.Crux
 
         public Dictionary<int, String[]> getBuilderProjects(List<int> builderIds, Boolean includeDeclined = false, Boolean includeAwaitingBuilder = false, Boolean includeAwaitingApproval = false)
         {
+
+            String idParams = "";
+            int i = builderIds.Count;
+            if (i > 0)
+            {
+                idParams += " WHERE builder_id IN( ";
+                for (int j = 0; j < i; j++)
+                {
+                    if (j == 0)
+                    {
+                        idParams += "@bid" + j + " ";
+                    }
+                    else
+                    {
+                        idParams += ", @bid" + j + " ";
+                    }
+                }
+                idParams += " ) ";
+            }
+            else
+            {
+                idParams += "WHERE builder_id != NULL ";
+            }
+
             String exclusion = "";
             if (!includeDeclined)
             {
@@ -548,19 +572,7 @@ namespace LotBankingCrux_v_1.Crux
                 exclusion += "AND (last_modified > last_requested_timestamp || date_created > last_requested_timestamp) ";
             }
 
-            String idParams = "";
-            int i = builderIds.Count;
-            for(int j = 0; j < i; j++)
-            {
-                if (j == 0)
-                {
-                    idParams += "@bid" + j + " ";
-                }
-                else
-                {
-                    idParams += ", @bid" + j + " ";
-                }
-            }
+            
             MySqlCommand getBuilderProjects = new MySqlCommand("SELECT id, " +
                                                                       "project_name, " +
                                                                       "last_modified " +
