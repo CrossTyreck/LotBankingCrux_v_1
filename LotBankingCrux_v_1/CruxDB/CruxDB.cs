@@ -469,6 +469,15 @@ namespace LotBankingCrux_v_1.Crux
             return name;
         }
 
+        public DataTable getBuilderNameID()
+        {
+            DataTable builders = new DataTable();
+            builders.Columns.Add("BuilderName", typeof(String));
+            builders.Columns.Add("Builder ID", typeof(int));
+            //http://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.listcontrol.datatextfield(v=vs.110).aspx
+            return builders;
+        }
+
         public Dictionary<int, String> getBuilderNames()
         {
             MySqlCommand getBuildersNamesQuery = new MySqlCommand("SELECT builder_id, " +
@@ -1310,7 +1319,7 @@ namespace LotBankingCrux_v_1.Crux
 
         public int acceptProposal(int projectId, int userId)
         {
-            MySqlCommand updateProject = new MySqlCommand("UPDATE Projects" +
+            MySqlCommand updateProject = new MySqlCommand("UPDATE Projects " +
                                                                 "SET approval_timestamp = NOW(), " +
                                                                     "approval_id = @userId " +
                                                               "WHERE id = @id",

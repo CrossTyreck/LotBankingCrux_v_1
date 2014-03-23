@@ -58,24 +58,6 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.LinkButton lnkbtnBuilderDocuments;
         
         /// <summary>
-        /// lblOrderBy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblOrderBy;
-        
-        /// <summary>
-        /// ddlOrderBy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlOrderBy;
-        
-        /// <summary>
         /// DashboardView control.
         /// </summary>
         /// <remarks>
@@ -101,6 +83,78 @@ namespace LotBankingCrux_v_1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblProjectProposals;
+        
+        /// <summary>
+        /// chkDeclined control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkDeclined;
+        
+        /// <summary>
+        /// chkAwaitingBuilderInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkAwaitingBuilderInfo;
+        
+        /// <summary>
+        /// chkAwaitingApproval control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkAwaitingApproval;
+        
+        /// <summary>
+        /// lblBuilders control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBuilders;
+        
+        /// <summary>
+        /// lstbxBuilders control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lstbxBuilders;
+        
+        /// <summary>
+        /// lblOrderBy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblOrderBy;
+        
+        /// <summary>
+        /// ddlOrderBy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlOrderBy;
+        
+        /// <summary>
+        /// btnGo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGo;
         
         /// <summary>
         /// ProjectProposalsPanel control.
@@ -130,6 +184,24 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.Label lblCurrentProjects;
         
         /// <summary>
+        /// lblOrderBy1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblOrderBy1;
+        
+        /// <summary>
+        /// ddlOrderBy1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlOrderBy1;
+        
+        /// <summary>
         /// ProjectsPanel control.
         /// </summary>
         /// <remarks>
@@ -155,6 +227,24 @@ namespace LotBankingCrux_v_1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblBuiderDocuments;
+        
+        /// <summary>
+        /// lblOrderBy2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblOrderBy2;
+        
+        /// <summary>
+        /// ddlOrderBy2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlOrderBy2;
         
         /// <summary>
         /// BuilderDocumentsPanel control.

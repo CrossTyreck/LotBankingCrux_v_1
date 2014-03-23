@@ -19,30 +19,50 @@
     <div>
         <asp:Panel ID="pnlPage" CssClass="pnlPage" runat="server">
 
-            <asp:LinkButton ID="lnkbtnProposals" runat="server" OnClick="Proposals_Click">Proposals</asp:LinkButton>
-            <asp:LinkButton ID="lnkbtnProjects" runat="server" OnClick="Projects_Click">Projects</asp:LinkButton>
-            <asp:LinkButton ID="lnkbtnBuilderDocuments" runat="server" OnClick="BuilderDocuments_Click">Builder Documents</asp:LinkButton>
-            <br />
+            <div class="buildernav">
+                <ul>
+                    <li>
+                        <asp:LinkButton ID="lnkbtnProposals" runat="server" OnClick="Proposals_Click" Font-Bold="True" Font-Size="Large">Proposals</asp:LinkButton></li>
 
-            <br />
+                    <li>
+                        <asp:LinkButton ID="lnkbtnProjects" runat="server" OnClick="Projects_Click" Font-Bold="True" Font-Size="Large">Projects</asp:LinkButton></li>
 
-            <asp:Label ID="lblOrderBy" runat="server" Text="Order By: "></asp:Label>
-            <asp:DropDownList ID="ddlOrderBy" runat="server">
-            </asp:DropDownList>
+                    <li>
+                        <asp:LinkButton ID="lnkbtnBuilderDocuments" runat="server" OnClick="BuilderDocuments_Click" Font-Bold="True" Font-Size="Large">Builder Documents</asp:LinkButton></li>
+                </ul>
+            </div>
 
 
             <asp:MultiView ID="DashboardView" runat="server" ActiveViewIndex="0" OnActiveViewChanged="DashboardView_ActiveViewChanged">
                 <asp:View ID="ProjectProposalsView" runat="server">
                     <asp:Label ID="lblProjectProposals" runat="server" Font-Bold="True" Font-Italic="False" Font-Size="X-Large" Font-Underline="True" Style="text-align: center" Text="Proposals"></asp:Label>
-                    <asp:Panel ID="ProjectProposalsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px"></asp:Panel>
+                    <br />
+                    <asp:CheckBox ID="chkDeclined" runat="server" Text="Declined" />
+                    <asp:CheckBox ID="chkAwaitingBuilderInfo" runat="server" Text="Awaiting Builder Info" />
+                    <asp:CheckBox ID="chkAwaitingApproval" runat="server" Text="Awaiting Approval" />
+                    <br />
+                    <asp:Label ID="lblBuilders" runat="server" Text="Builder: "></asp:Label>
+                    <asp:ListBox ID="lstbxBuilders" runat="server" Rows="1" SelectionMode="Multiple"></asp:ListBox>
+                    <asp:Label ID="lblOrderBy" runat="server" Text="Order By: "></asp:Label>
+                    <asp:DropDownList ID="ddlOrderBy" runat="server" Width="79px">
+                    </asp:DropDownList>
+                    <asp:Button ID="btnGo" runat="server" OnClick="btnGo_Click" Text="Go!" Width="56px" />
+                    <asp:Panel ID="ProjectProposalsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px">
+                    </asp:Panel>
                 </asp:View>
                 <asp:View ID="ExistingProjectsView" runat="server">
                     <asp:Label ID="lblCurrentProjects" runat="server" Font-Bold="True" Font-Italic="False" Font-Size="X-Large" Font-Underline="True" Style="text-align: center" Text="Projects"></asp:Label>
+                    <asp:Label ID="lblOrderBy1" runat="server" Text="Order By: "></asp:Label>
+                    <asp:DropDownList ID="ddlOrderBy1" runat="server" Width="79px">
+                    </asp:DropDownList>
                     <asp:Panel ID="ProjectsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px">
                     </asp:Panel>
                 </asp:View>
                 <asp:View ID="BuilderDocumentsView" runat="server">
                     <asp:Label ID="lblBuiderDocuments" runat="server" Font-Bold="True" Font-Italic="False" Font-Size="X-Large" Font-Underline="True" Style="text-align: center" Text="Builder Documents"></asp:Label>
+                    <asp:Label ID="lblOrderBy2" runat="server" Text="Order By: "></asp:Label>
+                    <asp:DropDownList ID="ddlOrderBy2" runat="server" Width="79px">
+                    </asp:DropDownList>
                     <asp:Panel ID="BuilderDocumentsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px"></asp:Panel>
                 </asp:View>
             </asp:MultiView>

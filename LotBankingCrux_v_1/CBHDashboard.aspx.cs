@@ -79,11 +79,11 @@ namespace LotBankingCrux_v_1
             Dictionary<int, String> lintBuilderIDs = dbObject.getBuilderIds();
             foreach (KeyValuePair<int, String> bID in lintBuilderIDs)
             {
-                Dictionary<int, string[]> aBIDProjects = dbObject.getProjectsByBID(bID.Key, ddlOrderBy.SelectedValue.ToString(), true);
-                //foreach (Project project in aBIDProjects)
-                //{
-                //    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.getProjectName(), "ProjectDashboard.aspx", project.getLastModified()));
-                //}
+                Dictionary<int, String[]> aBIDProjects = dbObject.getProjectsByBID(bID.Key, ddlOrderBy.SelectedValue.ToString(), true);
+                foreach (KeyValuePair<int, String[]> project in aBIDProjects)
+                {
+                    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectDashboard.aspx", project.Value[1]));
+                }
             }
         }
 
@@ -99,22 +99,15 @@ namespace LotBankingCrux_v_1
         {
             DashboardView.ActiveViewIndex = 0;
 
-            ddlOrderBy.Items.Add("Builder");
-            ddlOrderBy.Items.Add("Proposal Name");
-            ddlOrderBy.Items.Add("Submission Date");
-            ddlOrderBy.Items.Add("Last Requested Date");
 
-            Dictionary<int, String> lintBuilderIDs = dbObject.getBuilderIds();
 
-            foreach(KeyValuePair<int, String> bID in lintBuilderIDs)
+            DataTable builders = dbObject.getBuilderNameID();
+           
 
-            {
-                Dictionary<int, String[]> aBIDProjects = dbObject.getProposalsByBID(bID.Key, ddlOrderBy.SelectedValue.ToString(), false);
-                foreach (KeyValuePair<int, String[]> project in aBIDProjects)
-                {
-                    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectProposal.aspx", project.Value[1]));
-                }
-            }
+      
+
+
+            
         }
 
         /// <summary>
@@ -149,7 +142,6 @@ namespace LotBankingCrux_v_1
             }
         }
 
-
         protected void DashboardView_ActiveViewChanged(object sender, EventArgs e)
         {
 
@@ -161,38 +153,22 @@ namespace LotBankingCrux_v_1
 
         }
 
-        protected void lnkbtnProposals_Click(object sender, EventArgs e)
+        protected void btnGo_Click(object sender, EventArgs e)
         {
-            DashboardView.ActiveViewIndex = 0;
+            ddlOrderBy.Items.Add("Builder");
+            ddlOrderBy.Items.Add("Proposal Name");
+            ddlOrderBy.Items.Add("Submission Date");
+            ddlOrderBy.Items.Add("Last Requested Date");
 
+            Dictionary<int, String> lintBuilderIDs = dbObject.getBuilderIds();
 
-            Dictionary<int, String[]> aBIDProjects = dbObject.getProposalsByBID(((DataBucket)Session["UserData"])._builderID, "", false);
-            foreach (KeyValuePair<int, String[]> project in aBIDProjects)
+            foreach (KeyValuePair<int, String> bID in lintBuilderIDs)
             {
-                ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectProposal.aspx", project.Value[1]));
-            }
-        }
-
-        protected void lnkbtnProjects_Click(object sender, EventArgs e)
-        {
-            DashboardView.ActiveViewIndex = 1;
-
-            Dictionary<int, String[]> aBIDProjects = dbObject.getProjectsByBID(((DataBucket)Session["UserData"])._builderID, "", true);
-            foreach (KeyValuePair<int, String[]> project in aBIDProjects)
-            {
-                ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectDashboard.aspx", project.Value[1]));
-            }
-        }
-
-        protected void lnkbtnBuilderDocuments_Click(object sender, EventArgs e)
-        {
-            DashboardView.ActiveViewIndex = 2;
-
-
-            Dictionary<int, String[]> aBIDDocuments = dbObject.getBuilderDocumentsByBID(((DataBucket)Session["UserData"])._builderID, "");
-            foreach (KeyValuePair<int, String[]> doc in aBIDDocuments)
-            {
-                ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(doc.Key, doc.Value[0], "ProjectProposal.aspx", doc.Value[1]));
+                Dictionary<int, String[]> aBIDProjects = dbObject.getProposalsByBID(bID.Key, ddlOrderBy.SelectedValue.ToString(), false);
+                foreach (KeyValuePair<int, String[]> project in aBIDProjects)
+                {
+                    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectProposal.aspx", project.Value[1]));
+                }
             }
         }
 
@@ -200,3 +176,37 @@ namespace LotBankingCrux_v_1
         
     }
 }
+//protected void lnkbtnProposals_Click(object sender, EventArgs e)
+//{
+//    DashboardView.ActiveViewIndex = 0;
+
+
+//    Dictionary<int, String[]> aBIDProjects = dbObject.getProposalsByBID(((DataBucket)Session["UserData"])._builderID, "", false);
+//    foreach (KeyValuePair<int, String[]> project in aBIDProjects)
+//    {
+//        ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectProposal.aspx", project.Value[1]));
+//    }
+//}
+
+//protected void lnkbtnProjects_Click(object sender, EventArgs e)
+//{
+//    DashboardView.ActiveViewIndex = 1;
+
+//    Dictionary<int, String[]> aBIDProjects = dbObject.getProjectsByBID(((DataBucket)Session["UserData"])._builderID, "", true);
+//    foreach (KeyValuePair<int, String[]> project in aBIDProjects)
+//    {
+//        ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectDashboard.aspx", project.Value[1]));
+//    }
+//}
+
+//protected void lnkbtnBuilderDocuments_Click(object sender, EventArgs e)
+//{
+//    DashboardView.ActiveViewIndex = 2;
+
+
+//    Dictionary<int, String[]> aBIDDocuments = dbObject.getBuilderDocumentsByBID(((DataBucket)Session["UserData"])._builderID, "");
+//    foreach (KeyValuePair<int, String[]> doc in aBIDDocuments)
+//    {
+//        ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(doc.Key, doc.Value[0], "ProjectProposal.aspx", doc.Value[1]));
+//    }
+//}
