@@ -527,7 +527,7 @@ namespace LotBankingCrux_v_1.Crux
             return returnValues;
         }
 
-        public Dictionary<int, String> getBuilderProjects(List<int> builderIds)
+        public Dictionary<int, String[]> getBuilderProjects(List<int> builderIds)
         {
             String idParams = "";
             int i = builderIds.Count;
@@ -536,7 +536,8 @@ namespace LotBankingCrux_v_1.Crux
                 idParams += "@bid" + j +", ";
             }
             MySqlCommand getBuilderProjects = new MySqlCommand("SELECT id, " +
-                                                                      "project_name " +
+                                                                      "project_name, " +
+                                                                      "last_modified_timestamp " +
                                                                  "FROM Projects " +
                                                                 "WHERE builder_id IN( " + idParams +")",
                                                          databaseConnection);
@@ -546,14 +547,14 @@ namespace LotBankingCrux_v_1.Crux
             {
                 getBuilderProjects.Parameters.Add("@bid" + j, MySqlDbType.Int32).Value = bids[j];
             }
-            Dictionary<int, String> returnValues = new Dictionary<int, string>();
+            Dictionary<int, String[]> returnValues = new Dictionary<int, String[]>();
             MySqlDataReader reader;
             try
             {
                 reader = getBuilderProjects.ExecuteReader(CommandBehavior.SequentialAccess);
                 while (reader.Read())
                 {
-                    returnValues.Add(reader.GetInt32(0), reader.GetString(1));
+                    returnValues.Add(reader.GetInt32(0), new String[] {reader.GetString(1), reader.GetDateTime(2).ToString()});
                 }
             }
             catch (MySqlException e)
