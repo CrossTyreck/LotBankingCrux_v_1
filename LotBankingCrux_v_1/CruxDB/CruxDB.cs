@@ -346,11 +346,12 @@ namespace LotBankingCrux_v_1.Crux
                                                              databaseConnection);
             updateBuilderName.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builder_id;
             updateBuilderName.Parameters.Add("@name", MySqlDbType.VarChar, 30).Value = name;
-            databaseConnection.Open();
-
+            
             MySqlDataReader reader;
             try
             {
+                databaseConnection.Open();
+
                 reader = updateBuilderName.ExecuteReader(CommandBehavior.SequentialAccess);
             }
             catch (Exception e)
@@ -369,7 +370,6 @@ namespace LotBankingCrux_v_1.Crux
                                                                  "name " +
                                                             "FROM Builder_Data ",
                                                       databaseConnection);
-            databaseConnection.Open();
             Dictionary<int, String> returnValue = null;
             try
             {
@@ -409,7 +409,6 @@ namespace LotBankingCrux_v_1.Crux
                                                           "WHERE name = @name",
                                                       databaseConnection);
             getBuilderId.Parameters.Add("@name", MySqlDbType.VarChar).Value = name;
-            databaseConnection.Open();
             int returnValue = -2;
 
             try
@@ -449,11 +448,12 @@ namespace LotBankingCrux_v_1.Crux
                                                              "WHERE bid = @id",
                                                          databaseConnection);
             getBuildersNameQuery.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
-            databaseConnection.Open();
+            
             MySqlDataReader reader;
             String name = "";
             try
             {
+                databaseConnection.Open();
                 reader = getBuildersNameQuery.ExecuteReader(CommandBehavior.SequentialAccess);
                 while (reader.Read())
                 {
@@ -513,8 +513,10 @@ namespace LotBankingCrux_v_1.Crux
                                                          databaseConnection);
             Dictionary<int, String> returnValues = new Dictionary<int, string>();
             MySqlDataReader reader;
+
             try
             {
+                databaseConnection.Open();
                 reader = getBuildersNamesQuery.ExecuteReader(CommandBehavior.SequentialAccess);
                 while (reader.Read())
                 {
@@ -530,19 +532,41 @@ namespace LotBankingCrux_v_1.Crux
             return returnValues;
         }
 
-        public Dictionary<int, String[]> getBuilderProjects(List<int> builderIds)
+        public Dictionary<int, String[]> getBuilderProjects(List<int> builderIds, Boolean includeDeclined = false, Boolean includeAwaitingBuilder = false, Boolean includeAwaitingApproval = false)
         {
+            String exclusion = "";
+            if (!includeDeclined)
+            {
+                exclusion = "AND decline_id != -1 ";
+            }
+            if (!includeAwaitingBuilder)
+            {
+                exclusion += "AND (last_modified_timestamp <= last_requested_timestamp) ";
+            }
+            if (!includeAwaitingApproval)
+            {
+                exclusion += "AND (last_modified_timestamp > last_requested_timestamp || creation_timestamp > last_requested_timestamp) ";
+            }
+
             String idParams = "";
             int i = builderIds.Count;
             for(int j = 0; j < i; j++)
             {
-                idParams += "@bid" + j +", ";
+                if (j == 0)
+                {
+                    idParams += "@bid" + j + " ";
+                }
+                else
+                {
+                    idParams += ", @bid" + j + " ";
+                }
             }
             MySqlCommand getBuilderProjects = new MySqlCommand("SELECT id, " +
                                                                       "project_name, " +
                                                                       "last_modified_timestamp " +
                                                                  "FROM Projects " +
-                                                                "WHERE builder_id IN( " + idParams +")",
+                                                                "WHERE builder_id IN( " + idParams +") "
+                                                                + exclusion,
                                                          databaseConnection);
 
             int[] bids = builderIds.ToArray();
