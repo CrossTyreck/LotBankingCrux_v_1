@@ -10,9 +10,18 @@ namespace LotBankingCrux_v_1.CustomControls
     public class FileUploadButton : Panel
     {
 
+        private string contentLabel = String.Empty;
         public Label Content { get; set; }
         public FileUpload BrowseButton { get; set; }
-        public Button SubmitFile { get; set; }
+        public Button DownloadButton { get; set; }
+        public int DocClassId { get; set; }
+        
+
+        public FileUploadButton(string content, int id = 0)
+        {
+            contentLabel = content;
+            DocClassId = id;
+        }
 
         /// <summary>
         /// Used for uploading documents in Due Diligence. 
@@ -25,19 +34,19 @@ namespace LotBankingCrux_v_1.CustomControls
         {
 
             Content = new Label();
-            Content.Text = "Content to upload";
+            Content.Text = contentLabel;
 
             BrowseButton = new FileUpload();
 
-            SubmitFile = new Button();
-            SubmitFile.Text = "Upload";
+            DownloadButton = new Button();
+            DownloadButton.Text = "Download";
 
             Controls.Add(Content);
             Controls.Add(BrowseButton);
-            Controls.Add(SubmitFile);
+            Controls.Add(DownloadButton);
 
         }
 
-
     }
+
 }

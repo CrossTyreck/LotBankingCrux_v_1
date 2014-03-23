@@ -39,7 +39,8 @@ namespace LotBankingCrux_v_1
 
         protected void UploadFile_Click(object sender, EventArgs e)
         {
-            cfsFileStream.UploadFile((sender as FileUpload).PostedFile.FileName, sender as FileUpload, DBObject, (DataBucket)Session["UserData"], Request, Context);
+            //cfsFileStream.UploadFile((sender as FileUpload).PostedFile.FileName, sender as FileUpload, DBObject, (DataBucket)Session["UserData"], Request, Context);
+            cfsFileStream.UploadFile(DBObject, (DataBucket)Session["UserData"], Request, Context);
         }
 
 

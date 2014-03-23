@@ -121,12 +121,14 @@
                 <div class="menubar">
                     <div>
                         <ul id="horizontal-list">
+                            </ul>
                     </div>
 
+                </div>
+            </div>
 
-
-                    <div id="temppanel2">
-                    </div>
+            <div id="temppanel2">
+            </div>
         </asp:Panel>
     </div>
 </asp:Content>

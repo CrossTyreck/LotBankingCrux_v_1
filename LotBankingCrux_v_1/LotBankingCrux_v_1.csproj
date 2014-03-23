@@ -71,6 +71,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="CreateUserLogin.aspx" />
     <Content Include="DueDiligence.aspx" />
+    <Content Include="DueDiligenceCopy.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Images\delete_salesTraffic.png" />
     <Content Include="Images\logo.png" />
@@ -89,6 +90,13 @@
     <Compile Include="CustomControls\CruxFileStream.cs" />
     <Compile Include="CustomControls\FileUploadButton.cs" />
     <Compile Include="CustomControls\ProjectRowPanel.cs" />
+    <Compile Include="DueDiligenceCopy.aspx.cs">
+      <DependentUpon>DueDiligenceCopy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DueDiligenceCopy.aspx.designer.cs">
+      <DependentUpon>DueDiligenceCopy.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Restricted.Master.cs">
       <DependentUpon>Restricted.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

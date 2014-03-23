@@ -593,7 +593,8 @@ namespace LotBankingCrux_v_1.Crux
             databaseConnection.Close();
             return returnValues;
         }
-
+        
+        //#JUSTIN Add Unique key on both project_id and project_document_class_id together
         public int insertProjectDocument(int projectId, String docName, byte[] doc)
         {
             MySqlCommand insertNewProjectDocument = new MySqlCommand("INSERT INTO Project_Documents" +
@@ -1117,12 +1118,14 @@ namespace LotBankingCrux_v_1.Crux
             return returnValues;
         }
 
+        
         public Dictionary<int, String[]> getProjectsByBID(int builder_id, String orderBy, Boolean excludeDeclined)
         {
             String exclusion = "";
             if (excludeDeclined)
             {
-                exclusion = "AND decline_id != -1 ";
+                //#CHRIS did this to list accepted projects
+                exclusion = "AND (decline_id != -1 OR approval_id != -1)";
             }
 
             String order = "";
@@ -1152,7 +1155,7 @@ namespace LotBankingCrux_v_1.Crux
                                                                       "last_modified " +
                                                                  "FROM Projects " +
                                                                 "WHERE builder_id = @builderId " +
-                                                                  "AND approval_id >= 0 " +
+                                                                  //"AND approval_id >= 0 " +
                                                                 exclusion +
                                                                 order,
                                               databaseConnection);
