@@ -17,7 +17,7 @@ namespace LotBankingCrux_v_1.CustomControls
         public int ProjectID { get; set; }
         public Color LinkNameColor { get; set; }
 
-        public ProjectRowPanel(int id, string name, string url, String date)
+        public ProjectRowPanel(int id, string name, string url, string date)
         {
             ProjectID = id;
             Name = new LinkButton();

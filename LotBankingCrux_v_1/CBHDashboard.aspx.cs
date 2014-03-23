@@ -99,15 +99,10 @@ namespace LotBankingCrux_v_1
         {
             DashboardView.ActiveViewIndex = 0;
 
-
-
-            DataTable builders = dbObject.getBuilderNameID();
-           
-
-      
-
-
-            
+            lstbxBuilders.DataSource = dbObject.getBuilderNameID();
+            lstbxBuilders.DataTextField = "Builder Name";
+            lstbxBuilders.DataValueField = "Builder Id";
+            lstbxBuilders.DataBind();
         }
 
         /// <summary>
@@ -133,7 +128,7 @@ namespace LotBankingCrux_v_1
             foreach (KeyValuePair<int, String> bID in lintBuilderIDs)
             {
 
-               Dictionary<int, String[]> aBIDDocuments = dbObject.getBuilderDocumentsByBID(bID.Key, ddlOrderBy.SelectedValue.ToString());
+                Dictionary<int, String[]> aBIDDocuments = dbObject.getBuilderDocumentsByBID(bID.Key, ddlOrderBy.SelectedValue.ToString());
 
                 //foreach (Dictionary<int, string[]> doc in aBIDDocuments)
                 //{
@@ -160,20 +155,22 @@ namespace LotBankingCrux_v_1
             ddlOrderBy.Items.Add("Submission Date");
             ddlOrderBy.Items.Add("Last Requested Date");
 
-            Dictionary<int, String> lintBuilderIDs = dbObject.getBuilderIds();
-
-            foreach (KeyValuePair<int, String> bID in lintBuilderIDs)
+            List<int> lintBuilderIDs = new List<int>();
+            foreach (int item in lstbxBuilders.GetSelectedIndices())
             {
-                Dictionary<int, String[]> aBIDProjects = dbObject.getProposalsByBID(bID.Key, ddlOrderBy.SelectedValue.ToString(), false);
-                foreach (KeyValuePair<int, String[]> project in aBIDProjects)
-                {
-                    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectProposal.aspx", project.Value[1]));
-                }
+                lintBuilderIDs.Add(Int32.Parse(lstbxBuilders.Items[item].Value));
             }
+
+            Dictionary<int, String[]> aBIDProjects = dbObject.getBuilderProjects(lintBuilderIDs);
+            foreach (KeyValuePair<int, String[]> project in aBIDProjects)
+            {
+                ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectProposal.aspx", project.Value[1]));
+            }
+
         }
 
-        
-        
+
+
     }
 }
 //protected void lnkbtnProposals_Click(object sender, EventArgs e)

@@ -369,7 +369,7 @@ namespace LotBankingCrux_v_1.Crux
                                                                  "name " +
                                                             "FROM Builder_Data ",
                                                       databaseConnection);
-
+            databaseConnection.Open();
             Dictionary<int, String> returnValue = null;
             try
             {
@@ -409,7 +409,7 @@ namespace LotBankingCrux_v_1.Crux
                                                           "WHERE name = @name",
                                                       databaseConnection);
             getBuilderId.Parameters.Add("@name", MySqlDbType.VarChar).Value = name;
-
+            databaseConnection.Open();
             int returnValue = -2;
 
             try
@@ -449,6 +449,7 @@ namespace LotBankingCrux_v_1.Crux
                                                              "WHERE bid = @id",
                                                          databaseConnection);
             getBuildersNameQuery.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+            databaseConnection.Open();
             MySqlDataReader reader;
             String name = "";
             try
@@ -475,11 +476,12 @@ namespace LotBankingCrux_v_1.Crux
             builders.Columns.Add("Builder Name", typeof(String));
             builders.Columns.Add("Builder ID", typeof(int));
 
-            MySqlCommand getBuildersNamesQuery = new MySqlCommand("SELECT name, id " +
+            MySqlCommand getBuildersNamesQuery = new MySqlCommand("SELECT name, builder_id " +
                                                               "FROM Builder_Data " +
                                                               "ORDER BY name ASC ",
                                                          databaseConnection);
             MySqlDataReader reader;
+            databaseConnection.Open();
             try
             {
                 reader = getBuildersNamesQuery.ExecuteReader(CommandBehavior.SequentialAccess);
@@ -489,6 +491,7 @@ namespace LotBankingCrux_v_1.Crux
                     row[0] = reader.GetString(0);
                     row[1] = reader.GetInt32(1);
                     builders.Rows.Add(row);
+                    
                 }
             }
             catch (Exception e)
@@ -549,6 +552,7 @@ namespace LotBankingCrux_v_1.Crux
             }
             Dictionary<int, String[]> returnValues = new Dictionary<int, String[]>();
             MySqlDataReader reader;
+            databaseConnection.Open();
             try
             {
                 reader = getBuilderProjects.ExecuteReader(CommandBehavior.SequentialAccess);

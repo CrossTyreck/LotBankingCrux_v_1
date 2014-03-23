@@ -42,10 +42,11 @@
                     <asp:CheckBox ID="chkAwaitingApproval" runat="server" Text="Awaiting Approval" />
                     <br />
                     <asp:Label ID="lblBuilders" runat="server" Text="Builder: "></asp:Label>
-                    <asp:ListBox ID="lstbxBuilders" runat="server" Rows="1" SelectionMode="Multiple"></asp:ListBox>
                     <asp:Label ID="lblOrderBy" runat="server" Text="Order By: "></asp:Label>
                     <asp:DropDownList ID="ddlOrderBy" runat="server" Width="79px">
                     </asp:DropDownList>
+                    <br />
+                    <asp:ListBox ID="lstbxBuilders" runat="server" SelectionMode="Multiple"></asp:ListBox>
                     <asp:Button ID="btnGo" runat="server" OnClick="btnGo_Click" Text="Go!" Width="56px" />
                     <asp:Panel ID="ProjectProposalsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px">
                     </asp:Panel>
