@@ -121,6 +121,15 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.Label lblBuilders;
         
         /// <summary>
+        /// lstbxBuilders control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lstbxBuilders;
+        
+        /// <summary>
         /// lblOrderBy control.
         /// </summary>
         /// <remarks>
@@ -137,15 +146,6 @@ namespace LotBankingCrux_v_1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlOrderBy;
-        
-        /// <summary>
-        /// lstbxBuilders control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lstbxBuilders;
         
         /// <summary>
         /// btnGo control.

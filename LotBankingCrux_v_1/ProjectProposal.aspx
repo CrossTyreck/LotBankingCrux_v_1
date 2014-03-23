@@ -44,7 +44,7 @@
                     <br />
                     <br />
                     <asp:Label ID="lblDataInserted" runat="server" ForeColor="Green" Text="Data Inserted" Visible="False" ClientIDMode="Static"></asp:Label>
-                    <asp:Button ID="btnSubmit0" runat="server" OnClick="btnSubmit_Click" Text="Submit" CssClass="button" />
+                    <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" CssClass="button" />
                 </asp:Panel>
             </td>
             <td>

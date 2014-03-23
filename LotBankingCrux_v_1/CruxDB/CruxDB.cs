@@ -545,7 +545,7 @@ namespace LotBankingCrux_v_1.Crux
             }
             if (!includeAwaitingApproval)
             {
-                exclusion += "AND (last_modified > last_requested_timestamp || creation_timestamp > last_requested_timestamp) ";
+                exclusion += "AND (last_modified > last_requested_timestamp || date_created > last_requested_timestamp) ";
             }
 
             String idParams = "";
@@ -563,7 +563,7 @@ namespace LotBankingCrux_v_1.Crux
             }
             MySqlCommand getBuilderProjects = new MySqlCommand("SELECT id, " +
                                                                       "project_name, " +
-                                                                      "last_modified_timestamp " +
+                                                                      "last_modified " +
                                                                  "FROM Projects " +
                                                                 "WHERE builder_id IN( " + idParams +") "
                                                                 + exclusion,

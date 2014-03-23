@@ -99,6 +99,12 @@ namespace LotBankingCrux_v_1
         {
             DashboardView.ActiveViewIndex = 0;
 
+            ddlOrderBy.Items.Add("Builder");
+            ddlOrderBy.Items.Add("Document Name");
+            ddlOrderBy.Items.Add("Submission Date");
+            ddlOrderBy.Items.Add("Approval Date");
+            ddlOrderBy.Items.Add("Last Requested Date");
+
             lstbxBuilders.DataSource = dbObject.getBuilderNameID();
             lstbxBuilders.DataTextField = "Builder Name";
             lstbxBuilders.DataValueField = "Builder Id";
@@ -150,10 +156,6 @@ namespace LotBankingCrux_v_1
 
         protected void btnGo_Click(object sender, EventArgs e)
         {
-            ddlOrderBy.Items.Add("Builder");
-            ddlOrderBy.Items.Add("Proposal Name");
-            ddlOrderBy.Items.Add("Submission Date");
-            ddlOrderBy.Items.Add("Last Requested Date");
 
             List<int> lintBuilderIDs = new List<int>();
             foreach (int item in lstbxBuilders.GetSelectedIndices())
@@ -161,7 +163,7 @@ namespace LotBankingCrux_v_1
                 lintBuilderIDs.Add(Int32.Parse(lstbxBuilders.Items[item].Value));
             }
 
-            Dictionary<int, String[]> aBIDProjects = dbObject.getBuilderProjects(lintBuilderIDs);
+            Dictionary<int, String[]> aBIDProjects = dbObject.getBuilderProjects(lintBuilderIDs, chkAwaitingApproval.Checked, chkAwaitingBuilderInfo.Checked, chkDeclined.Checked);
             foreach (KeyValuePair<int, String[]> project in aBIDProjects)
             {
                 ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectProposal.aspx", project.Value[1]));
