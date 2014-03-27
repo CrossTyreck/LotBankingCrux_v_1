@@ -43,8 +43,7 @@ namespace LotBankingCrux_v_1
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
 
-            lblDataInserted.ForeColor = System.Drawing.Color.Green;
-            lblDataInserted.Text = "Data Inserted";
+            
             CruxDB DBObject = new CruxDB();
 
             int numberLots = Int32.Parse(txtNumberOfLots.Text);
@@ -67,6 +66,13 @@ namespace LotBankingCrux_v_1
                     Response.Redirect("Login.aspx");
 
                 lblDataInserted.Visible = true;
+                lblDataInserted.ForeColor = System.Drawing.Color.Green;
+                lblDataInserted.Text = "Data Inserted";
+
+                if (dbObject.GetReqFinInfoChecked(((DataBucket)Session["UserData"])._userID) > 0)
+                {
+                    lblAddInfoReq.Visible = true;
+                }
 
                 resetControls();
             }

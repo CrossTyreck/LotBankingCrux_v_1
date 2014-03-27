@@ -44,7 +44,12 @@
                     <br />
                     <br />
                     <asp:Label ID="lblDataInserted" runat="server" ForeColor="Green" Text="Data Inserted" Visible="False" ClientIDMode="Static"></asp:Label>
+                    <br />
+                    <br />
                     <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" CssClass="button" />
+                    <br />
+                    <br />
+                    <asp:Label ID="lblAddInfoReq" runat="server" ForeColor="Red" Text="Crescent Bay Holdings requires additional financial information be submitted before your proposal can be accepted. Please contact a Crescent Bay Holdings associate for more info." Visible="False"></asp:Label>
                 </asp:Panel>
             </td>
             <td>

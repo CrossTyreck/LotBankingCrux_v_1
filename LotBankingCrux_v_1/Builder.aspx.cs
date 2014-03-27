@@ -99,7 +99,7 @@ namespace LotBankingCrux_v_1
             chkReqFinInfo.Visible = true;
             chkReqFinInfo.Checked = false;
 
-            if (dbObject.GetReqFinInfoChecked(builderID) > 0)
+            if (dbObject.GetReqFinInfoChecked(builderID) != 0)
             {
                 chkReqFinInfo.Checked = true;
             }
@@ -218,6 +218,7 @@ namespace LotBankingCrux_v_1
         protected void CheckRequiredFinancialInfo(object sender, EventArgs e)
         {
             dbObject.SetRequireInfo(int.Parse(Request.QueryString["builderid"]));
+            Response.Redirect("Builder.aspx?builderId=" + builderID);
         }
     }
 }
