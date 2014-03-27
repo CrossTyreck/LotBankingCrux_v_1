@@ -51,7 +51,7 @@ namespace LotBankingCrux_v_1.CustomControls
         /// <param name="fs">File stream in which the file is located for uploading. example: FileUpload1.PostedFiles.InputStream</param>
         /// <param name="dbObject">Used to access the database</param>
         /// <param name="sesBucket">Current DataBucket that is in the Session variable</param>
-        public Label UploadFile(CruxDB dbObject, DataBucket sesBucket, HttpRequest Request, HttpContext Context)
+        public Label UploadFile(CruxDB dbObject, DataBucket sesBucket, HttpRequest Request, HttpContext Context, int docClassId)
         {
 
             Label lblFileUploadStatus = new Label();
@@ -106,7 +106,7 @@ namespace LotBankingCrux_v_1.CustomControls
                         Byte[] bytes = br.ReadBytes((Int32)fs.Length);
 
                         // Might need to append file extension later (not sure)
-                        dbObject.insertProjectDocument(sesBucket._userID, fileName, bytes);
+                        dbObject.insertProjectDocument(sesBucket._userID, fileName, bytes, docClassId);
                         //uploadedFile.SaveAs(Context.Server.MapPath("~/Files/") + fileName);
                         lblFileUploadStatus.Text += fileName + "Saved <BR>";
                     }

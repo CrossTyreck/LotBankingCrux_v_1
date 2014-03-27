@@ -751,15 +751,48 @@ namespace LotBankingCrux_v_1.Crux
             return returnValues;
         }
 
+        public int GetDocClassId(string name)
+        {
+
+            MySqlCommand getDocClassID = new MySqlCommand("SELECT id " +
+                                                                "FROM Project_Document_Class " +
+                                                               "WHERE document_class_name LIKE '%@name'",
+                                                              databaseConnection);
+
+            getDocClassID.Parameters.Add("@name", MySqlDbType.VarChar).Value = name;
+
+            MySqlDataReader reader;
+            databaseConnection.Open();
+
+            try
+            {
+                reader = getDocClassID.ExecuteReader(CommandBehavior.SingleResult);
+               
+                while (reader.Read())
+                {
+                    return reader.GetInt32(0);
+                }
+            }
+            catch (MySqlException e)
+            {
+                Debug.Print(e.Message);
+                return -1;
+            }
+            databaseConnection.Close();
+            return 0;
+        }
+
+
         //#JUSTIN Add Unique key on both project_id and project_document_class_id together
-        public int insertProjectDocument(int projectId, String docName, byte[] doc)
+        public int insertProjectDocument(int projectId, String docName, byte[] doc, int docClassId)
         {
             MySqlCommand insertNewProjectDocument = new MySqlCommand("INSERT INTO Project_Documents" +
-                                                                           "(project_id, file_name, document)" +
-                                                                     "VALUES( @projectId, @fileName, @document)",
+                                                                           "(project_id, project_document_class_id, file_name, document)" +
+                                                                     "VALUES( @projectId, @docClassId, @fileName, @document)",
                                                                      databaseConnection);
 
             insertNewProjectDocument.Parameters.Add("@projectId", MySqlDbType.Int32).Value = projectId;
+            insertNewProjectDocument.Parameters.Add("@docClassId", MySqlDbType.Int32).Value = docClassId;
             insertNewProjectDocument.Parameters.Add("@fileName", MySqlDbType.VarChar, 30).Value = docName;
             insertNewProjectDocument.Parameters.Add("@document", MySqlDbType.Binary, doc.Length).Value = doc;
 
@@ -807,6 +840,7 @@ namespace LotBankingCrux_v_1.Crux
             databaseConnection.Close();
             return 1;
         }
+
         public int requestProjectDocument(int document_id)
         {
             MySqlCommand requestProjectDocument = new MySqlCommand("UPDATE Project_Documents " +
