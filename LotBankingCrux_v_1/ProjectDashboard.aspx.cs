@@ -25,7 +25,7 @@ namespace LotBankingCrux_v_1
 
             if (!this.IsPostBack)
             {
-                if ((txtbxAccessToLiquidity.Text = dbObject.GetProjectValue(int.Parse(Request.QueryString["projectid"]))) == "")
+                if ((txtbxAccessToLiquidity.Text = dbObject.GetProjectValue(int.Parse(Request.QueryString["builderid"]))) == "")
                 {
                     txtbxAccessToLiquidity.Text = "Insert Access to Liquidity data here and click submit.";
                 }

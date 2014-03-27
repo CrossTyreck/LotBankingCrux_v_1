@@ -10,8 +10,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <_PublishTargetUrl>ftp://www.lotbanking.com</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="404.aspx">
+      <publishTime>03/26/2014 18:55:46</publishTime>
+    </File>
     <File Include="bin/LotBankingCrux_v_1.dll">
-      <publishTime>03/03/2014 22:47:28</publishTime>
+      <publishTime>03/26/2014 23:13:19</publishTime>
     </File>
     <File Include="bin/mysql.data.dll">
       <publishTime>02/23/2014 08:24:26</publishTime>
@@ -20,13 +23,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/23/2014 08:24:26</publishTime>
     </File>
     <File Include="Builder.aspx">
-      <publishTime>03/03/2014 22:46:48</publishTime>
+      <publishTime>03/26/2014 19:34:46</publishTime>
     </File>
     <File Include="BuilderDocumentSubmission.aspx">
       <publishTime>02/23/2014 08:24:25</publishTime>
     </File>
     <File Include="CBHDashboard.aspx">
-      <publishTime>03/03/2014 21:58:44</publishTime>
+      <publishTime>03/26/2014 19:19:13</publishTime>
     </File>
     <File Include="Content/bargraph.css">
       <publishTime>02/23/2014 08:24:25</publishTime>
@@ -41,13 +44,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/23/2014 08:24:25</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>03/03/2014 21:56:34</publishTime>
+      <publishTime>03/24/2014 17:29:45</publishTime>
     </File>
     <File Include="CreateUserLogin.aspx">
-      <publishTime>03/03/2014 21:16:43</publishTime>
+      <publishTime>03/24/2014 17:29:45</publishTime>
     </File>
     <File Include="DueDiligence.aspx">
-      <publishTime>03/03/2014 21:16:43</publishTime>
+      <publishTime>03/24/2014 17:29:46</publishTime>
+    </File>
+    <File Include="DueDiligenceCopy.aspx">
+      <publishTime>03/24/2014 17:29:46</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>02/23/2014 08:24:26</publishTime>
@@ -64,6 +70,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Images/pw_pattern.png">
       <publishTime>02/23/2014 08:24:25</publishTime>
     </File>
+    <File Include="Images/templogo.png">
+      <publishTime>03/24/2014 17:29:46</publishTime>
+    </File>
     <File Include="Images/texture.png">
       <publishTime>02/23/2014 08:24:25</publishTime>
     </File>
@@ -74,19 +83,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/03/2014 21:16:43</publishTime>
     </File>
     <File Include="ProjectDashboard.aspx">
-      <publishTime>03/03/2014 21:16:43</publishTime>
+      <publishTime>03/26/2014 22:11:32</publishTime>
     </File>
     <File Include="ProjectProposal.aspx">
-      <publishTime>03/03/2014 22:45:21</publishTime>
+      <publishTime>03/26/2014 22:18:26</publishTime>
     </File>
     <File Include="Restricted.Master">
-      <publishTime>03/03/2014 22:44:41</publishTime>
+      <publishTime>03/05/2014 21:02:47</publishTime>
     </File>
     <File Include="Scripts/gaugeSVG.js">
       <publishTime>03/03/2014 21:16:43</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>03/03/2014 21:16:43</publishTime>
+      <publishTime>03/05/2014 21:02:47</publishTime>
     </File>
     <File Include="Web.config">
       <publishTime>02/28/2014 21:57:57</publishTime>
