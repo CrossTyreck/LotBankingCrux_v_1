@@ -532,6 +532,33 @@ namespace LotBankingCrux_v_1.Crux
             return returnValues;
         }
 
+        public int SetRequireInfo(int builder_id)
+        {
+            MySqlCommand updateBuilderName = new MySqlCommand("UPDATE Builder_Data " +
+                                                                "SET require_info = NOT require_info " +
+                                                              "WHERE bid = @builderId)",
+                                                            databaseConnection);
+            updateBuilderName.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builder_id;
+           
+
+            MySqlDataReader reader;
+            try
+            {
+                databaseConnection.Open();
+
+                reader = updateBuilderName.ExecuteReader(CommandBehavior.SequentialAccess);
+            }
+            catch (Exception e)
+            {
+                Debug.Print(e.Message);
+                return -1;
+            }
+            reader.Close();
+            databaseConnection.Close();
+            return 1;
+
+        }
+
         public Dictionary<int, String[]> getBuilderProjects(List<int> builderIds, Boolean includeDeclined = false, Boolean includeAwaitingBuilder = false, Boolean includeAwaitingApproval = false)
         {
 
@@ -1784,6 +1811,8 @@ namespace LotBankingCrux_v_1.Crux
             return noteComments;
         }
     }
+
+    
 
     public class BuilderDocumentData
     {

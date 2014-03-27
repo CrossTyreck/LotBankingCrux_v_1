@@ -7,6 +7,7 @@
                 <li>
                     <asp:LinkButton ID="BuilderProposal" runat="server" OnClick="BuilderProposal_OnClick" ForeColor="Black">New Proposal</asp:LinkButton>
                 </li>
+                <asp:CheckBox ID="chkReqFinInfo" runat="server" Text="Require Additional Financial Information for Projects" />
             </ul>
         </div>
     </div>

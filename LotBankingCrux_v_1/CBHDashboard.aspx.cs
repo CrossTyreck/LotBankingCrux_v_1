@@ -172,6 +172,10 @@ namespace LotBankingCrux_v_1
 
         }
 
+        protected void GoToBuilder(object sender, EventArgs e)
+        {
+            Response.Redirect("Builder.aspx?builderid=" + dbObject.getBuilderId(ddlBuilders.SelectedValue.ToString()));
+        }
 
 
     }

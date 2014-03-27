@@ -10,6 +10,9 @@
                 <li>
                     <asp:LinkButton ID="LinkButton1" runat="server" OnClick="AddUser_OnClick" ForeColor="Black">Add User</asp:LinkButton>
                 </li>
+                <asp:DropDownList ID="ddlBuilders" runat="server">
+                </asp:DropDownList>
+                <asp:Label ID="Label1" runat="server" Text="Select a builder from the dropdown to view their page"></asp:Label>
             </ul>
         </div>
     </div>
