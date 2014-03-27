@@ -98,7 +98,7 @@ namespace LotBankingCrux_v_1
                 Dictionary<int, String[]> aBIDProjects = dbObject.getProjectsByBID(bID.Key, ddlOrderBy.SelectedValue.ToString(), true);
                 foreach (KeyValuePair<int, String[]> project in aBIDProjects)
                 {
-                    ProjectsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectDashboard.aspx", project.Value[1]));
+                    ProjectsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectDashboard.aspx", project.Value[1], bID.Key));
 
                 }
             }
@@ -183,7 +183,7 @@ namespace LotBankingCrux_v_1
             Dictionary<int, String[]> aBIDProjects = dbObject.getBuilderProjects(lintBuilderIDs, chkAwaitingApproval.Checked, chkAwaitingBuilderInfo.Checked, chkDeclined.Checked);
             foreach (KeyValuePair<int, String[]> project in aBIDProjects)
             {
-                ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectProposal.aspx", project.Value[1]));
+                ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[1], "ProjectProposal.aspx", project.Value[2], int.Parse(project.Value[0])));
             }
 
         }

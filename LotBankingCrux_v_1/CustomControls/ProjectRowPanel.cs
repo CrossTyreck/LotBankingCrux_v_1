@@ -15,14 +15,16 @@ namespace LotBankingCrux_v_1.CustomControls
         public Label ModifiedDate { get; set; }
         public Label CreatedDate { get; set; }
         public int ProjectID { get; set; }
+        public int BuilderID { get; set; }
         public Color LinkNameColor { get; set; }
 
-        public ProjectRowPanel(int id, string name, string url, string date)
+        public ProjectRowPanel(int projid, string name, string url, string date, int builderid = 0)
         {
-            ProjectID = id;
+            ProjectID = projid;
+            BuilderID = builderid;
             Name = new LinkButton();
             Name.Text = name;
-            Name.PostBackUrl = url + "?projectid=" + id.ToString();
+            Name.PostBackUrl = url + "?projectid=" + projid.ToString() + "&" + "builderid=" + builderid.ToString();
 
 
             // Name.BorderColor = Color.Aqua;

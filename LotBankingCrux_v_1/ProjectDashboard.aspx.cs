@@ -17,10 +17,18 @@ namespace LotBankingCrux_v_1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Dictionary<int, String[]> aBIDDocuments = dbObject.getProjectDocumentNames(((DataBucket)Session["UserData"])._projectID);
+            Dictionary<int, String[]> aBIDDocuments = dbObject.getProjectDocumentNames(int.Parse(Request.QueryString["projectid"]));
             foreach (KeyValuePair<int, String[]> doc in aBIDDocuments)
             {
                 pnlProjectDocumentsTest.Controls.Add(new ProjectRowPanel(doc.Key, doc.Value[0], "ProjectDashboard.aspx", doc.Value[1]));
+            }
+
+            if (!this.IsPostBack)
+            {
+                if ((txtbxAccessToLiquidity.Text = dbObject.GetProjectValue(int.Parse(Request.QueryString["projectid"]))) == "")
+                {
+                    txtbxAccessToLiquidity.Text = "Insert Access to Liquidity data here and click submit.";
+                }
             }
         }
 
@@ -41,6 +49,11 @@ namespace LotBankingCrux_v_1
         {
             Response.Redirect("DueDiligence.aspx");
 
+        }
+
+        protected void btnSaveChng_Click(object sender, EventArgs e)
+        {
+            dbObject.SetProjectAccessLiquidity(txtbxAccessToLiquidity.Text, int.Parse(Request.QueryString["builderid"]));
         }
     }
 }

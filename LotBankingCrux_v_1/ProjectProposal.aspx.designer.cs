@@ -238,6 +238,24 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
+        /// lblRollPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRollPrice;
+        
+        /// <summary>
+        /// txtbxRollPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtbxRollPrice;
+        
+        /// <summary>
         /// btnAccept control.
         /// </summary>
         /// <remarks>

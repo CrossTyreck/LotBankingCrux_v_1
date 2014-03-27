@@ -62,6 +62,11 @@
         <tr>
             <td>
                 <asp:Panel ID="Panel1" runat="server">
+                    <asp:Label ID="lblRollPrice" runat="server" Text="Roll Price" Visible="False"></asp:Label>
+                    <br />
+                    <asp:TextBox ID="txtbxRollPrice" runat="server" Visible="False"></asp:TextBox>
+                    <br />
+                    <br />
                     <asp:Button ID="btnAccept" runat="server" OnClick="btnAccept_Click" Text="Accept" CssClass="button" />
                     <asp:Button ID="btnDecline" runat="server" CssClass="button" OnClick="btnDecline_Click" Text="Decline" />
                 </asp:Panel>

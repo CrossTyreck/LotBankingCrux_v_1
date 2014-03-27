@@ -154,10 +154,11 @@ namespace LotBankingCrux_v_1
         {
             DashboardView.ActiveViewIndex = 1;
 
-            Dictionary<int, String[]> aBIDProjects = dbObject.getProjectsByBID(((DataBucket)Session["UserData"])._builderID, "", true);
+            Dictionary<int, String[]> aBIDProjects = dbObject.getProjectsByBID(builderID, "Project Name", true);
             foreach (KeyValuePair<int, String[]> project in aBIDProjects)
             {
-                ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectDashboard.aspx", project.Value[1]));
+                ExistingProjectsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectDashboard.aspx", project.Value[1]));
+
             }
         }
 

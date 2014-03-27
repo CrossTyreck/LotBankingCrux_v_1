@@ -13,8 +13,16 @@
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <asp:Panel ID="pnlProjectDocumentsTest" runat="server" Height="189px">
-        <asp:Label ID="lblDocumentsinProject" runat="server" Text="Documents within this project"></asp:Label>
+        <br />
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <asp:Label ID="lblAccessLiquidity" runat="server" Text="Access to Liquidity"></asp:Label>
+                <br />
+                <asp:TextBox ID="txtbxAccessToLiquidity" runat="server" Height="123px" Width="375px" TextMode="MultiLine"></asp:TextBox>
+                <asp:Button ID="btnSave" runat="server" OnClick="btnSaveChng_Click" Text="Save" />
+            </ContentTemplate>
+        </asp:UpdatePanel>
     </asp:Panel>
 &nbsp;
-</asp:Content>
+    </asp:Content>
 

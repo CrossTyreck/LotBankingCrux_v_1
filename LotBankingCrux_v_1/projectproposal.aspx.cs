@@ -32,6 +32,8 @@ namespace LotBankingCrux_v_1
             txtProjectName.Text = "";
             txtSecondStreet.Text = "";
             txtAcquisitionPrice.Text = "";
+            lblRollPrice.Visible = false;
+            txtbxRollPrice.Visible = false;
 
         }
 
@@ -150,6 +152,9 @@ namespace LotBankingCrux_v_1
                 btnAccept.Visible = true;
                 btnDecline.Visible = true;
                 btnSubmit.Visible = false;
+                lblRollPrice.Visible = true;
+                txtbxRollPrice.Visible = true;
+
             }
         }
 
@@ -169,7 +174,7 @@ namespace LotBankingCrux_v_1
 
         protected void btnAccept_Click(object sender, EventArgs e)
         {
-            dbObject.acceptProposal(Int32.Parse(Request.QueryString["projectid"].ToString()), ((DataBucket)Session["UserData"])._userID);
+            dbObject.acceptProposal(Int32.Parse(Request.QueryString["projectid"].ToString()), ((DataBucket)Session["UserData"])._userID, int.Parse(txtbxRollPrice.Text));
         }
 
         protected void btnDecline_Click(object sender, EventArgs e)

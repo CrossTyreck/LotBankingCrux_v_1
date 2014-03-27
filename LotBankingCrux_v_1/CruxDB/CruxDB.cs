@@ -18,7 +18,7 @@ namespace LotBankingCrux_v_1.Crux
         private string user = "UID=" + "CBHLotBanking" + ";";
         private string password = "PASSWORD=" + "Crux2014!" + ";";
 
-        public enum itemStatus{DECLINED = -1, NEEDSUPDATE = 0, NEEDSAPPROVAL = 1, APPROVED = 2};
+        public enum itemStatus { DECLINED = -1, NEEDSUPDATE = 0, NEEDSAPPROVAL = 1, APPROVED = 2 };
 
         public static int dbID = 0;
 
@@ -132,7 +132,7 @@ namespace LotBankingCrux_v_1.Crux
                                                       databaseConnection);
             getChkReqInfoData.Parameters.Add("@builder_id", MySqlDbType.Int32).Value = builder_id;
 
-            
+
             bool chkValue = false;
 
             try
@@ -209,6 +209,74 @@ namespace LotBankingCrux_v_1.Crux
             }
             return returnValue;
 
+        }
+
+        public String GetProjectValue(int id)
+        {
+
+            MySqlCommand getProjectValue = new MySqlCommand("SELECT access_liquidity " +
+                                                           "FROM Builder_Data " +
+                                                          "WHERE builder_id = @builder_id",
+                                                      databaseConnection);
+
+            getProjectValue.Parameters.Add("@builder_id", MySqlDbType.Int32).Value = id;
+
+            try
+            {
+                MySqlDataReader reader;
+                databaseConnection.Open();
+                reader = getProjectValue.ExecuteReader(CommandBehavior.SingleResult);
+
+                while (reader.Read())
+                {
+                    return reader.GetString(0);
+                }
+            }
+
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+
+            finally
+            {
+
+                if (databaseConnection.State.Equals(System.Data.ConnectionState.Open))
+                {
+                    databaseConnection.Close();
+                }
+            }
+            return "";
+
+        }
+
+
+        public int SetProjectAccessLiquidity(string value, int id)
+        {
+            MySqlCommand setProjectValue = new MySqlCommand("UPDATE Builder_Data " +
+                                                     "SET access_liquidity = @value, " +
+                                                        " last_modified = NOW() " +
+                                                   "WHERE builder_id = @id",
+                                                     databaseConnection);
+            setProjectValue.Parameters.Add("@value", MySqlDbType.VarChar).Value = value;
+            setProjectValue.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+
+            MySqlDataReader reader;
+            try
+            {
+                databaseConnection.Open();
+                reader = setProjectValue.ExecuteReader(CommandBehavior.SingleResult);
+            }
+            catch (Exception e)
+            {
+                return -1;
+            }
+            finally
+            {
+                databaseConnection.Close();
+            }
+
+            return 1;
         }
 
         public int getUserClassId(int loginId)
@@ -392,7 +460,7 @@ namespace LotBankingCrux_v_1.Crux
                                                              databaseConnection);
             updateBuilderName.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builder_id;
             updateBuilderName.Parameters.Add("@name", MySqlDbType.VarChar, 30).Value = name;
-            
+
             MySqlDataReader reader;
             try
             {
@@ -494,7 +562,7 @@ namespace LotBankingCrux_v_1.Crux
                                                              "WHERE bid = @id",
                                                          databaseConnection);
             getBuildersNameQuery.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
-            
+
             MySqlDataReader reader;
             String name = "";
             try
@@ -537,7 +605,7 @@ namespace LotBankingCrux_v_1.Crux
                     row[0] = reader.GetString(0);
                     row[1] = reader.GetInt32(1);
                     builders.Rows.Add(row);
-                    
+
                 }
             }
             catch (Exception e)
@@ -585,7 +653,7 @@ namespace LotBankingCrux_v_1.Crux
                                                               "WHERE builder_id = @builderId",
                                                             databaseConnection);
             updateBuilderName.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builder_id;
-           
+
 
             MySqlDataReader reader;
             try
@@ -605,7 +673,7 @@ namespace LotBankingCrux_v_1.Crux
 
         }
 
-        public Dictionary<int, String[]> getBuilderProjects(List<int> builderIds, Boolean includeDeclined = false, Boolean includeAwaitingBuilder = false, Boolean includeAwaitingApproval = false)
+        public Dictionary<int, String[]> getBuilderProjects(List<int> builderIds, Boolean includeDeclined = false, Boolean includeAwaitingBuilder = false, Boolean includeAwaitingApproval = false, Boolean approved = true)
         {
 
             String idParams = "";
@@ -644,14 +712,18 @@ namespace LotBankingCrux_v_1.Crux
             {
                 exclusion += "AND (last_modified > last_requested_timestamp || date_created > last_requested_timestamp) ";
             }
+            if (approved)
+            {
+                exclusion += "AND approval_id <> 1 ";
+            }
 
-            
             MySqlCommand getBuilderProjects = new MySqlCommand("SELECT id, " +
+                                                                       "builder_id, " +
                                                                       "project_name, " +
                                                                       "last_modified " +
                                                                  "FROM Projects " +
-                                                                "WHERE builder_id IN( " + idParams +") "
-                                                                + exclusion,
+                                                                 idParams +
+                                                                exclusion,
                                                          databaseConnection);
 
             int[] bids = builderIds.ToArray();
@@ -667,7 +739,7 @@ namespace LotBankingCrux_v_1.Crux
                 reader = getBuilderProjects.ExecuteReader(CommandBehavior.SequentialAccess);
                 while (reader.Read())
                 {
-                    returnValues.Add(reader.GetInt32(0), new String[] {reader.GetString(1), reader.GetDateTime(2).ToString()});
+                    returnValues.Add(reader.GetInt32(0), new String[] { reader.GetInt32(1).ToString(), reader.GetString(2), reader.GetDateTime(3).ToString() });
                 }
             }
             catch (MySqlException e)
@@ -678,7 +750,7 @@ namespace LotBankingCrux_v_1.Crux
             databaseConnection.Close();
             return returnValues;
         }
-        
+
         //#JUSTIN Add Unique key on both project_id and project_document_class_id together
         public int insertProjectDocument(int projectId, String docName, byte[] doc)
         {
@@ -1203,7 +1275,7 @@ namespace LotBankingCrux_v_1.Crux
             return returnValues;
         }
 
-        
+
         public Dictionary<int, String[]> getProjectsByBID(int builder_id, String orderBy, Boolean excludeDeclined)
         {
             String exclusion = "";
@@ -1240,7 +1312,7 @@ namespace LotBankingCrux_v_1.Crux
                                                                       "last_modified " +
                                                                  "FROM Projects " +
                                                                 "WHERE builder_id = @builderId " +
-                                                                  //"AND approval_id >= 0 " +
+                //"AND approval_id >= 0 " +
                                                                 exclusion +
                                                                 order,
                                               databaseConnection);
@@ -1248,7 +1320,7 @@ namespace LotBankingCrux_v_1.Crux
 
             Dictionary<int, String[]> returnValues = new Dictionary<int, String[]>();
 
-            databaseConnection.Open(); 
+            databaseConnection.Open();
             MySqlDataReader reader;
             try
             {
@@ -1342,7 +1414,7 @@ namespace LotBankingCrux_v_1.Crux
 
             getProposal.Parameters.Add("@ProposalId", MySqlDbType.Int32).Value = proposal_id;
 
-          
+
             MySqlDataReader reader;
             databaseConnection.Open();
             try
@@ -1383,7 +1455,7 @@ namespace LotBankingCrux_v_1.Crux
             }
 
             return null;
-         
+
         }
 
 
@@ -1457,16 +1529,18 @@ namespace LotBankingCrux_v_1.Crux
             return returnValues;
         }
 
-        public int acceptProposal(int projectId, int userId)
+        public int acceptProposal(int projectId, int userId, int rollprice)
         {
             MySqlCommand updateProject = new MySqlCommand("UPDATE Projects " +
                                                                 "SET approval_timestamp = NOW(), " +
-                                                                    "approval_id = @userId " +
+                                                                    "approval_id = @userId, " +
+                                                                    "roll_price = @rollprice " +
                                                               "WHERE id = @id",
                                                              databaseConnection);
 
-            updateProject.Parameters.Add("@userId", MySqlDbType.Int32).Value =  userId;
+            updateProject.Parameters.Add("@userId", MySqlDbType.Int32).Value = userId;
             updateProject.Parameters.Add("@id", MySqlDbType.Int32).Value = projectId;
+            updateProject.Parameters.Add("@rollprice", MySqlDbType.Int32).Value = rollprice;
 
             databaseConnection.Open();
 
@@ -1858,7 +1932,7 @@ namespace LotBankingCrux_v_1.Crux
         }
     }
 
-    
+
 
     public class BuilderDocumentData
     {
@@ -1867,7 +1941,7 @@ namespace LotBankingCrux_v_1.Crux
         private String docName;
         private String fileName;
         public DateOrganizer dateObject;
-        
+
         public BuilderDocumentData(int i, int bid, String dn, String fn, DateTime dc, DateTime lu, DateTime lr, DateTime a)
         {
             id = i;
@@ -1905,7 +1979,7 @@ namespace LotBankingCrux_v_1.Crux
         private Decimal improvementCost;
         private int totalLotCount;
         public DateOrganizer dateObject;
-        
+
         public Project(int i, int bid, String pn, String fcs, String scs, String cty, String stt, String card, String ln, Decimal aq, Decimal ic, DateTime dc, DateTime lu, DateTime lr, DateTime a, DateTime d, int tlc)
         {
             id = i;
@@ -1991,7 +2065,7 @@ namespace LotBankingCrux_v_1.Crux
         private String docName;
         private String fileName;
         public DateOrganizer dateObject;
-        
+
         public ProjectDocumentData(int i, int pid, String dn, String fn, DateTime dc, DateTime lu, DateTime lr, DateTime a, DateTime d)
         {
             id = i;
@@ -2227,7 +2301,7 @@ namespace LotBankingCrux_v_1.Crux
 
     public class DateOrganizer
     {
-        
+
         private DateTime dateCreated;
         private DateTime lastUpdated;
         private DateTime lastRequested;
@@ -2290,7 +2364,7 @@ namespace LotBankingCrux_v_1.Crux
             {
                 return CruxDB.itemStatus.NEEDSAPPROVAL;
             }
-            else if(isApproved())
+            else if (isApproved())
             {
                 return CruxDB.itemStatus.APPROVED;
             }
