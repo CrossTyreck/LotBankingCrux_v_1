@@ -100,7 +100,7 @@ a {
     background-position:center; 
 }
 
-/* login
+/* Login
 ----------------------------------------------------------*/
 #login {
     position: relative;
@@ -213,12 +213,9 @@ a {
 }
 
 .meters {
-    width: 360px;
     display: inline-block;
     margin: 10px 20px 0px 0px;
     text-align: center;
-    float: left;
-    background-color: dodgerblue;
 }
 
 .graphs {
@@ -236,8 +233,15 @@ a {
 }
 
 .centermeters {
-width: 200px;
+width: 220px;
 height: 130px;
+display: inline-block;
+}
+
+.multiview {
+    clear: both;
+    margin: 0 auto;
+    width: 800px;
 }
 
 #temppanel1 {
@@ -255,8 +259,6 @@ height: 130px;
     height: 600px;
     background-color: lightgray;
 }
-/* main layout
-----------------------------------------------------------*/
 
 
 /* Project Proposal
