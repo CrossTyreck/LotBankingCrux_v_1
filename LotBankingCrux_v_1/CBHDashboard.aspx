@@ -10,9 +10,14 @@
                 <li>
                     <asp:LinkButton ID="LinkButton1" runat="server" OnClick="AddUser_OnClick" ForeColor="Black">Add User</asp:LinkButton>
                 </li>
-                <asp:DropDownList ID="ddlBuilders" runat="server">
-                </asp:DropDownList>
-                <asp:Label ID="Label1" runat="server" Text="Select a builder from the dropdown to view their page"></asp:Label>
+                <li>
+                    <asp:DropDownList ID="ddlBuilders" runat="server" OnSelectedIndexChanged="GoToBuilder">
+                    </asp:DropDownList>
+                    <asp:Label ID="Label1" runat="server" Text="Go to selected builder page"></asp:Label>
+                </li>
+                <li>
+                    <asp:Button ID="GoToBuilderButton" runat="server" Text="Go!" OnClick="GoToBuilder"/>
+                </li>
             </ul>
         </div>
     </div>
@@ -124,7 +129,7 @@
                 <div class="menubar">
                     <div>
                         <ul id="horizontal-list">
-                            </ul>
+                        </ul>
                     </div>
 
                 </div>

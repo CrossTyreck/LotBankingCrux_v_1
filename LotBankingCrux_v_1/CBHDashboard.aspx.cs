@@ -22,6 +22,7 @@ namespace LotBankingCrux_v_1
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            PopulateBuilderDropdown();
             //Hard coding meter values, should use DB info
             meter1.Min = 0;
             meter1.Max = 10000;
@@ -46,6 +47,21 @@ namespace LotBankingCrux_v_1
             ddlOrderBy.Items.Clear();
         }
 
+
+        protected void PopulateBuilderDropdown()
+        {
+            if (ddlBuilders.Items.Count > 0)
+            {
+                ddlBuilders.Items.Clear();
+            }
+            Dictionary<int, string> bldrNames = dbObject.getBuilderIds();
+
+            foreach (string bldrName in bldrNames.Values)
+            {
+                ddlBuilders.Items.Add(bldrName);
+            }
+
+        }
         /// <summary>
         /// This allows the Associate to add a user to the website. 
         /// </summary>
@@ -83,7 +99,7 @@ namespace LotBankingCrux_v_1
                 foreach (KeyValuePair<int, String[]> project in aBIDProjects)
                 {
                     ProjectsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectDashboard.aspx", project.Value[1]));
-                
+
                 }
             }
         }
