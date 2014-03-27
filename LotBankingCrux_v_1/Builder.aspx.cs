@@ -87,7 +87,6 @@ namespace LotBankingCrux_v_1
         /// </summary>
         void SetAssociatePage()
         {
-            chkReqFinInfo.Visible = true;
             if (Request.QueryString["builderid"] != null)
             {
                 builderID = int.Parse(Request.QueryString["builderid"]);
@@ -96,8 +95,15 @@ namespace LotBankingCrux_v_1
             {
                 Response.Redirect("404.aspx");
             }
-            
-        }
+
+            chkReqFinInfo.Visible = true;
+            chkReqFinInfo.Checked = false;
+
+            if (dbObject.GetReqFinInfoChecked(builderID) > 0)
+            {
+                chkReqFinInfo.Checked = true;
+            }
+            }
 
         /// <summary>
         /// User has no id so route them to Login
@@ -209,15 +215,9 @@ namespace LotBankingCrux_v_1
         /// Associate checks the box if additional financial info is required from the builder 
         /// when proposing a project. 
         /// </summary>
-        protected void CheckRequiredFinancialInfo()
+        protected void CheckRequiredFinancialInfo(object sender, EventArgs e)
         {
-            if (chkReqFinInfo.Checked)
-            {
-                dbObject.SetRequireInfo(((DataBucket)Session["UserData"])._builderID);
-
-            }
-
-
+            dbObject.SetRequireInfo(int.Parse(Request.QueryString["builderid"]));
         }
     }
 }

@@ -124,6 +124,52 @@ namespace LotBankingCrux_v_1.Crux
             return -2;
         }
 
+        public int GetReqFinInfoChecked(int builder_id)
+        {
+            MySqlCommand getChkReqInfoData = new MySqlCommand("SELECT require_info " +
+                                                           "FROM Builder_Data " +
+                                                          "WHERE builder_id = @builder_id",
+                                                      databaseConnection);
+            getChkReqInfoData.Parameters.Add("@builder_id", MySqlDbType.Int32).Value = builder_id;
+
+            
+            bool chkValue = false;
+
+            try
+            {
+                MySqlDataReader reader;
+                databaseConnection.Open();
+                reader = getChkReqInfoData.ExecuteReader(CommandBehavior.Default);
+
+                while (reader.Read())
+                {
+                    chkValue = reader.GetBoolean(0);
+                }
+
+                if (chkValue)
+                {
+                    return 1;
+                }
+            }
+
+            catch (Exception e)
+            {
+                Debug.Print(e.Message);
+                return -1;
+            }
+
+            finally
+            {
+
+                if (databaseConnection.State.Equals(System.Data.ConnectionState.Open))
+                {
+                    databaseConnection.Close();
+                }
+            }
+
+            return 0;
+        }
+
         public int getUserId(string name)
         {
 
@@ -536,7 +582,7 @@ namespace LotBankingCrux_v_1.Crux
         {
             MySqlCommand updateBuilderName = new MySqlCommand("UPDATE Builder_Data " +
                                                                 "SET require_info = NOT require_info " +
-                                                              "WHERE bid = @builderId)",
+                                                              "WHERE builder_id = @builderId",
                                                             databaseConnection);
             updateBuilderName.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builder_id;
            
