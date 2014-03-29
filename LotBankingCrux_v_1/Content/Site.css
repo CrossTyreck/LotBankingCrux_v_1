@@ -179,6 +179,15 @@ a {
     display: inline;
 }
 
+#duedil-nav {
+    text-align: center;
+}
+
+#topnav a:hover {
+    color: darkgray;
+    cursor: pointer;
+}
+
 /* site title
 ----------------------------------------------------------*/
 .site-title > a, .site-title a:hover, .site-title a:active {
@@ -325,17 +334,6 @@ ul#menu {
             color: white;
             text-decoration: none;
         }
-
-#duedil-nav {
-    margin: 0 auto;
-    width: 80%;
-}
-
-#topnav a:hover {
-    color: darkgray;
-    cursor: pointer;
-}
-
 
 ul#horizontal-list {
     text-align: center;

@@ -27,16 +27,13 @@
     <div>
         <asp:Panel ID="pnlPage" CssClass="pnlPage" runat="server">
 
-            <div class="buildernav">
-                <ul>
-                    <li>
-                        <asp:LinkButton ID="lnkbtnProposals" runat="server" OnClick="Proposals_Click" Font-Bold="True" Font-Size="Large">Proposals</asp:LinkButton></li>
-
-                    <li>
-                        <asp:LinkButton ID="lnkbtnProjects" runat="server" OnClick="Projects_Click" Font-Bold="True" Font-Size="Large">Projects</asp:LinkButton></li>
-
-                    <li>
-                        <asp:LinkButton ID="lnkbtnBuilderDocuments" runat="server" OnClick="BuilderDocuments_Click" Font-Bold="True" Font-Size="Large">Builder Documents</asp:LinkButton></li>
+            <div id="duedil-nav">
+                <ul id="menu-list">
+                    <li><asp:LinkButton ID="lnkbtnProposals" runat="server" OnClick="Proposals_Click">PROPOSALS</asp:LinkButton></li>
+                    <li> | </li>
+                    <li><asp:LinkButton ID="lnkbtnProjects" runat="server" OnClick="Projects_Click">PROJECTS</asp:LinkButton></li>
+                    <li> | </li>
+                    <li><asp:LinkButton ID="lnkbtnBuilderDocuments" runat="server" OnClick="BuilderDocuments_Click">BUILDER DOCUMENTS</asp:LinkButton></li>
                 </ul>
             </div>
 
