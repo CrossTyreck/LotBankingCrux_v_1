@@ -5,26 +5,47 @@
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 
-<asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
+<asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <div id="topnav">
-        <div>
+        <div id="duedil-nav">
             <ul id="menu-list">
                 <li>
                     <asp:LinkButton ID="lnkbtnTransactionDocumentation" runat="server" AccessKey=" " OnClick="lnkbtnTransactionDocumentation_Click">TRANSACTION DOCUMENTATION</asp:LinkButton>
                 </li>
+                <li>| </li>
                 <li>
                     <asp:LinkButton ID="lnkbtnMarketDueDiligence" runat="server" AccessKey=" " OnClick="lnkbtnMarketDueDiligence_Click">MARKET DUE DILIGENCE</asp:LinkButton>
                 </li>
+                <li>| </li>
                 <li>
                     <asp:LinkButton ID="lnkbtnBuilderResume" runat="server" AccessKey=" " OnClick="lnkbtnBuilderResume_Click">BUILDER RESUME</asp:LinkButton>
                 </li>
             </ul>
         </div>
     </div>
-</asp:Content>
 
-<asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-
+    <div id="sidemenu">
+        <asp:TreeView ID="TreeView1" runat="server">
+            <Nodes>
+                <asp:TreeNode Text="New Node" Value="New Node">
+                    <asp:TreeNode Text="New Node" Value="New Node">
+                        <asp:TreeNode Text="New Node" Value="New Node"></asp:TreeNode>
+                    </asp:TreeNode>
+                </asp:TreeNode>
+                <asp:TreeNode Text="New Node" Value="New Node">
+                    <asp:TreeNode Text="New Node" Value="New Node">
+                        <asp:TreeNode Text="New Node" Value="New Node"></asp:TreeNode>
+                    </asp:TreeNode>
+                </asp:TreeNode>
+                <asp:TreeNode Text="New Node" Value="New Node">
+                    <asp:TreeNode Text="New Node" Value="New Node"></asp:TreeNode>
+                    <asp:TreeNode Text="New Node" Value="New Node"></asp:TreeNode>
+                    <asp:TreeNode Text="New Node" Value="New Node"></asp:TreeNode>
+                </asp:TreeNode>
+            </Nodes>
+        </asp:TreeView>
+        <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+    </div>
 
     <div class="multiviewpanel">
         <asp:MultiView ID="mviwDueDiligence" runat="server">

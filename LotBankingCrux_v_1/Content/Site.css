@@ -25,7 +25,8 @@ a:hover {
 
 a {
     text-decoration: none;
-} 
+}
+
 #top {
     width: 1220px;
     margin: auto;
@@ -42,7 +43,6 @@ a {
 
 #topnav {
     height: 25px;
-    background-color: dodgerblue;
 }
 
 #belowTopnav {
@@ -94,10 +94,10 @@ a {
     opacity: 0.1;
     display: block;
     pointer-events: none;
-    background-image:url('Images/templogo.png');
-    background-repeat:no-repeat;
-    background-attachment:fixed;
-    background-position:center; 
+    background-image: url('Images/templogo.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
 }
 
 /* Login
@@ -173,11 +173,11 @@ a {
     text-align: center;
 }
 
-    .buildernav li{
-        list-style: none;
-        padding-left: 15px;
-        display: inline;
-    }
+.buildernav li {
+    list-style: none;
+    padding-left: 15px;
+    display: inline;
+}
 
 /* site title
 ----------------------------------------------------------*/
@@ -233,9 +233,9 @@ a {
 }
 
 .centermeters {
-width: 220px;
-height: 130px;
-display: inline-block;
+    width: 220px;
+    height: 130px;
+    display: inline-block;
 }
 
 .multiview {
@@ -276,6 +276,20 @@ display: inline-block;
     height: 25px;
 }
 
+/* Due Diligence
+----------------------------------------------------------*/
+#sidemenu {
+    width: 150px;
+    float: left;
+    margin-right: 5px;
+}
+
+.multiviewpanel {
+    padding: 5px;
+    width: 850px;
+    float: left;
+}
+
 /* New User Login
 ----------------------------------------------------------*/
 .createNewUser {
@@ -312,41 +326,42 @@ ul#menu {
             text-decoration: none;
         }
 
-            ul#menu li a:hover {
-                color: #999;
-                text-decoration: none;
-            }
+#duedil-nav {
+    margin: 0 auto;
+    width: 80%;
+}
+
+#topnav a:hover {
+    color: darkgray;
+    cursor: pointer;
+}
+
 
 ul#horizontal-list {
     text-align: center;
     list-style: none;
 }
+
 ul#menu-list {
     min-width: 70%;
     list-style: none;
 }
 
 
-    ul#horizontal-list li {
-        display: inline;
-        font-weight: bold;
-        font-size: 20px;
-        padding-left: 30px;
-    }
-     ul#menu-list li {
-        display: inline;
-        font-weight: bold;
-        font-size: 20px;
-        padding-left: 30px;
-    }
+ul#horizontal-list li {
+    display: inline;
+    font-size: 20px;
+    padding-left: 30px;
+}
 
-        ul#horizonatal-list li a {
-            text-decoration: none;
-        }
+ul#menu-list li {
+    display: inline;
+    font-size: 20px;
+    padding-left: 30px;
+}
 
-li:hover {
-    color: white;
-    cursor: pointer;
+ul#horizonatal-list li a {
+    text-decoration: none;
 }
 
 a {
@@ -359,6 +374,8 @@ a {
     padding: 10px;
 }
 
+
+/*RANDOM*/
 .projectrowpanel {
     background-color: #bbb;
     display: block;
