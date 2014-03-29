@@ -25,7 +25,25 @@ namespace LotBankingCrux_v_1.CustomControls
         {
             contentLabel = content;
             DocClassId = id;
-            CreateChildControls();
+            //CreateChildControls();
+
+            Content = new Label();
+            Content.Text = contentLabel;
+
+            BrowseButton = new FileUpload();
+
+            SubmitDocs = new Button();
+            SubmitDocs.Text = "Submit Documents";
+
+
+
+            DownloadButton = new Button();
+            DownloadButton.Text = "Download";
+
+            Controls.Add(Content);
+            Controls.Add(BrowseButton);
+            Controls.Add(SubmitDocs);
+            Controls.Add(DownloadButton);
         }
 
         /// <summary>
@@ -35,7 +53,7 @@ namespace LotBankingCrux_v_1.CustomControls
         /// <param name="browseButton"></param>
         /// <param name="submitFile"></param>
         /// 
-        protected override void CreateChildControls()
+        /*protected override void CreateChildControls()
         {
 
             Content = new Label();
@@ -56,7 +74,7 @@ namespace LotBankingCrux_v_1.CustomControls
             Controls.Add(SubmitDocs);
             Controls.Add(DownloadButton);
 
-        }
+        }*/
 
         //protected void UploadFile_Click(object sender, EventArgs e)
         //{

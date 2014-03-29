@@ -19,25 +19,28 @@ namespace LotBankingCrux_v_1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            CreateTransactionDocumentationView();
+            /*CreateTransactionDocumentationView();
             CreateMarketDueDiligenceView();
-            CreateBuilderResumeView();
+            CreateBuilderResumeView();*/
 
         }
 
         protected void lnkbtnBuilderResume_Click(object sender, EventArgs e)
         {
             mviwDueDiligence.ActiveViewIndex = 0;
+            CreateBuilderResumeView();
         }
 
         protected void lnkbtnMarketDueDiligence_Click(object sender, EventArgs e)
         {
             mviwDueDiligence.ActiveViewIndex = 1;
+            CreateMarketDueDiligenceView();
         }
 
         protected void lnkbtnTransactionDocumentation_Click(object sender, EventArgs e)
         {
             mviwDueDiligence.ActiveViewIndex = 2;
+            CreateTransactionDocumentationView();
         }
 
         private void CreateTransactionDocumentationView()
@@ -47,16 +50,17 @@ namespace LotBankingCrux_v_1
             FileUploadButton fileUpload;
             header.Text = "Transaction Documents";
             panel.Controls.Add(header);
-            Panel contentPanel = null;
+            Panel contentPanel1 = null;
+            Panel contentPanel2 = null;
 
-            contentPanel = new Panel();
-            contentPanel.Controls.Add(fileUpload = new FileUploadButton("1. Development Agreement"));
+            contentPanel1 = new Panel();
+            contentPanel1.Controls.Add(fileUpload = new FileUploadButton("1. Development Agreement"));
             fileUpload.SubmitDocs.Click += UploadFile_Click;
-            panel.Controls.Add(contentPanel);
+            panel.Controls.Add(fileUpload);
 
-            contentPanel = new Panel();
-            contentPanel.Controls.Add(new FileUploadButton("2. Entity Formation Documents"));
-            panel.Controls.Add(contentPanel);
+            contentPanel2 = new Panel();
+            contentPanel2.Controls.Add(new FileUploadButton("2. Entity Formation Documents"));
+            panel.Controls.Add(contentPanel2);
 
             //Add more Content Panels here
 
