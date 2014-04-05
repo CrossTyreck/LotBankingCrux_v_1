@@ -75,6 +75,11 @@
     <Content Include="DueDiligenceCopy.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Images\delete_salesTraffic.png" />
+    <Content Include="Images\DueDiligence\browse.png" />
+    <Content Include="Images\DueDiligence\download.png" />
+    <Content Include="Images\DueDiligence\no_submission.png" />
+    <Content Include="Images\DueDiligence\successful_submit.png" />
+    <Content Include="Images\DueDiligence\upload.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\pw_pattern.png" />
     <Content Include="Images\templogo.png" />
@@ -199,6 +204,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

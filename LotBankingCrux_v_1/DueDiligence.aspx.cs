@@ -50,7 +50,7 @@ namespace LotBankingCrux_v_1
         {
             
             Panel panel = new Panel();
-            panel.CssClass = "classname";
+            panel.CssClass = "DD-uploadcontainer";
             Label header = new Label();
             TreeNode node;
             UploadContainer fileUpload;

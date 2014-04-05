@@ -300,6 +300,22 @@ a {
     float: left;
 }
 
+.DD-uploadcontainer {
+    background-color: green;
+}
+
+.DD-label {
+    color: red;
+}
+
+.DD-buttons {
+    border: 2px solid black;
+}
+
+.DD-browse {
+    background-image: url('Images\DueDiligence\browse.png');
+}
+
 /* New User Login
 ----------------------------------------------------------*/
 .createNewUser {
