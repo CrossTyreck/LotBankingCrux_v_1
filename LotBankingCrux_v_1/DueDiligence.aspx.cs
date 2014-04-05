@@ -64,7 +64,9 @@ namespace LotBankingCrux_v_1
             {
                 contentPanel1 = new Panel();
                 contentPanel1.Controls.Add(fileUpload = new UploadContainer(pair.Key + ". " + pair.Value));
+                
                 fileUpload.SubmitDocs.Click += UploadFile_Click;
+                
                 panel.Controls.Add(fileUpload);
                 node = new TreeNode(pair.Key + ". " + pair.Value);
                 TreeView1.Nodes.Add(node);
