@@ -63,7 +63,7 @@ namespace LotBankingCrux_v_1
             foreach (KeyValuePair<int, string> pair in dictDocClassIDName)
             {
                 contentPanel1 = new Panel();
-                contentPanel1.Controls.Add(fileUpload = new UploadContainer(pair.Key + ". " + pair.Value));
+                contentPanel1.Controls.Add(fileUpload = new UploadContainer(pair.Key + ". " + pair.Value, pair.Key));
                 
                 fileUpload.SubmitDocs.Click += UploadFile_Click;
                 

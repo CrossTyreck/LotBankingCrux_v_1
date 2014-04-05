@@ -21,14 +21,25 @@ namespace LotBankingCrux_v_1.CustomControls
         public int DocClassId { get; set; }
         public CruxFileStream cfsFileStream { get; set; }
         public CruxDB DBObject { get; set; }
+        public Panel DragNDrop { get; set; }
 
         public UploadContainer(string content, int id = 0)
         {
-            Panel pnLabel = new Panel();
-            Panel pnObject = new Panel();
-            pnLabel.CssClass = "DD-label";
-            pnObject.CssClass = "DD-buttons";
-            
+            Panel pnlLabel = new Panel();
+            Panel pnlObject = new Panel();
+            Label lblDropHere = new Label();
+            DragNDrop = new Panel();
+
+            lblDropHere.Text = "Drop Here";
+            DragNDrop.CssClass = "drop_zone";
+            DragNDrop.ID = id.ToString();
+            DragNDrop.Controls.Add(lblDropHere);
+            DragNDrop.Attributes.Add("ondragover", "handleDragOver(event)");
+            DragNDrop.Attributes.Add("ondrop", "handleDnDFileSelect(event)");
+
+            pnlLabel.CssClass = "DD-label";
+            pnlObject.CssClass = "DD-buttons";
+
             contentLabel = content;
             DocClassId = id;
 
@@ -40,7 +51,7 @@ namespace LotBankingCrux_v_1.CustomControls
 
             BrowseImage = new Image();
             BrowseImage.ImageUrl = @"Images\DueDiligence\browse.png";
-            BrowseImage.Attributes["style"] = "z-index: 1; border: none; padding: 0; background: none; display:block; background-color: #FF8000; padding: 10px; width: 70%; margin:10px auto; z-index:10; position:relative;";
+            // BrowseImage.Attributes["style"] = "z-index: 1; border: none; padding: 0; background: none; display:block; background-color: #FF8000; padding: 10px; margin:10px auto; z-index:10; position:relative;";
 
             SubmitDocs = new ImageButton();
             SubmitDocs.ImageUrl = @"Images\DueDiligence\successful_submit.png";
@@ -48,15 +59,17 @@ namespace LotBankingCrux_v_1.CustomControls
             DownloadButton = new ImageButton();
             DownloadButton.ImageUrl = @"Images\DueDiligence\download.png";
 
-            pnLabel.Controls.Add(Content);
+            pnlLabel.Controls.Add(Content);
 
-            pnObject.Controls.Add(BrowseButton);
-            pnObject.Controls.Add(BrowseImage);
-            pnObject.Controls.Add(SubmitDocs);
-            pnObject.Controls.Add(DownloadButton);
-            
-            Controls.Add(pnLabel);
-            Controls.Add(pnObject);
+            pnlObject.Controls.Add(BrowseButton);
+            pnlObject.Controls.Add(BrowseImage);
+            pnlObject.Controls.Add(SubmitDocs);
+            pnlObject.Controls.Add(DownloadButton);
+
+            Controls.Add(pnlLabel);
+            Controls.Add(pnlObject);
+            Controls.Add(DragNDrop);
+
         }
 
         /// <summary>

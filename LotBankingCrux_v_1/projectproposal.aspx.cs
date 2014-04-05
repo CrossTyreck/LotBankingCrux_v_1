@@ -45,7 +45,7 @@ namespace LotBankingCrux_v_1
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
 
-            
+
             CruxDB DBObject = new CruxDB();
 
             int numberLots = Int32.Parse(txtNumberOfLots.Text);
@@ -81,7 +81,6 @@ namespace LotBankingCrux_v_1
             catch (MySqlException ex)
             {
                 lblDataInserted.Text = ex.Message;
-
             }
             //else
             //{
@@ -90,7 +89,6 @@ namespace LotBankingCrux_v_1
             //    DataInserted.Visible = true;
             //}
         }
-
 
         void InitControls(int userType)
         {
@@ -106,7 +104,6 @@ namespace LotBankingCrux_v_1
                     SetDefaultPage();
                     break;
             }
-
         }
 
         /// <summary>
@@ -184,32 +181,23 @@ namespace LotBankingCrux_v_1
 
         private void UpdateMap()
         {
-            string firstStreet;
+            string firstStreet = "";
+            string secondStreet = "";
+
             if (txtFirstStreetSuffix.SelectedItem.Text != "Select")
-            {
                 firstStreet = txtFirstStreet.Text + " " + txtFirstStreetSuffix.SelectedItem.Text;
-            }
             else
-            {
                 firstStreet = txtFirstStreet.Text;
-            }
-            string secondStreet;
+
             if (txtSecondStreetSuffix.SelectedItem.Text != "Select")
-            {
                 secondStreet = txtSecondStreet.Text + " " + txtSecondStreetSuffix.SelectedItem.Text;
-            }
             else
-            {
                 secondStreet = txtSecondStreet.Text;
-            }
 
             string cityLocation = txtCity.Text;
-
             string stateLocation = txtState.Text;
 
-            mapImage.Attributes["src"] = ResolveUrl("http://maps.googleapis.com/maps/api/staticmap?center=" + firstStreet + "+" + secondStreet + "," + cityLocation + "," + stateLocation + "&zoom=16&size=600x600&maptype=roadmap&markers=color:blue%7C" + firstStreet + "+" + secondStreet + "," + cityLocation + "," + stateLocation + "&sensor=false");
-
-
+            mapImage.Attributes["src"] = ResolveUrl("http://maps.googleapis.com/maps/api/staticmap?center=" + firstStreet + "%26" + secondStreet + "," + cityLocation + "," + stateLocation + "&zoom=16&size=600x600&maptype=roadmap&markers=color:blue%7C" + firstStreet + "%26" + secondStreet + "," + cityLocation + "," + stateLocation + "&sensor=false");
         }
     }
 }

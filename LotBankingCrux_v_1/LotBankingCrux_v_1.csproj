@@ -74,6 +74,7 @@
     <Content Include="DueDiligence.aspx" />
     <Content Include="DueDiligenceCopy.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="FileUploadTest.aspx" />
     <Content Include="Images\delete_salesTraffic.png" />
     <Content Include="Images\DueDiligence\browse.png" />
     <Content Include="Images\DueDiligence\download.png" />
@@ -109,6 +110,13 @@
     </Compile>
     <Compile Include="DueDiligenceCopy.aspx.designer.cs">
       <DependentUpon>DueDiligenceCopy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FileUploadTest.aspx.cs">
+      <DependentUpon>FileUploadTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FileUploadTest.aspx.designer.cs">
+      <DependentUpon>FileUploadTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Restricted.Master.cs">
       <DependentUpon>Restricted.Master</DependentUpon>

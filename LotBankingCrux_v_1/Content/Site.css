@@ -164,7 +164,6 @@ a {
     background: linear-gradient(to bottom, #1e5799 0%,#28aade 0%,#207cca 100%,#346897 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#346897',GradientType=0 ); /* IE6-9 */
     border-color: dodgerblue;
-
 }
 
 /* Navigation
@@ -474,4 +473,3 @@ a {
 .pnlMap {
     text-align: center;
 }
-
