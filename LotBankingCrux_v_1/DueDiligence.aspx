@@ -26,7 +26,7 @@
 
     <div id="sidemenu">
         <asp:TreeView ID="TreeView1" runat="server">
-            <Nodes>
+           <%-- <Nodes>
                 <asp:TreeNode Text="New Node" Value="New Node">
                     <asp:TreeNode Text="New Node" Value="New Node">
                         <asp:TreeNode Text="New Node" Value="New Node"></asp:TreeNode>
@@ -42,7 +42,7 @@
                     <asp:TreeNode Text="New Node" Value="New Node"></asp:TreeNode>
                     <asp:TreeNode Text="New Node" Value="New Node"></asp:TreeNode>
                 </asp:TreeNode>
-            </Nodes>
+            </Nodes>--%>
         </asp:TreeView>
         <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
     </div>
@@ -183,8 +183,8 @@
 
             </asp:View>
             <asp:View ID="viwTransactionDocumentation" runat="server">
-                <h2>Transaction Documentation</h2>
-                <div>
+                 <%--<h2>Transaction Documentation</h2>
+               <div>
                     <ul>
                         <li>1. Builder Purchase Agreement<asp:FileUpload ID="FileUpload58" runat="server" />
                             <asp:Button ID="btnFileUpload19" runat="server" OnClick="UploadFile_Click" Text="Upload File" />
@@ -421,7 +421,7 @@
                             <hr />
                         </li>
                     </ul>
-                </div>
+                </div>--%>
             </asp:View>
         </asp:MultiView>
 

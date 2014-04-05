@@ -43,36 +43,38 @@ namespace LotBankingCrux_v_1
             CreateTransactionDocumentationView();
         }
 
+        /// <summary>
+        /// Creates the components for this view. Needs to be extended for each view. 
+        /// </summary>
         private void CreateTransactionDocumentationView()
         {
             Panel panel = new Panel();
             Label header = new Label();
+            TreeNode node;
             FileUploadButton fileUpload;
             header.Text = "Transaction Documents";
             panel.Controls.Add(header);
             Panel contentPanel1 = null;
-            Panel contentPanel2 = null;
+            
+            Dictionary<int, string> dictDocClassIDName = dbObject.SelectIDName("id", "document_class_name", "Project_Document_Class");
 
-            contentPanel1 = new Panel();
-            contentPanel1.Controls.Add(fileUpload = new FileUploadButton("1. Development Agreement"));
-            fileUpload.SubmitDocs.Click += UploadFile_Click;
-            panel.Controls.Add(fileUpload);
-
-            contentPanel2 = new Panel();
-            contentPanel2.Controls.Add(new FileUploadButton("2. Entity Formation Documents"));
-            panel.Controls.Add(contentPanel2);
-
-            //Add more Content Panels here
-
-            if ((((DataBucket)Session["UserData"])._docClassId = dbObject.GetDocClassId(fileUpload.Content.Text.Substring(3, fileUpload.Content.Text.Length - 3))) <= 0)
+            foreach (KeyValuePair<int, string> pair in dictDocClassIDName)
             {
-                ((DataBucket)Session["UserData"])._docClassId = 0;
+                contentPanel1 = new Panel();
+                contentPanel1.Controls.Add(fileUpload = new FileUploadButton(pair.Key + ". " + pair.Value));
+                fileUpload.SubmitDocs.Click += UploadFile_Click;
+                panel.Controls.Add(fileUpload);
+                node= new TreeNode(pair.Key + ". " + pair.Value);
+                TreeView1.Nodes.Add(node);
             }
-
-
 
             mviwDueDiligence.Views[2].Controls.Add(panel);
 
+            //What was I doing here?
+            //if ((((DataBucket)Session["UserData"])._docClassId = dbObject.GetDocClassId(fileUpload.Content.Text.Substring(3, fileUpload.Content.Text.Length - 3))) <= 0)
+            //{
+            //    ((DataBucket)Session["UserData"])._docClassId = 0;
+            //}
 
         }
 

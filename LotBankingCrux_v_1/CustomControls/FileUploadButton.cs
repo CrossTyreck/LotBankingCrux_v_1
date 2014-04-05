@@ -25,7 +25,6 @@ namespace LotBankingCrux_v_1.CustomControls
         {
             contentLabel = content;
             DocClassId = id;
-            //CreateChildControls();
 
             Content = new Label();
             Content.Text = contentLabel;
@@ -34,8 +33,6 @@ namespace LotBankingCrux_v_1.CustomControls
 
             SubmitDocs = new Button();
             SubmitDocs.Text = "Submit Documents";
-
-
 
             DownloadButton = new Button();
             DownloadButton.Text = "Download";

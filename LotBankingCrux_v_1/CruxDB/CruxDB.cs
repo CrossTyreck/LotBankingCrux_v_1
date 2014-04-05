@@ -618,20 +618,26 @@ namespace LotBankingCrux_v_1.Crux
             return builders;
         }
 
-        public Dictionary<int, String> getBuilderNames()
+
+        /// <summary>
+        /// Returns the id and name of an object from the table. 
+        /// </summary>
+        /// <param name="id">Name of the id in the table</param>
+        /// <param name="name">Name given to the object in the table</param>
+        /// <param name="table">Table you are trying to retrieve data from.</param>
+        /// <returns>Returns a Dictionary that contains the id and name of the object requested.</returns>
+        public Dictionary<int, String> SelectIDName(string id, string name, string table)
         {
-            MySqlCommand getBuildersNamesQuery = new MySqlCommand("SELECT builder_id, " +
-                                                                    "name " +
-                                                               "FROM Builder_Data " +
-                                                               "SORT BY name ASC",
+            MySqlCommand selectIDName = new MySqlCommand("SELECT "+ id + ", " + name + " FROM " + table + " ORDER BY " + id + " ASC",
                                                          databaseConnection);
+
             Dictionary<int, String> returnValues = new Dictionary<int, string>();
             MySqlDataReader reader;
 
             try
             {
                 databaseConnection.Open();
-                reader = getBuildersNamesQuery.ExecuteReader(CommandBehavior.SequentialAccess);
+                reader = selectIDName.ExecuteReader(CommandBehavior.SequentialAccess);
                 while (reader.Read())
                 {
                     returnValues.Add(reader.GetInt32(0), reader.GetString(1));
@@ -767,7 +773,7 @@ namespace LotBankingCrux_v_1.Crux
             try
             {
                 reader = getDocClassID.ExecuteReader(CommandBehavior.SingleResult);
-               
+
                 while (reader.Read())
                 {
                     return reader.GetInt32(0);
