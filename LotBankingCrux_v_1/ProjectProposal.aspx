@@ -12,10 +12,28 @@
                     <br />
                     <br />
                     <asp:Label ID="lblFirstStreet" runat="server" Text="First Street:"></asp:Label>
+                    <asp:DropDownList ID="txtFirstStreetSuffix"  style="float: right;" runat="server">
+                        <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                        <asp:ListItem Text="Rd." Value="1"></asp:ListItem>
+                        <asp:ListItem Text="Blvd." Value="2"></asp:ListItem>
+                        <asp:ListItem Text="Hwy." Value="3"></asp:ListItem>
+                        <asp:ListItem Text="Ave." Value="4"></asp:ListItem>
+                        <asp:ListItem Text="St." Value="5"></asp:ListItem>
+                        <asp:ListItem Text="Dr." Value="6"></asp:ListItem>
+                    </asp:DropDownList>
                     <asp:TextBox ID="txtFirstStreet" CssClass="PP-textbox" runat="server"></asp:TextBox>
                     <br />
                     <br />
                     <asp:Label ID="lblSecondStreet" runat="server" Text="Second Street:"></asp:Label>
+                    <asp:DropDownList ID="txtSecondStreetSuffix"  style="float: right;" runat="server">
+                        <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                        <asp:ListItem Text="Rd." Value="1"></asp:ListItem>
+                        <asp:ListItem Text="Blvd." Value="2"></asp:ListItem>
+                        <asp:ListItem Text="Hwy." Value="3"></asp:ListItem>
+                        <asp:ListItem Text="Ave." Value="4"></asp:ListItem>
+                        <asp:ListItem Text="St." Value="5"></asp:ListItem>
+                        <asp:ListItem Text="Dr." Value="6"></asp:ListItem>
+                    </asp:DropDownList>
                     <asp:TextBox ID="txtSecondStreet" CssClass="PP-textbox"  runat="server"></asp:TextBox>
                     <br />
                     <br />
@@ -46,7 +64,7 @@
                     <asp:Label ID="lblDataInserted" runat="server" ForeColor="Green" Text="Data Inserted" Visible="False" ClientIDMode="Static"></asp:Label>
                     <br />
                     <br />
-                    <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" CssClass="button" />
+                    <asp:Button ID="btnCheckLocation" runat="server" CssClass="button" OnClick="btnCheckLocation_Click" Text="Check Location" />
                     <br />
                     <br />
                     <asp:Label ID="lblAddInfoReq" runat="server" ForeColor="Red" Text="Crescent Bay Holdings requires additional financial information be submitted before your proposal can be accepted. Please contact a Crescent Bay Holdings associate for more info." Visible="False"></asp:Label>
@@ -72,8 +90,8 @@
                 </asp:Panel>
             </td>
             <td>
-                <asp:Panel ID="pnlMap" runat="server">
-                    <asp:Button ID="btnCheckLocation" CssClass="button" runat="server" Text="Check Location" OnClick="btnCheckLocation_Click" />
+                <asp:Panel ID="pnlMap" runat="server" CssClass="pnlMap">
+                    <asp:Button ID="btnSubmit" runat="server" CssClass="button" OnClick="btnSubmit_Click" Text="Submit" Width="99px" />
                 </asp:Panel>
             </td>
         </tr>

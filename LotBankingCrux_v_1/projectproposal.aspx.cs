@@ -184,9 +184,24 @@ namespace LotBankingCrux_v_1
 
         private void UpdateMap()
         {
-            string firstStreet = txtFirstStreet.Text;
-
-            string secondStreet = txtSecondStreet.Text;
+            string firstStreet;
+            if (txtFirstStreetSuffix.SelectedItem.Text != "Select")
+            {
+                firstStreet = txtFirstStreet.Text + " " + txtFirstStreetSuffix.SelectedItem.Text;
+            }
+            else
+            {
+                firstStreet = txtFirstStreet.Text;
+            }
+            string secondStreet;
+            if (txtSecondStreetSuffix.SelectedItem.Text != "Select")
+            {
+                secondStreet = txtSecondStreet.Text + " " + txtSecondStreetSuffix.SelectedItem.Text;
+            }
+            else
+            {
+                secondStreet = txtSecondStreet.Text;
+            }
 
             string cityLocation = txtCity.Text;
 

@@ -49,6 +49,15 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.Label lblFirstStreet;
         
         /// <summary>
+        /// txtFirstStreetSuffix control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList txtFirstStreetSuffix;
+        
+        /// <summary>
         /// txtFirstStreet control.
         /// </summary>
         /// <remarks>
@@ -65,6 +74,15 @@ namespace LotBankingCrux_v_1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSecondStreet;
+        
+        /// <summary>
+        /// txtSecondStreetSuffix control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList txtSecondStreetSuffix;
         
         /// <summary>
         /// txtSecondStreet control.
@@ -193,13 +211,13 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.Label lblDataInserted;
         
         /// <summary>
-        /// btnSubmit control.
+        /// btnCheckLocation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmit;
+        protected global::System.Web.UI.WebControls.Button btnCheckLocation;
         
         /// <summary>
         /// lblAddInfoReq control.
@@ -283,12 +301,12 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.Panel pnlMap;
         
         /// <summary>
-        /// btnCheckLocation control.
+        /// btnSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCheckLocation;
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
     }
 }
