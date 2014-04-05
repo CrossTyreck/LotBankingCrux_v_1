@@ -48,7 +48,9 @@ namespace LotBankingCrux_v_1
         /// </summary>
         private void CreateTransactionDocumentationView()
         {
+            
             Panel panel = new Panel();
+            panel.CssClass = "classname";
             Label header = new Label();
             TreeNode node;
             FileUploadButton fileUpload;
@@ -64,7 +66,7 @@ namespace LotBankingCrux_v_1
                 contentPanel1.Controls.Add(fileUpload = new FileUploadButton(pair.Key + ". " + pair.Value));
                 fileUpload.SubmitDocs.Click += UploadFile_Click;
                 panel.Controls.Add(fileUpload);
-                node= new TreeNode(pair.Key + ". " + pair.Value);
+                node = new TreeNode(pair.Key + ". " + pair.Value);
                 TreeView1.Nodes.Add(node);
             }
 
