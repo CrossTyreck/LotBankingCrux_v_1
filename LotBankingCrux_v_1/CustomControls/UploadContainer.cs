@@ -9,7 +9,7 @@ using LotBankingCrux_v_1.Crux;
 namespace LotBankingCrux_v_1.CustomControls
 {
 
-    public class FileUploadButton : Panel
+    public class UploadContainer : Panel
     {
 
         private string contentLabel = String.Empty;
@@ -21,8 +21,11 @@ namespace LotBankingCrux_v_1.CustomControls
         public CruxFileStream cfsFileStream { get; set; }
         public CruxDB DBObject { get; set; }
 
-        public FileUploadButton(string content, int id = 0)
+        public UploadContainer(string content, int id = 0)
         {
+            Panel pnLabel = new Panel();
+            Panel pnObject = new Panel();
+            
             contentLabel = content;
             DocClassId = id;
 
@@ -37,10 +40,14 @@ namespace LotBankingCrux_v_1.CustomControls
             DownloadButton = new Button();
             DownloadButton.Text = "Download";
 
-            Controls.Add(Content);
-            Controls.Add(BrowseButton);
-            Controls.Add(SubmitDocs);
-            Controls.Add(DownloadButton);
+            pnLabel.Controls.Add(Content);
+
+            pnObject.Controls.Add(BrowseButton);
+            pnObject.Controls.Add(SubmitDocs);
+            pnObject.Controls.Add(DownloadButton);
+            
+            Controls.Add(pnLabel);
+            Controls.Add(pnObject);
         }
 
         /// <summary>

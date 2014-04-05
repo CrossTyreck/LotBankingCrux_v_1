@@ -47,11 +47,11 @@ namespace LotBankingCrux_v_1
             Panel contentPanel = null;
 
             contentPanel = new Panel();
-            contentPanel.Controls.Add(new FileUploadButton("1. Builder Purchase Agreement"));
+            contentPanel.Controls.Add(new UploadContainer("1. Builder Purchase Agreement"));
             panel.Controls.Add(contentPanel);
             
             contentPanel = new Panel();
-            contentPanel.Controls.Add(new FileUploadButton("2. Entity Formation Documents"));
+            contentPanel.Controls.Add(new UploadContainer("2. Entity Formation Documents"));
             panel.Controls.Add(contentPanel);
 
             //Add more Content Panels here

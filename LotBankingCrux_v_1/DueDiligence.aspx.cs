@@ -53,7 +53,7 @@ namespace LotBankingCrux_v_1
             panel.CssClass = "classname";
             Label header = new Label();
             TreeNode node;
-            FileUploadButton fileUpload;
+            UploadContainer fileUpload;
             header.Text = "Transaction Documents";
             panel.Controls.Add(header);
             Panel contentPanel1 = null;
@@ -63,7 +63,7 @@ namespace LotBankingCrux_v_1
             foreach (KeyValuePair<int, string> pair in dictDocClassIDName)
             {
                 contentPanel1 = new Panel();
-                contentPanel1.Controls.Add(fileUpload = new FileUploadButton(pair.Key + ". " + pair.Value));
+                contentPanel1.Controls.Add(fileUpload = new UploadContainer(pair.Key + ". " + pair.Value));
                 fileUpload.SubmitDocs.Click += UploadFile_Click;
                 panel.Controls.Add(fileUpload);
                 node = new TreeNode(pair.Key + ". " + pair.Value);
