@@ -51,6 +51,34 @@
            // xhr.setRequestHeader("Content-type", "multipart/form-data");
             xhr.send(data);
         }
+
+       /* function alternate(id) {
+
+            if (document.getElementByTagName) {
+
+                var div = document.getElementById(id);
+
+                var MainContent_ = document.getElementById("MainContent_");
+
+                for (i = 0; i < MainContent_[i]; i++) {
+
+                    //manipulate rows 
+
+                    if (i % 2 == 0) {
+
+                        MainContent_[i].className = "even";
+
+                    } else {
+
+                        MainContent_[i].className = "odd";
+
+                    }
+
+                }
+
+            }
+
+        }*/
     </script>
 </asp:Content>
 
@@ -72,16 +100,6 @@
 
         p, output {
             margin: 10px 0 0 0;
-        }
-
-        .drop_zone {
-            margin: 10px 0;
-            width: 15%;
-            text-align: center;
-            text-transform: uppercase;
-            font-weight: bold;
-            border: 8px dashed #ff6a00;
-            height: 90px;
         }
     </style>
     <div id="topnav">

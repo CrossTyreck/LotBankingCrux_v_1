@@ -291,6 +291,7 @@ a {
     width: 150px;
     float: left;
     margin-right: 5px;
+    visibility: hidden;
 }
 
 .multiviewpanel {
@@ -300,21 +301,38 @@ a {
 }
 
 .DD-uploadcontainer {
-    background-color: green;
+    clear: both;
 }
 
 .DD-label {
-    color: red;
+   
 }
 
 .DD-buttons {
-    border: 2px solid black;
+    float: right;
 }
 
 .DD-browse {
     background-image: url('Images\DueDiligence\browse.png');
 }
 
+.drop_zone {
+    margin: 10px 0;
+    width: 35%;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 8px dashed #ff6a00;
+    height: 90px;
+}
+
+.odd {
+    background-color: white;
+}
+
+.even {
+    background-color: gray;
+}
 /* New User Login
 ----------------------------------------------------------*/
 .createNewUser {
