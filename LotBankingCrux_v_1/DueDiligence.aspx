@@ -9,30 +9,36 @@
              event.stopPropagation();
              event.preventDefault();
              var dropZone = event.target;
-             dropZone.innerHTML = "Drop now";
+             //dropZone.innerHTML = "Drop now";
          }
 
          function handleDnDFileSelect(event) {
              event.stopPropagation();
              event.preventDefault();
+             alert("Dropped a file!");
              /* Read the list of all the selected files. */
              files = event.dataTransfer.files;
              var data = new FormData();
-             for (var i = 0; i < files.length; i++) {
-                 data.append(files[i].name, files[i]);
-             }
-             var xhr = new XMLHttpRequest();
-             xhr.open("POST", "FileUploadTest.aspx");
-             xhr.onreadystatechange = function () {
-                 if (xhr.readyState == 4 && xhr.status == 200 && xhr.responseText) {
+             
+             if (event.target.hasChildNodes())
+                 event.target.replaceChild(document.createTextNode(files[0].name), event.target.firstChild);
+             else
+                 event.target.appendChild(document.createTextNode(files[0].name));
+                 
+             event.target.innerHTML = event.target.firstChild.data;
+             
+             //var xhr = new XMLHttpRequest();
+             //xhr.open("POST", "DueDiligence.aspx");
+             //xhr.onreadystatechange = function () {
+             //    if (xhr.readyState == 4 && xhr.status == 200 && xhr.responseText) {
 
-                     alert("upload done!");
-                 } else {
-                     //alert("upload failed!");
-                 }
-             };
+             //        alert("upload done!");
+             //    } else {
+             //        //alert("upload failed!");
+             //    }
+             //};
              // xhr.setRequestHeader("Content-type", "multipart/form-data");
-             xhr.send(data);
+             //xhr.send(data);
          }
     </script>
 </asp:Content>

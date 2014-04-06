@@ -16,13 +16,25 @@ namespace LotBankingCrux_v_1
         CruxDB dbObject = new CruxDB();
         DataBucket DBucket = new DataBucket();
         CruxFileStream cfsFileStream = new CruxFileStream();
+        List<object> files = new List<object>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*CreateTransactionDocumentationView();
-            CreateMarketDueDiligenceView();
-            CreateBuilderResumeView();*/
+            if (!IsPostBack)
+            {
+                AddFileForUpload(sender, e);
+            }
+        }
 
+        protected void UploadFile(object sender, EventArgs e)
+        {
+            HttpFileCollection fileCollection = Request.Files;
+            for (int i = 0; i < fileCollection.Count; i++)
+            {
+                HttpPostedFile upload = fileCollection[i];
+                string filename = "c:\\Test\\" + Path.GetFileName(upload.FileName);
+                upload.SaveAs(filename);
+            }
         }
 
         protected void lnkbtnBuilderResume_Click(object sender, EventArgs e)
@@ -48,7 +60,7 @@ namespace LotBankingCrux_v_1
         /// </summary>
         private void CreateTransactionDocumentationView()
         {
-            
+
             Panel panel = new Panel();
             panel.CssClass = "DD-uploadcontainer";
             Label header = new Label();
@@ -57,16 +69,16 @@ namespace LotBankingCrux_v_1
             header.Text = "Transaction Documents";
             panel.Controls.Add(header);
             Panel contentPanel1 = null;
-            
+
             Dictionary<int, string> dictDocClassIDName = dbObject.SelectIDName("id", "document_class_name", "Project_Document_Class");
 
             foreach (KeyValuePair<int, string> pair in dictDocClassIDName)
             {
                 contentPanel1 = new Panel();
                 contentPanel1.Controls.Add(fileUpload = new UploadContainer(pair.Key + ". " + pair.Value, pair.Key));
-                
+
                 fileUpload.SubmitDocs.Click += UploadFile_Click;
-                
+
                 panel.Controls.Add(fileUpload);
                 node = new TreeNode(pair.Key + ". " + pair.Value);
                 TreeView1.Nodes.Add(node);
@@ -104,6 +116,13 @@ namespace LotBankingCrux_v_1
         {
             //cfsFileStream.UploadFile((sender as FileUpload).PostedFile.FileName, sender as FileUpload, DBObject, (DataBucket)Session["UserData"], Request, Context);
             cfsFileStream.UploadFile(dbObject, (DataBucket)Session["UserData"], Request, Context, ((DataBucket)Session["UserData"])._docClassId);
+        }
+
+        protected void AddFileForUpload(object sender, EventArgs e)
+        {
+
+
+
         }
 
     }
