@@ -32,7 +32,7 @@ namespace LotBankingCrux_v_1.CustomControls
 
             lblDropHere.Text = "Drop Here";
             DragNDrop.CssClass = "drop_zone";
-            DragNDrop.ID = id.ToString();
+            DragNDrop.ID = "drop_zone "+ id.ToString();
             DragNDrop.Controls.Add(lblDropHere);
             DragNDrop.Attributes.Add("ondragover", "handleDragOver(event)");
             DragNDrop.Attributes.Add("ondrop", "handleDnDFileSelect(event)");
@@ -66,6 +66,7 @@ namespace LotBankingCrux_v_1.CustomControls
             pnlObject.Controls.Add(SubmitDocs);
             pnlObject.Controls.Add(DownloadButton);
 
+            this.ID = id.ToString();
             Controls.Add(pnlLabel);
             Controls.Add(pnlObject);
             Controls.Add(DragNDrop);

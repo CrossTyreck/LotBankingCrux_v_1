@@ -485,6 +485,7 @@
                         </li>
                     </ul>
                 </div>--%>
+                 <asp:Button ID="btnSubmitFiles" runat="server" OnClick="UploadFile_Click" Text="Upload Files" />
             </asp:View>
         </asp:MultiView>
 

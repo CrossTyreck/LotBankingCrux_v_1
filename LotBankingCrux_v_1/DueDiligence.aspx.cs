@@ -114,6 +114,14 @@ namespace LotBankingCrux_v_1
 
         protected void UploadFile_Click(object sender, EventArgs e)
         {
+            Dictionary<int, string> files = new Dictionary<int,string>();
+            for (int i = 0; i < viwTransactionDocumentation.Controls.Count; i++)
+            {
+                
+                UploadContainer panel = viwTransactionDocumentation.FindControl(i.ToString()) as UploadContainer;
+                if (panel != null)
+                    files[i] = (panel.DragNDrop.Controls[0] as Label).Text;
+            }
             //cfsFileStream.UploadFile((sender as FileUpload).PostedFile.FileName, sender as FileUpload, DBObject, (DataBucket)Session["UserData"], Request, Context);
             cfsFileStream.UploadFile(dbObject, (DataBucket)Session["UserData"], Request, Context, ((DataBucket)Session["UserData"])._docClassId);
         }
@@ -124,6 +132,8 @@ namespace LotBankingCrux_v_1
 
 
         }
+
+ 
 
     }
 }
