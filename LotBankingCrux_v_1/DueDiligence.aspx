@@ -3,62 +3,77 @@
 <%@ Register Assembly="LotBankingCrux_v_1" Namespace="LotBankingCrux_v_1.CustomControls" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="HeadContent">
-     <script type="text/javascript">
-         var files;
-         function handleDragOver(event) {
-             event.stopPropagation();
-             event.preventDefault();
-             var dropZone = event.target;
-             //dropZone.innerHTML = "Drop now";
-         }
+    <script type="text/javascript">
+        var files;
+        function handleDragOver(event) {
+            event.stopPropagation();
+            event.preventDefault();
+            var dropZone = event.target;
+            //dropZone.innerHTML = "Drop now";
+        }
 
-         function handleDnDFileSelect(event) {
-             event.stopPropagation();
-             event.preventDefault();
-             alert("Dropped a file!");
-             /* Read the list of all the selected files. */
-             files = event.dataTransfer.files;
-             var data = new FormData();
-             
-             if (event.target.hasChildNodes())
-                 event.target.replaceChild(document.createTextNode(files[0].name), event.target.firstChild);
-             else
-                 event.target.appendChild(document.createTextNode(files[0].name));
-                 
-             event.target.innerHTML = event.target.firstChild.data;
-             
-             //var xhr = new XMLHttpRequest();
-             //xhr.open("POST", "DueDiligence.aspx");
-             //xhr.onreadystatechange = function () {
-             //    if (xhr.readyState == 4 && xhr.status == 200 && xhr.responseText) {
+        function handleDnDFileSelect(event) {
+            event.stopPropagation();
+            event.preventDefault();
+            alert("Dropped a file!");
+            /* Read the list of all the selected files. */
+            files = event.dataTransfer.files;
+            if (event.target.hasChildNodes())
+                event.target.replaceChild(document.createTextNode(files[0].name), event.target.firstChild);
+            else
+                event.target.appendChild(document.createTextNode(files[0].name));
+            event.target.innerHTML = event.target.firstChild.data;
 
-             //        alert("upload done!");
-             //    } else {
-             //        //alert("upload failed!");
-             //    }
-             //};
-             // xhr.setRequestHeader("Content-type", "multipart/form-data");
-             //xhr.send(data);
-         }
+            var reader = new FileReader();
+            reader.readAsBinaryString(files[0]);
+            reader.onloadend = function () {
+                var or = new Object();
+                or = { docid: event.target.id, file: reader.result };
+                documents.push(or);
+
+            }
+        }
+
+        function submitFiles(event) {
+            var data = new FormData();
+            for (var i = 0; i < documents.length; i++)
+                data.append(documents[i].docid, documents[i].file);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "DueDiligence.aspx");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200 && xhr.responseText) {
+
+                    alert("upload done!");
+                } else {
+                    //alert("upload failed!");
+                }
+            };
+           // xhr.setRequestHeader("Content-type", "multipart/form-data");
+            xhr.send(data);
+        }
     </script>
 </asp:Content>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-       <style>
+    <style>
         body {
             padding: 10px;
             font: 14px/18px Calibri;
         }
+
         .bold {
             font-weight: bold;
         }
+
         td {
             padding: 5px;
             border: 1px solid #999;
         }
+
         p, output {
             margin: 10px 0 0 0;
         }
+
         .drop_zone {
             margin: 10px 0;
             width: 15%;
@@ -89,7 +104,7 @@
 
     <div id="sidemenu">
         <asp:TreeView ID="TreeView1" runat="server">
-           <%-- <Nodes>
+            <%-- <Nodes>
                 <asp:TreeNode Text="New Node" Value="New Node">
                     <asp:TreeNode Text="New Node" Value="New Node">
                         <asp:TreeNode Text="New Node" Value="New Node"></asp:TreeNode>
@@ -246,7 +261,7 @@
 
             </asp:View>
             <asp:View ID="viwTransactionDocumentation" runat="server">
-                 <%--<h2>Transaction Documentation</h2>
+                <%--<h2>Transaction Documentation</h2>
                <div>
                     <ul>
                         <li>1. Builder Purchase Agreement<asp:FileUpload ID="FileUpload58" runat="server" />
@@ -485,7 +500,8 @@
                         </li>
                     </ul>
                 </div>--%>
-                 <asp:Button ID="btnSubmitFiles" runat="server" OnClick="UploadFile_Click" Text="Upload Files" />
+                <asp:HiddenField ID="hfArray" runat="server" />
+                <asp:Button ID="btnSubmitFiles" runat="server" Text="Submit Files" OnClientClick="submitFiles(event)" />
             </asp:View>
         </asp:MultiView>
 

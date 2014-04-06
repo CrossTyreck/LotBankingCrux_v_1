@@ -27,6 +27,7 @@
             }
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "FileUploadTest.aspx");
+           
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4 && xhr.status == 200 && xhr.responseText) {
 

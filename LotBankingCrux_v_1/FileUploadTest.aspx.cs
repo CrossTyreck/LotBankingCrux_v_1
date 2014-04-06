@@ -13,7 +13,7 @@ namespace LotBankingCrux_v_1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Request.HttpMethod.Equals("POST"))
             {
                 UploadFile(sender, e);
             }

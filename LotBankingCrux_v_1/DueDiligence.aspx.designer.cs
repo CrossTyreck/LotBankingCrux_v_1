@@ -436,6 +436,15 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.View viwTransactionDocumentation;
         
         /// <summary>
+        /// hfArray control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfArray;
+        
+        /// <summary>
         /// btnSubmitFiles control.
         /// </summary>
         /// <remarks>

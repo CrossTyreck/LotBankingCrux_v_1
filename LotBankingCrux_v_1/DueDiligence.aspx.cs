@@ -20,9 +20,32 @@ namespace LotBankingCrux_v_1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            ClientScript.RegisterArrayDeclaration("documents", "");
+            this.ClientScript.GetPostBackEventReference(this, string.Empty);
+
+            if (IsPostBack)
             {
-                AddFileForUpload(sender, e);
+                string eventTarget = (this.Request["__EVENTTARGET"] == null) ? string.Empty : this.Request["__EVENTTARGET"];
+                string eventArgument = (this.Request["__EVENTARGUMENT"] == null) ? string.Empty : this.Request["__EVENTARGUMENT"];
+
+                if (eventTarget == "btnSubmitFiles")
+                {
+                    Dictionary<int, string> documents = new Dictionary<int, string>();
+                    string[] values = eventArgument.Split(new char[] { '|' }, eventArgument.Count<char>(t => t == '|'));
+                    for (int i = 0; i < values.Length; i += 2)
+                    {
+                        documents.Add(Int32.Parse(values[i].Substring(eventArgument.LastIndexOf(' '))), values[i + 1]);
+                    }
+                }
+                if (eventTarget == "DocClassID" && eventArgument.Contains("drop_zone"))
+                {
+                    ((DataBucket)Session["UserData"])._docClassId = Int32.Parse(eventArgument.Substring(eventArgument.LastIndexOf(' ')));
+                    UploadFile_Click(sender, e);
+                }
+            }
+            else if (Request.HttpMethod.Equals("POST"))
+            {
+                Console.Write("text");
             }
         }
 
@@ -60,17 +83,19 @@ namespace LotBankingCrux_v_1
         /// </summary>
         private void CreateTransactionDocumentationView()
         {
-
+            Label header = new Label();
             Panel panel = new Panel();
             panel.CssClass = "DD-uploadcontainer";
-            Label header = new Label();
+            panel.ID = "pnlTransactionDocumentationView";
             TreeNode node;
             UploadContainer fileUpload;
+
             header.Text = "Transaction Documents";
+
             panel.Controls.Add(header);
-            Panel contentPanel1 = null;
 
             Dictionary<int, string> dictDocClassIDName = dbObject.SelectIDName("id", "document_class_name", "Project_Document_Class");
+            Panel contentPanel1 = null;
 
             foreach (KeyValuePair<int, string> pair in dictDocClassIDName)
             {
@@ -114,26 +139,7 @@ namespace LotBankingCrux_v_1
 
         protected void UploadFile_Click(object sender, EventArgs e)
         {
-            Dictionary<int, string> files = new Dictionary<int,string>();
-            for (int i = 0; i < viwTransactionDocumentation.Controls.Count; i++)
-            {
-                
-                UploadContainer panel = viwTransactionDocumentation.FindControl(i.ToString()) as UploadContainer;
-                if (panel != null)
-                    files[i] = (panel.DragNDrop.Controls[0] as Label).Text;
-            }
-            //cfsFileStream.UploadFile((sender as FileUpload).PostedFile.FileName, sender as FileUpload, DBObject, (DataBucket)Session["UserData"], Request, Context);
             cfsFileStream.UploadFile(dbObject, (DataBucket)Session["UserData"], Request, Context, ((DataBucket)Session["UserData"])._docClassId);
         }
-
-        protected void AddFileForUpload(object sender, EventArgs e)
-        {
-
-
-
-        }
-
- 
-
     }
 }
