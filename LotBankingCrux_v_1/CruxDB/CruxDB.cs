@@ -267,7 +267,7 @@ namespace LotBankingCrux_v_1.Crux
                 databaseConnection.Open();
                 reader = setProjectValue.ExecuteReader(CommandBehavior.SingleResult);
             }
-            catch (Exception e)
+            catch
             {
                 return -1;
             }

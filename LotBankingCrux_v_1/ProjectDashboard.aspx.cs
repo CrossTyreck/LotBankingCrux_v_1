@@ -7,13 +7,13 @@ using System.Web.UI.WebControls;
 using LotBankingCrux_v_1.Crux;
 using LotBankingCrux_v_1.CustomControls;
 using System.Data;
+using System.Drawing;
 
 namespace LotBankingCrux_v_1
 {
     public partial class ProjectDashboard : System.Web.UI.Page
     {
         CruxDB dbObject = new CruxDB();
-
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,13 +23,8 @@ namespace LotBankingCrux_v_1
                 pnlProjectDocumentsTest.Controls.Add(new ProjectRowPanel(doc.Key, doc.Value[0], "ProjectDashboard.aspx", doc.Value[1]));
             }
 
-            if (!this.IsPostBack)
-            {
-                if ((txtbxAccessToLiquidity.Text = dbObject.GetProjectValue(int.Parse(Request.QueryString["builderid"]))) == "")
-                {
-                    txtbxAccessToLiquidity.Text = "Insert Access to Liquidity data here and click submit.";
-                }
-            }
+            txtbxAccessToLiquidity.Text = (dbObject.GetProjectValue(((DataBucket)Session["UserData"])._builderID) == "") ? "Insert Access to Liquidity data here and click submit." : dbObject.GetProjectValue(((DataBucket)Session["UserData"])._builderID);
+
         }
 
         protected void LotTakeDown_OnClick(object sender, EventArgs e)
@@ -53,7 +48,19 @@ namespace LotBankingCrux_v_1
 
         protected void btnSaveChng_Click(object sender, EventArgs e)
         {
-            dbObject.SetProjectAccessLiquidity(txtbxAccessToLiquidity.Text, int.Parse(Request.QueryString["builderid"]));
+            if (dbObject.SetProjectAccessLiquidity(txtbxAccessToLiquidity.Text, int.Parse(Request.QueryString["builderid"])) > 0)
+            {
+                lblAcctoLiquConf.Text = "Access to Liquidity information has been recorded";
+                lblAcctoLiquConf.ForeColor = Color.Green;
+                lblAcctoLiquConf.Visible = true;
+                txtbxAccessToLiquidity.Text = dbObject.GetProjectValue(((DataBucket)Session["UserData"])._builderID);
+            }
+            else
+            {
+                lblAcctoLiquConf.Text = "Access to Liquidity information was not recorded";
+                lblAcctoLiquConf.ForeColor = Color.Red;
+                lblAcctoLiquConf.Visible = true;
+            }
         }
     }
 }

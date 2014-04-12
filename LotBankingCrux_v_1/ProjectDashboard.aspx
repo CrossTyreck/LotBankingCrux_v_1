@@ -24,6 +24,7 @@
                 <br />
                 <asp:TextBox ID="txtbxAccessToLiquidity" runat="server" Height="123px" Width="375px" TextMode="MultiLine"></asp:TextBox>
                 <asp:Button ID="btnSave" runat="server" OnClick="btnSaveChng_Click" Text="Save" />
+                <asp:Label ID="lblAcctoLiquConf" runat="server" Visible="False"></asp:Label>
             </ContentTemplate>
         </asp:UpdatePanel>
     </asp:Panel>

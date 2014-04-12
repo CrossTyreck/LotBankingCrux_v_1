@@ -202,7 +202,6 @@
   <ItemGroup>
     <Content Include="Content\Fonts\eyeglass-normal.ttf" />
     <Content Include="Restricted.Master" />
-    <Content Include="ClassDiagram1.cd" />
     <None Include="Properties\PublishProfiles\ChrisCrux.pubxml" />
     <Content Include="Site.Master" />
     <None Include="Properties\PublishProfiles\CrossCrux.pubxml" />
