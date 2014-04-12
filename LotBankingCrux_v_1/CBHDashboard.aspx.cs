@@ -126,6 +126,16 @@ namespace LotBankingCrux_v_1
             lstbxBuilders.DataTextField = "Builder Name";
             lstbxBuilders.DataValueField = "Builder Id";
             lstbxBuilders.DataBind();
+
+            Dictionary<int, String> lintBuilderIDs = dbObject.getBuilderIds();
+            foreach (KeyValuePair<int, String> bID in lintBuilderIDs)
+            {
+                Dictionary<int, String[]> aBIDProjects = dbObject.getProjectsByBID(bID.Key, ddlOrderBy.SelectedValue.ToString(), true, true);
+                foreach (KeyValuePair<int, String[]> project in aBIDProjects)
+                {
+                    ProjectsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectDashboard.aspx", project.Value[1], bID.Key));
+                }
+            }
         }
 
         /// <summary>

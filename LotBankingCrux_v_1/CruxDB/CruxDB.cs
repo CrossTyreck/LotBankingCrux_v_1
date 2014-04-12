@@ -1316,9 +1316,13 @@ namespace LotBankingCrux_v_1.Crux
         }
 
 
-        public Dictionary<int, String[]> getProjectsByBID(int builder_id, String orderBy, Boolean excludeDeclined)
+        public Dictionary<int, String[]> getProjectsByBID(int builder_id, String orderBy, Boolean excludeDeclined, Boolean proposals = false)
         {
             String exclusion = "";
+            if (proposals)
+            {
+                exclusion = "AND approval_id != -1";
+            }
             if (excludeDeclined)
             {
                 //#CHRIS did this to list accepted projects
