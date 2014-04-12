@@ -79,6 +79,7 @@ namespace LotBankingCrux_v_1
         {
             builderID = ((DataBucket)Session["UserData"])._builderID;
             chkReqFinInfo.Visible = false;
+            btnSubmitCheck.Visible = false;
         }
 
         /// <summary>

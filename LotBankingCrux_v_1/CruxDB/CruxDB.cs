@@ -1503,17 +1503,18 @@ namespace LotBankingCrux_v_1.Crux
         public Dictionary<int, String[]> getProposalsByBID(int builder_id, String orderBy, Boolean includeDeclined = false, Boolean includeAwaitingBuilder = false, Boolean includeAwaitingApproval = false)
         {
             String exclusion = "";
-            if (!includeDeclined)
-            {
-                exclusion = "AND decline_id != -1 ";
-            }
+            //new proposals default decline id is -1, this does not work. 
+            //if (!includeDeclined)
+            //{
+            //    exclusion = "AND decline_id != -1 ";
+            //}
             if (!includeAwaitingBuilder)
             {
-                exclusion += "AND (last_modified_timestamp <= last_requested_timestamp) ";
+                exclusion += "AND (last_modified <= last_requested_timestamp) ";
             }
             if (!includeAwaitingApproval)
             {
-                exclusion += "AND (last_modified_timestamp > last_requested_timestamp || creation_timestamp > last_requested_timestamp) ";
+                exclusion += "AND (last_modified > last_requested_timestamp || date_created > last_requested_timestamp) ";
             }
 
             String order = "";
@@ -1531,7 +1532,7 @@ namespace LotBankingCrux_v_1.Crux
             }
             else if (orderBy.Equals("Last Requested Date"))
             {
-                order = "ORDER BY last_requested DESC ";
+                order = "ORDER BY last_requested_timestamp DESC ";
             }
 
 

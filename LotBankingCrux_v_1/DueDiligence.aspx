@@ -2,7 +2,7 @@
 
 <%@ Register Assembly="LotBankingCrux_v_1" Namespace="LotBankingCrux_v_1.CustomControls" TagPrefix="cc1" %>
 
-<asp:Content ID="Content1" runat="server" ContentPlaceHolderID="HeadContent">
+<asp:Content ID="Content1" runat="server" ContentPlaceHolderID="HeadContent">  
     <script type="text/javascript">
         var files;
         function handleDragOver(event) {
@@ -122,6 +122,7 @@
 
     <div id="sidemenu">
         <asp:TreeView ID="TreeView1" runat="server">
+                 
             <%-- <Nodes>
                 <asp:TreeNode Text="New Node" Value="New Node">
                     <asp:TreeNode Text="New Node" Value="New Node">
@@ -279,6 +280,7 @@
 
             </asp:View>
             <asp:View ID="viwTransactionDocumentation" runat="server">
+                 <asp:ImageButton id="imagebutton1" runat="server" AlternateText="ImageButton 1" ImageAlign="left" ImageUrl="images/pict.jpg" OnClick="ImageButton_Click"/>
                 <asp:Button ID="btnSubmitFiles" runat="server" Text="Submit Files" OnClick="UploadFile_Click" />
                 <%--<h2>Transaction Documentation</h2>
                <div>

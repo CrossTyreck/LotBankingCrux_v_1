@@ -15,6 +15,8 @@ namespace LotBankingCrux_v_1.CustomControls
 
         public void DownloadFile(CruxDB dbObject, DataBucket sesBucket, int docClassId)
         {
+
+            byte[] doc = dbObject.getProjectDocument(docClassId);
             //HttpWebRequest objRequest = (HttpWebRequest)WebRequest.Create("http://www.lotbanking.com/Downloads/" + fileName);
             //HttpWebResponse objResponse = (HttpWebResponse)objRequest.GetResponse();
             //int bufferSize = 1;
