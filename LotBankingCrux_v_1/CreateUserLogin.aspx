@@ -19,7 +19,7 @@
         </asp:DropDownList>
         <br />
 
-        <asp:TextBox ID="tbOptionMask" CssClass="logininput" placeholder="Use '0' for Default Option" runat="server" Width="119px"></asp:TextBox>
+        <asp:TextBox ID="tbOptionMask" CssClass="logininput" placeholder="Use '0' for Default Option" runat="server" Width="119px">0</asp:TextBox>
         <br />
 
         <asp:Label ID="lblBuilderName" runat="server" Text="Builder Name"></asp:Label>

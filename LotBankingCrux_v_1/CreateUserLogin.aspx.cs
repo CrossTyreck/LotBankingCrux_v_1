@@ -22,14 +22,13 @@ namespace LotBankingCrux_v_1
 
         protected void butInsertLogin_Click(object sender, EventArgs e)
         {
-            int id = dbOjbect.insertLogin(tbUserName.Text, tbPassword.Text, Convert.ToInt32(DDLUserType.SelectedItem.Value), Convert.ToInt32(tbOptionMask.Text));
+            int id = dbOjbect.insertLogin(tbUserName.Text, tbPassword.Text, Convert.ToInt32(DDLUserType.SelectedItem.Value), tbOptionMask.Text == "" ? 0 : Convert.ToInt32(tbOptionMask.Text));
             if(DDLUserType.SelectedItem.Value.Equals("2"))
             {
                 dbOjbect.insertBuilder(id, tbBuilderName.Text);
             }
 
             lblUserAdded.Visible = true;
-
         }
 
         protected void DLLUserType_SelectedIndexChanged(object sender, EventArgs e)
