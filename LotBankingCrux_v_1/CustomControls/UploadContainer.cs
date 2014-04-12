@@ -26,6 +26,7 @@ namespace LotBankingCrux_v_1.CustomControls
         public UploadContainer(string content, int id = 0)
         {
             Panel pnlLabel = new Panel();
+            Panel wrapPanel = new Panel();
             Panel pnlObject = new Panel();
             Label lblDropHere = new Label();
             DragNDrop = new Panel();
@@ -46,12 +47,16 @@ namespace LotBankingCrux_v_1.CustomControls
             Content = new Label();
             Content.Text = contentLabel;
 
+            wrapPanel.CssClass = "wrapPanel";
+
+
             BrowseButton = new FileUpload();
-            // BrowseButton.Attributes["style"] = "opacity: 0.0; z-index: 0";
+            BrowseButton.Attributes["style"] = "padding: 20px; opacity: 0.0; z-index: 1;";
+            BrowseButton.Attributes["title"] = "Click to add file";
 
             BrowseImage = new Image();
             BrowseImage.ImageUrl = @"Images\DueDiligence\browse.png";
-            // BrowseImage.Attributes["style"] = "z-index: 1; border: none; padding: 0; background: none; display:block; background-color: #FF8000; padding: 10px; margin:10px auto; z-index:10; position:relative;";
+            BrowseImage.Attributes["style"] = "z-index: 0; height: 80px; margin-top: -67px;";
 
             SubmitDocs = new ImageButton();
             SubmitDocs.ImageUrl = @"Images\DueDiligence\successful_submit.png";
@@ -61,8 +66,9 @@ namespace LotBankingCrux_v_1.CustomControls
 
             pnlLabel.Controls.Add(Content);
 
-            DragNDrop.Controls.Add(BrowseButton);
-            pnlObject.Controls.Add(BrowseImage);
+            wrapPanel.Controls.Add(BrowseButton);
+            wrapPanel.Controls.Add(BrowseImage);
+            DragNDrop.Controls.Add(wrapPanel);
             pnlObject.Controls.Add(SubmitDocs);
             pnlObject.Controls.Add(DownloadButton);
 

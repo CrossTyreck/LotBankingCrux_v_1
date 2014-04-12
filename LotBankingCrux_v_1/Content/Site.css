@@ -37,7 +37,6 @@ a {
     float: left;
     margin-top: 15px;
     margin-left: 10px;
-    
 }
 
 #topnav {
@@ -278,7 +277,7 @@ a {
 .PP-textbox {
     float: right;
     padding: 3px;
-    width: 45%
+    width: 45%;
 }
 
 .DropDown_Style {
@@ -313,7 +312,6 @@ a {
 }
 
 .DD-label {
-   
 }
 
 .DD-buttons {
@@ -330,8 +328,12 @@ a {
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;
-    border: 8px dashed #ff6a00;
+    border: 7px dashed #2371a2;;
     height: 90px;
+}
+
+.wrapPanel {
+   
 }
 
 .odd {
