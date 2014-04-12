@@ -63,6 +63,7 @@ namespace LotBankingCrux_v_1.CustomControls
 
             DownloadButton = new ImageButton();
             DownloadButton.ImageUrl = @"Images\DueDiligence\download.png";
+            DownloadButton.Attributes["OnClick"] = "DownloadFile_Click";
 
             pnlLabel.Controls.Add(Content);
 

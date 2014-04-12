@@ -279,7 +279,7 @@
 
             </asp:View>
             <asp:View ID="viwTransactionDocumentation" runat="server">
-                <asp:Button ID="btnSubmitFiles" runat="server" Text="Submit Files" OnClientClick="submitFiles(event)" />
+                <asp:Button ID="btnSubmitFiles" runat="server" Text="Submit Files" OnClick="UploadFile_Click" />
                 <%--<h2>Transaction Documentation</h2>
                <div>
                     <ul>

@@ -141,5 +141,10 @@ namespace LotBankingCrux_v_1
         {
             cfsFileStream.UploadFile(dbObject, (DataBucket)Session["UserData"], Request, Context, ((DataBucket)Session["UserData"])._docClassId);
         }
+
+        protected void DownloadFile_Click(object sender, EventArgs e)
+        {
+            cfsFileStream.DownloadFile(dbObject, (DataBucket)Session["UserData"], ((DataBucket)Session["UserData"])._docClassId);
+        }
     }
 }
