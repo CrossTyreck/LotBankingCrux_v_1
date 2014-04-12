@@ -26,9 +26,7 @@
 
         <header>
             <div id="top">
-                <img class="toplogo" src="Images/logo.png" height="60px" width="60px" style="float: left;" />
-
-
+                <asp:ImageButton ID="ImageButton1" class="toplogo" runat="server" OnClick="Welcome_OnClick" src="Images/logo.png" height="60px" width="60px" style="float: left;" > </asp:ImageButton>
 
                 <%--<asp:LinkButton CssClass="mainmenu" ID="lbWelcomePage" runat="server" OnClick="Welcome_OnClick">Crescent Bay Holdings</asp:LinkButton>--%>
 

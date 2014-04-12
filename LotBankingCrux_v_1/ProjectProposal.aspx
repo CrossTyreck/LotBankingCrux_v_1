@@ -10,9 +10,8 @@
                         <asp:TextBox ID="txtProjectName" CssClass="PP-textbox" runat="server"></asp:TextBox>
                     </div>
                     <br />
-                    <br />
                     <asp:Label ID="lblFirstStreet" runat="server" Text="First Street:"></asp:Label>
-                    <asp:DropDownList ID="txtFirstStreetSuffix"  style="float: right;" runat="server">
+                    <asp:DropDownList ID="txtFirstStreetSuffix"  CssClass="DropDown_Style" runat="server">
                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                         <asp:ListItem Text="Rd." Value="1"></asp:ListItem>
                         <asp:ListItem Text="Blvd." Value="2"></asp:ListItem>
@@ -25,7 +24,7 @@
                     <br />
                     <br />
                     <asp:Label ID="lblSecondStreet" runat="server" Text="Second Street:"></asp:Label>
-                    <asp:DropDownList ID="txtSecondStreetSuffix"  style="float: right;" runat="server">
+                    <asp:DropDownList ID="txtSecondStreetSuffix" CssClass="DropDown_Style" runat="server">
                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                         <asp:ListItem Text="Rd." Value="1"></asp:ListItem>
                         <asp:ListItem Text="Blvd." Value="2"></asp:ListItem>

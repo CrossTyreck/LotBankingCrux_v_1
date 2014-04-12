@@ -4,7 +4,6 @@
 }
 
 html {
-    font-family: Eyeglass;
     overflow-y: scroll;
     display: block;
     background-color: #F5FCFF;
@@ -15,6 +14,7 @@ head {
 }
 
 body {
+    font-family: Calibri;
     margin: 0px;
     display: block;
 }
@@ -37,8 +37,7 @@ a {
     float: left;
     margin-top: 15px;
     margin-left: 10px;
-    text-decoration: none;
-    font-family: Eyeglass;
+    
 }
 
 #topnav {
@@ -278,7 +277,16 @@ a {
 
 .PP-textbox {
     float: right;
+    padding: 3px;
+    width: 45%
 }
+
+.DropDown_Style {
+    float: right;
+    padding: 3px;
+    margin-top: 2px;
+}
+
 /*seems like I should manipulate this in the body not seperately*/
 .menubar {
     background-color: #B8B8B8;
@@ -288,7 +296,7 @@ a {
 /* Due Diligence
 ----------------------------------------------------------*/
 #sidemenu {
-    width: 150px;
+    width: 210px;
     float: left;
     margin-right: 5px;
     visibility: hidden;

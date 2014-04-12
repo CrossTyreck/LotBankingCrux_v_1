@@ -5,11 +5,8 @@
 <head runat="server">
     <meta charset="utf-8" />
     <title>&lt;%: Page.Title %&gt; -CBH Lot Banking</title>
-    <asp:PlaceHolder runat="server">
-        
-        
-    </asp:PlaceHolder>
-   
+    <asp:PlaceHolder runat="server"></asp:PlaceHolder>
+
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 
@@ -17,41 +14,40 @@
 
     <asp:ContentPlaceHolder runat="server" ID="Stylesheets">
         <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-    Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
-        <link href="Content/Site.css" rel="stylesheet" /></asp:ContentPlaceHolder>
+            Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+        <link href="Content/Site.css" rel="stylesheet" />
+    </asp:ContentPlaceHolder>
 
 </head>
 <body>
     <form runat="server">
-        
-        <asp:ScriptManager runat="server">
 
-            
+        <asp:ScriptManager runat="server">
         </asp:ScriptManager>
 
         <header>
             <div id="top">
-                <img class="toplogo" src="Images/logo.png" height="60px" width="60px" style="float:left;"/>
                 
-               <!-- <asp:LinkButton CssClass="toplogo" ID="lbWelcomePage" runat="server" OnClick="Welcome_OnClick">Crescent Bay Holdings</asp:LinkButton>-->
-              
+                <asp:ImageButton class="toplogo" runat="server" OnClick="Welcome_OnClick" src="Images/logo.png" height="60px" width="60px" style="float: left;" > </asp:ImageButton>
+
+                <!-- <asp:LinkButton CssClass="toplogo" ID="lbWelcomePage" runat="server" OnClick="Welcome_OnClick">Crescent Bay Holdings</asp:LinkButton>-->
+
                 <asp:LinkButton CssClass="logout-button toplogo" ID="lbLogoutButton" runat="server" OnClick="Logout_OnClick">Logout</asp:LinkButton>
             </div>
         </header>
         <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
         <div id="belowTopnav">
             <asp:Panel ID="Panel1" runat="server" CssClass="panel-background">
-             <%--   <asp:Panel ID="Panel2" runat="server" CssClass="panel-parent">--%>
+                <%--   <asp:Panel ID="Panel2" runat="server" CssClass="panel-parent">--%>
 
 
-                    <asp:ContentPlaceHolder runat="server" ID="MainContent">
+                <asp:ContentPlaceHolder runat="server" ID="MainContent">
+                </asp:ContentPlaceHolder>
 
-                    </asp:ContentPlaceHolder>
 
-
-               <%-- </asp:Panel>--%>
+                <%-- </asp:Panel>--%>
             </asp:Panel>
-        </div>    
+        </div>
     </form>
 
 

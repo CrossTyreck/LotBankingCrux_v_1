@@ -30,7 +30,7 @@ namespace LotBankingCrux_v_1.CustomControls
             Label lblDropHere = new Label();
             DragNDrop = new Panel();
 
-            lblDropHere.Text = "Drop Here";
+            lblDropHere.Text = "Drop Here OR Click Below";
             DragNDrop.CssClass = "drop_zone";
             DragNDrop.ID = "drop_zone "+ id.ToString();
             DragNDrop.Controls.Add(lblDropHere);
@@ -47,7 +47,7 @@ namespace LotBankingCrux_v_1.CustomControls
             Content.Text = contentLabel;
 
             BrowseButton = new FileUpload();
-            BrowseButton.Attributes["style"] = "opacity: 0.0; z-index: 0";
+            // BrowseButton.Attributes["style"] = "opacity: 0.0; z-index: 0";
 
             BrowseImage = new Image();
             BrowseImage.ImageUrl = @"Images\DueDiligence\browse.png";
@@ -61,7 +61,7 @@ namespace LotBankingCrux_v_1.CustomControls
 
             pnlLabel.Controls.Add(Content);
 
-            pnlObject.Controls.Add(BrowseButton);
+            DragNDrop.Controls.Add(BrowseButton);
             pnlObject.Controls.Add(BrowseImage);
             pnlObject.Controls.Add(SubmitDocs);
             pnlObject.Controls.Add(DownloadButton);

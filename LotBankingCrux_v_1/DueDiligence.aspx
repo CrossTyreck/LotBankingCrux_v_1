@@ -48,37 +48,37 @@
                     //alert("upload failed!");
                 }
             };
-           // xhr.setRequestHeader("Content-type", "multipart/form-data");
+            // xhr.setRequestHeader("Content-type", "multipart/form-data");
             xhr.send(data);
         }
 
-       /* function alternate(id) {
-
-            if (document.getElementByTagName) {
-
-                var div = document.getElementById(id);
-
-                var MainContent_ = document.getElementById("MainContent_");
-
-                for (i = 0; i < MainContent_[i]; i++) {
-
-                    //manipulate rows 
-
-                    if (i % 2 == 0) {
-
-                        MainContent_[i].className = "even";
-
-                    } else {
-
-                        MainContent_[i].className = "odd";
-
-                    }
-
-                }
-
-            }
-
-        }*/
+        /* function alternate(id) {
+ 
+             if (document.getElementByTagName) {
+ 
+                 var div = document.getElementById(id);
+ 
+                 var MainContent_ = document.getElementById("MainContent_");
+ 
+                 for (i = 0; i < MainContent_[i]; i++) {
+ 
+                     //manipulate rows 
+ 
+                     if (i % 2 == 0) {
+ 
+                         MainContent_[i].className = "even";
+ 
+                     } else {
+ 
+                         MainContent_[i].className = "odd";
+ 
+                     }
+ 
+                 }
+ 
+             }
+ 
+         }*/
     </script>
 </asp:Content>
 
@@ -279,6 +279,7 @@
 
             </asp:View>
             <asp:View ID="viwTransactionDocumentation" runat="server">
+                <asp:Button ID="btnSubmitFiles" runat="server" Text="Submit Files" OnClientClick="submitFiles(event)" />
                 <%--<h2>Transaction Documentation</h2>
                <div>
                     <ul>
@@ -519,7 +520,7 @@
                     </ul>
                 </div>--%>
                 <asp:HiddenField ID="hfArray" runat="server" />
-                <asp:Button ID="btnSubmitFiles" runat="server" Text="Submit Files" OnClientClick="submitFiles(event)" />
+
             </asp:View>
         </asp:MultiView>
 
