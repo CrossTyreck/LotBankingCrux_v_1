@@ -800,7 +800,7 @@ namespace LotBankingCrux_v_1.Crux
             insertNewProjectDocument.Parameters.Add("@projectId", MySqlDbType.Int32).Value = projectId;
             insertNewProjectDocument.Parameters.Add("@docClassId", MySqlDbType.Int32).Value = docClassId;
             insertNewProjectDocument.Parameters.Add("@fileName", MySqlDbType.VarChar, 30).Value = docName;
-            insertNewProjectDocument.Parameters.Add("@document", MySqlDbType.Binary, doc.Length).Value = doc;
+            insertNewProjectDocument.Parameters.Add("@document", MySqlDbType.LongBlob, doc.Length).Value = doc;
 
             databaseConnection.Open();
 

@@ -280,7 +280,6 @@
 
             </asp:View>
             <asp:View ID="viwTransactionDocumentation" runat="server">
-                 <asp:ImageButton id="imagebutton1" runat="server" AlternateText="ImageButton 1" ImageAlign="left" ImageUrl="images/pict.jpg" OnClick="ImageButton_Click"/>
                 <asp:Button ID="btnSubmitFiles" runat="server" Text="Submit Files" OnClick="UploadFile_Click" />
                 <%--<h2>Transaction Documentation</h2>
                <div>

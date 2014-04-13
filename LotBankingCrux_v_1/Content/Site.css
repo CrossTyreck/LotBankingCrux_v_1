@@ -312,10 +312,11 @@ a {
 }
 
 .DD-label {
+
 }
 
 .DD-buttons {
-    float: right;
+  float: right;
 }
 
 .DD-browse {
@@ -323,12 +324,12 @@ a {
 }
 
 .drop_zone {
-    margin: 10px 0;
+    margin: 10px;
     width: 35%;
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;
-    border: 7px dashed #2371a2;;
+    border: 7px dashed #2371a2;
     height: 90px;
 }
 
@@ -388,7 +389,6 @@ ul#menu-list {
     min-width: 70%;
     list-style: none;
 }
-
 
 ul#horizontal-list li {
     display: inline;

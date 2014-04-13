@@ -17,45 +17,16 @@ namespace LotBankingCrux_v_1
         public DataBucket DBucket = new DataBucket();
         public CruxFileStream cfsFileStream = new CruxFileStream();
         List<object> files = new List<object>();
-
-        //protected void PreInit(EventArgs e)
-        //{
-        //    Label header = new Label();
-        //    Panel panel = new Panel();
-        //    panel.CssClass = "DD-uploadcontainer";
-        //    panel.ID = "pnlTransactionDocumentationView";
-        //    TreeNode node;
-        //    UploadContainer fileUpload;
-
-        //    header.Text = "Transaction Documents";
-
-        //    panel.Controls.Add(header);
-
-        //    Dictionary<int, string> dictDocClassIDName = dbObject.SelectIDName("id", "document_class_name", "Project_Document_Class");
-        //    Panel contentPanel1 = null;
-
-        //    foreach (KeyValuePair<int, string> pair in dictDocClassIDName)
-        //    {
-        //        contentPanel1 = new Panel();
-        //        contentPanel1.Controls.Add(fileUpload = new UploadContainer(pair.Key + ". " + pair.Value, pair.Key));
-
-        //        fileUpload.SubmitDocs.Click += UploadFile_Click;
-        //        fileUpload.DownloadButton.Click += ImageButton_Click;
-
-
-        //        panel.Controls.Add(fileUpload);
-        //        node = new TreeNode(pair.Key + ". " + pair.Value);
-        //       // TreeView1.Nodes.Add(node);
-        //    }
-
-        //    mviwDueDiligence.Views[2].Controls.Add(panel);
-
-        //}
+ 
         protected void Page_Load(object sender, EventArgs e)
         {
+            CreateBuilderResumeView();
+            CreateMarketDueDiligenceView();
+            CreateTransactionDocumentationView();
+
             ClientScript.RegisterArrayDeclaration("documents", "");
             this.ClientScript.GetPostBackEventReference(this, string.Empty);
-
+            
             if (IsPostBack)
             {
                 string eventTarget = (this.Request["__EVENTTARGET"] == null) ? string.Empty : this.Request["__EVENTTARGET"];
@@ -80,6 +51,7 @@ namespace LotBankingCrux_v_1
             {
                 Console.Write("text");
             }
+             
         }
 
         protected void UploadFile(object sender, EventArgs e)
@@ -96,19 +68,16 @@ namespace LotBankingCrux_v_1
         protected void lnkbtnBuilderResume_Click(object sender, EventArgs e)
         {
             mviwDueDiligence.ActiveViewIndex = 0;
-            CreateBuilderResumeView();
         }
 
         protected void lnkbtnMarketDueDiligence_Click(object sender, EventArgs e)
         {
             mviwDueDiligence.ActiveViewIndex = 1;
-            CreateMarketDueDiligenceView();
         }
 
         protected void lnkbtnTransactionDocumentation_Click(object sender, EventArgs e)
         {
             mviwDueDiligence.ActiveViewIndex = 2;
-            CreateTransactionDocumentationView();
         }
 
         /// <summary>
@@ -117,40 +86,29 @@ namespace LotBankingCrux_v_1
         private void CreateTransactionDocumentationView()
         {
             Label header = new Label();
-            Panel panel = new Panel();
-            panel.CssClass = "DD-uploadcontainer";
-            panel.ID = "pnlTransactionDocumentationView";
+            Panel TransactionViewDocumentation = new Panel();
+            TransactionViewDocumentation.CssClass = "DD-uploadcontainer";
+            TransactionViewDocumentation.ID = "pnlTransactionDocumentationView";
             TreeNode node;
             UploadContainer fileUpload;
 
             header.Text = "Transaction Documents";
 
-            panel.Controls.Add(header);
+            TransactionViewDocumentation.Controls.Add(header);
 
             Dictionary<int, string> dictDocClassIDName = dbObject.SelectIDName("id", "document_class_name", "Project_Document_Class");
-            Panel contentPanel1 = null;
 
             foreach (KeyValuePair<int, string> pair in dictDocClassIDName)
             {
-                contentPanel1 = new Panel();
-                contentPanel1.Controls.Add(fileUpload = new UploadContainer(pair.Key + ". " + pair.Value, pair.Key));
+               fileUpload = new UploadContainer(pair.Key + ". " + pair.Value, pair.Key);
 
-                fileUpload.SubmitDocs.Click += UploadFile_Click;
-                fileUpload.DownloadButton.Click += ImageButton_Click;
-                
+                fileUpload.DownloadButton.Click += new ImageClickEventHandler(DownloadFile_Click);
 
-                panel.Controls.Add(fileUpload);
+                TransactionViewDocumentation.Controls.Add(fileUpload);
                 node = new TreeNode(pair.Key + ". " + pair.Value);
-                TreeView1.Nodes.Add(node);
+                // TreeView1.Nodes.Add(node);
             }
-
-            mviwDueDiligence.Views[2].Controls.Add(panel);
-
-            //What was I doing here?
-            //if ((((DataBucket)Session["UserData"])._docClassId = dbObject.GetDocClassId(fileUpload.Content.Text.Substring(3, fileUpload.Content.Text.Length - 3))) <= 0)
-            //{
-            //    ((DataBucket)Session["UserData"])._docClassId = 0;
-            //}
+            mviwDueDiligence.Views[2].Controls.Add(TransactionViewDocumentation);
 
         }
 
@@ -179,12 +137,7 @@ namespace LotBankingCrux_v_1
 
         protected void DownloadFile_Click(object sender, EventArgs e)
         {
-            cfsFileStream.DownloadFile(dbObject, (DataBucket)Session["UserData"], ((UploadContainer)sender).DocClassId);
-        }
-
-        protected void ImageButton_Click(object sender, ImageClickEventArgs e)
-        {
-            cfsFileStream.DownloadFile(dbObject, (DataBucket)Session["UserData"], ((UploadContainer)sender).DocClassId);
+            cfsFileStream.DownloadFile(dbObject, (DataBucket)Session["UserData"], Int32.Parse((sender as WebControl).Attributes["chris"]));
         }
     }
 }

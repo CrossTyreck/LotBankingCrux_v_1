@@ -29,6 +29,7 @@ namespace LotBankingCrux_v_1.CustomControls
             Panel wrapPanel = new Panel();
             Panel pnlObject = new Panel();
             Label lblDropHere = new Label();
+     
             DragNDrop = new Panel();
 
             lblDropHere.Text = "Drop Here OR Click Below";
@@ -49,7 +50,6 @@ namespace LotBankingCrux_v_1.CustomControls
 
             wrapPanel.CssClass = "wrapPanel";
 
-
             BrowseButton = new FileUpload();
             BrowseButton.Attributes["style"] = "padding: 20px; opacity: 0.0; z-index: 1;";
             BrowseButton.Attributes["title"] = "Click to add file";
@@ -62,22 +62,23 @@ namespace LotBankingCrux_v_1.CustomControls
             SubmitDocs.ImageUrl = @"Images\DueDiligence\successful_submit.png";
 
             DownloadButton = new ImageButton();
+            DownloadButton.Attributes.Add("chris", DocClassId.ToString());
             DownloadButton.ImageUrl = @"Images\DueDiligence\download.png";
-          
+
 
             pnlLabel.Controls.Add(Content);
-
+           
             wrapPanel.Controls.Add(BrowseButton);
             wrapPanel.Controls.Add(BrowseImage);
             DragNDrop.Controls.Add(wrapPanel);
             pnlObject.Controls.Add(SubmitDocs);
             pnlObject.Controls.Add(DownloadButton);
-
+        
             this.ID = id.ToString();
             Controls.Add(pnlLabel);
             Controls.Add(pnlObject);
             Controls.Add(DragNDrop);
-
+           
         }
 
         /// <summary>
