@@ -49,15 +49,15 @@
                     <br />
                     <br />
                     <asp:Label ID="lblNumberOfLots" runat="server" Text="Number Of Lots: "></asp:Label>
-                    <asp:TextBox ID="txtNumberOfLots" CssClass="PP-textbox" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtNumberOfLots" CssClass="PP-textbox" runat="server" placeholder="Enter Numeric Value"></asp:TextBox>
                     <br />
                     <br />
                     <asp:Label ID="lblAcquisitionPrice" runat="server" Text="Acquisition Price: "></asp:Label>
-                    <asp:TextBox ID="txtAcquisitionPrice" CssClass="PP-textbox"  runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtAcquisitionPrice" CssClass="PP-textbox"  runat="server" placeholder="Enter Numeric Value"></asp:TextBox>
                     <br />
                     <br />
                     <asp:Label ID="lblImprovementCost" runat="server" Text="Improvement Cost: "></asp:Label>
-                    <asp:TextBox ID="txtImprovementCosts" CssClass="PP-textbox" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtImprovementCosts" CssClass="PP-textbox" runat="server" placeholder="Enter Numeric Value"></asp:TextBox>
                     <br />
                     <br />
                     <asp:Label ID="lblDataInserted" runat="server" ForeColor="Green" Text="Data Inserted" Visible="False" ClientIDMode="Static"></asp:Label>

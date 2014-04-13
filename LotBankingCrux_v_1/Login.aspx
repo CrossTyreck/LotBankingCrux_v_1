@@ -8,8 +8,9 @@
         <asp:Panel class="pageDown" runat="server" DefaultButton="LoginForm$LoginButton">
             <div id="login">
                 <img alt="logo" src="Images/logo.png" />
-                <asp:Login ID="LoginForm" runat="server" OnAuthenticate="Login_Click">
-                </asp:Login>
+                    <asp:Login ID="LoginForm" runat="server" OnAuthenticate="Login_Click">
+                    </asp:Login>
+                       
             </div>
             <div style="clear: both;"></div>
         </asp:Panel>

@@ -45,10 +45,16 @@ namespace LotBankingCrux_v_1
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
 
-
             CruxDB DBObject = new CruxDB();
 
-            int numberLots = Int32.Parse(txtNumberOfLots.Text);
+            int numberLots = 0;// = Int32.Parse(txtNumberOfLots.Text);
+            if (txtNumberOfLots.Text == "")
+            {
+            }
+            else
+            {
+                numberLots = Int32.Parse(txtNumberOfLots.Text);
+            }
 
             string locationNotes = "";
 
@@ -62,14 +68,26 @@ namespace LotBankingCrux_v_1
             try
             {
                 if (((DataBucket)Session["UserData"])._userID > 0)
+                {
                     //We need to add validation here, currently a user can enter an empty project
-                    DBObject.insertProject(LotBankingCrux_v_1.Crux.CruxDB.dbID, txtProjectName.Text, txtFirstStreet.Text, txtSecondStreet.Text, txtCity.Text, txtState.Text, txtCardinal.Text, locationNotes, acquisitionPrice, improvementCost, numberLots);
+                    if (txtProjectName.Text == "" || txtFirstStreet.Text == "" || txtSecondStreet.Text == "" || txtCity.Text == "" || txtState.Text == "" || txtCardinal.Text == "" || txtAcquisitionPrice.Text == "" || txtImprovementCosts.Text == "")
+                    {
+                        lblDataInserted.Visible = true;
+                        lblDataInserted.ForeColor = System.Drawing.Color.Red;
+                        lblDataInserted.Text = "Please fill in all fields";
+                    }
+                    else
+                    {
+                        DBObject.insertProject(LotBankingCrux_v_1.Crux.CruxDB.dbID, txtProjectName.Text, txtFirstStreet.Text, txtSecondStreet.Text, txtCity.Text, txtState.Text, txtCardinal.Text, locationNotes, acquisitionPrice, improvementCost, numberLots);
+                        lblDataInserted.Visible = true;
+                        lblDataInserted.ForeColor = System.Drawing.Color.Green;
+                        lblDataInserted.Text = "Data Inserted";
+                    }                
+                    }
                 else
                     Response.Redirect("Login.aspx");
 
-                lblDataInserted.Visible = true;
-                lblDataInserted.ForeColor = System.Drawing.Color.Green;
-                lblDataInserted.Text = "Data Inserted";
+                
 
                 if (dbObject.GetReqFinInfoChecked(((DataBucket)Session["UserData"])._userID) > 0)
                 {

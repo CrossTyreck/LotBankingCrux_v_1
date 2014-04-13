@@ -90,7 +90,9 @@
     <Content Include="ProjectDashboard.aspx" />
     <Content Include="ProjectProposal.aspx" />
     <Content Include="Scripts\gaugeSVG.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="404.aspx.cs">
