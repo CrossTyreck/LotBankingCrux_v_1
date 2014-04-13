@@ -254,9 +254,9 @@ namespace LotBankingCrux_v_1.Crux
         public int SetProjectAccessLiquidity(string value, int id)
         {
             MySqlCommand setProjectValue = new MySqlCommand("UPDATE Builder_Data " +
-                                                     "SET access_liquidity = @value, " +
-                                                        " last_modified = NOW() " +
-                                                   "WHERE builder_id = @id",
+                                                               "SET access_liquidity = @value, " +
+                                                                  " last_modified = NOW() " +
+                                                             "WHERE builder_id = @id",
                                                      databaseConnection);
             setProjectValue.Parameters.Add("@value", MySqlDbType.VarChar).Value = value;
             setProjectValue.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
@@ -357,9 +357,9 @@ namespace LotBankingCrux_v_1.Crux
 
         public string getBuilderContactName(int builder_id)
         {
-            MySqlCommand getBuilderContact = new MySqlCommand("Select contact_name " +
-                                                             "FROM Builder_Data " +
-                                                             "WHERE builder_id = @builderId ",
+            MySqlCommand getBuilderContact = new MySqlCommand("SELECT contact_name " +
+                                                                "FROM Builder_Data " +
+                                                               "WHERE builder_id = @builderId ",
                                                              databaseConnection);
             getBuilderContact.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builder_id;
 
@@ -392,9 +392,9 @@ namespace LotBankingCrux_v_1.Crux
 
         public string getBuilderContactNumber(int builder_id)
         {
-            MySqlCommand getBuilderContact = new MySqlCommand("Select contact_number " +
-                                                             "FROM Builder_Data " +
-                                                             "WHERE builder_id = @builderId ",
+            MySqlCommand getBuilderContact = new MySqlCommand("SELECT contact_number " +
+                                                                "FROM Builder_Data " +
+                                                               "WHERE builder_id = @builderId ",
                                                              databaseConnection);
             getBuilderContact.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builder_id;
 
@@ -427,9 +427,10 @@ namespace LotBankingCrux_v_1.Crux
 
         public int insertBuilderContact(int builder_id, String contactName, String contactNumber)
         {
-            MySqlCommand insertNewBuilder = new MySqlCommand("Update Builder_Data " +
-                                                            "Set contact_name = @contactName, contact_number = @contactNumber " +
-                                                             "WHERE builder_id = @builderId ",
+            MySqlCommand insertNewBuilder = new MySqlCommand("UPDATE Builder_Data " +
+                                                                "SET contact_name = @contactName, " +
+                                                                    "contact_number = @contactNumber " +
+                                                              "WHERE builder_id = @builderId ",
                                                              databaseConnection);
             insertNewBuilder.Parameters.Add("@builderId", MySqlDbType.Int32).Value = builder_id;
             insertNewBuilder.Parameters.Add("@contactName", MySqlDbType.VarChar, 30).Value = contactName;
@@ -558,8 +559,8 @@ namespace LotBankingCrux_v_1.Crux
         public String getBuilderName(int id)
         {
             MySqlCommand getBuildersNameQuery = new MySqlCommand("SELECT name" +
-                                                              "FROM Builder_Data" +
-                                                             "WHERE bid = @id",
+                                                                   "FROM Builder_Data" +
+                                                                  "WHERE bid = @id",
                                                          databaseConnection);
             getBuildersNameQuery.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
 
@@ -590,10 +591,11 @@ namespace LotBankingCrux_v_1.Crux
             builders.Columns.Add("Builder Name", typeof(String));
             builders.Columns.Add("Builder ID", typeof(int));
 
-            MySqlCommand getBuildersNamesQuery = new MySqlCommand("SELECT name, builder_id " +
-                                                              "FROM Builder_Data " +
-                                                              "ORDER BY name ASC ",
-                                                         databaseConnection);
+            MySqlCommand getBuildersNamesQuery = new MySqlCommand("SELECT name, "+ 
+                                                                         "builder_id " +
+                                                                   "FROM Builder_Data " +
+                                                               "ORDER BY name ASC ",
+                                                                  databaseConnection);
             MySqlDataReader reader;
             databaseConnection.Open();
             try
@@ -1356,7 +1358,6 @@ namespace LotBankingCrux_v_1.Crux
                                                                       "last_modified " +
                                                                  "FROM Projects " +
                                                                 "WHERE builder_id = @builderId " +
-                //"AND approval_id >= 0 " +
                                                                 exclusion +
                                                                 order,
                                               databaseConnection);
@@ -1507,11 +1508,11 @@ namespace LotBankingCrux_v_1.Crux
         public Dictionary<int, String[]> getProposalsByBID(int builder_id, String orderBy, Boolean includeDeclined = false, Boolean includeAwaitingBuilder = false, Boolean includeAwaitingApproval = false)
         {
             String exclusion = "";
-            //new proposals default decline id is -1, this does not work. 
-            //if (!includeDeclined)
-            //{
-            //    exclusion = "AND decline_id != -1 ";
-            //}
+             
+            if (!includeDeclined)
+            {
+                exclusion = "AND decline_id == -1 ";
+            }
             if (!includeAwaitingBuilder)
             {
                 exclusion += "AND (last_modified <= last_requested_timestamp) ";
