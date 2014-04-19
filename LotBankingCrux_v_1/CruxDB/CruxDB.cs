@@ -795,8 +795,9 @@ namespace LotBankingCrux_v_1.Crux
         public int insertProjectDocument(int projectId, String docName, byte[] doc, int docClassId)
         {
             MySqlCommand insertNewProjectDocument = new MySqlCommand("INSERT INTO Project_Documents" +
-                                                                           "(project_id, project_document_class_id, file_name, document)" +
-                                                                     "VALUES( @projectId, @docClassId, @fileName, @document)",
+                                                                                "( project_id, project_document_class_id, file_name, document)" +
+                                                                          "VALUES( @projectId, @docClassId, @fileName, @document)" +
+                                                          "ON DUPLICATE KEY UPDATE file_name = VALUES.file_name, document = VALUES.document",
                                                                      databaseConnection);
 
             insertNewProjectDocument.Parameters.Add("@projectId", MySqlDbType.Int32).Value = projectId;
