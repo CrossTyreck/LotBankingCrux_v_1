@@ -19,6 +19,7 @@ namespace LotBankingCrux_v_1.Crux
         private string password = "PASSWORD=" + "Crux2014!" + ";";
 
         public enum itemStatus { DECLINED = -1, NEEDSUPDATE = 0, NEEDSAPPROVAL = 1, APPROVED = 2 };
+        public enum returnValues { NOTFOUND = -2, ERROR = -1, FALSE = 0, SUCCESS = 1 };
 
         public static int dbID = 0;
 
@@ -50,7 +51,7 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
             reader.Close();
             databaseConnection.Close();
@@ -77,11 +78,11 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
             reader.Close();
             databaseConnection.Close();
-            return 1;
+            return (int)returnValues.SUCCESS;
         }
 
         public int login(String login, String password)
@@ -89,9 +90,9 @@ namespace LotBankingCrux_v_1.Crux
 
 
             MySqlCommand getLoginData = new MySqlCommand("SELECT id " +
-                                                       "FROM Login " +
-                                                      "WHERE login = @login" + Environment.NewLine +
-                                                        "AND password = @password", databaseConnection);
+                                                           "FROM Login " +
+                                                          "WHERE login = @login" + Environment.NewLine +
+                                                            "AND password = @password", databaseConnection);
 
             getLoginData.Parameters.Add("@login", MySqlDbType.VarChar, 30).Value = login;
             getLoginData.Parameters.Add("@password", MySqlDbType.VarChar, 30).Value = password;
@@ -113,7 +114,7 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
             reader.Close();
             databaseConnection.Close();
@@ -121,7 +122,7 @@ namespace LotBankingCrux_v_1.Crux
             {
                 return dbID;
             }
-            return -2;
+            return (int)returnValues.NOTFOUND;
         }
 
         public int GetReqFinInfoChecked(int builder_id)
@@ -148,14 +149,14 @@ namespace LotBankingCrux_v_1.Crux
 
                 if (chkValue)
                 {
-                    return 1;
+                    return (int)returnValues.SUCCESS;
                 }
             }
 
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
 
             finally
@@ -167,7 +168,7 @@ namespace LotBankingCrux_v_1.Crux
                 }
             }
 
-            return 0;
+            return (int)returnValues.FALSE;
         }
 
         public int getUserId(string name)
@@ -179,7 +180,7 @@ namespace LotBankingCrux_v_1.Crux
                                                       databaseConnection);
             getLoginData.Parameters.Add("@login", MySqlDbType.VarChar).Value = name;
 
-            int returnValue = -2;
+            int returnValue = (int)returnValues.NOTFOUND;
 
             try
             {
@@ -196,7 +197,7 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
 
             finally
@@ -269,14 +270,14 @@ namespace LotBankingCrux_v_1.Crux
             }
             catch
             {
-                return -1;
+                return (int)returnValues.ERROR;
             }
             finally
             {
                 databaseConnection.Close();
             }
 
-            return 1;
+            return (int)returnValues.SUCCESS;
         }
 
         public int getUserClassId(int loginId)
@@ -303,14 +304,14 @@ namespace LotBankingCrux_v_1.Crux
                     }
                 }
 
-                return -2;
+                return (int)returnValues.NOTFOUND;
 
             }
 
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
 
             finally
@@ -348,11 +349,11 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
             reader.Close();
             databaseConnection.Close();
-            return 1;
+            return (int)returnValues.SUCCESS;
         }
 
         public string getBuilderContactName(int builder_id)
@@ -445,11 +446,11 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
             reader.Close();
             databaseConnection.Close();
-            return 1;
+            return (int)returnValues.SUCCESS;
         }
 
         public int updateBuilderName(int builder_id, String name)
@@ -472,11 +473,11 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
             reader.Close();
             databaseConnection.Close();
-            return 1;
+            return (int)returnValues.SUCCESS;
         }
 
         public Dictionary<int, String> getBuilderIds()
@@ -524,7 +525,7 @@ namespace LotBankingCrux_v_1.Crux
                                                           "WHERE name = @name",
                                                       databaseConnection);
             getBuilderId.Parameters.Add("@name", MySqlDbType.VarChar).Value = name;
-            int returnValue = -2;
+            int returnValue = (int)returnValues.NOTFOUND;
 
             try
             {
@@ -541,7 +542,7 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
 
             finally
@@ -673,11 +674,11 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
             reader.Close();
             databaseConnection.Close();
-            return 1;
+            return (int)returnValues.SUCCESS;
 
         }
 
@@ -784,10 +785,10 @@ namespace LotBankingCrux_v_1.Crux
             catch (MySqlException e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
             databaseConnection.Close();
-            return 0;
+            return (int)returnValues.SUCCESS;
         }
 
         //#JUSTIN Add Unique key on both project_id and project_document_class_id together
@@ -813,11 +814,11 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
             reader.Close();
             databaseConnection.Close();
-            return 1;
+            return (int)returnValues.SUCCESS;
         }
 
         public int insertBuilderDocument(int builderId, String docName, byte[] doc)
@@ -841,11 +842,11 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
             reader.Close();
             databaseConnection.Close();
-            return 1;
+            return (int)returnValues.SUCCESS;
         }
 
         public int requestProjectDocument(int document_id)
@@ -867,11 +868,11 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
             reader.Close();
             databaseConnection.Close();
-            return 1;
+            return (int)returnValues.SUCCESS;
         }
 
         public int requestBuilderDocument(int document_id)
@@ -893,11 +894,11 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
             reader.Close();
             databaseConnection.Close();
-            return 1;
+            return (int)returnValues.SUCCESS;
         }
 
         public int updateProjectDocumentFile(int document_id, byte doc, String file_name)
@@ -923,11 +924,11 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
             reader.Close();
             databaseConnection.Close();
-            return 1;
+            return (int)returnValues.SUCCESS;
         }
 
         public int updateBuilderDocumentFile(int document_id, byte doc, String file_name)
@@ -953,11 +954,11 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
             reader.Close();
             databaseConnection.Close();
-            return 1;
+            return (int)returnValues.SUCCESS;
         }
 
         public Dictionary<int, String[]> getBuilderDocumentsByBID(int builder_id, String orderBy)
@@ -1229,13 +1230,13 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
             finally
             {
                 databaseConnection.Close();
             }
-            return 1;
+            return (int)returnValues.SUCCESS;
         }
 
         public int updatePoject(int project_id, String project_name, String first_crossroad, String second_crossroad, String city, String state, String cardinal, String location_notes, Decimal aquisition_price, Decimal improvement_cost, int total_lot_count)
@@ -1275,13 +1276,13 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
             finally
             {
                 databaseConnection.Close();
             }
-            return 1;
+            return (int)returnValues.SUCCESS;
         }
 
         public Dictionary<int, String> getProjectsNames(int builder_id, int value)
@@ -1597,13 +1598,13 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
             finally
             {
                 databaseConnection.Close();
             }
-            return 1;
+            return (int)returnValues.SUCCESS;
         }
 
         public int declineProposal(int projectId, int userId)
@@ -1627,13 +1628,13 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
             finally
             {
                 databaseConnection.Close();
             }
-            return 1;
+            return (int)returnValues.SUCCESS;
         }
 
         public int insertLotType(int project_id, int lot_width, int lot_length, int count, Double purchase_price, Decimal release_price, Decimal sale_price)
@@ -1659,11 +1660,11 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
             reader.Close();
             databaseConnection.Close();
-            return 1;
+            return (int)returnValues.SUCCESS;
         }
 
         public LotType[] getLotTypes(int project_id)
@@ -1739,11 +1740,11 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
             reader.Close();
             databaseConnection.Close();
-            return 1;
+            return (int)returnValues.SUCCESS;
         }
 
         public int updateProjectScheduleEntry(int id, int projected_lots_purchased, Decimal projected_value_purchased, DateTime schedule_date)
@@ -1768,12 +1769,12 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
             reader.Close();
             databaseConnection.Close();
-            return 1;
-        }
+            return (int)returnValues.SUCCESS;
+          }
 
         public ProjectScheduleEntry[] getProjectSchedule(int project_id)
         {
@@ -1852,11 +1853,11 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
             reader.Close();
             databaseConnection.Close();
-            return 1;
+            return (int)returnValues.SUCCESS;
         }
 
         public NoteComment[] getStep1Comments(int project_id)
@@ -1924,11 +1925,11 @@ namespace LotBankingCrux_v_1.Crux
             catch (Exception e)
             {
                 Debug.Print(e.Message);
-                return -1;
+                return (int)returnValues.ERROR;
             }
             reader.Close();
             databaseConnection.Close();
-            return 1;
+            return (int)returnValues.SUCCESS;
         }
 
         public NoteComment[] getStep1Notes(int project_id)
@@ -2234,12 +2235,6 @@ namespace LotBankingCrux_v_1.Crux
         }
     }
 
-    public class dateAggregateObject
-    {
-        public dateAggregateObject()
-        {
-        }
-    }
 
     public class LotType
     {
@@ -2403,7 +2398,7 @@ namespace LotBankingCrux_v_1.Crux
             //-1 = declined, 0 = needs update, 1 = needs approval, 2 = approoved
             if (isDeclined())
             {
-                return CruxDB.itemStatus.APPROVED;
+                return CruxDB.itemStatus.DECLINED;
             }
             if (upToDate() && !isApproved())
             {
