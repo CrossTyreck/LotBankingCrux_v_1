@@ -267,6 +267,11 @@ a {
     background-color: lightgray;
 }
 
+.projectPanel {
+    height: 400px;
+    width: 110px;
+    float: none;
+}
 
 /* Project Proposal
 ----------------------------------------------------------*/
@@ -286,6 +291,24 @@ a {
     margin-top: 2px;
 }
 
+.projectRowButton {
+    width: 800px;
+    text-align: left;
+    border: none;
+    margin-left: 10px;
+    margin-top: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 3%;
+    box-shadow: 0px 0px 10px 0px #d3d3d3;
+    border-radius: 4px;
+    background-color: #ffffff;
+    font-size: large;
+}
+
+    .projectRowButton:hover {
+        background-color: lightblue;
+    }
 /*seems like I should manipulate this in the body not seperately*/
 .menubar {
     background-color: #B8B8B8;
@@ -304,7 +327,7 @@ a {
 .multiviewpanel {
     padding: 5px;
     width: 850px;
-    float: left;
+    margin: 5px auto;
 }
 
 .DD-uploadcontainer {
@@ -312,11 +335,10 @@ a {
 }
 
 .DD-label {
-
 }
 
 .DD-buttons {
-  float: right;
+    float: right;
 }
 
 .DD-browse {
@@ -333,17 +355,6 @@ a {
     height: 90px;
 }
 
-.wrapPanel {
-   
-}
-
-.odd {
-    background-color: white;
-}
-
-.even {
-    background-color: gray;
-}
 /* New User Login
 ----------------------------------------------------------*/
 .createNewUser {
@@ -385,7 +396,7 @@ ul#horizontal-list {
     list-style: none;
 }
 
-ul#menu-list {
+ul.menu-list {
     min-width: 70%;
     list-style: none;
 }
@@ -396,7 +407,7 @@ ul#horizontal-list li {
     padding-left: 30px;
 }
 
-ul#menu-list li {
+ul.menu-list li {
     display: inline;
     font-size: 20px;
     padding-left: 30px;

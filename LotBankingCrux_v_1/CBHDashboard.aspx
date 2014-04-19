@@ -6,7 +6,7 @@
     <script src="Scripts/gaugeSVG.js"></script>
     <div id="topnav">
         <div>
-            <ul id="menu-list">
+            <ul class="menu-list">
                 <li>
                     <asp:LinkButton ID="LinkButton1" runat="server" OnClick="AddUser_OnClick" ForeColor="Black">Add User</asp:LinkButton>
                 </li>
@@ -28,7 +28,7 @@
         <asp:Panel ID="pnlPage" CssClass="pnlPage" runat="server">
 
             <div id="duedil-nav">
-                <ul id="menu-list">
+                <ul class="menu-list">
                     <li><asp:LinkButton ID="lnkbtnProposals" runat="server" OnClick="Proposals_Click">PROPOSALS</asp:LinkButton></li>
                     <li> | </li>
                     <li><asp:LinkButton ID="lnkbtnProjects" runat="server" OnClick="Projects_Click">PROJECTS</asp:LinkButton></li>
@@ -53,7 +53,7 @@
                     <asp:DropDownList ID="ddlOrderBy" runat="server" Width="79px">
                     </asp:DropDownList>
                     <asp:Button ID="btnGo" runat="server" OnClick="btnGo_Click" Text="Go!" Width="56px" />
-                    <asp:Panel ID="ProjectProposalsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px">
+                    <asp:Panel ID="ProjectProposalsPanel" runat="server" CssClass="multiviewpanel projectPanel">
                     </asp:Panel>
                 </asp:View>
                 <asp:View ID="ExistingProjectsView" runat="server">
@@ -61,7 +61,7 @@
                     <asp:Label ID="lblOrderBy1" runat="server" Text="Order By: "></asp:Label>
                     <asp:DropDownList ID="ddlOrderBy1" runat="server" Width="79px">
                     </asp:DropDownList>
-                    <asp:Panel ID="ProjectsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px">
+                    <asp:Panel ID="ProjectsPanel" runat="server" CssClass="multiviewpanel projectPanel">
                     </asp:Panel>
                 </asp:View>
                 <asp:View ID="BuilderDocumentsView" runat="server">

@@ -10,7 +10,7 @@ namespace LotBankingCrux_v_1.CustomControls
 {
     public class ProjectRowPanel : Panel
     {
-        public LinkButton Name { get; set; }
+        public Button RowButton { get; set; }
         public Label Builder { get; set; }
         public Label ModifiedDate { get; set; }
         public Label CreatedDate { get; set; }
@@ -22,15 +22,13 @@ namespace LotBankingCrux_v_1.CustomControls
         {
             ProjectID = projid;
             BuilderID = builderid;
-            Name = new LinkButton();
-            Name.Text = name;
-            Name.PostBackUrl = url + "?projectid=" + projid.ToString() + "&" + "builderid=" + builderid.ToString();
+            RowButton = new Button();
+            RowButton.CssClass = "projectRowButton";
+            RowButton.Text = "Project: " + name + "Date: " + date;
+            RowButton.PostBackUrl = url + "?projectid=" + projid.ToString() + "&" + "builderid=" + builderid.ToString();
 
-            ModifiedDate = new Label();
-            ModifiedDate.Text = date;
+            Controls.Add(RowButton);
 
-            Controls.Add(Name);
-            Controls.Add(ModifiedDate);
         }
 
         public void ProposalRowPanel(string name, string builder, DateTime requestedTime, DateTime submittedTime, string cssClass)

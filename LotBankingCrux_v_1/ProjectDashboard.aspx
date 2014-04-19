@@ -3,7 +3,7 @@
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <div id="topnav">
         <div id="duedil-nav">
-            <ul id="menu-list">
+            <ul class="menu-list">
                 <li>
                     <asp:LinkButton ID="LotTakeDown" runat="server" Style="text-decoration: none" OnClick="LotTakeDown_OnClick">LOT TAKE DOWN SCHEDULE</asp:LinkButton>
                 </li>

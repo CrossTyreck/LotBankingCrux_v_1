@@ -8,7 +8,7 @@
 <asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
     <div id="topnav">
         <div>
-            <ul id="menu-list">
+            <ul class="menu-list">
                 <li>
                     <asp:LinkButton ID="lnkbtnTransactionDocumentation" runat="server" AccessKey=" " OnClick="lnkbtnTransactionDocumentation_Click">TRANSACTION DOCUMENTATION</asp:LinkButton>
                 </li>

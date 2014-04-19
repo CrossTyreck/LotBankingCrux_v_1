@@ -104,7 +104,7 @@
     </style>
     <div id="topnav">
         <div id="duedil-nav">
-            <ul id="menu-list">
+            <ul class="menu-list">
                 <li>
                     <asp:LinkButton ID="lnkbtnTransactionDocumentation" runat="server" AccessKey=" " OnClick="lnkbtnTransactionDocumentation_Click">TRANSACTION DOCUMENTATION</asp:LinkButton>
                 </li>
