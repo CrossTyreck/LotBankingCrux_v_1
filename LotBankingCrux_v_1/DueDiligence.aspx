@@ -30,7 +30,7 @@
                 //this alert is working so the code steps into the function.
                 //alert("load ended")
                 var or = new Object();
-                or = [ [docid, event.target.id], [file, reader.result] ];
+                or = [ [docid, event.target.id], [file, reader.result] ]; 
                 documents.push(or);
             }
             

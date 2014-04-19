@@ -41,7 +41,7 @@ namespace LotBankingCrux_v_1
                         documents.Add(Int32.Parse(values[i].Substring(eventArgument.LastIndexOf(' '))), values[i + 1]);
                     }
                 }
-                if (eventTarget == "DocClassID" && eventArgument.Contains("drop_zone"))
+                else if (eventTarget == "DocClassID" && eventArgument.Contains("drop_zone"))
                 {
                     ((DataBucket)Session["UserData"])._docClassId = Int32.Parse(eventArgument.Substring(eventArgument.LastIndexOf(' ')));
                     UploadFile_Click(sender, e);
