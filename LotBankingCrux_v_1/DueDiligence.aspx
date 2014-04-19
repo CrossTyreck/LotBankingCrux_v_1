@@ -26,12 +26,14 @@
 
             var reader = new FileReader();
             reader.readAsBinaryString(files[0]);
-            reader.onloadend = function () {
+            reader.onloadend = function (event) {
+                //this alert is working so the code steps into the function.
+                //alert("load ended")
                 var or = new Object();
-                or = { docid: event.target.id, file: reader.result };
+                or = [ [docid, event.target.id], [file, reader.result] ];
                 documents.push(or);
-
             }
+            
         }
 
         function submitFiles(event) {
