@@ -19,18 +19,6 @@ namespace LotBankingCrux_v_1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //ProjectDashboard.Visible = false;
-            /*Dynamically set builder image:
-             * Get builder name by id, query server for builder image URL
-             * add that URL to the ImageURL below. 
-            imgBuilderLogo.ImageUrl = "~/Images/heroAccent.png"; */
-
-            //Project[] aBIDProjects = dbObject.getProjects(((DataBucket)Session["UserData"])._userID);
-            //foreach (Project project in aBIDProjects)
-            //{
-            //    pnlProjects.Controls.Add(new ProjectRowPanel(project.getProjectName(), "ProjectDashboard.aspx", project.getLastModified()));
-            //}
-
             //hard coding this seems wrong
             InitControls(((DataBucket)Session["UserData"])._userType);
       
@@ -51,8 +39,6 @@ namespace LotBankingCrux_v_1
             {
                 lnkbtnContactNumber.Text = contactNumber;
             }
-            
-            
         }
 
         void InitControls(int userType)
@@ -119,14 +105,6 @@ namespace LotBankingCrux_v_1
             Response.Redirect("ProjectProposal.aspx");
 
         }
-
-        ////What project are we accessing
-        //protected void BuilderProposal_SelectedIndex(object sender, EventArgs e)
-        //{
-        //    //create the link to the right project
-        //    ProjectDashboard.Visible = true;
-        //    ProjectDashboard.Text = BuilderProposal.Text;
-        //}
 
         //redirect to the right project
         protected void ProjectDashboard_OnClick(object sender, EventArgs e)

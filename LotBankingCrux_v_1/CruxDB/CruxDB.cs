@@ -728,7 +728,7 @@ namespace LotBankingCrux_v_1.Crux
             MySqlCommand getBuilderProjects = new MySqlCommand("SELECT id, " +
                                                                        "builder_id, " +
                                                                       "project_name, " +
-                                                                      "last_modified " +
+                                                                      "date_created " +
                                                                  "FROM Projects " +
                                                                  idParams +
                                                                 exclusion,
@@ -789,7 +789,6 @@ namespace LotBankingCrux_v_1.Crux
             databaseConnection.Close();
             return 0;
         }
-
 
         //#JUSTIN Add Unique key on both project_id and project_document_class_id together
         public int insertProjectDocument(int projectId, String docName, byte[] doc, int docClassId)

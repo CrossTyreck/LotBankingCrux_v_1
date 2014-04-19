@@ -22,7 +22,6 @@ namespace LotBankingCrux_v_1.Crux
             _userType = userType;
             _userName = userName;
             _docClassId = docClassId;
-
         }
 
 

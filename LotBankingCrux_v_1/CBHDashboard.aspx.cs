@@ -69,9 +69,7 @@ namespace LotBankingCrux_v_1
         /// <param name="e"></param>
         public void AddUser_OnClick(object sender, EventArgs e)
         {
-
             Response.Redirect("CreateUserLogin.aspx");
-
         }
 
         /// <summary>
@@ -99,7 +97,6 @@ namespace LotBankingCrux_v_1
                 foreach (KeyValuePair<int, String[]> project in aBIDProjects)
                 {
                     ProjectsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectDashboard.aspx", project.Value[1], bID.Key));
-
                 }
             }
         }
@@ -160,13 +157,7 @@ namespace LotBankingCrux_v_1
             Dictionary<int, String> lintBuilderIDs = dbObject.getBuilderIds();
             foreach (KeyValuePair<int, String> bID in lintBuilderIDs)
             {
-
                 Dictionary<int, String[]> aBIDDocuments = dbObject.getBuilderDocumentsByBID(bID.Key, ddlOrderBy.SelectedValue.ToString());
-
-                //foreach (Dictionary<int, string[]> doc in aBIDDocuments)
-                //{
-                //    ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(doc.getDocumentName(), "ProjectProposal.aspx", doc.getLastRequestedTime()));
-                //}
             }
         }
 
@@ -178,7 +169,6 @@ namespace LotBankingCrux_v_1
         public int GetMeterValue()
         {
             return 50;
-
         }
 
         protected void btnGo_Click(object sender, EventArgs e)

@@ -26,10 +26,6 @@ namespace LotBankingCrux_v_1.CustomControls
             Name.Text = name;
             Name.PostBackUrl = url + "?projectid=" + projid.ToString() + "&" + "builderid=" + builderid.ToString();
 
-
-            // Name.BorderColor = Color.Aqua;
-            // Name.BorderStyle = BorderStyle.Solid;
-
             ModifiedDate = new Label();
             ModifiedDate.Text = date;
 

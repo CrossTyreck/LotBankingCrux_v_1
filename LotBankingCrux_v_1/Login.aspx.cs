@@ -79,6 +79,12 @@ namespace LotBankingCrux_v_1.Account
             }
         }
 
+
+        /// <summary>
+        /// Save cookie information on the clients computer. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ctlLogin_LoggedIN(object sender, EventArgs e)
         {
             CheckBox rm = (CheckBox)LoginForm.FindControl("RememberMe");

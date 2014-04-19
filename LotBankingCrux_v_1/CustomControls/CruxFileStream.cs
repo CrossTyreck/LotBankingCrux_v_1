@@ -55,51 +55,13 @@ namespace LotBankingCrux_v_1.CustomControls
         /// <param name="sesBucket">Current DataBucket that is in the Session variable</param>
         public Label UploadFile(CruxDB dbObject, DataBucket sesBucket, HttpRequest Request, HttpContext Context, int docClassId)
         {
-
             Label lblFileUploadStatus = new Label();
             HttpFileCollection multipleFiles = Request.Files;
             for (int fileCount = 0; fileCount < multipleFiles.Count; fileCount++)
             {
                 string fileName = Path.GetFileName(multipleFiles[fileCount].FileName);
                 string ext = Path.GetExtension(fileName);
-                //string contenttype = String.Empty;
-             
-             
-                //switch (ext)
-                //{
-                //    case ".doc":
-                //        contenttype = "application/vnd.ms-word";
-                //        break;
-                //    case ".docx":
-                //        contenttype = "application/vnd.ms-word";
-                //        break;
-                //    case ".xls":
-                //        contenttype = "application/vnd.ms-excel";
-                //        break;
-                //    case ".xlsx":
-                //        contenttype = "application/vnd.ms-excel";
-                //        break;
-                //    case ".jpg":
-                //        contenttype = "image/jpg";
-                //        break;
-                //    case ".JPG":
-                //        contenttype = "image/JPG";
-                //        break;
-                //    case ".jpeg":
-                //        contenttype = "image/jpeg";
-                //        break;
-                //    case ".png":
-                //        contenttype = "image/png";
-                //        break;
-                //    case ".gif":
-                //        contenttype = "image/gif";
-                //        break;
-                //    case ".pdf":
-                //        contenttype = "application/pdf";
-                //        break;
-                //}
-                //if (contenttype != String.Empty)
-                //{
+              
                     HttpPostedFile uploadedFile = multipleFiles[fileCount];
 
                     if (uploadedFile.ContentLength > 0)
@@ -108,12 +70,9 @@ namespace LotBankingCrux_v_1.CustomControls
                         BinaryReader br = new BinaryReader(fs);
                         Byte[] bytes = br.ReadBytes((Int32)fs.Length);
 
-                        // Might need to append file extension later (not sure)
                         dbObject.insertProjectDocument(sesBucket._userID, fileName, bytes, docClassId);
-                        //uploadedFile.SaveAs(Context.Server.MapPath("~/Files/") + fileName);
                         lblFileUploadStatus.Text += fileName + "Saved <BR>";
                     }
-                //}
             }
 
             return lblFileUploadStatus;
