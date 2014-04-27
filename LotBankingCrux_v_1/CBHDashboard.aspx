@@ -16,7 +16,7 @@
                     <asp:Label ID="Label1" runat="server" Text="Go to selected builder page"></asp:Label>
                 </li>
                 <li>
-                    <asp:Button ID="GoToBuilderButton" runat="server" Text="Go!" OnClick="GoToBuilder"/>
+                    <asp:Button ID="GoToBuilderButton" runat="server" Text="Go!" OnClick="GoToBuilder" />
                 </li>
             </ul>
         </div>
@@ -29,16 +29,22 @@
 
             <div id="duedil-nav">
                 <ul class="menu-list">
-                    <li><asp:LinkButton ID="lnkbtnProposals" runat="server" OnClick="Proposals_Click">PROPOSALS</asp:LinkButton></li>
-                    <li> | </li>
-                    <li><asp:LinkButton ID="lnkbtnProjects" runat="server" OnClick="Projects_Click">PROJECTS</asp:LinkButton></li>
-                    <li> | </li>
-                    <li><asp:LinkButton ID="lnkbtnBuilderDocuments" runat="server" OnClick="BuilderDocuments_Click">BUILDER DOCUMENTS</asp:LinkButton></li>
+                    <li>
+                        <asp:LinkButton ID="lnkData" runat="server" OnClick="Data_Click">DATA</asp:LinkButton></li>
+                    <li>| </li>
+                    <li>
+                        <asp:LinkButton ID="lnkbtnProposals" runat="server" OnClick="Proposals_Click">PROPOSALS</asp:LinkButton></li>
+                    <li>| </li>
+                    <li>
+                        <asp:LinkButton ID="lnkbtnProjects" runat="server" OnClick="Projects_Click">PROJECTS</asp:LinkButton></li>
+                    <li>| </li>
+                    <li>
+                        <asp:LinkButton ID="lnkbtnBuilderDocuments" runat="server" OnClick="BuilderDocuments_Click">BUILDER DOCUMENTS</asp:LinkButton></li>
                 </ul>
             </div>
 
 
-            <asp:MultiView ID="DashboardView" runat="server" ActiveViewIndex="0" OnActiveViewChanged="DashboardView_ActiveViewChanged">
+            <asp:MultiView ID="DashboardView" runat="server" ActiveViewIndex="3">
                 <asp:View ID="ProjectProposalsView" runat="server">
                     <asp:Label ID="lblProjectProposals" runat="server" Font-Bold="True" Font-Italic="False" Font-Size="X-Large" Font-Underline="True" Style="text-align: center" Text="Proposals"></asp:Label>
                     <br />
@@ -71,69 +77,56 @@
                     </asp:DropDownList>
                     <asp:Panel ID="BuilderDocumentsPanel" runat="server" CssClass="multiviewpanel" Height="400px" Width="800px"></asp:Panel>
                 </asp:View>
-            </asp:MultiView>
-        </asp:Panel>
-    </div>
-    <div class="dashboard-container">
-        <asp:Panel ID="pnlMeters" CssClass="meters" runat="server">
-            <table id="centermeters">
 
-
-                <tr>
-                    <td>
-                        <div id="meter1" class="centermeters"></div>
-                        <asp:Label runat="server" ID="lblMeter1" Text="METER3" />
-                        <script>
-                            new function () {
+                <asp:View ID="DataView" runat="server">
+                    <center>
+    <div style="margin: 0 auto;">
+        <div style="display: inline; margin: 0 auto;">
+            <div id="meter1" class="centermeters"></div>
+            <script>
+                new function () {
                                 <% Response.Write(meter1.GenerateMeterScriptValues("meter1", "meter11")); %>
-                            };
+                };
+            </script>
 
-                        </script>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div id="meter2" class="centermeters"></div>
-                        <asp:Label runat="server" ID="lblMeter2" Text="METER2" />
-                        <script>
-                            new function () {
+            <div id="meter2" class="centermeters"></div>
+            <script>
+                new function () {
 
               <% Response.Write(meter2.GenerateMeterScriptValues("meter2", "meter22")); %>
-                            };
+                };
 
-                        </script>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div id="meter3" class="centermeters"></div>
-                        <asp:Label runat="server" ID="lblMeter3" Text="METER3" />
-                        <script>
-                            new function () {
+            </script>
+        </div>
+        <div>
 
-              <% Response.Write(meter3.GenerateMeterScriptValues("meter3", "meter33")); %>
-
-                            };
-                        </script>
-                    </td>
-                </tr>
-            </table>
-        </asp:Panel>
-
-        <asp:Panel ID="pnlGraphs" CssClass="graphs" runat="server">
-            <div id="temppanel1">
-
-                <div class="menubar">
-                    <div>
-                        <ul id="horizontal-list">
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-
-            <div id="temppanel2">
-            </div>
+            <asp:Chart ID="Chart1" runat="server" Palette="BrightPastel" BackColor="WhiteSmoke" Height="500px" Width="500px" BorderlineDashStyle="Solid" BackSecondaryColor="White" BackGradientStyle="TopBottom" BorderWidth="2" BorderColor="26, 59, 105" ImageLocation="~/TempImages/ChartPic_#SEQ(300,3)">
+                <Titles>
+                    <asp:Title ShadowColor="32, 0, 0, 0" Font="Trebuchet MS, 14.25pt, style=Bold" ShadowOffset="3" Text="Builder Profitability" Name="Title1" ForeColor="26, 59, 105"></asp:Title>
+                </Titles>
+                <BorderSkin SkinStyle="Emboss"></BorderSkin>
+                <Series>
+                    <asp:Series Name="Default" ChartType="Pie" BorderColor="180, 26, 59, 105" Color="220, 65, 140, 240"></asp:Series>
+                </Series>
+                <ChartAreas>
+                    <asp:ChartArea Name="ChartArea1" BorderColor="64, 64, 64, 64" BackSecondaryColor="Transparent" BackColor="Transparent" ShadowColor="Transparent" BorderWidth="0">
+                        <Area3DStyle Rotation="0" />
+                        <AxisY LineColor="64, 64, 64, 64">
+                            <LabelStyle Font="Trebuchet MS, 8.25pt, style=Bold" />
+                            <MajorGrid LineColor="64, 64, 64, 64" />
+                        </AxisY>
+                        <AxisX LineColor="64, 64, 64, 64">
+                            <LabelStyle Font="Trebuchet MS, 8.25pt, style=Bold" />
+                            <MajorGrid LineColor="64, 64, 64, 64" />
+                        </AxisX>
+                    </asp:ChartArea>
+                </ChartAreas>
+            </asp:Chart>
+        </div>
+    </div>
+        </center>
+                </asp:View>
+            </asp:MultiView>
         </asp:Panel>
     </div>
 </asp:Content>

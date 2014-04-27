@@ -30,6 +30,111 @@ namespace LotBankingCrux_v_1.Crux
             databaseConnection = new MySqlConnection(server + database + user + password);
         }
 
+
+        public bool BuilderProfitability(out string[] buildername, out double[] builderprofits)
+        {
+            MySqlCommand selectProjectDocument = new MySqlCommand(@"SELECT BuilderProjects.name, BuilderProjects.BuilderID AS BuilderID, 
+                                                                  (SUM( Lot_Types.sale_price ) - SUM( Lot_Types.purchased_price ) / SUM( Lot_Types.sold_count )) 
+                                                                  AS 'Builder Profitability' FROM 
+                                                                  (SELECT name, Builder_Data.builder_id AS BuilderID, Projects.id AS ProjectID FROM 
+                                                                  Projects INNER JOIN Builder_Data ON Builder_Data.builder_id = Projects.builder_id) 
+                                                                  AS BuilderProjects INNER JOIN Lot_Types ON Lot_Types.project_id = BuilderProjects.ProjectID
+                                                                  GROUP BY BuilderID
+                                                                  ORDER BY 'Builder Profitability'", databaseConnection);
+            databaseConnection.Open();
+            MySqlDataReader reader;
+
+            buildername = null;
+            builderprofits = null;
+
+            try
+            {
+                reader = selectProjectDocument.ExecuteReader();
+                List<string> names = new List<string>();
+                List<double> profits = new List<double>();
+
+                while (reader.Read())
+                {
+                    names.Add(reader.GetString(0));
+                    profits.Add(reader.GetDouble(2));
+                }
+
+                buildername = names.ToArray();
+                builderprofits = profits.ToArray();
+
+                return true;
+            }
+              
+            catch
+            {
+                return false;
+            }
+
+            finally
+            {
+                databaseConnection.Close();
+            }
+
+        }
+
+
+        public void LotsSoldOverTotal(out int sumSoldCount, out int sumTotalCount)
+        {
+            MySqlCommand selectProjectDocument = new MySqlCommand("SELECT sum(sold_count), sum(count) FROM Lot_Types",
+                                                                 databaseConnection);
+            databaseConnection.Open();
+            MySqlDataReader reader;
+
+            //all sales are final :-)
+            sumSoldCount = -1;
+            sumTotalCount = -1;
+
+            try
+            {
+                reader = selectProjectDocument.ExecuteReader(CommandBehavior.SingleRow);
+
+                while (reader.Read())
+                {
+                    sumSoldCount = reader.GetInt32(0);
+                    sumTotalCount = reader.GetInt32(1);
+                }
+            }
+
+            catch (Exception e)
+            {
+                Debug.Print(e.Message);
+
+            }
+
+            finally
+            {
+                databaseConnection.Close();
+            }
+        }
+
+        public int RateOfReturn()
+        {
+            MySqlCommand selectProjectDocument = new MySqlCommand("SELECT AVG((estimated_sale_value - aquisition_price)/improvement_cost) FROM Projects",
+                                                                 databaseConnection);
+            databaseConnection.Open();
+
+            try
+            {
+                return (int)((decimal)selectProjectDocument.ExecuteScalar() * 100);
+            }
+
+            catch (Exception e)
+            {
+                Debug.Print(e.Message);
+                return e.HResult;
+            }
+
+            finally
+            {
+                databaseConnection.Close();
+            }
+        }
+
         public int insertLogin(String login, String password, int user_class_id, int option_mask)
         {
             MySqlCommand insertNewLogin = new MySqlCommand("INSERT INTO Login " +
@@ -592,7 +697,7 @@ namespace LotBankingCrux_v_1.Crux
             builders.Columns.Add("Builder Name", typeof(String));
             builders.Columns.Add("Builder ID", typeof(int));
 
-            MySqlCommand getBuildersNamesQuery = new MySqlCommand("SELECT name, "+ 
+            MySqlCommand getBuildersNamesQuery = new MySqlCommand("SELECT name, " +
                                                                          "builder_id " +
                                                                    "FROM Builder_Data " +
                                                                "ORDER BY name ASC ",
@@ -631,7 +736,7 @@ namespace LotBankingCrux_v_1.Crux
         /// <returns>Returns a Dictionary that contains the id and name of the object requested.</returns>
         public Dictionary<int, String> SelectIDName(string id, string name, string table)
         {
-            MySqlCommand selectIDName = new MySqlCommand("SELECT "+ id + ", " + name + " FROM " + table + " ORDER BY " + id + " ASC",
+            MySqlCommand selectIDName = new MySqlCommand("SELECT " + id + ", " + name + " FROM " + table + " ORDER BY " + id + " ASC",
                                                          databaseConnection);
 
             Dictionary<int, String> returnValues = new Dictionary<int, string>();
@@ -1509,7 +1614,7 @@ namespace LotBankingCrux_v_1.Crux
         public Dictionary<int, String[]> getProposalsByBID(int builder_id, String orderBy, Boolean includeDeclined = false, Boolean includeAwaitingBuilder = false, Boolean includeAwaitingApproval = false)
         {
             String exclusion = "";
-             
+
             if (!includeDeclined)
             {
                 exclusion = "AND decline_id == -1 ";
@@ -1775,7 +1880,7 @@ namespace LotBankingCrux_v_1.Crux
             reader.Close();
             databaseConnection.Close();
             return (int)returnValues.SUCCESS;
-          }
+        }
 
         public ProjectScheduleEntry[] getProjectSchedule(int project_id)
         {

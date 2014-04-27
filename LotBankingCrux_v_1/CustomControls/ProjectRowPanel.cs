@@ -24,7 +24,7 @@ namespace LotBankingCrux_v_1.CustomControls
             BuilderID = builderid;
             RowButton = new Button();
             RowButton.CssClass = "projectRowButton";
-            RowButton.Text = "Project: " + name + "Date: " + date;
+            RowButton.Text = "Project: " + name + "         Date: " + date;
             RowButton.PostBackUrl = url + "?projectid=" + projid.ToString() + "&" + "builderid=" + builderid.ToString();
 
             Controls.Add(RowButton);

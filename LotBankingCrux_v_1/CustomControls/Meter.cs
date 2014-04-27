@@ -13,9 +13,9 @@ namespace LotBankingCrux_v_1.CustomControls
         public Color valueColor { get; set; }
         public int Min { get; set; }
         public int Max { get; set; }
-        public Color MinMaxColor { get; set; }
-        public string title { get; set; }
-        public Color titleColor { get; set; }
+        public Color MinmaxColor { get; set; }
+        public string Title { get; set; }
+        public Color TitleColor { get; set; }
         public string Label { get; set; }
         public Color LabelColor { get; set; }
         public float GaugeWidthScale { get; set; }
@@ -34,7 +34,13 @@ namespace LotBankingCrux_v_1.CustomControls
         public Color WarningRangeColor {get; set;}
         public Color ActionRangeColor {get; set;}
 
-       
+        public Meter()
+        {
+            Title = "Title";
+            MinmaxColor = Color.Black;
+          
+        }
+
         public String GenerateMeterScriptValues(string id, string name)
         {
             return
@@ -42,7 +48,9 @@ namespace LotBankingCrux_v_1.CustomControls
             "\", value: " + Value +
             ", min: " + Min +
             ", max: " + Max +
-            ", optimumRangeColor: \"#" + OptimumRangeColor.R.ToString("X2") + OptimumRangeColor.G.ToString("X2") + OptimumRangeColor.B.ToString("X2") + 
+            ", title: \"" + Title +
+            "\", minmaxColor: \"#" + MinmaxColor.R.ToString("X2") + MinmaxColor.G.ToString("X2") + MinmaxColor.B.ToString("X2") +
+            "\", optimumRangeColor: \"#" + OptimumRangeColor.R.ToString("X2") + OptimumRangeColor.G.ToString("X2") + OptimumRangeColor.B.ToString("X2") + 
             "\", warningRangeColor: \"#" + WarningRangeColor.R.ToString("X2") + WarningRangeColor.G.ToString("X2") + WarningRangeColor.B.ToString("X2") +
             "\", actionRangeColor: \"#" + ActionRangeColor.R.ToString("X2") + ActionRangeColor.G.ToString("X2") + ActionRangeColor.B.ToString("X2") +
             "\", gaugeBorderColor: \"#" + GaugeBorderColor.R.ToString("X2") + GaugeBorderColor.G.ToString("X2") + GaugeBorderColor.B.ToString("X2") +

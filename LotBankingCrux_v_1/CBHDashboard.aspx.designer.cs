@@ -58,6 +58,15 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.Panel pnlPage;
         
         /// <summary>
+        /// lnkData control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkData;
+        
+        /// <summary>
         /// lnkbtnProposals control.
         /// </summary>
         /// <remarks>
@@ -283,48 +292,21 @@ namespace LotBankingCrux_v_1 {
         protected global::System.Web.UI.WebControls.Panel BuilderDocumentsPanel;
         
         /// <summary>
-        /// pnlMeters control.
+        /// DataView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlMeters;
+        protected global::System.Web.UI.WebControls.View DataView;
         
         /// <summary>
-        /// lblMeter1 control.
+        /// Chart1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMeter1;
-        
-        /// <summary>
-        /// lblMeter2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMeter2;
-        
-        /// <summary>
-        /// lblMeter3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMeter3;
-        
-        /// <summary>
-        /// pnlGraphs control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlGraphs;
+        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart1;
     }
 }
