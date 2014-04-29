@@ -43,6 +43,10 @@ a {
     height: 25px;
 }
 
+#new_user {
+    margin-left: 32%;
+}
+
 #belowTopnav {
     width: 1220px;
     margin: auto;
@@ -167,15 +171,19 @@ a {
 /* Navigation
 ----------------------------------------------------------*/
 .buildernav ul {
-    background-color: gray;
     text-align: center;
 }
 
 .buildernav li {
     list-style: none;
+    text-transform: uppercase;
     padding-left: 15px;
     display: inline;
 }
+
+    .buildernav li :hover {
+        border-bottom: 1px solid blue;
+    }
 
 #duedil-nav {
     text-align: center;
