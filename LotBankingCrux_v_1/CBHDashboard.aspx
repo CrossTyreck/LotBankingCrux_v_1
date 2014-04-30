@@ -100,7 +100,7 @@
         </div>
         <div>
 
-            <asp:Chart ID="Chart1" runat="server" Palette="BrightPastel" BackColor="WhiteSmoke" Height="500px" Width="500px" BorderlineDashStyle="Solid" BackSecondaryColor="White" BackGradientStyle="TopBottom" BorderWidth="2" BorderColor="26, 59, 105" ImageLocation="~/TempImages/ChartPic_#SEQ(300,3)">
+           <%-- <asp:Chart ID="Chart1" runat="server" Palette="BrightPastel" BackColor="WhiteSmoke" Height="500px" Width="500px" BorderlineDashStyle="Solid" BackSecondaryColor="White" BackGradientStyle="TopBottom" BorderWidth="2" BorderColor="26, 59, 105" ImageLocation="~/TempImages/ChartPic_#SEQ(300,3)">
                 <Titles>
                     <asp:Title ShadowColor="32, 0, 0, 0" Font="Trebuchet MS, 14.25pt, style=Bold" ShadowOffset="3" Text="Builder Profitability" Name="Title1" ForeColor="26, 59, 105"></asp:Title>
                 </Titles>
@@ -121,7 +121,7 @@
                         </AxisX>
                     </asp:ChartArea>
                 </ChartAreas>
-            </asp:Chart>
+            </asp:Chart>--%>
         </div>
     </div>
         </center>

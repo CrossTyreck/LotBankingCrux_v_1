@@ -814,21 +814,21 @@ namespace LotBankingCrux_v_1.Crux
             }
 
             String exclusion = "";
-            if (!includeDeclined)
-            {
-                exclusion = "AND decline_id != -1 ";
-            }
-            if (!includeAwaitingBuilder)
-            {
-                exclusion += "AND (last_modified <= last_requested_timestamp) ";
-            }
-            if (!includeAwaitingApproval)
-            {
-                exclusion += "AND (last_modified > last_requested_timestamp || date_created > last_requested_timestamp) ";
-            }
+            //if (!includeDeclined)
+            //{
+            //    exclusion = "AND decline_id != -1 ";
+            //}
+            //if (!includeAwaitingBuilder)
+            //{
+            //    exclusion += "AND (last_modified <= last_requested_timestamp) ";
+            //}
+            //if (includeAwaitingApproval)
+            //{
+            //    exclusion += "AND (last_modified > last_requested_timestamp || date_created > last_requested_timestamp) ";
+            //}
             if (approved)
             {
-                exclusion += "AND approval_id <> 1 ";
+               exclusion += "AND approval_id <> 1 ";
             }
 
             MySqlCommand getBuilderProjects = new MySqlCommand("SELECT id, " +
@@ -1611,13 +1611,13 @@ namespace LotBankingCrux_v_1.Crux
 
 
 
-        public Dictionary<int, String[]> getProposalsByBID(int builder_id, String orderBy, Boolean includeDeclined = false, Boolean includeAwaitingBuilder = false, Boolean includeAwaitingApproval = false)
+        public Dictionary<int, String[]> getProposalsByBID(int builder_id, String orderBy, Boolean includeDeclined = false, Boolean includeAwaitingBuilder = false, Boolean includeAwaitingApproval = true)
         {
             String exclusion = "";
 
             if (!includeDeclined)
             {
-                exclusion = "AND decline_id == -1 ";
+                exclusion = "AND decline_id = -1 ";
             }
             if (!includeAwaitingBuilder)
             {

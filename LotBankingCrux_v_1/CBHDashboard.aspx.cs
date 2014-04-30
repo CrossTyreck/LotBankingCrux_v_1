@@ -23,11 +23,11 @@ namespace LotBankingCrux_v_1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-                PopulateBuilderDropdown();
-                CreateDataView();
-                CreateBuilderDocumentsView();
-                CreateProposalsView();
-                CreateProjectsView();
+            PopulateBuilderDropdown();
+            CreateDataView();
+            CreateBuilderDocumentsView();
+            CreateProposalsView();
+            CreateProjectsView();
         }
 
         /// <summary>
@@ -86,10 +86,10 @@ namespace LotBankingCrux_v_1
 
             dbObject.BuilderProfitability(out xValues, out yValues);
 
-            // Populate series data
-            Chart1.Series["Default"]["PieLabelStyle"] = "Outside";
-            Chart1.Series[0]["PieDrawingStyle"] = "Concave";
-            Chart1.Series["Default"].Points.DataBindXY(xValues, yValues);
+            //// Populate series data
+            //Chart1.Series["Default"]["PieLabelStyle"] = "Outside";
+            //Chart1.Series[0]["PieDrawingStyle"] = "Concave";
+            //Chart1.Series["Default"].Points.DataBindXY(xValues, yValues);
         }
 
         /// <summary>
@@ -112,16 +112,6 @@ namespace LotBankingCrux_v_1
             lstbxBuilders.DataTextField = "Builder Name";
             lstbxBuilders.DataValueField = "Builder Id";
             lstbxBuilders.DataBind();
-
-            Dictionary<int, String> lintBuilderIDs = dbObject.getBuilderIds();
-            foreach (KeyValuePair<int, String> bID in lintBuilderIDs)
-            {
-                Dictionary<int, String[]> aBIDProjects = dbObject.getProjectsByBID(bID.Key, ddlOrderBy.SelectedValue.ToString(), true, true);
-                foreach (KeyValuePair<int, String[]> project in aBIDProjects)
-                {
-                    ProjectsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[0], "ProjectDashboard.aspx", project.Value[1], bID.Key));
-                }
-            }
         }
 
         /// <summary>
@@ -198,17 +188,20 @@ namespace LotBankingCrux_v_1
         {
             Response.Redirect("CreateUserLogin.aspx");
         }
-       
+
         protected void Projects_Click(object sender, EventArgs e)
         {
             DashboardView.ActiveViewIndex = 1;
         }
-        
+
         protected void Proposals_Click(object sender, EventArgs e)
         {
             DashboardView.ActiveViewIndex = 0;
+
+            //  ProjectProposalsView.Controls.Add(ProjectProposalsPanel);
+            //  DashboardView.Controls.Add(ProjectProposalsView);
         }
-        
+
         protected void BuilderDocuments_Click(object sender, EventArgs e)
         {
             DashboardView.ActiveViewIndex = 2;
@@ -227,17 +220,20 @@ namespace LotBankingCrux_v_1
         protected void btnGo_Click(object sender, EventArgs e)
         {
 
-            List<int> lintBuilderIDs = new List<int>();
-            foreach (int item in lstbxBuilders.GetSelectedIndices())
+            Dictionary<int, String> lintBuilderIDs = dbObject.getBuilderIds();
+            List<int> ids = new List<int>();
+
+            foreach (KeyValuePair<int, string> bid in lintBuilderIDs)
             {
-                lintBuilderIDs.Add(Int32.Parse(lstbxBuilders.Items[item].Value));
+                ids.Add(bid.Key);
             }
 
-            Dictionary<int, String[]> aBIDProjects = dbObject.getBuilderProjects(lintBuilderIDs, chkAwaitingApproval.Checked, chkAwaitingBuilderInfo.Checked, chkDeclined.Checked);
+            Dictionary<int, String[]> aBIDProjects = dbObject.getBuilderProjects(ids, true, chkAwaitingBuilderInfo.Checked, chkDeclined.Checked);
             foreach (KeyValuePair<int, String[]> project in aBIDProjects)
             {
                 ProjectProposalsPanel.Controls.Add(new ProjectRowPanel(project.Key, project.Value[1], "ProjectProposal.aspx", project.Value[2], int.Parse(project.Value[0])));
             }
+
         }
 
         protected void GoToBuilder(object sender, EventArgs e)
